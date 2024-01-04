@@ -1,11 +1,11 @@
-package list;
+package datastructures.list;
 
 import java.util.*;
-/** Class KWLinkedList implements a double‐linked list and
+/** Class KWLinkedList implements a double‐linked datastructures.list and
  a ListIterator. */
 public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
 
-    /** A Node is the building block for a single‐linked list. */
+    /** A Node is the building block for a single‐linked datastructures.list. */
     private static class Node<E> {
         // Data Fields
         /** The reference to the data. */
@@ -72,7 +72,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
         }
 
         /** Move the iterator forward and return the next item.
-         @return The next item in the list
+         @return The next item in the datastructures.list
          @throws NoSuchElementException if there is no such object
          */
         public E next() {
@@ -94,7 +94,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
         }
 
         /** Move the iterator backward and return the previous item.
-         @return The previous item in the list
+         @return The previous item in the datastructures.list
          @throws NoSuchElementException if there is no such object
          */
         public E previous() {
@@ -115,7 +115,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
          * Returns the index of the element that would be returned by a subsequent call to next().
          *
          * @return the index of the element that would be returned by a subsequent call to next(),
-         *         or the size of the list if there is no next element
+         *         or the size of the datastructures.list if there is no next element
          */
         @Override
         public int nextIndex() {
@@ -134,7 +134,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
         }
 
         /**
-         * Removes from the list the last element that was returned by next() or previous().
+         * Removes from the datastructures.list the last element that was returned by next() or previous().
          *
          * This method has not been verified!
          *
@@ -194,7 +194,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
          @param obj The item to be inserted
          */
         public void add(E obj) {
-            if (head == null) { // Add to an empty list.
+            if (head == null) { // Add to an empty datastructures.list.
                 head = new Node<>(obj);
                 tail = head;
             } else if (nextItem == head) { // Insert at head
@@ -236,11 +236,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
 
     }
     // Data Fields
-    /** A reference to the head of the list. */
+    /** A reference to the head of the datastructures.list. */
     private Node<E> head = null;
-    /** A reference to the end of the list. */
+    /** A reference to the end of the datastructures.list. */
     private Node<E> tail = null;
-    /** The size of the list. */
+    /** The size of the datastructures.list. */
     private int size = 0;
 
     /** Add an item at position index.
@@ -268,8 +268,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>{
     }
 
     /**
-     * Return the number of elements in this list.
-     * @return The number of elements in this list.
+     * Return the number of elements in this datastructures.list.
+     * @return The number of elements in this datastructures.list.
      */
     @Override
     public int size() {

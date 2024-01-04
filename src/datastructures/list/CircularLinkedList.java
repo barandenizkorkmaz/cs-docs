@@ -1,4 +1,4 @@
-package list;
+package datastructures.list;
 
 public class CircularLinkedList<E> {
     // Nested node class identical to that of the SinglyLinkedList class
@@ -25,9 +25,9 @@ public class CircularLinkedList<E> {
     }
 
     private Node<E> tail = null; // We store tail (but not head)
-    private int size = 0; // Number of nodes in the list
+    private int size = 0; // Number of nodes in the datastructures.list
 
-    public CircularLinkedList() { } // Constructs an initially empty list
+    public CircularLinkedList() { } // Constructs an initially empty datastructures.list
 
     // Access methods
     public int size() {
@@ -52,13 +52,13 @@ public class CircularLinkedList<E> {
 
     // Update methods
     public void rotate() {
-        // Rotate the first element to the back of the list
+        // Rotate the first element to the back of the datastructures.list
         if (tail != null) // If empty, do nothing
             tail = tail.getNext(); // The old head becomes the new tail
     }
 
     public void addFirst(E e) {
-        // Adds element e to the front of the list
+        // Adds element e to the front of the datastructures.list
         if (size == 0) {
             tail = new Node<>(e, null);
             tail.setNext(tail); // Link to itself circularly
@@ -70,8 +70,8 @@ public class CircularLinkedList<E> {
     }
 
     public void addLast(E e) {
-        // Adds element e to the end of the list
-        addFirst(e); // Insert new element at front of list
+        // Adds element e to the end of the datastructures.list
+        addFirst(e); // Insert new element at front of datastructures.list
         tail = tail.getNext(); // Now new element becomes the tail
     }
 
@@ -82,7 +82,7 @@ public class CircularLinkedList<E> {
         if (head == tail)
             tail = null; // Must be the only node left
         else
-            tail.setNext(head.getNext()); // Removes ”head” from the list
+            tail.setNext(head.getNext()); // Removes ”head” from the datastructures.list
         size--;
         return head.getElement();
     }

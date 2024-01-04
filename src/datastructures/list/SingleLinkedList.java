@@ -1,16 +1,16 @@
-package list;
+package datastructures.list;
 
 import java.util.AbstractSequentialList;
 import java.util.List;
 import java.util.ListIterator;
 
-/** Class to represent a linked list with a link from each node to the next
+/** Class to represent a linked datastructures.list with a link from each node to the next
  node. SingleLinkedList does not implement the List interface.
  */
 
 public class SingleLinkedList<E> extends AbstractSequentialList<E> implements List<E> {
 
-    /** A Node is the building block for a single‐linked list. */
+    /** A Node is the building block for a single‐linked datastructures.list. */
     private static class Node<E> {
         // Data Fields
         /** The reference to the data. */
@@ -38,11 +38,11 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
     }
 
     /**
-     * Reference to list head.
+     * Reference to datastructures.list head.
      */
     private Node<E> head = null;
     /**
-     * The number of items in the list
+     * The number of items in the datastructures.list
      */
     private int size = 0;
 
@@ -63,7 +63,7 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
         }
     }
 
-    /** Append item to the end of the list
+    /** Append item to the end of the datastructures.list
      @param item The item to be appended
      @return true (as specified by the Collection interface)
      */
@@ -72,7 +72,7 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
         return true;
     }
 
-    /** Add an item to the front of the list.
+    /** Add an item to the front of the datastructures.list.
      @param item The item to be added
      */
     public void addFirst(E item) {
@@ -90,9 +90,9 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
     }
 
     /**
-     * Returns the list iterator object.
+     * Returns the datastructures.list iterator object.
      * @param i the index of the iterator.
-     * @return the list iterator object.
+     * @return the datastructures.list iterator object.
      */
     @Override
     public ListIterator<E> listIterator(int i) {
@@ -100,7 +100,7 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
     }
 
     /**
-     * Removes the element at the specified position in this list.
+     * Removes the element at the specified position in this datastructures.list.
      *
      * @param index the index of the element to be removed
      * @return the element previously at the specified position
@@ -137,15 +137,15 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
         }
     }
 
-    /** Remove the first node from the list
-     @return The removed node's data or null if the list is empty
+    /** Remove the first node from the datastructures.list
+     @return The removed node's data or null if the datastructures.list is empty
      */
     private E removeFirst() {
         Node<E> temp = head;
         if (head != null) {
             head = head.next;
         }
-        // Return data at old head or null if list is empty
+        // Return data at old head or null if datastructures.list is empty
         if (temp != null) {
             size--;
             return temp.data;
@@ -196,20 +196,20 @@ public class SingleLinkedList<E> extends AbstractSequentialList<E> implements Li
     }
 
     /**
-     * Return the current number of elements in the list.
-     * @return The size of the list
+     * Return the current number of elements in the datastructures.list.
+     * @return The size of the datastructures.list
      */
     public int size(){
         return size;
     }
 
     /**
-     * Returns the index of the first occurrence of the specified element in this list,
-     * or -1 if this list does not contain the element. This method allows searching for
+     * Returns the index of the first occurrence of the specified element in this datastructures.list,
+     * or -1 if this datastructures.list does not contain the element. This method allows searching for
      * an object of type Object.
      *
-     * @param target the object to search for in the list
-     * @return the index of the first occurrence of the object in the list, or -1 if not found
+     * @param target the object to search for in the datastructures.list
+     * @return the index of the first occurrence of the object in the datastructures.list, or -1 if not found
      */
     public int indexOf(Object target) {
         Node<E> current = head;

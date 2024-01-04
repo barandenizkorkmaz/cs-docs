@@ -34,7 +34,7 @@
 | static String         | toString(Object[] a)                        | Returns a string representation of the contents of the specified array. |
 | static void           | sort(Object[] a)                            | Sorts the specified array of objects into ascending order, according to the natural ordering of its elements. |
 | static \<T> void      | sort(T[] a, Comparator<? super T> c)        | Sorts the specified array of objects according to the order induced by the specified comparator. |
-| int                   | size()                                      | Returns the number of elements in this list.                 |
+| int                   | size()                                      | Returns the number of elements in this datastructures.list.                 |
 | static int            | binarySearch(Object[] a, Object key)        | Searches the specified array for the specified object using the binary search algorithm. |
 
 Reference: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
@@ -52,16 +52,16 @@ System.arraycopy(source, sourcePos, destination, destPos, numElements);
 
 | **Modifier and Type** | **Method**                | **Description**                                              |
 | --------------------- | ------------------------- | ------------------------------------------------------------ |
-| boolean               | add(E e)                  | Appends the specified element to the end of this list (optional operation). |
-| void                  | add(int index, E element) | Inserts the specified element at the specified position in this list (optional operation). |
-| E                     | get(int index)            | Returns the element at the specified position in this list.  |
-| int                   | indexOf(Object o)         | Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. |
-| Iterator\<E>          | iterator()                | Returns an iterator over the elements in this list in proper sequence. |
-| E                     | remove(int index)         | Removes the element at the specified position in this list (optional operation). |
-| boolean               | remove(Object o)          | Removes the first occurrence of the specified element from this list, if it is present (optional operation). |
-| E                     | set(int index, E element) | Replaces the element at the specified position in this list with the specified element (optional operation). |
-| int                   | size()                    | Returns the number of elements in this list.                 |
-| Object[]              | toArray()                 | Returns an array containing all of the elements in this list in proper sequence (from first to last element). |
+| boolean               | add(E e)                  | Appends the specified element to the end of this datastructures.list (optional operation). |
+| void                  | add(int index, E element) | Inserts the specified element at the specified position in this datastructures.list (optional operation). |
+| E                     | get(int index)            | Returns the element at the specified position in this datastructures.list.  |
+| int                   | indexOf(Object o)         | Returns the index of the first occurrence of the specified element in this datastructures.list, or -1 if this datastructures.list does not contain the element. |
+| Iterator\<E>          | iterator()                | Returns an iterator over the elements in this datastructures.list in proper sequence. |
+| E                     | remove(int index)         | Removes the element at the specified position in this datastructures.list (optional operation). |
+| boolean               | remove(Object o)          | Removes the first occurrence of the specified element from this datastructures.list, if it is present (optional operation). |
+| E                     | set(int index, E element) | Replaces the element at the specified position in this datastructures.list with the specified element (optional operation). |
+| int                   | size()                    | Returns the number of elements in this datastructures.list.                 |
+| Object[]              | toArray()                 | Returns an array containing all of the elements in this datastructures.list in proper sequence (from first to last element). |
 
 ![image-20240103215047752](/home/denizkorkmaz/.config/Typora/typora-user-images/image-20240103215047752.png)
 
@@ -80,15 +80,15 @@ System.arraycopy(source, sourcePos, destination, destPos, numElements);
 
 | **Modifier and Type** | **Method and Description**                                   |
 | --------------------- | ------------------------------------------------------------ |
-| boolean               | `add(E e)`<br />Appends the specified element to the end of this list. |
-| void                  | `add(int index, E element)`<br />Inserts the specified element at the specified position in this list. |
-| E                     | get(int index)<br/>Returns the element at the specified position in this list. |
-| Iterator\<E>          | iterator()<br/>Returns an iterator over the elements in this list in proper sequence. |
-| E                     | remove(int index)<br/>Removes the element at the specified position in this list. |
-| boolean               | remove(Object o)<br/>Removes the first occurrence of the specified element from this list, if it is present. |
-| E                     | set(int index, E element)<br/>Replaces the element at the specified position in this list with the specified element. |
-| int                   | size()<br/>Returns the number of elements in this list.      |
-| Object[]              | toArray()<br/>Returns an array containing all of the elements in this list in proper sequence (from first to last element). |
+| boolean               | `add(E e)`<br />Appends the specified element to the end of this datastructures.list. |
+| void                  | `add(int index, E element)`<br />Inserts the specified element at the specified position in this datastructures.list. |
+| E                     | get(int index)<br/>Returns the element at the specified position in this datastructures.list. |
+| Iterator\<E>          | iterator()<br/>Returns an iterator over the elements in this datastructures.list in proper sequence. |
+| E                     | remove(int index)<br/>Removes the element at the specified position in this datastructures.list. |
+| boolean               | remove(Object o)<br/>Removes the first occurrence of the specified element from this datastructures.list, if it is present. |
+| E                     | set(int index, E element)<br/>Replaces the element at the specified position in this datastructures.list with the specified element. |
+| int                   | size()<br/>Returns the number of elements in this datastructures.list.      |
+| Object[]              | toArray()<br/>Returns an array containing all of the elements in this datastructures.list in proper sequence (from first to last element). |
 
 
 
@@ -245,7 +245,7 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
 
 ### Overview
 
-- Java does not have a class that implements single-linked lists. Instead, it has a more general double-linked list class.
+- Java does not have a class that implements single-linked lists. Instead, it has a more general double-linked datastructures.list class.
 
 
 
@@ -253,18 +253,18 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
 
 | **Modifier and Type** | **Method**                | **Description**                                              |
 | --------------------- | ------------------------- | ------------------------------------------------------------ |
-| boolean               | add(E e)                  | Appends the specified element to the end of this list.       |
-| void                  | add(int index, E element) | Inserts the specified element at the specified position in this list. |
-| E                     | get(int index)            | Returns the element at the specified position in this list.  |
-| int                   | indexOf(Object o)         | Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. |
-| Iterator\<E>          | iterator()                | Returns an iterator over the elements in this list in proper sequence. |
-| E                     | remove(int index)         | Removes the element at the specified position in this list.  |
-| boolean               | remove(Object o)          | Removes the first occurrence of the specified element from this list, if it is present. |
-| E                     | set(int index, E element) | Replaces the element at the specified position in this list with the specified element. |
-| int                   | size()                    | Returns the number of elements in this list.                 |
-| Object[]              | toArray()                 | Returns an array containing all of the elements in this list in proper sequence (from first to last element). |
+| boolean               | add(E e)                  | Appends the specified element to the end of this datastructures.list.       |
+| void                  | add(int index, E element) | Inserts the specified element at the specified position in this datastructures.list. |
+| E                     | get(int index)            | Returns the element at the specified position in this datastructures.list.  |
+| int                   | indexOf(Object o)         | Returns the index of the first occurrence of the specified element in this datastructures.list, or -1 if this datastructures.list does not contain the element. |
+| Iterator\<E>          | iterator()                | Returns an iterator over the elements in this datastructures.list in proper sequence. |
+| E                     | remove(int index)         | Removes the element at the specified position in this datastructures.list.  |
+| boolean               | remove(Object o)          | Removes the first occurrence of the specified element from this datastructures.list, if it is present. |
+| E                     | set(int index, E element) | Replaces the element at the specified position in this datastructures.list with the specified element. |
+| int                   | size()                    | Returns the number of elements in this datastructures.list.                 |
+| Object[]              | toArray()                 | Returns an array containing all of the elements in this datastructures.list in proper sequence (from first to last element). |
 
-- Note that the `LinkedList` class, part of Java API package `java.util`, is a double-linked list. However, the API description above is still valid.
+- Note that the `LinkedList` class, part of Java API package `java.util`, is a double-linked datastructures.list. However, the API description above is still valid.
 
 
 
@@ -274,7 +274,7 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
 import java.util.AbstractSequentialList;
 import java.util.List;
 
-/** A Node is the building block for a single‐linked list. */
+/** A Node is the building block for a single‐linked datastructures.list. */
 class Node<E> {
     // Data Fields
     /** The reference to the data. */
@@ -301,18 +301,18 @@ class Node<E> {
     }
 }
 
-/** Class to represent a linked list with a link from each node to the next
+/** Class to represent a linked datastructures.list with a link from each node to the next
  node. SingleLinkedList does not implement the List interface.
  */
 
 public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements List<E> {
 
     /**
-     * Reference to list head.
+     * Reference to datastructures.list head.
      */
     private Node<E> head = null;
     /**
-     * The number of items in the list
+     * The number of items in the datastructures.list
      */
     private int size = 0;
 
@@ -333,7 +333,7 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
         }
     }
 
-    /** Append item to the end of the list
+    /** Append item to the end of the datastructures.list
      @param item The item to be appended
      @return true (as specified by the Collection interface)
      */
@@ -342,7 +342,7 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
         return true;
     }
 
-    /** Add an item to the front of the list.
+    /** Add an item to the front of the datastructures.list.
      @param item The item to be added
      */
     public void addFirst(E item) {
@@ -360,7 +360,7 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
     }
 
     /**
-     * Removes the element at the specified position in this list.
+     * Removes the element at the specified position in this datastructures.list.
      *
      * @param index the index of the element to be removed
      * @return the element previously at the specified position
@@ -397,15 +397,15 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
         }
     }
 
-    /** Remove the first node from the list
-     @return The removed node's data or null if the list is empty
+    /** Remove the first node from the datastructures.list
+     @return The removed node's data or null if the datastructures.list is empty
      */
     private E removeFirst() {
         Node<E> temp = head;
         if (head != null) {
             head = head.next;
         }
-        // Return data at old head or null if list is empty
+        // Return data at old head or null if datastructures.list is empty
         if (temp != null) {
             size--;
             return temp.data;
@@ -456,20 +456,20 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
     }
 
     /**
-     * Return the current number of elements in the list.
-     * @return The size of the list
+     * Return the current number of elements in the datastructures.list.
+     * @return The size of the datastructures.list
      */
     public int size(){
         return size;
     }
 
     /**
-     * Returns the index of the first occurrence of the specified element in this list,
-     * or -1 if this list does not contain the element. This method allows searching for
+     * Returns the index of the first occurrence of the specified element in this datastructures.list,
+     * or -1 if this datastructures.list does not contain the element. This method allows searching for
      * an object of type Object.
      *
-     * @param target the object to search for in the list
-     * @return the index of the first occurrence of the object in the list, or -1 if not found
+     * @param target the object to search for in the datastructures.list
+     * @return the index of the first occurrence of the object in the datastructures.list, or -1 if not found
      */
     public int indexOf(Object target) {
         Node<E> current = head;
@@ -514,7 +514,7 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 ###  Overview
 
-- The `LinkedList` class, part of the Java API package `java.util`, is a double‐linked list that implements the `List` interface.
+- The `LinkedList` class, part of the Java API package `java.util`, is a double‐linked datastructures.list that implements the `List` interface.
 
 
 
@@ -522,23 +522,23 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 | **Modifier and Type** | **Method**                | **Description**                                              |
 | --------------------- | ------------------------- | ------------------------------------------------------------ |
-| boolean               | add(E e)                  | Appends the specified element to the end of this list.       |
-| void                  | add(int index, E element) | Inserts the specified element at the specified position in this list. |
-| void                  | addFirst(E e)             | Inserts the specified element at the beginning of this list. |
-| void                  | addLast(E e)              | Appends the specified element to the end of this list.       |
-| E                     | get(int index)            | Returns the element at the specified position in this list.  |
-| E                     | getFirst()                | Returns the first element in this list.                      |
-| E                     | getLast()                 | Returns the last element in this list.                       |
-| int                   | indexOf(Object o)         | Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. |
-| Iterator\<E>          | iterator()                | Returns an iterator over the elements in this list in proper sequence. |
-| E                     | remove(int index)         | Removes the element at the specified position in this list.  |
-| boolean               | remove(Object o)          | Removes the first occurrence of the specified element from this list, if it is present. |
-| E                     | remove()                  | Retrieves and removes the head (first element) of this list. |
-| E                     | removeFirst()             | Removes and returns the first element from this list.        |
-| E                     | removeLast()              | Removes and returns the last element from this list.         |
-| E                     | set(int index, E element) | Replaces the element at the specified position in this list with the specified element. |
-| int                   | size()                    | Returns the number of elements in this list.                 |
-| Object[]              | toArray()                 | Returns an array containing all of the elements in this list in proper sequence (from first to last element). |
+| boolean               | add(E e)                  | Appends the specified element to the end of this datastructures.list.       |
+| void                  | add(int index, E element) | Inserts the specified element at the specified position in this datastructures.list. |
+| void                  | addFirst(E e)             | Inserts the specified element at the beginning of this datastructures.list. |
+| void                  | addLast(E e)              | Appends the specified element to the end of this datastructures.list.       |
+| E                     | get(int index)            | Returns the element at the specified position in this datastructures.list.  |
+| E                     | getFirst()                | Returns the first element in this datastructures.list.                      |
+| E                     | getLast()                 | Returns the last element in this datastructures.list.                       |
+| int                   | indexOf(Object o)         | Returns the index of the first occurrence of the specified element in this datastructures.list, or -1 if this datastructures.list does not contain the element. |
+| Iterator\<E>          | iterator()                | Returns an iterator over the elements in this datastructures.list in proper sequence. |
+| E                     | remove(int index)         | Removes the element at the specified position in this datastructures.list.  |
+| boolean               | remove(Object o)          | Removes the first occurrence of the specified element from this datastructures.list, if it is present. |
+| E                     | remove()                  | Retrieves and removes the head (first element) of this datastructures.list. |
+| E                     | removeFirst()             | Removes and returns the first element from this datastructures.list.        |
+| E                     | removeLast()              | Removes and returns the last element from this datastructures.list.         |
+| E                     | set(int index, E element) | Replaces the element at the specified position in this datastructures.list with the specified element. |
+| int                   | size()                    | Returns the number of elements in this datastructures.list.                 |
+| Object[]              | toArray()                 | Returns an array containing all of the elements in this datastructures.list in proper sequence (from first to last element). |
 
 - Reference: https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html
 
@@ -571,11 +571,11 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 ### Overview
 
-- The List interface declares the method iterator, which returns an Iterator object that will iterate over the elements of that list. 
+- The List interface declares the method iterator, which returns an Iterator object that will iterate over the elements of that datastructures.list. 
 - The requirement for the iterator method is actually in the Collection interface, which is the superinterface for the List interface. The `Collection` interface extends the `Iterable` interface, so all classes that implement the `List` interface (a subinterface of `Collection`) must provide an `Iterator` method.
-- An Iterator does not refer to or point to a particular object at any given time. Rather, you should think of an Iterator as pointing between objects within a list.
-- Think of an iterator as a moving place marker that keeps track of the current position in a particular linked list. The Iterator object for a list starts at the first element in the list. The programmer can use the Iterator object’s `next` method to retrieve the next element. Each time it does a retrieval, the Iterator object advances to the next list element, where it waits until it is needed again. We can also ask the Iterator object to determine whether the list has more elements left to process (method `hasNext`). Iterator objects throw a `NoSuchElementException` if they are asked to retrieve the next element after all elements have been processed.
-- You can use the Iterator remove method to remove elements from a list as you access them. You can remove only the element that was most recently accessed by next. Each call to remove must be preceded by a call to next to retrieve the next element.
+- An Iterator does not refer to or point to a particular object at any given time. Rather, you should think of an Iterator as pointing between objects within a datastructures.list.
+- Think of an iterator as a moving place marker that keeps track of the current position in a particular linked datastructures.list. The Iterator object for a datastructures.list starts at the first element in the datastructures.list. The programmer can use the Iterator object’s `next` method to retrieve the next element. Each time it does a retrieval, the Iterator object advances to the next datastructures.list element, where it waits until it is needed again. We can also ask the Iterator object to determine whether the datastructures.list has more elements left to process (method `hasNext`). Iterator objects throw a `NoSuchElementException` if they are asked to retrieve the next element after all elements have been processed.
+- You can use the Iterator remove method to remove elements from a datastructures.list as you access them. You can remove only the element that was most recently accessed by next. Each call to remove must be preceded by a call to next to retrieve the next element.
 
 
 
@@ -591,25 +591,25 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 > #### Efficient Access to List Elements by Iterator
 >
-> We can use the following loop to access the list elements in sequence, starting with the one at index 0.
-> 	// Access each list element.
+> We can use the following loop to access the datastructures.list elements in sequence, starting with the one at index 0.
+> 	// Access each datastructures.list element.
 > 	for (int index = 0; index < aList.size(); index++) {
 > 		E nextElement = aList.get(index);
 > 		// Do something with the element at position index (nextElement)
 > 		. . .
 > 	}
-> The loop is executed aList.size() times; thus it is O($n$). During each iteration, we call the method get to retrieve the element at position index. If we assume that the method get begins at the first list node (head), each call to method get must advance a local reference (nodeRef) to the node at position index using a loop such as:
+> The loop is executed aList.size() times; thus it is O($n$). During each iteration, we call the method get to retrieve the element at position index. If we assume that the method get begins at the first datastructures.list node (head), each call to method get must advance a local reference (nodeRef) to the node at position index using a loop such as:
 > 	// Advance nodeRef to the element at position index.
 > 	Node<E> nodeRef = head;
 > 	for (int j = 0; j < index; j++) {
 > 		nodeRef = nodeRef.next;
 > 	}
 >
-> This loop (in method get) executes index times, so it is also O($n$). Therefore, the performance of the nested loops used to process each element in a LinkedList is O($n^2$) and is very inefficient. We would like to have an alternative way to access the elements in a linked list sequentially.
+> This loop (in method get) executes index times, so it is also O($n$). Therefore, the performance of the nested loops used to process each element in a LinkedList is O($n^2$) and is very inefficient. We would like to have an alternative way to access the elements in a linked datastructures.list sequentially.
 
 > #### Removal Using `Iterator.remove` versus `List.remove`
 >
-> You could also use method LinkedList.remove to remove elements from a list. However, it is more efficient to remove multiple elements from a list using Iterator.remove than it would be to use LinkedList.remove. The LinkedList.remove method removes only one element at a time, so you would need to start at the beginning of the list each time and advance down the list to each element that you wanted to remove (O(n2) process). With the Iterator.remove method, you can remove elements as they are accessed by the Iterator object without having to go back to the beginning of the list (O(n) process).
+> You could also use method LinkedList.remove to remove elements from a datastructures.list. However, it is more efficient to remove multiple elements from a datastructures.list using Iterator.remove than it would be to use LinkedList.remove. The LinkedList.remove method removes only one element at a time, so you would need to start at the beginning of the datastructures.list each time and advance down the datastructures.list to each element that you wanted to remove (O(n2) process). With the Iterator.remove method, you can remove elements as they are accessed by the Iterator object without having to go back to the beginning of the datastructures.list (O(n) process).
 
 > #### The Enhanced `for` Loop
 >
@@ -641,14 +641,14 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 | Modifier and Type | Method          | Description                                                  |
 | ----------------- | --------------- | ------------------------------------------------------------ |
-| void              | add(E e)        | Inserts the specified element into the list (optional operation). |
-| boolean           | hasNext()       | Returns true if this list iterator has more elements when traversing the list in the forward direction. |
-| boolean           | hasPrevious()   | Returns true if this list iterator has more elements when traversing the list in the reverse direction. |
-| E                 | next()          | Returns the next element in the list and advances the cursor position. |
+| void              | add(E e)        | Inserts the specified element into the datastructures.list (optional operation). |
+| boolean           | hasNext()       | Returns true if this datastructures.list iterator has more elements when traversing the datastructures.list in the forward direction. |
+| boolean           | hasPrevious()   | Returns true if this datastructures.list iterator has more elements when traversing the datastructures.list in the reverse direction. |
+| E                 | next()          | Returns the next element in the datastructures.list and advances the cursor position. |
 | int               | nextIndex()     | Returns the index of the element that would be returned by a subsequent call to next(). |
-| E                 | previous()      | Returns the previous element in the list and moves the cursor position backwards. |
+| E                 | previous()      | Returns the previous element in the datastructures.list and moves the cursor position backwards. |
 | int               | previousIndex() | Returns the index of the element that would be returned by a subsequent call to previous(). |
-| void              | remove()        | Removes from the list the last element that was returned by next() or previous() (optional operation). |
+| void              | remove()        | Removes from the datastructures.list the last element that was returned by next() or previous() (optional operation). |
 | void              | set(E e)        | Replaces the last element returned by next() or previous() with the specified element (optional). |
 
 
@@ -659,7 +659,7 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 | Modifier and Type | Method                  | Description                                                  |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
-| ListIterator\<E>  | listIterator()          | Returns a ListIterator that begins just before the first list element. |
+| ListIterator\<E>  | listIterator()          | Returns a ListIterator that begins just before the first datastructures.list element. |
 | ListIterator\<E>  | listIterator(int index) | Returns a ListIterator that begins just before the position index. |
 
 
@@ -695,7 +695,7 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 ### Overview
 
-- A double‐linked list object would consist of a separate object with data fields `head` (a reference to the first list Node), `tail` (a reference to the last list Node), and size (the number of Nodes). Because both ends of the list are directly accessible, now insertion at either end is O(1); insertion else- where is still O(n).
+- A double‐linked datastructures.list object would consist of a separate object with data fields `head` (a reference to the first datastructures.list Node), `tail` (a reference to the last datastructures.list Node), and size (the number of Nodes). Because both ends of the datastructures.list are directly accessible, now insertion at either end is O(1); insertion else- where is still O(n).
 
 
 
@@ -707,9 +707,9 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 | Data Field           | Attribute                                  |
 | -------------------- | ------------------------------------------ |
-| private Node<E> head | A reference to the first item in the list  |
-| private Node<E> tail | A reference to the last item in the list   |
-| private int size     | A count of the number of items in the list |
+| private Node<E> head | A reference to the first item in the datastructures.list  |
+| private Node<E> tail | A reference to the last item in the datastructures.list   |
+| private int size     | A count of the number of items in the datastructures.list |
 
 
 
@@ -744,19 +744,19 @@ public class MySingleLinkedList<E> extends AbstractSequentialList<E> implements 
 
 | Data Field           | Attribute                                  |
 | -------------------- | ------------------------------------------ |
-| private Node<E> tail | A reference to the last item in the list   |
-| private int size     | A count of the number of items in the list |
+| private Node<E> tail | A reference to the last item in the datastructures.list   |
+| private int size     | A count of the number of items in the datastructures.list |
 
 #### Method Summary
 
 | Modifier and Type | Method        | Description                                                  |
 | ----------------- | ------------- | ------------------------------------------------------------ |
-| void              | addFirst(E e) | Inserts the specified element at the beginning of this list. |
-| void              | addLast(E e)  | Appends the specified element to the end of this list.       |
-| E                 | getFirst()    | Returns the first element in this list.                      |
-| E                 | getLast()     | Returns the last element in this list.                       |
-| void              | rotate()      | Rotates the first element to the back of the list.           |
-| E                 | removeFirst() | Removes and returns the first element from this list.        |
+| void              | addFirst(E e) | Inserts the specified element at the beginning of this datastructures.list. |
+| void              | addLast(E e)  | Appends the specified element to the end of this datastructures.list.       |
+| E                 | getFirst()    | Returns the first element in this datastructures.list.                      |
+| E                 | getLast()     | Returns the last element in this datastructures.list.                       |
+| void              | rotate()      | Rotates the first element to the back of the datastructures.list.           |
+| E                 | removeFirst() | Removes and returns the first element from this datastructures.list.        |
 
 ### Implementation
 
@@ -786,9 +786,9 @@ public class CircularLinkedList<E> {
     }
 
     private Node<E> tail = null; // We store tail (but not head)
-    private int size = 0; // Number of nodes in the list
+    private int size = 0; // Number of nodes in the datastructures.list
 
-    public CircularLinkedList() { } // Constructs an initially empty list
+    public CircularLinkedList() { } // Constructs an initially empty datastructures.list
 
     // Access methods
     public int size() {
@@ -813,13 +813,13 @@ public class CircularLinkedList<E> {
 
     // Update methods
     public void rotate() {
-        // Rotate the first element to the back of the list
+        // Rotate the first element to the back of the datastructures.list
         if (tail != null) // If empty, do nothing
             tail = tail.getNext(); // The old head becomes the new tail
     }
 
     public void addFirst(E e) {
-        // Adds element e to the front of the list
+        // Adds element e to the front of the datastructures.list
         if (size == 0) {
             tail = new Node<>(e, null);
             tail.setNext(tail); // Link to itself circularly
@@ -831,8 +831,8 @@ public class CircularLinkedList<E> {
     }
 
     public void addLast(E e) {
-        // Adds element e to the end of the list
-        addFirst(e); // Insert new element at front of list
+        // Adds element e to the end of the datastructures.list
+        addFirst(e); // Insert new element at front of datastructures.list
         tail = tail.getNext(); // Now new element becomes the tail
     }
 
@@ -843,7 +843,7 @@ public class CircularLinkedList<E> {
         if (head == tail)
             tail = null; // Must be the only node left
         else
-            tail.setNext(head.getNext()); // Removes ”head” from the list
+            tail.setNext(head.getNext()); // Removes ”head” from the datastructures.list
         size--;
         return head.getElement();
     }
