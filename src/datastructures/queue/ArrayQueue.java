@@ -3,6 +3,7 @@ package datastructures.queue;
 import java.util.AbstractQueue;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 /** Implements the Queue interface using a circular array. */
 public class ArrayQueue<E> extends AbstractQueue<E> implements Queue<E> {
@@ -83,17 +84,17 @@ public class ArrayQueue<E> extends AbstractQueue<E> implements Queue<E> {
     }
 
     @Override
-    public void enqueue(E e) {
-        offer(e);
+    public boolean add(E e) {
+        return offer(e);
     }
 
     @Override
-    public E first() {
+    public E element() {
         return peek();
     }
 
     @Override
-    public E dequeue() {
+    public E remove() {
         return poll();
     }
 

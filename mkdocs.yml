@@ -1,0 +1,8 @@
+site_name: cs-docs
+site_url: https://example.com/
+nav:
+  - Home: index.md
+  - Data Structures:
+      - Lists and The Collection Framework: data-structures/chp1-lists-and-the-collections-framework/chp1-lists-and-the-collections-framework.md
+      - Stacks and Queues: data-structures/chp2-stacks-and-queues/chp2-stacks-and-queues.md
+theme: readthedocs
