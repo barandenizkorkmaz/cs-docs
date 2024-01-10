@@ -2,11 +2,11 @@ package datastructures.stack;
 
 import java.util.LinkedList;
 
-public class ListStack<E> implements Stack<E> {
+public class LinkedStack<E> implements Stack<E> {
 
     private LinkedList<E> list = new LinkedList<>(); // An empty list
 
-    public ListStack() { }
+    public LinkedStack() { }
     // New stack relies on the initially empty list
 
     public int size() {
