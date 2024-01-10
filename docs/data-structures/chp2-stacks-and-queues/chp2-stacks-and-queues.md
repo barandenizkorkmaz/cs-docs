@@ -232,7 +232,7 @@ public class LinkedStack<E> implements Stack<E> {
 | `E`                   | `poll()`     | Retrieves and removes the head of this queue. Returns null if the queue is empty. |
 | `E`                   | `remove()`   | Retrieves and removes the head of this queue. Throws NoSuchElementException if the queue is empty. |
 
-![image-20240110154606926](../../assets/images/chp2/queue.png)
+![image-20240110154606926](../../assets/images/data-structures/chp2/queue.png)
 
 
 
@@ -668,7 +668,7 @@ public class DoubleLinkedQueue<E> extends AbstractQueue<E> implements Queue<E> {
 
 
 
-![image-20240110161905039](../../assets/images/chp2/deque.png)
+![image-20240110161905039](../../assets/images/data-structures/chp2/deque.png)
 
 
 
@@ -681,9 +681,9 @@ public class DoubleLinkedQueue<E> extends AbstractQueue<E> implements Queue<E> {
 
 ### Using a Deque as a Queue
 
-![image-20240110161920697](../../assets/images/chp2/deque-queue.png)
+![image-20240110161920697](../../assets/images/data-structures/chp2/deque-queue.png)
 
 ### Using a Deque as a Stack
 
-![image-20240110161945272](../../assets/images/chp2/deque-stack.png)
+![image-20240110161945272](../../assets/images/data-structures/chp2/deque-stack.png)
 
