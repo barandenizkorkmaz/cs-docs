@@ -2,7 +2,7 @@ package datastructures.stack;
 
 import java.util.LinkedList;
 
-public class LinkedStack<E> implements Stack<E> {
+public class LinkedStack<E> implements IStack<E> {
 
     private LinkedList<E> list = new LinkedList<>(); // An empty list
 

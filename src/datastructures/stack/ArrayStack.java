@@ -2,7 +2,7 @@ package datastructures.stack;
 
 import java.util.Arrays;
 
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayStack<E> implements IStack<E> {
 
     public static final int INITIAL_CAPACITY = 10; // Default array capacity
     private E[] data; // Generic array used for storage

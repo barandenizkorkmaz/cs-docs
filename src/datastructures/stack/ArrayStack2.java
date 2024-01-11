@@ -1,6 +1,6 @@
 package datastructures.stack;
 
-public class ArrayStack2<E> implements Stack<E> {
+public class ArrayStack2<E> implements IStack<E> {
 
     public static final int CAPACITY = 1000; // Default array capacity
     private E[] data; // Generic array used for storage

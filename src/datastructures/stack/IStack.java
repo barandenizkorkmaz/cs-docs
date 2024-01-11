@@ -5,7 +5,7 @@ package datastructures.stack;
  * first-out principle. Although similar in purpose, this interface differs from
  * java.util.Stack.
  */
-public interface Stack<E> {
+public interface IStack<E> {
 
     /**
      * Returns the number of elements in the stack.
