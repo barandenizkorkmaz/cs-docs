@@ -1,4 +1,4 @@
-# Heaps
+# 1. Heaps
 
 ### Overview
 
@@ -170,7 +170,7 @@ public class Heap<E extends Comparable<E>> implements IPriorityQueue<E> {
 
 
 
-# Priority Queues
+# 2. Priority Queues
 
 ### Overview
 
