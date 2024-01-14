@@ -78,3 +78,143 @@
 
 # 3. Hash Tables
 
+- Before we discuss the details of implementing the required methods of the Set and Map interfaces, we will describe a data structure, the hash table, that can be used as the basis for such an implementation.
+- Using a hash table enables us to retrieve an item in constant time (expected O(1)). We say expected O(1) rather than just O(1) because there will be some cases where the performance will be much worse than O(1) and may even be O(n), but on the average, we expect that it will be O(1).
+- Properties of Hash Functions
+  - Simple and efficient to compute
+  - Provides a large set of possible values to map domain
+  - Should provide an (almost) equal distribution (mapping) of values
+  - The probability of two distinct items to generate the same hash value should be as low as possible
+
+
+
+## Open Addressing
+
+- Two ways to organize a hash tables:
+  - open addressing
+  - chaining
+- **Procedure:** Open Addressing
+  - Each hash table element (type Object) references a single key–value pair. 
+  - We can use the following simple approach (called `linear probing`) to access an item in a hash table. 
+  - If the index calculated for an item’s key is occupied by an item with that key, we have found
+    the item. 
+  - If that element contains an item with a different key, we increment the index by 1.
+  - We keep incrementing the index (modulo the table length) until either we find the key we are seeking or we reach a null entry. 
+  - A null entry indicates that the key is not in the table.
+
+```java
+Algorithm For Accessing an Item in a Hash Table
+
+Compute the index by taking the item’s hashCode() % table.length.
+if table[index] is null
+	The item is not in the table.
+else if table[index] is equal to the item
+	The item is in the table.
+else
+	Continue to search the table by incrementing the index until either the item is found 	or a null entry is found.
+```
+
+### Table Wraparound and Search Termination
+
+- Note that as you increment the table index, your table should wrap around (as in a circular array) so that the element with subscript 0 “follows” the element with subscript table.length ‐ 1. 
+- This enables you to use the entire table, not just the part with subscripts larger than the hash code value, but it leads to the potential for an infinite loop in Step 6 of the algorithm. If the table is full and the objects examined so far do not match the one you are seeking, how do you know when to stop? 
+- One approach would be to stop when the index value for the next probe is the same as the hash code value for the object. This means that you have come full circle to the starting value for the index. 
+- A second approach would be to ensure that the table is never full by increasing its size after an insertion **if its occupancy rate exceeds a specifieif its occupancy rate exceeds a specified thresholdd threshold**. **This is the approach that we take in our implementation.**
+
+
+
+### Traversing a Hash Table
+
+- One thing that you cannot do is traverse a hash table in a meaningful way.
+
+
+
+### Deleting an Item Using Open Addressing
+
+- When an item is deleted, we cannot just set its table entry to `null`. If we do, then when we search for an item that may have collided with the deleted item, we may incorrectly conclude that the item is not in the table. (Because the item that collided was inserted after the deleted item, we will have stopped our search prematurely.) 
+- By storing a dummy value when an item is deleted, we force the search algorithm to keep looking until either the desired item is found or a null value, representing a free cell, is located. Although the use of a dummy value solves the problem, keep in mind that it can lead to search inefficiency, particularly when there are many deletions. Removing items from the table does not reduce the search time because the dummy value is still in the table and is part of a search chain. 
+- In fact, you **cannot** even replace a deleted value with a new item because you still need to go to the end of the search chain to ensure that the new item is not already present in the table. So deleted items waste storage space and reduce search efficiency. 
+- In the worst case, if the table is almost full and then most of the items are deleted, you will have $O(n)$ performance when searching for the few items remaining in the table.
+
+
+
+### Reducing Collisions by Expanding the Table Size
+
+- The first step in reducing these collisions is to use a prime number for the size of the table. 
+- In addition, the probability of a collision is proportional to how full the table is. Therefore, when the hash table becomes sufficiently full, a larger table should be allocated and the entries reinserted.
+
+- You expand a hash table using an algorithm called `rehashing`.
+
+```bash
+Algorithm For Rehashing
+1. Allocate a new hash table with twice the capacity of the original.
+2. Reinsert each old table entry that has not been deleted into the new hash table.
+3. Reference the new table instead of the original.
+```
+
+
+
+### Reducing Collisions Using Quadratic Probing
+
+- The problem with `linear probing` is that it tends to form clusters of keys in the table, causing longer search chains.
+- One approach to reduce the effect of clustering is to use `quadratic probing` instead of `linear probing`. In quadratic probing, the increments form a quadratic series $(1 + 2^2 + 3^2 + · · ·)$.
+
+```java
+probeNum++;
+index = (startIndex + probeNum * probeNum) % table.length
+```
+
+- **Problems with Quadratic Probing**
+
+  - One disadvantage of quadratic probing is that the next index calculation is a bit time‐consuming as it involves a multiplication, an addition, and a modulo division.
+
+  - A more efficient way to calculate the next index follows:
+
+    ```java
+    k += 2;
+    index = (index + k) % table.length;
+    ```
+
+  - A more serious problem with quadratic probing is that not all table elements are examined when looking for an insertion index, so it is possible that an item can’t be inserted even when the table is not full.
+
+  - It is also possible that your program can get stuck in an infinite loop while searching for an empty slot. 
+
+  - It can be proved that if the table size is a prime number and the table is never more than half full, this can’t happen. However, requiring that the table be half empty at all times wastes quite a bit of memory.
+
+  - For these reasons, we will use linear probing in our implementation.
+
+
+
+## Chaining
+
+- An alternative to open addressing is a technique called `chaining`, in which each table element references a linked list that contains all the items that hash to the same table index.
+- This linked list is often called a `bucket`, and this approach is sometimes called `bucket hashing`.
+- Instead of incrementing the table index to access the next item with a particular hash code value, you traverse the linked list referenced by the table element with index `hashCode() % table.length`.
+- One advantage of chaining is that only items that have the same value for `hashCode() % table. length` will be examined when looking for an object. In open addressing, search chains can overlap, so a search chain may include items in the table that have different starting index values.
+- A second advantage is that you can store more elements in the table than the number of table slots (indexes), which is not the case for open addressing.
+- To **delete** an item, simply remove it from the list. In contrast to open addressing, removing an item actually deletes it, so it will not be part of future search chains.
+
+
+
+## Performance of Hash Tables
+
+- `load factor`: The number of filled cells divided by table size.
+  - The load factor has the greatest effect on hash table performance.
+  - Lower the load factor the better the performance because there is less chance of collision.
+  - If there are no collisions, the performance for search and retrieval is $O(1)$.
+- **Performance of Open Addressing versus Chaining**
+  - Expected number of comparisons, c, for open addressing with linear probing and a load factor L:
+    - $c = \dfrac{1}{2}(1 + \dfrac{1}{1 - L})$
+    - L = number of filled cells/table size
+  - Expected number of comparisons, c, for chaining and a load factor L (L is average number of items in a list here = # of items divided by table size:
+    - $c = 1 + \dfrac{L}{2}$
+  - For values of L between 0.0 and 0.75, the results for chaining are similar to those of linear probing. But chaining gives better performance than linear probing for higher load factors.
+  - **Quadratic probing** gives performance that is between those of linear probing and chaining.
+- **Performance of Hash Tables versus Sorted Arrays and Binary Trees**
+  - The performance of hashing is certainly preferable to that of binary search of an array (or a binary search tree), particularly if L is less than 0.75. 
+  - However, the trade-off is that the lower the load factor, the more unfilled storage cells there are in a hash table, whereas there are no empty cells in a sorted array. 
+  - Because a binary search tree requires three references per node (the item, the left subtree, and the right subtrees), more storage would be required for a binary search tree than for a hash table with a load factor of 0.75.
+- **Storage Requirements for Open Addressing and Chaining**
+  - Next, we consider the effect of chaining on storage requirements. For a table with a load factor of L, the number of table elements required is n (the size of the table). 
+  - For open addressing, the number of references to an item (a key–value pair) is n. 
+  - For chaining, the average number of nodes in a list is **L**. If we use the `Java API LinkedList`, there will be three references in each node (the item, the next list element, and the previous element). However, we could use our own single‐linked list and eliminate the previous‐element reference (at some time cost for deletions). Therefore, we will require storage for $n + n*2L$ references.
