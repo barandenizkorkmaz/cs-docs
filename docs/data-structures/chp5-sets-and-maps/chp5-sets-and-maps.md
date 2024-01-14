@@ -625,3 +625,35 @@ public class HashTableChain<K, V> implements IHashMap<K, V> {
 }
 ```
 
+
+
+# 4. Implementation Considerations for Maps and Sets
+
+### Methods `hashCode` and `equals`
+
+- Method `Object.equals` compares two objects based on their addresses, not their contents. Similarly, method `Object.hashCode` calculates an object’s hash code based on its address, not its contents.
+
+- Most predefined classes (e.g., String and Integer) override method `equals` and method `hashCode`.
+
+- If you override the equals method, Java recommends you also override the `hashCode` method. Otherwise, your class will violate the Java contract for `hashCode`, which states:
+
+  ```java
+  if obj1.equals(obj2) is true, then obj1.hashCode() == obj2.hashCode().
+  ```
+
+
+
+### Implementing `HashSetOpen`
+
+- We can modify the hash table methods to implement a hash set. Table below compares corresponding Map and Set methods.
+
+  | **Map Method**        | **Set Method**               |
+  | --------------------- | ---------------------------- |
+  | V get(Object key)     | boolean contains(Object key) |
+  | V put(K key, V value) | boolean add(K key)           |
+  | V remove(Object key)  | boolean remove(Object key)   |
+
+
+
+### Writing `HashSetOpen` as an Adapter Class
+
