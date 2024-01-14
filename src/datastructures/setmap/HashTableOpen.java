@@ -63,7 +63,7 @@ public class HashTableOpen<K, V> implements IHashMap<K, V> {
      the target is not in the table.
      */
     private int find(Object key) {
-// Calculate the starting index.
+        // Calculate the starting index.
         int index = key.hashCode() % table.length;
         if (index < 0)
             index += table.length;
@@ -181,5 +181,4 @@ public class HashTableOpen<K, V> implements IHashMap<K, V> {
             }
         }
     }
-
 }

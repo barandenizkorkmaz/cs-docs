@@ -218,3 +218,410 @@ index = (startIndex + probeNum * probeNum) % table.length
   - Next, we consider the effect of chaining on storage requirements. For a table with a load factor of L, the number of table elements required is n (the size of the table). 
   - For open addressing, the number of references to an item (a key–value pair) is n. 
   - For chaining, the average number of nodes in a list is **L**. If we use the `Java API LinkedList`, there will be three references in each node (the item, the next list element, and the previous element). However, we could use our own single‐linked list and eliminate the previous‐element reference (at some time cost for deletions). Therefore, we will require storage for $n + n*2L$ references.
+
+
+
+
+
+## Implementing the Hash Table
+
+### Interface `IHashMap`
+
+```java
+package datastructures.setmap;
+
+public interface IHashMap<K, V> {
+    V get(Object key);
+
+    boolean isEmpty();
+
+    V put(K key, V value);
+
+    V remove(Object key);
+
+    int size();
+}
+```
+
+
+
+### Class `HashTableOpen`
+
+```java
+package datastructures.setmap;
+
+/** Hash table implementation using open addressing. */
+public class HashTableOpen<K, V> implements IHashMap<K, V> {
+    // Insert inner class Entry<K, V> here.
+    /** Contains key‐value pairs for a hash table. */
+    private static class Entry<K, V> {
+        /** The key */
+        private final K key;
+        /** The value */
+        private V value;
+        /** Creates a new key‐value pair.
+         @param key The key
+         @param value The value
+         */
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+        /** Retrieves the key.
+         @return The key
+         */
+        public K getKey() {
+            return key;
+        }
+        /** Retrieves the value.
+         @return The value
+         */
+        public V getValue() {
+            return value;
+        }
+        /** Sets the value.
+         @param val The new value
+         @return The old value
+         */
+        public V setValue(V val) {
+            V oldVal = value;
+            value = val;
+            return oldVal;
+        }
+    }
+
+    // Data Fields
+    private Entry<K, V>[] table;
+    private static final int START_CAPACITY = 101;
+
+    private double LOAD_THRESHOLD = 0.75;
+    private int numKeys;
+    private int numDeletes;
+    private final Entry<K, V> DELETED =
+            new Entry<>(null, null);
+
+    // Constructor
+    public HashTableOpen() {
+        table = new Entry[START_CAPACITY];
+    }
+
+    /** Finds either the target key or the first empty slot in the
+     search chain using linear probing.
+     @pre The table is not full.
+     @param key The key of the target object
+     @return The position of the target or the first empty slot if
+     the target is not in the table.
+     */
+    private int find(Object key) {
+        // Calculate the starting index.
+        int index = key.hashCode() % table.length;
+        if (index < 0)
+            index += table.length;
+            // Make it positive.
+            // Increment index until an empty slot is reached or the key is found.
+        while ((table[index] != null)
+                && (!key.equals(table[index].getKey()))) {
+            index++;
+            // Check for wraparound.
+            if (index >= table.length)
+                index = 0;
+                // Wrap around.
+        }
+        return index;
+    }
+
+    /** Method get for class HashtableOpen.
+     @param key The key being sought
+     @return the value associated with this key if found;
+     otherwise, null
+     */
+    @Override
+    public V get(Object key) {
+        // Find the first table element that is empty
+        // or the table element that contains the key.
+        int index = find(key);
+        // If the search is successful, return the value.
+        if (table[index] != null)
+            return table[index].getValue();
+        else
+            return null; // key not found.
+    }
+
+    /** Method put for class HashtableOpen.
+     @post This key‐value pair is inserted in the
+     table and numKeys is incremented. If the key is already
+     in the table, its value is changed to the argument
+     value and numKeys is not changed. If the LOAD_THRESHOLD
+     is exceeded, the table is expanded.
+     @param key The key of item being inserted
+     @param value The value for this key
+     @return Old value associated with this key if found;
+     otherwise, null
+     */
+    @Override
+    public V put(K key, V value) {
+        // Find the first table element that is empty
+        // or the table element that contains the key.
+        int index = find(key);
+        // If an empty element was found, insert new entry.
+        if (table[index] == null) {
+            table[index] = new Entry<>(key, value);
+            numKeys++;
+            // Check whether rehash is needed.
+            double loadFactor =
+                    (double) (numKeys + numDeletes) / table.length;
+            if (loadFactor > LOAD_THRESHOLD)
+                rehash();
+            return null;
+        }
+        // assert: table element that contains the key was found.
+        // Replace value for this key.
+        V oldVal = table[index].getValue();
+        table[index].setValue(value);
+        return oldVal;
+    }
+
+    @Override
+    public V remove(Object key) {
+        // Find the first table element that is empty or the table element that contains the key.
+        int index = find(key);
+        // if an empty element was found return null
+        if(table[index] == null || table[index] == this.DELETED){
+            return null;
+        }
+        // Key was found. Remove this table element by setting it to reference DELETED, increment
+        // numDeletes, and decrement numKeys.
+        V oldVal = table[index].getValue();
+        table[index] = this.DELETED;
+        this.numDeletes++;
+        this.numKeys--;
+        // Return the value associated with this key.
+        return oldVal;
+    }
+
+    @Override
+    public int size() {
+        return this.numKeys;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (this.numKeys != 0);
+    }
+
+    /** Expands table size when loadFactor exceeds LOAD_THRESHOLD
+     @post The size of the table is doubled and is an odd integer.
+     Each nondeleted entry from the original table is
+     reinserted into the expanded table.
+     The value of numKeys is reset to the number of items
+     actually inserted; numDeletes is reset to 0.
+     */
+    private void rehash() {
+        // Save a reference to oldTable.
+        Entry<K, V>[] oldTable = table;
+        // Double capacity of this table.
+        table = new Entry[2 * oldTable.length + 1];
+        // Reinsert all items in oldTable into expanded table.
+        numKeys = 0;
+        numDeletes = 0;
+        for (int i = 0; i < oldTable.length; i++) {
+            if ((oldTable[i] != null) && (oldTable[i] != DELETED)) {
+                // Insert entry in expanded table
+                put(oldTable[i].getKey(), oldTable[i].getValue());
+            }
+        }
+    }
+}
+```
+
+
+
+### Class `HashTableChain`
+
+```java
+package datastructures.setmap;
+
+import java.util.*;
+/** Hash table implementation using chaining. */
+public class HashTableChain<K, V> implements IHashMap<K, V> {
+    // Insert inner class Entry<K, V> here.
+    /** Contains key‐value pairs for a hash table. */
+    private static class Entry<K, V> {
+        /** The key */
+        private final K key;
+        /** The value */
+        private V value;
+        /** Creates a new key‐value pair.
+         @param key The key
+         @param value The value
+         */
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+        /** Retrieves the key.
+         @return The key
+         */
+        public K getKey() {
+            return key;
+        }
+        /** Retrieves the value.
+         @return The value
+         */
+        public V getValue() {
+            return value;
+        }
+        /** Sets the value.
+         @param val The new value
+         @return The old value
+         */
+        public V setValue(V val) {
+            V oldVal = value;
+            value = val;
+            return oldVal;
+        }
+    }
+
+    /** The table */
+    private LinkedList<Entry<K, V>>[] table;
+    /** The number of keys */
+    private int numKeys;
+    /** The capacity */
+    private static final int CAPACITY = 101;
+    /** The maximum load factor */
+    private static final double LOAD_THRESHOLD = 3.0;
+    // Constructor
+    public HashTableChain() {
+        table = new LinkedList[CAPACITY];
+    }
+
+    /** Method get for class HashtableChain.
+     @param key The key being sought
+     @return The value associated with this key if found;
+     otherwise, null
+     */
+    @Override
+    public V get(Object key) {
+        int index = key.hashCode() % table.length;
+        if (index < 0)
+            index += table.length;
+        if (table[index] == null)
+            return null; // key is not in the table.
+        // Search the list at table[index] to find the key.
+        for (Entry<K, V> nextItem : table[index]) {
+            if (nextItem.getKey().equals(key))
+                return nextItem.getValue();
+        }
+        // assert: key is not in the table.
+        return null;
+    }
+
+    /** Method put for class HashtableChain.
+     @post This key‐value pair is inserted in the
+     table and numKeys is incremented. If the key is already
+     in the table, its value is changed to the argument
+     value and numKeys is not changed.
+     @param key The key of item being inserted
+     @param value The value for this key
+     @return The old value associated with this key if
+     found; otherwise, null
+     */
+    @Override
+    public V put(K key, V value) {
+        int index = key.hashCode() % table.length;
+        if (index < 0)
+            index += table.length;
+        if (table[index] == null) {
+            // Create a new linked list at table[index].
+            table[index] = new LinkedList<>();
+        }
+        // Search the list at table[index] to find the key.
+        for (Entry<K, V> nextItem : table[index]) {
+            // If the search is successful, replace the old value.
+            if (nextItem.getKey().equals(key)) {
+                // Replace value for this key.
+                V oldVal = nextItem.getValue();
+                nextItem.setValue(value);
+                return oldVal;
+            }
+        }
+        // assert: key is not in the table, add new item.
+        table[index].addFirst(new Entry<>(key, value));
+        numKeys++;
+        if (numKeys > (LOAD_THRESHOLD * table.length))
+            rehash();
+        return null;
+    }
+
+    @Override
+    public V remove(Object key) {
+        // Set index to key.hashCode() % table.length.
+        // if index is negative, add table.length.
+        int index = key.hashCode() % table.length;
+        if(index < 0){
+            index += table.length;
+        }
+
+        // if table[index] is null
+        // key is not in the table; return null.
+        if(table[index] == null){
+            return null;
+        }
+        for(int i = 0 ; i < table[index].size(); i++){
+            //Search the list at table[index] to find the key.
+            if(table[index].get(i).getKey() == key){
+                V oldVal = table[index].get(i).getValue();
+
+                // if the search is successful
+                // Remove the entry with this key and decrement numKeys.
+                table[index].remove(i);
+                this.numKeys--;
+
+                //if the list at table[index] is empty
+                //Set table[index] to null.
+                if(table[index].isEmpty()){
+                    table[index] = null;
+                }
+                //Return the value associated with this key.
+                return oldVal;
+            }
+        }
+        //The key is not in the table; return null.
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return this.numKeys;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (this.numKeys != 0);
+    }
+
+    private void rehash() {
+        // Save a reference to oldTable.
+        LinkedList<Entry<K, V>>[] oldTable = table;
+        // Double capacity of this table.
+        table = new LinkedList[2 * oldTable.length + 1];
+
+        // Reinsert all items in oldTable into expanded table.
+        this.numKeys = 0;
+        for (LinkedList<Entry<K, V>> entries : oldTable) {
+            for (Entry<K, V> entry : entries) {
+                int index = entry.getKey().hashCode() % table.length;
+                if (index < 0)
+                    index += table.length;
+                if (table[index] == null) {
+                    // Create a new linked list at table[index].
+                    table[index] = new LinkedList<>();
+                }
+                table[index].add(entry);
+                this.numKeys++;
+            }
+        }
+    }
+}
+```
+
