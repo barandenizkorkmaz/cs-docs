@@ -1,4 +1,6 @@
-# Tree Terminology
+# 5. Trees
+
+## Tree Terminology
 
 - `root`: The node at the top of a tree. It has no parents.
 - `edge (branch)`: The link from a node to its successor.
@@ -26,7 +28,7 @@
 
 
 
-# Binary Trees
+## Binary Trees
 
 - A set of nodes `T` is a `binary tree` if either of the following is true:
   - T is empty
@@ -38,7 +40,7 @@
 
 
 
-# Binary Search Tree
+## Binary Search Tree
 
 - A set of nodes in T is a `binary search tree` if either of the following is true
   - T is empty
@@ -64,7 +66,7 @@ else
 
 
 
-# Tree Traversals
+## Tree Traversals
 
 ### Preorder Traversal
 
@@ -101,7 +103,7 @@ else
 
 
 
-# Implementing a `Binary Tree` Class
+## Implementing a `Binary Tree` Class
 
 ### Class `BinaryTree<E>`
 
@@ -298,7 +300,7 @@ public class BinaryTree<E> implements Serializable{
 
 
 
-# Implementing a `BinarySearchTree` Class
+## Implementing a `BinarySearchTree` Class
 
 ### Interface `SearchTree<E>`
 
@@ -366,7 +368,7 @@ else # The item is in the local root
 
 
 
-#### Implementation
+### Implementation
 
 ```java
 package datastructures.tree;

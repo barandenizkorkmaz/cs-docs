@@ -3,6 +3,31 @@ site_url: https://example.com/
 nav:
   - Home: index.md
   - Data Structures:
-      - Lists and The Collection Framework: data-structures/chp1-lists-and-the-collections-framework/chp1-lists-and-the-collections-framework.md
-      - Stacks and Queues: data-structures/chp2-stacks-and-queues/chp2-stacks-and-queues.md
+      - Lists and The Collection Framework:
+          - Arrays: data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.md
+          - List Interface: data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.md
+          - ArrayLists: data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.md
+          - Single-Linked Lists: data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.md
+          - LinkedList Class: data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.md
+          - The Iterator, ListIterator, and Iterable Interfaces: data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.md
+          - Double-Linked Lists: data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.md
+          - Circular-Linked Lists: data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.md
+          - The Collections Framework Design: data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.md
+      - Stacks and Queues:
+          - Stacks: data-structures/chp2-stacks-and-queues/2-1-stacks.md
+          - Queues: data-structures/chp2-stacks-and-queues/2-2-queues.md
+          - Deques: data-structures/chp2-stacks-and-queues/2-3-deques.md
+      - Trees:
+          - Trees: data-structures/chp3-trees/chp3-trees.md
+      - Heaps and Priority Queues:
+          - Heaps: data-structures/chp4-heaps-and-priority-queues/4-1-heaps.md
+          - Priority Queues: data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.md
+          - Interface Comparable and Comparator: data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.md
+      - Sets and Maps:
+          - Sets: data-structures/chp5-sets-and-maps/5-1-sets.md
+          - Maps: data-structures/chp5-sets-and-maps/5-2-maps.md
+          - Hash Tables: data-structures/chp5-sets-and-maps/5-3-hash-tables.md
+          - Implementation Considerations: data-structures/chp5-sets-and-maps/5-4-considerations.md
+  - Algorithms:
+      - Sorting: algorithms/sorting/sorting.md
 theme: readthedocs
