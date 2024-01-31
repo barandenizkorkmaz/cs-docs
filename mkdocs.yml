@@ -30,4 +30,5 @@ nav:
           - Implementation Considerations: data-structures/chp5-sets-and-maps/5-4-considerations.md
   - Algorithms:
       - Sorting: algorithms/sorting/sorting.md
-theme: readthedocs
+theme:
+  name: readthedocs
