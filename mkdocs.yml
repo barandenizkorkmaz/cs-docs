@@ -28,6 +28,8 @@ nav:
           - Maps: data-structures/chp5-sets-and-maps/5-2-maps.md
           - Hash Tables: data-structures/chp5-sets-and-maps/5-3-hash-tables.md
           - Implementation Considerations: data-structures/chp5-sets-and-maps/5-4-considerations.md
+      - Graphs: data-structures/chp6-graphs/6-1-graphs.md
+      - Advanced Trees: data-structures/chp7-advanced-trees/7-1-advanced-trees.md
   - Algorithms:
       - Sorting: algorithms/sorting/sorting.md
 theme:
