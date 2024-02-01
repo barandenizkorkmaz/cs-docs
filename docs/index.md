@@ -27,11 +27,16 @@ Please support my work if you find it useful by giving the [repository](https://
   <img src="https://avatars.githubusercontent.com/u/44136572?v=4" alt="Your Profile Picture" style="width: 30%;"/>
 </div>
 
- <div align="center"  class="icons-social" style="margin-left: 10px;">
-        <a style="margin-left: 10px;"  target="_blank" href="https://www.linkedin.com/in/barandenizkorkmaz/">
-			<img src="https://img.icons8.com/doodle/40/000000/linkedin--v2.png"></a>
-        <a style="margin-left: 10px;" target="_blank" href="https://github.com/barandenizkorkmaz">
-		<img src="https://img.icons8.com/doodle/40/000000/github--v1.png"></a>
-		<a style="margin-left: 10px;" target="_blank" href="https://stackoverflow.com/users/23203137/baran-deniz-korkmaz">
-				<img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/40/000000/external-stack-overflow-is-a-question-and-answer-site-for-professional-logo-color-tal-revivo.png"></a>
-      </div>
+<div align="center"  class="icons-social" style="margin-left: 10px;">
+      <a style="margin-left: 10px;"  target="_blank" href="https://www.linkedin.com/in/barandenizkorkmaz/">
+          <img src="https://img.icons8.com/doodle/40/000000/linkedin--v2.png"></a>
+      <a style="margin-left: 10px;" target="_blank" href="https://github.com/barandenizkorkmaz">
+      <img src="https://img.icons8.com/doodle/40/000000/github--v1.png"></a>
+      <a style="margin-left: 10px;" target="_blank" href="https://stackoverflow.com/users/23203137/baran-deniz-korkmaz">
+              <img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/40/000000/external-stack-overflow-is-a-question-and-answer-site-for-professional-logo-color-tal-revivo.png"></a>
+      <br></br>
+</div>
+
+<h2 align="center">Author's Notes</h2>
+- 🚨 Some pages contain typos and misrendered syntax due to incompatibility between Markdown editor I am using
+and Markdown syntax rendered by MkDocs. All the issues will be resolved as soon as possible.
