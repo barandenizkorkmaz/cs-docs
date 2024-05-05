@@ -33,7 +33,7 @@
 |----------------------| ------------------------------------------- | ------------------------------------------------------------ |
 | static boolean       | equals(Object[] a, Object[] a2)             | Returns true if the two specified arrays of Objects are equal to one another. |
 | static void          | fill(Object[] a, Object val)                | Assigns the specified Object reference to each element of the specified array of Objects. |
-| static <T> T[]       | copyOf(T[] original, int newLength)         | Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length. |
+| static \<T> T[]   | copyOf(T[] original, int newLength)         | Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length. |
 | static \<T> T[]      | copyOfRange(T[] original, int from, int to) | Copies the specified range of the specified array into a new array. |
 | static String        | toString(Object[] a)                        | Returns a string representation of the contents of the specified array. |
 | static void          | sort(Object[] a)                            | Sorts the specified array of objects into ascending order, according to the natural ordering of its elements. |
