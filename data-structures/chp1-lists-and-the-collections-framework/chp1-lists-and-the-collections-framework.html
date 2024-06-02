@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp1-lists-and-the-collections-framework/chp1-lists-and-the-collections-framework.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1. Arrays - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1. Arrays";
+        var mkdocs_page_input_path = "data-structures/chp1-lists-and-the-collections-framework/chp1-lists-and-the-collections-framework.md";
+        var mkdocs_page_url = "/data-structures/chp1-lists-and-the-collections-framework/chp1-lists-and-the-collections-framework.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1. Arrays</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-arrays">1. Arrays</h1>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>Fixed length once initialized.</li>
+<li>Add or remove element at a specified position without shifting the other elements to make room/fill in the resulting gap.</li>
+<li>One feature that the array data structure provides that these classes (List classes) don’t is the ability to store primitive‐type values. The List classes all store references to Objects, so all primitive‐type values must be wrapped in objects.</li>
+<li>Note that all generic classes in Java extends <code>Object</code> class.</li>
+</ul>
+<p><strong>NOTE:</strong> <strong>Circular array</strong> implementation will be shown in <code>Queue</code> chapter.</p>
+<h2 id="performance">Performance</h2>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Best-Case</th>
+<th>Average-Case</th>
+<th>Worst-Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add</td>
+<td>O(1) (add to the end)</td>
+<td>O(N)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>O(1) (delete from the end)</td>
+<td>O(N)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>O(1)</td>
+<td>O(N)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>Get</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="class-javautilarrays">Class <code>java.util.Arrays</code></h2>
+<h3 id="method-summary">Method Summary</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static boolean</td>
+<td>equals(Object[] a, Object[] a2)</td>
+<td>Returns true if the two specified arrays of Objects are equal to one another.</td>
+</tr>
+<tr>
+<td>static void</td>
+<td>fill(Object[] a, Object val)</td>
+<td>Assigns the specified Object reference to each element of the specified array of Objects.</td>
+</tr>
+<tr>
+<td>static \<T> T[]</td>
+<td>copyOf(T[] original, int newLength)</td>
+<td>Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length.</td>
+</tr>
+<tr>
+<td>static \<T> T[]</td>
+<td>copyOfRange(T[] original, int from, int to)</td>
+<td>Copies the specified range of the specified array into a new array.</td>
+</tr>
+<tr>
+<td>static String</td>
+<td>toString(Object[] a)</td>
+<td>Returns a string representation of the contents of the specified array.</td>
+</tr>
+<tr>
+<td>static void</td>
+<td>sort(Object[] a)</td>
+<td>Sorts the specified array of objects into ascending order, according to the natural ordering of its elements.</td>
+</tr>
+<tr>
+<td>static \<T> void</td>
+<td>sort(T[] a, Comparator&lt;? super T&gt; c)</td>
+<td>Sorts the specified array of objects according to the order induced by the specified comparator.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>static int</td>
+<td>binarySearch(Object[] a, Object key)</td>
+<td>Searches the specified array for the specified object using the binary search algorithm.</td>
+</tr>
+</tbody>
+</table>
+<p>Reference: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html</p>
+<pre><code class="language-java">// A more general method of copying an array
+System.arraycopy(source, sourcePos, destination, destPos, numElements);
+</code></pre>
+<h1 id="2-list-interface">2. List Interface</h1>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>Appends the specified element to the end of this list (optional operation).</td>
+</tr>
+<tr>
+<td>void</td>
+<td>add(int index, E element)</td>
+<td>Inserts the specified element at the specified position in this list (optional operation).</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)</td>
+<td>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>indexOf(Object o)</td>
+<td>Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.</td>
+</tr>
+<tr>
+<td>Iterator\<E></td>
+<td>iterator()</td>
+<td>Returns an iterator over the elements in this list in proper sequence.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)</td>
+<td>Removes the element at the specified position in this list (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)</td>
+<td>Removes the first occurrence of the specified element from this list, if it is present (optional operation).</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)</td>
+<td>Replaces the element at the specified position in this list with the specified element (optional operation).</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()</td>
+<td>Returns an array containing all of the elements in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image-20240103215047752" src="/home/denizkorkmaz/.config/Typora/typora-user-images/image-20240103215047752.png" /></p>
+<h1 id="3-arraylist">3. ArrayList</h1>
+<h3 id="overview_1">Overview</h3>
+<ul>
+<li>Java uses <code>array</code> internally to contain the data of a <code>ArrayList</code>. </li>
+<li>The physical size of the array is indicated by the data field <code>capacity</code>. </li>
+<li>The number of data items is indicated by the data field <code>size</code>. </li>
+<li>The data type of the references stored in the underlying array theData (type E[]) is also determined when the <code>MyArrayList</code> object is declared. If no parameter type is specified, the implicit parameter type is Object, and the underlying data array is type Object[].</li>
+</ul>
+<h3 id="class-javautilarrayliste">Class <code>java.util.ArrayList&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method and Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td><code>add(E e)</code><br />Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><code>add(int index, E element)</code><br />Inserts the specified element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)<br/>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>Iterator\<E></td>
+<td>iterator()<br/>Returns an iterator over the elements in this list in proper sequence.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)<br/>Removes the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)<br/>Removes the first occurrence of the specified element from this list, if it is present.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)<br/>Replaces the element at the specified position in this list with the specified element.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()<br/>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()<br/>Returns an array containing all of the elements in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation">Implementation</h3>
+<pre><code class="language-java">import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MyArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt; {
+
+    // Data Fields
+    /** The default initial capacity */
+    private static final int INITIAL_CAPACITY = 10;
+    /** The underlying data array */
+    private E[] data;
+    /** The current size */
+    private int size = 0;
+    /** The current capacity */
+    private int capacity = 0;
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public MyArrayList(){
+        this.capacity = INITIAL_CAPACITY;
+        data = (E[]) new Object[capacity];
+    }
+
+    public boolean add(E anEntry) {
+        if (size == capacity) {
+            reallocate();
+        }
+        data[size] = anEntry;
+        size++;
+        return true;
+    }
+
+    public void add(int index, E anEntry) {
+        if (index &lt; 0 || index &gt; size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        if (size == capacity) {
+            reallocate();
+        }
+        // Shift data in elements from index to size ‐ 1
+        for (int i = size; i &gt; index; i--) {
+            data[i] = data[i - 1];
+        }
+        // Insert the new item.
+        data[index] = anEntry;
+        size++;
+    }
+
+    public E get(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        return data[index];
+    }
+    public E set(int index, E newValue) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        E oldValue = data[index];
+        data[index] = newValue;
+        return oldValue;
+    }
+
+    public E remove(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        E returnValue = data[index];
+        for (int i = index + 1; i &lt; size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return returnValue;
+    }
+
+    private void reallocate() {
+        capacity = 2 * capacity;
+        data = Arrays.copyOf(data, capacity);
+    }
+
+    public int size() {
+        return this.size;
+    }
+}
+</code></pre>
+<h3 id="performance_1">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Big O (Worst-Case Complexity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add(E e)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>add(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>get(int index)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>set(int index, E element)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>remove(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(Object o)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Recall that when we reallocate the array, we double its size. Doubling an array of size n allows us to add n more items before we need to do another array copy. Therefore, we can add n new items after we have copied over n existing items. This averages out to 1 copy per add. Therefore, reallocation is effectively an O(1) operation, so the insertion (to any index) is still O(n).</li>
+</ul>
+<h3 id="extra">Extra</h3>
+<blockquote>
+<h4 id="syntax-creating-a-generic-collection">Syntax: Creating a Generic Collection</h4>
+<p><strong>FORM:</strong>
+  CollectionClassName\<E> variable = new CollectionClassName&lt;&gt;();
+  CollectionClassName\<E> variable = new CollectionClassName\<E>();</p>
+<p><strong>EXAMPLE:</strong>
+  List\<Person> people = new ArrayList&lt;&gt;();
+  List\<String> myList = new ArrayList\<String>();
+  ArrayList\<Integer> numList = new ArrayList&lt;&gt;();</p>
+<p><strong>MEANING:</strong>
+An initially empty CollectionClassName\<E> object is created that can be used to store references to objects of type E (the type parameter). The  actual object type stored in an object of type CollectionClassName\<E> is specified when the object is created. If the CollectionClassName on the left is an interface, the CollectionClassName on the right must be a class that implements it. Otherwise, it must be the same class or a subclass of the one on the left.
+The examples above show different ways to create an ArrayList. In this text, we normally specify the interface name on the left of the = operator and the implementing class name on the right as shown in the first two examples. Since the type parameter E must be the same on both sides of the assignment operator, Java 7 introduced the diamond operator &lt;&gt; which eliminates the need to specify the type parameter twice. We will follow this convention. In some cases, we will declare the variable type in one statement and create it in a later statement. In earlier versions of Java, generic collections were not supported. In these versions, you use the statement
+  List yourList = new ArrayList();
+to create an initially empty ArrayList. Each element of yourList is a type Object reference. The data types of the actual objects referenced by elements of yourList are not specified, and in fact, different elements can reference objects of different types. Use of the adjective “generic” is a bit confusing. A nongeneric collection in Java is very general in that it can store objects of different data types. A generic collection, however, can store objects of one specified data type only. Therefore, generics enable the compiler to do more strict type checking to detect errors at compile time instead of at run time. They also eliminate the need to downcast from type Object to a specific type. For these reasons, we will always use generic collections.</p>
+<h4 id="constructor-declaration-for-generic-classes">Constructor Declaration for Generic Classes</h4>
+<p>The constructor declaration follows. Because the constructor is for a generic class, the type parameter \<E> is implied but it must not appear in the constructor heading.</p>
+<p>​ public MyArrayList() {
+​     capacity = INITIAL_CAPACITY;
+​     data = (E[]) new Object[capacity];
+​ }</p>
+<p>The statement
+  data = (E[]) new Object[capacity];
+allocates storage for an array with type Object references and then casts this array object to type E[] so that it is type compatible with variable theData. Because the actual type corresponding to E is not known, the compiler issues the warning message: MyArrayList.java uses unchecked or unsafe operations. Don’t be concerned about this warning—everything is fine.</p>
+<h4 id="pitfall">PITFALL</h4>
+<h4 id="declaring-a-generic-array"><strong>Declaring a Generic Array</strong></h4>
+<p>Rather than use the approach shown in the above constructor, you might try to create a
+generic array directly using the statement
+  theData = new E[capacity]; // Invalid generic array type.
+However, this statement will not compile because Java does not allow you to create an array with an unspecified type. Remember, E is a type parameter that is not specified until a generic ArrayList object is created. Therefore, the constructor must create an array of type Object[] since Object is the superclass of all types and then downcast this array object to type E[].</p>
+</blockquote>
+<h1 id="4-single-linked-lists">4. Single-Linked Lists</h1>
+<h3 id="overview_2">Overview</h3>
+<ul>
+<li>Java does not have a class that implements single-linked lists. Instead, it has a more general double-linked list class.</li>
+</ul>
+<h2 id="class-linkedliste">Class <code>LinkedList&lt;E&gt;</code></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>add(int index, E element)</td>
+<td>Inserts the specified element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)</td>
+<td>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>indexOf(Object o)</td>
+<td>Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.</td>
+</tr>
+<tr>
+<td>Iterator\<E></td>
+<td>iterator()</td>
+<td>Returns an iterator over the elements in this list in proper sequence.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)</td>
+<td>Removes the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)</td>
+<td>Removes the first occurrence of the specified element from this list, if it is present.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)</td>
+<td>Replaces the element at the specified position in this list with the specified element.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()</td>
+<td>Returns an array containing all of the elements in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Note that the <code>LinkedList</code> class, part of Java API package <code>java.util</code>, is a double-linked list. However, the API description above is still valid.</li>
+</ul>
+<h3 id="implementation_1">Implementation</h3>
+<pre><code class="language-java">import java.util.AbstractSequentialList;
+import java.util.List;
+import java.util.ListIterator;
+
+/** Class to represent a linked list with a link from each node to the next
+ node. SingleLinkedList does not implement the List interface.
+ */
+
+public class SingleLinkedList&lt;E&gt; extends AbstractSequentialList&lt;E&gt; implements List&lt;E&gt; {
+
+    /** A Node is the building block for a single‐linked list. */
+    private static class Node&lt;E&gt; {
+        // Data Fields
+        /** The reference to the data. */
+        private E data;
+        /** The reference to the next node. */
+        private Node&lt;E&gt; next;
+
+        // Constructors
+        /** Creates a new node with a null next field.
+         @param dataItem The data stored
+         */
+        private Node(E dataItem) {
+            data = dataItem;
+            next = null;
+        }
+
+        /** Creates a new node that references another node.
+         @param dataItem The data stored
+         @param nodeRef The node referenced by new node
+         */
+        private Node(E dataItem, Node&lt;E&gt; nodeRef) {
+            data = dataItem;
+            next = nodeRef;
+        }
+    }
+
+    /**
+     * Reference to list head.
+     */
+    private Node&lt;E&gt; head = null;
+    /**
+     * The number of items in the list
+     */
+    private int size = 0;
+
+    /** Insert the specified item at index
+     @param index The position where item is to be inserted
+     @param item The item to be inserted
+     @throws IndexOutOfBoundsException if index is out of range
+     */
+    public void add(int index, E item) {
+        if (index &lt; 0 || index &gt; size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        if (index == 0) {
+            addFirst(item);
+        } else {
+            Node&lt;E&gt; node = getNode(index-1);
+            addAfter(node, item);
+        }
+    }
+
+    /** Append item to the end of the list
+     @param item The item to be appended
+     @return true (as specified by the Collection interface)
+     */
+    public boolean add(E item) {
+        add(size, item);
+        return true;
+    }
+
+    /** Add an item to the front of the list.
+     @param item The item to be added
+     */
+    public void addFirst(E item) {
+        head = new Node&lt;&gt;(item, head);
+        size++;
+    }
+
+    /** Add a node after a given node
+     @param node The node preceding the new item
+     @param item The item to insert
+     */
+    private void addAfter(Node&lt;E&gt; node, E item) {
+        node.next = new Node&lt;&gt;(item, node.next);
+        size++;
+    }
+
+    /**
+     * Returns the list iterator object.
+     * @param i the index of the iterator.
+     * @return the list iterator object.
+     */
+    @Override
+    public ListIterator&lt;E&gt; listIterator(int i) {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Removes the element at the specified position in this list.
+     *
+     * @param index the index of the element to be removed
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
+    public E remove(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+
+        E removedData;
+        if (index == 0) {
+            removedData = removeFirst();
+        } else {
+            Node&lt;E&gt; prevNode = getNode(index - 1);
+            removedData = removeAfter(prevNode);
+        }
+        return removedData;
+    }
+
+    /** Remove the node after a given node
+     @param node The node before the one to be removed
+     @return The data from the removed node, or null
+     if there is no node to remove
+     */
+    private E removeAfter(Node&lt;E&gt; node) {
+        Node&lt;E&gt; temp = node.next;
+        if (temp != null) {
+            node.next = temp.next;
+            size--;
+            return temp.data;
+        } else {
+            return null;
+        }
+    }
+
+    /** Remove the first node from the list
+     @return The removed node's data or null if the list is empty
+     */
+    private E removeFirst() {
+        Node&lt;E&gt; temp = head;
+        if (head != null) {
+            head = head.next;
+        }
+        // Return data at old head or null if list is empty
+        if (temp != null) {
+            size--;
+            return temp.data;
+        } else {
+            return null;
+        }
+    }
+
+    /** Get the data at index
+     @param index The position of the data to return
+     @return The data at index
+     @throws IndexOutOfBoundsException if index is out of range
+     */
+    public E get(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        Node&lt;E&gt; node = getNode(index);
+        return node.data;
+    }
+
+    /** Find the node at a specified position
+     @param index The position of the node sought
+     @return The node at index or null if it does not exist
+     */
+    private Node&lt;E&gt; getNode(int index) {
+        Node&lt;E&gt; node = head;
+        for (int i = 0; i &lt; index &amp;&amp; node != null; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
+    /** Store a reference to anEntry in the element at position index.
+     @param index The position of the item to change
+     @param newValue The new data
+     @return The data previously at index
+     @throws IndexOutOfBoundsException if index is out of range
+     */
+    public E set(int index, E newValue) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        Node&lt;E&gt; node = getNode(index);
+        E result = node.data;
+        node.data = newValue;
+        return result;
+    }
+
+    /**
+     * Return the current number of elements in the list.
+     * @return The size of the list
+     */
+    public int size(){
+        return size;
+    }
+
+    /**
+     * Returns the index of the first occurrence of the specified element in this list,
+     * or -1 if this list does not contain the element. This method allows searching for
+     * an object of type Object.
+     *
+     * @param target the object to search for in the list
+     * @return the index of the first occurrence of the object in the list, or -1 if not found
+     */
+    public int indexOf(Object target) {
+        Node&lt;E&gt; current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data.equals(target)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1; // Return -1 if the element is not found
+    }
+
+}
+</code></pre>
+<h3 id="performance_2">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Big O (Worst-Case Complexity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add(E e)</td>
+<td>O(N)<br />- Insertion at the beginning: O(1)<br />- Insertion in the end: O(N)<br />- Insertion into the middle: O(N)</td>
+</tr>
+<tr>
+<td>add(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>get(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>set(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(Object o)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="extra_1">Extra</h3>
+<blockquote>
+<p>The keyword static in the class header indicates that the Node<E> class will not reference its outer class. (It can’t because it has no methods other than constructors.) In the Java API documentation, static inner classes are also called nested classes.
+Generally, we want to keep the details of the Node class private. Thus, the qualifier private is applied to the class as well as to the data fields and the constructor. However, the data fields and methods of an inner class are visible anywhere within the enclosing class (also called the parent class).</p>
+</blockquote>
+<h1 id="5-the-linkedlist-class">5. The <code>LinkedList</code> Class</h1>
+<h3 id="overview_3">Overview</h3>
+<ul>
+<li>The <code>LinkedList</code> class, part of the Java API package <code>java.util</code>, is a double‐linked list that implements the <code>List</code> interface.</li>
+</ul>
+<h2 id="class-javautillinkedliste">Class <code>java.util.LinkedList&lt;E&gt;</code></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>add(int index, E element)</td>
+<td>Inserts the specified element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>addFirst(E e)</td>
+<td>Inserts the specified element at the beginning of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>addLast(E e)</td>
+<td>Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)</td>
+<td>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>getFirst()</td>
+<td>Returns the first element in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>getLast()</td>
+<td>Returns the last element in this list.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>indexOf(Object o)</td>
+<td>Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.</td>
+</tr>
+<tr>
+<td>Iterator\<E></td>
+<td>iterator()</td>
+<td>Returns an iterator over the elements in this list in proper sequence.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)</td>
+<td>Removes the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)</td>
+<td>Removes the first occurrence of the specified element from this list, if it is present.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove()</td>
+<td>Retrieves and removes the head (first element) of this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>removeFirst()</td>
+<td>Removes and returns the first element from this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>removeLast()</td>
+<td>Removes and returns the last element from this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)</td>
+<td>Replaces the element at the specified position in this list with the specified element.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()</td>
+<td>Returns an array containing all of the elements in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Reference: https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html</li>
+</ul>
+<h3 id="performance_3">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Big O (Worst-Case Complexity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add(E e)</td>
+<td>- General case: O(N)<br />- Insertion at the beginning: O(1)<br />- Insertion in the end: O(1)<br />- Insertion into the middle: O(N)</td>
+</tr>
+<tr>
+<td>add(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>addFirst(E e)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>addLast(E e)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>get(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>getFirst()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>getLast()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>set(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(Object o)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>removeFirst()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>removeLast()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="6-the-iterator-listiterator-and-iterable-interfaces">6. The <code>Iterator</code>, <code>ListIterator</code>, and <code>Iterable</code> Interfaces</h1>
+<h2 id="the-iterator-interface">The <code>Iterator</code> Interface</h2>
+<h3 id="overview_4">Overview</h3>
+<ul>
+<li>The List interface declares the method iterator, which returns an Iterator object that will iterate over the elements of that list. </li>
+<li>The requirement for the iterator method is actually in the Collection interface, which is the superinterface for the List interface. The <code>Collection</code> interface extends the <code>Iterable</code> interface, so all classes that implement the <code>List</code> interface (a subinterface of <code>Collection</code>) must provide an <code>Iterator</code> method.</li>
+<li>An Iterator does not refer to or point to a particular object at any given time. Rather, you should think of an Iterator as pointing between objects within a list.</li>
+<li>Think of an iterator as a moving place marker that keeps track of the current position in a particular linked list. The Iterator object for a list starts at the first element in the list. The programmer can use the Iterator object’s <code>next</code> method to retrieve the next element. Each time it does a retrieval, the Iterator object advances to the next list element, where it waits until it is needed again. We can also ask the Iterator object to determine whether the list has more elements left to process (method <code>hasNext</code>). Iterator objects throw a <code>NoSuchElementException</code> if they are asked to retrieve the next element after all elements have been processed.</li>
+<li>You can use the Iterator remove method to remove elements from a list as you access them. You can remove only the element that was most recently accessed by next. Each call to remove must be preceded by a call to next to retrieve the next element.</li>
+</ul>
+<h3 id="interface-javautiliteratore">Interface <code>java.util.Iterator&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>hasNext()</td>
+<td>Returns true if the iteration has more elements.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>next()</td>
+<td>Returns the next element in the iteration.</td>
+</tr>
+<tr>
+<td>default void</td>
+<td>remove()</td>
+<td>Removes from the underlying collection the last element returned by this iterator (optional operation).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="extra_2">Extra</h3>
+<blockquote>
+<h4 id="efficient-access-to-list-elements-by-iterator">Efficient Access to List Elements by Iterator</h4>
+<p>We can use the following loop to access the list elements in sequence, starting with the one at index 0.
+  // Access each list element.
+  for (int index = 0; index &lt; aList.size(); index++) {
+      E nextElement = aList.get(index);
+      // Do something with the element at position index (nextElement)
+      . . .
+  }
+The loop is executed aList.size() times; thus it is O(<script type="math/tex">n</script>). During each iteration, we call the method get to retrieve the element at position index. If we assume that the method get begins at the first list node (head), each call to method get must advance a local reference (nodeRef) to the node at position index using a loop such as:
+  // Advance nodeRef to the element at position index.
+  Node<E> nodeRef = head;
+  for (int j = 0; j &lt; index; j++) {
+      nodeRef = nodeRef.next;
+  }</p>
+<p>This loop (in method get) executes index times, so it is also O(<script type="math/tex">n</script>). Therefore, the performance of the nested loops used to process each element in a LinkedList is O(<script type="math/tex">n^2</script>) and is very inefficient. We would like to have an alternative way to access the elements in a linked list sequentially.</p>
+<h4 id="removal-using-iteratorremove-versus-listremove">Removal Using <code>Iterator.remove</code> versus <code>List.remove</code></h4>
+<p>You could also use method LinkedList.remove to remove elements from a list. However, it is more efficient to remove multiple elements from a list using Iterator.remove than it would be to use LinkedList.remove. The LinkedList.remove method removes only one element at a time, so you would need to start at the beginning of the list each time and advance down the list to each element that you wanted to remove (O(n2) process). With the Iterator.remove method, you can remove elements as they are accessed by the Iterator object without having to go back to the beginning of the list (O(n) process).</p>
+<h4 id="the-enhanced-for-loop">The Enhanced <code>for</code> Loop</h4>
+<p>The enhanced for loop creates an Iterator object and implicitly calls its hasNext and next
+methods. Other Iterator methods, such as remove, are not available.</p>
+<p><strong>FORM</strong>:
+  for (formalParameter : expression) { . . . }</p>
+<p><strong>EXAMPLE</strong>:
+  for (String nextStr : myList) { . . . }
+  for (int nextInt : aList) { . . . }</p>
+<p><strong>MEANING</strong>:
+During each repetition of the loop, the variable specified by formalParameter accesses the next element of expression, starting with the first element and ending with the last. The expression must be an array or a collection that implements the Iterable interface. The Collection interface extends the Iterable interface so that all classes that implement it are implementors of the Iterable interface (see next section).</p>
+</blockquote>
+<h2 id="the-listiterator-interface">The <code>ListIterator</code> Interface</h2>
+<h3 id="overview_5">Overview</h3>
+<ul>
+<li>The Iterator has some limitations. It can traverse the List only in the forward direction. It also provides only a remove method, not an add method. Also, to start an Iterator somewhere other than at first List element, you must write your own loop to advance the Iterator to the desired starting position.</li>
+<li>The <code>next</code> method moves the iterator forward and returns the element that was jumped over. The <code>previous</code> method moves the iterator backward and also returns the element that was jumped over.</li>
+</ul>
+<h3 id="interface-javautillistiteratore">Interface <code>java.util.ListIterator&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td>add(E e)</td>
+<td>Inserts the specified element into the list (optional operation).<br />Inserts object obj into the list just before the item that would be returned by the next call to method next and after the item that would have been returned by method previous. If the method previous is called after add, the newly inserted object will be returned</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>hasNext()</td>
+<td>Returns true if this list iterator has more elements when traversing the list in the forward direction.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>hasPrevious()</td>
+<td>Returns true if this list iterator has more elements when traversing the list in the reverse direction.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>next()</td>
+<td>Returns the next element in the list and advances the cursor position.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>nextIndex()</td>
+<td>Returns the index of the element that would be returned by a subsequent call to next().</td>
+</tr>
+<tr>
+<td>E</td>
+<td>previous()</td>
+<td>Returns the previous element in the list and moves the cursor position backwards.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>previousIndex()</td>
+<td>Returns the index of the element that would be returned by a subsequent call to previous().</td>
+</tr>
+<tr>
+<td>void</td>
+<td>remove()</td>
+<td>Removes from the list the last element that was returned by next() or previous() (optional operation).<br />Removes the last item returned from a call to next or previous. If a call to remove is not preceded by a call to next or previous, the IllegalStateException is thrown</td>
+</tr>
+<tr>
+<td>void</td>
+<td>set(E e)</td>
+<td>Replaces the last element returned by next() or previous() with the specified element (optional).<br />Replaces the last item returned from a call to next or previous with obj. If a call to set is not preceded by a call to next or previous, the IllegalStateException is thrown</td>
+</tr>
+</tbody>
+</table>
+<h4 id="methods-in-javautillinkedliste-that-return-listiterator">Methods in <code>java.util.LinkedList&lt;E&gt;</code> that Return <code>ListIterator</code></h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ListIterator\<E></td>
+<td>listIterator()</td>
+<td>Returns a ListIterator that begins just before the first list element.</td>
+</tr>
+<tr>
+<td>ListIterator\<E></td>
+<td>listIterator(int index)</td>
+<td>Returns a ListIterator that begins just before the position index.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-of-iterator-and-listiterator">Comparison of <code>Iterator</code> and <code>ListIterator</code></h3>
+<ul>
+<li>Because the interface <code>ListIterator&lt;E&gt;</code> is a subinterface of <code>Iterator&lt;E&gt;</code>, classes that implement <code>ListIterator</code> must provide all of the capabilities of both. </li>
+<li>The <code>Iterator</code> interface requires fewer methods and can be used to iterate over more general data structures—that is, structures for which an index is not meaningful and ones for which traversing in only the <strong>forward</strong> direction is required. </li>
+<li>It is for this reason that the Iterator is required by the <code>Collection</code> interface (more general), whereas the <code>ListIterator</code> is required only by the <code>List</code>
+  interface (more specialized).</li>
+</ul>
+<h2 id="the-iterable-interface">The <code>Iterable</code> Interface</h2>
+<h3 id="overview_6">Overview</h3>
+<ul>
+<li>This interface requires only that a class that implements it provides an <code>iterator</code> method. As mentioned above, the <code>Collection</code> interface extends the <code>Iterable</code> interface, so all classes that implement the <code>List</code> interface (a subinterface of <code>Collection</code>) must provide an iterator method.</li>
+</ul>
+<h3 id="interface-javalangiterablet">Interface <code>java.lang.Iterable&lt;T&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method and Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default void</td>
+<td>forEach(Consumer&lt;? super T&gt; action)<br/>Performs the given action for each element of the Iterable until all elements have been processed or the action throws an exception.</td>
+</tr>
+<tr>
+<td>Iterator<T></td>
+<td>iterator()<br/>Returns an iterator over elements of type T.</td>
+</tr>
+<tr>
+<td>default Spliterator<T></td>
+<td>spliterator()<br/>Creates a Spliterator over the elements described by this Iterable.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="7-double-linked-list-linked-list">7. Double-Linked List (Linked List)</h1>
+<h3 id="overview_7">Overview</h3>
+<ul>
+<li>A double‐linked list object would consist of a separate object with data fields <code>head</code> (a reference to the first list Node), <code>tail</code> (a reference to the last list Node), and size (the number of Nodes). Because both ends of the list are directly accessible, now insertion at either end is O(1); insertion else- where is still O(n).</li>
+</ul>
+<h3 id="implementation_2">Implementation</h3>
+<ul>
+<li>We can implement most of the <code>MyLinkedList</code> methods by delegation to the class <code>MyListIterator</code>, which will implement the <code>ListIterator</code> interface</li>
+</ul>
+<h4 id="data-fields-for-class-mylinkedliste-double-linked-list">Data Fields for Class <code>MyLinkedList&lt;E&gt;</code> (Double-Linked List)</h4>
+<table>
+<thead>
+<tr>
+<th>Data Field</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private Node<E> head</td>
+<td>A reference to the first item in the list</td>
+</tr>
+<tr>
+<td>private Node<E> tail</td>
+<td>A reference to the last item in the list</td>
+</tr>
+<tr>
+<td>private int size</td>
+<td>A count of the number of items in the list</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">package datastructures.list;
+
+import java.util.*;
+/** Class KWLinkedList implements a double‐linked list and
+ a ListIterator. */
+public class LinkedList&lt;E&gt; extends AbstractSequentialList&lt;E&gt; implements List&lt;E&gt;{
+
+    /** A Node is the building block for a single‐linked list. */
+    private static class Node&lt;E&gt; {
+        // Data Fields
+        /** The reference to the data. */
+        private E data;
+        /** The reference to the next node. */
+        private Node&lt;E&gt; next;
+        /** The reference to the previous node. */
+        private Node&lt;E&gt; prev;
+
+        // Constructors
+        /** Creates a new node with a null next field.
+         @param dataItem The data stored
+         */
+        private Node(E dataItem) {
+            data = dataItem;
+            next = null;
+        }
+
+        /** Creates a new node that references another node.
+         @param dataItem The data stored
+         @param nodeRef The node referenced by new node
+         */
+        private Node(E dataItem, Node&lt;E&gt; nodeRef) {
+            data = dataItem;
+            next = nodeRef;
+        }
+    }
+
+    /** Inner class to implement the ListIterator interface. */
+    private class MyListIterator implements ListIterator&lt;E&gt; {
+        /** A reference to the next item. */
+        private Node&lt;E&gt; nextItem;
+        /** A reference to the last item returned. */
+        private Node&lt;E&gt; lastItemReturned;
+        /** The index of the current item. */
+        private int index = 0;
+
+        /** Construct a KWListIter that will reference the ith item.
+         @param i The index of the item to be referenced
+         */
+        public MyListIterator(int i) {
+            // Validate i parameter.
+            if (i &lt; 0 || i &gt; size) {
+                throw new IndexOutOfBoundsException(&quot;Invalid index &quot; + i);
+            }
+            lastItemReturned = null; // No item returned yet.
+            // Special case of last item.
+            if (i == size) {
+                index = size;
+                nextItem = null;
+            } else { // Start at the beginning
+                nextItem = head;
+                for (index = 0; index &lt; i; index++) {
+                    nextItem = nextItem.next;
+                }
+            }
+        }
+
+        /** Indicate whether movement forward is defined.
+         @return true if call to next will not throw an exception
+         */
+        public boolean hasNext() {
+            return nextItem != null;
+        }
+
+        /** Move the iterator forward and return the next item.
+         @return The next item in the list
+         @throws NoSuchElementException if there is no such object
+         */
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            lastItemReturned = nextItem;
+            nextItem = nextItem.next;
+            index++;
+            return lastItemReturned.data;
+        }
+
+        /** Indicate whether movement backward is defined.
+         @return true if call to previous will not throw an exception
+         */
+        public boolean hasPrevious() {
+            return (nextItem == null &amp;&amp; size != 0)
+                    || nextItem.prev != null;
+        }
+
+        /** Move the iterator backward and return the previous item.
+         @return The previous item in the list
+         @throws NoSuchElementException if there is no such object
+         */
+        public E previous() {
+            if (!hasPrevious()) {
+                throw new NoSuchElementException();
+            }
+            if (nextItem == null) { // Iterator is past the last element
+                nextItem = tail;
+            } else {
+                nextItem = nextItem.prev;
+            }
+            lastItemReturned = nextItem;
+            index--;
+            return lastItemReturned.data;
+        }
+
+        /**
+         * Returns the index of the element that would be returned by a subsequent call to next().
+         *
+         * @return the index of the element that would be returned by a subsequent call to next(),
+         *         or the size of the list if there is no next element
+         */
+        @Override
+        public int nextIndex() {
+            return (hasNext()) ? index : size;
+        }
+
+        /**
+         * Returns the index of the element that would be returned by a subsequent call to previous().
+         *
+         * @return the index of the element that would be returned by a subsequent call to previous(),
+         *         or -1 if there is no previous element
+         */
+        @Override
+        public int previousIndex() {
+            return (hasPrevious()) ? index - 1 : -1;
+        }
+
+        /**
+         * Removes from the list the last element that was returned by next() or previous().
+         *
+         * This method has not been verified!
+         *
+         * @throws IllegalStateException if no element has been previously returned by next() or previous()
+         */
+        @Override
+        public void remove() {
+            if (lastItemReturned == null) {
+                throw new IllegalStateException(&quot;No element to remove&quot;);
+            }
+            Node&lt;E&gt; lastNext = lastItemReturned.next;
+            Node&lt;E&gt; lastPrev = lastItemReturned.prev;
+
+            if (lastPrev == null) { // Removing first element
+                head = lastNext;
+            } else {
+                lastPrev.next = lastNext;
+                lastItemReturned.prev = null;
+            }
+
+            if (lastNext == null) { // Removing last element
+                tail = lastPrev;
+            } else {
+                lastNext.prev = lastPrev;
+                lastItemReturned.next = null;
+            }
+
+            if (nextItem == lastItemReturned) {
+                nextItem = lastNext;
+            } else {
+                index--;
+            }
+
+            lastItemReturned.data = null;
+            lastItemReturned = null;
+            size--;
+        }
+
+        /**
+         * Replaces the last element returned by next() or previous() with the specified element.
+         *
+         * @param e the element with which to replace the last returned element
+         * @throws IllegalStateException if no element has been previously returned by next() or previous()
+         */
+        @Override
+        public void set(E e) {
+            if (lastItemReturned == null) {
+                throw new IllegalStateException(&quot;No element to set&quot;);
+            }
+            lastItemReturned.data = e;
+        }
+
+        /** Add a new item between the item that will be returned
+         by next and the item that will be returned by previous.
+         If previous is called after add, the element added is
+         returned.
+         @param obj The item to be inserted
+         */
+        public void add(E obj) {
+            if (head == null) { // Add to an empty list.
+                head = new Node&lt;&gt;(obj);
+                tail = head;
+            } else if (nextItem == head) { // Insert at head
+                // Create a new node.
+                Node&lt;E&gt; newNode = new Node&lt;&gt;(obj);
+                // Link it to the nextItem.
+                newNode.next = nextItem;
+                // Link nextItem to the new node.
+                nextItem.prev = newNode;
+                // The new node is now the head.
+                head = newNode;
+            }
+            else if(nextItem == null){ // Insert at tail
+                // Create a new node.
+                Node&lt;E&gt; newNode = new Node&lt;&gt;(obj);
+                // Link the tail to the new node.
+                tail.next = newNode;
+                // Link the new node to the tail.
+                newNode.prev = tail;
+                // The new node is the new tail.
+                tail = newNode;
+            }
+            else { // Insert into the middle.
+                // Create a new node.
+                Node&lt;E&gt; newNode = new Node&lt;&gt;(obj);
+                // Link it to nextItem.prev.
+                newNode.prev = nextItem.prev;
+                nextItem.prev.next = newNode;
+                // Link it to the nextItem.
+                newNode.next = nextItem;
+                nextItem.prev = newNode;
+            }
+            // Increase size and index and set lastItemReturned.
+            size++;
+            index++;
+            lastItemReturned = null;
+        } // End of method add.
+
+
+    }
+    // Data Fields
+    /** A reference to the head of the list. */
+    private Node&lt;E&gt; head = null;
+    /** A reference to the end of the list. */
+    private Node&lt;E&gt; tail = null;
+    /** The size of the list. */
+    private int size = 0;
+
+    /** Add an item at position index.
+     @param index The position at which the object is to be
+     inserted
+     @param obj The object to be inserted
+     @throws IndexOutOfBoundsException if the index is out
+     of range (i &lt; 0 || i &gt; size())
+     */
+    public void add(int index, E obj) {
+        listIterator(index).add(obj);
+    }
+
+    @Override
+    public ListIterator&lt;E&gt; listIterator(int i) {
+        return new MyListIterator(i);
+    }
+
+    /** Get the element at position index.
+     @param index Position of item to be retrieved
+     @return The item at index
+     */
+    public E get(int index) {
+        return listIterator(index).next();
+    }
+
+    /**
+     * Return the number of elements in this list.
+     * @return The number of elements in this list.
+     */
+    @Override
+    public int size() {
+        return size;
+    }
+}
+</code></pre>
+<h3 id="extra_3">Extra</h3>
+<blockquote>
+<h4 id="inner-classes-static-and-nonstatic">Inner Classes: Static and Nonstatic</h4>
+<p>There are two inner classes in class LinkedList\<E>: class Node<E> and class MyListIterator. We declare Node\<E> to be static because there is no need for its methods to access the data fields of its parent class (LinkedList\<E>). We can’t declare MyListIterator to be static because its methods access and modify the data fields of the LinkedList object that creates the MyListIterator object. An inner class that is not static contains an implicit reference to its parent object, just as it contains an implicit reference to itself. Because MyListIterator is not static and can reference data fields of its parent class LinkedList\<E>, the type parameter <E> is considered to be previously defined; therefore, it cannot appear as part of the class name.</p>
+<h4 id="pitfall_1">PITFALL</h4>
+<p><strong>Defining MyListIterator as a Generic Inner Class</strong>
+If you define class MyListIterator as
+  private class MyListIterator<E>...
+you will get an incompatible types syntax error when you attempt to reference data field head or tail (type Node\<E>) inside class MyListIterator.</p>
+</blockquote>
+<h1 id="8-circular-linked-list">8. Circular Linked List</h1>
+<h3 id="overview_8">Overview</h3>
+<ul>
+<li><strong>Circularly Linked Lists:</strong> Linked lists are traditionally viewed as storing a sequence of items in a linear order, from first to last. However, there are many applications in which data can be more naturally viewed as having a cyclic order, with well-defined neighboring relationships, but no fixed beginning or end.</li>
+<li>Example Application: Round-Robin Scheduling</li>
+<li>A process is given a short turn to execute, known as a time slice, but it is interrupted when the slice ends, even if its job is not yet complete. Each active process is given its own time slice, taking turns in a cyclic order.</li>
+</ul>
+<h3 id="class-circularlylinkedliste">Class <code>CircularlyLinkedList&lt;E&gt;</code></h3>
+<h4 id="data-fields">Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Data Field</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private Node<E> tail</td>
+<td>A reference to the last item in the list</td>
+</tr>
+<tr>
+<td>private int size</td>
+<td>A count of the number of items in the list</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-summary_1">Method Summary</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td>addFirst(E e)</td>
+<td>Inserts the specified element at the beginning of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>addLast(E e)</td>
+<td>Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>getFirst()</td>
+<td>Returns the first element in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>getLast()</td>
+<td>Returns the last element in this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>rotate()</td>
+<td>Rotates the first element to the back of the list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>removeFirst()</td>
+<td>Removes and returns the first element from this list.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation_3">Implementation</h3>
+<pre><code class="language-java">public class CircularLinkedList&lt;E&gt; {
+    // Nested node class identical to that of the SinglyLinkedList class
+    private static class Node&lt;E&gt; {
+        private E element;
+        private Node&lt;E&gt; next;
+
+        public Node(E e, Node&lt;E&gt; n) {
+            element = e;
+            next = n;
+        }
+
+        public E getElement() {
+            return element;
+        }
+
+        public Node&lt;E&gt; getNext() {
+            return next;
+        }
+
+        public void setNext(Node&lt;E&gt; n) {
+            next = n;
+        }
+    }
+
+    private Node&lt;E&gt; tail = null; // We store tail (but not head)
+    private int size = 0; // Number of nodes in the list
+
+    public CircularLinkedList() { } // Constructs an initially empty list
+
+    // Access methods
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public E getFirst() {
+        // Returns (but does not remove) the first element
+        if (isEmpty()) return null;
+        return tail.getNext().getElement(); // The head is *after* the tail
+    }
+
+    public E getLast() {
+        // Returns (but does not remove) the last element
+        if (isEmpty()) return null;
+        return tail.getElement();
+    }
+
+    // Update methods
+    public void rotate() {
+        // Rotate the first element to the back of the list
+        if (tail != null) // If empty, do nothing
+            tail = tail.getNext(); // The old head becomes the new tail
+    }
+
+    public void addFirst(E e) {
+        // Adds element e to the front of the list
+        if (size == 0) {
+            tail = new Node&lt;&gt;(e, null);
+            tail.setNext(tail); // Link to itself circularly
+        } else {
+            Node&lt;E&gt; newest = new Node&lt;&gt;(e, tail.getNext());
+            tail.setNext(newest);
+        }
+        size++;
+    }
+
+    public void addLast(E e) {
+        // Adds element e to the end of the list
+        addFirst(e); // Insert new element at front of list
+        tail = tail.getNext(); // Now new element becomes the tail
+    }
+
+    public E removeFirst() {
+        // Removes and returns the first element
+        if (isEmpty()) return null; // Nothing to remove
+        Node&lt;E&gt; head = tail.getNext();
+        if (head == tail)
+            tail = null; // Must be the only node left
+        else
+            tail.setNext(head.getNext()); // Removes ”head” from the list
+        size--;
+        return head.getElement();
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>TODO: The implementations of some methods are missing and should be fixed in the future.</p>
+</blockquote>
+<h3 id="performance_4">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Big O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addFirst(E e)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>addLast(E e)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>getFirst()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>getLast()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>rotate()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>removeFirst()</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="9-the-collections-framework-design">9. The Collections Framework Design</h1>
+<h2 id="the-collection-interface">The <code>Collection</code> Interface</h2>
+<ul>
+<li>The <code>Collection</code> interface specifies a subset of the methods specified in the <code>List</code> interface.</li>
+<li>Specifically, the add(int, E), get(int), remove(int), set(int, E), and related methods (all of which have an int parameter that represents a position) are not in the <code>Collection</code> interface, but the add(E) and remove(Object) methods, which do not specify a position, are included.</li>
+<li>The <code>iterator</code> method is also included in the <code>Collection</code> interface. Thus, you can use an <code>Iterator</code> to access all of the items in a <code>Collection</code>, but the order in which they are retrieved is not necessarily related to the order in which they were inserted</li>
+<li>The Collection interface is part of the Collections Framework. This interface has three subinterfaces: the <code>List</code> interface, the <code>Queue</code> interface, and the <code>Set</code> interface. The Java API does not provide any direct implementation of the <code>Collection</code> interface. The interface is used to reference collections of data in the most general way.</li>
+</ul>
+<p><img alt="image-20240104223001533" src="/home/denizkorkmaz/.config/Typora/typora-user-images/image-20240104223001533.png" /></p>
+<h3 id="common-features-of-collections">Common Features of Collections</h3>
+<ul>
+<li>
+<p>A few features can be considered fundamental:</p>
+</li>
+<li>
+<p>Collections grow as needed.</p>
+</li>
+<li>
+<p>Collections hold references to objects.</p>
+</li>
+<li>
+<p>Collections have at least two constructors: one to create an empty collection and one to make a copy of another collection.</p>
+</li>
+<li>
+<p>For collections implementing the List interface, the order of the elements is determined by the index of the elements. In the more general Collection, the order is not specified.</p>
+</li>
+</ul>
+<h3 id="interface-javautilcollectione">Interface <code>java.util.Collection&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method and Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)<br/>Ensures that this collection contains the specified element (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>addAll(Collection&lt;? extends E&gt; c)<br/>Adds all of the elements in the specified collection to this collection (optional operation).</td>
+</tr>
+<tr>
+<td>void</td>
+<td>clear()<br/>Removes all of the elements from this collection (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>contains(Object o)<br/>Returns true if this collection contains the specified element.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>containsAll(Collection&lt;?&gt; c)<br/>Returns true if this collection contains all of the elements in the specified collection.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>equals(Object o)<br/>Compares the specified object with this collection for equality.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>isEmpty()<br/>Returns true if this collection contains no elements.</td>
+</tr>
+<tr>
+<td>Iterator<E></td>
+<td>iterator()<br/>Returns an iterator over the elements in this collection.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)<br/>Removes a single instance of the specified element from this collection, if it is present (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>removeAll(Collection&lt;?&gt; c)<br/>Removes all of this collection's elements that are also contained in the specified collection (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>retainAll(Collection&lt;?&gt; c)<br/>Retains only the elements in this collection that are contained in the specified collection (optional operation).</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()<br/>Returns the number of elements in this collection.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()<br/>Returns an array containing all of the elements in this collection.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-abstractcollection-abstractlist-and-abstractsequentiallist-classes">The <code>AbstractCollection</code>, <code>AbstractList</code>, and <code>AbstractSequentialList</code> Classes</h2>
+<ul>
+<li>
+<p>If you look at the Java API documentation, you will see that the <code>Collection</code> and <code>List</code> interfaces specify a large number of methods. To help implement these interfaces, the Java API includes the <code>AbstractCollection</code> and <code>AbstractList</code> classes. You can think of these classes as a
+  kit that can be used to build implementations of their corresponding interface. Most of the methods are provided, but you need to add a few to make it complete.</p>
+</li>
+<li>
+<p>To implement the <code>Collection</code> interface completely, you need only extend the <code>AbstractCollection</code> class, provide an implementation of the add, size, and iterator methods, and supply an inner class to implement the Iterator interface. </p>
+</li>
+<li>
+<p>To implement the <code>List</code> interface, you can extend the <code>AbstractList</code> class and provide an implementation of the add(int, E), get(int), remove(int),
+    set(int, E), and size() methods. </p>
+<ul>
+<li>Since we provided these methods in our <code>ArrayList</code>, we can make it a complete implementation of the <code>List</code> interface by changing the class declaration to 
+  <code>java
+  public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt;</code></li>
+</ul>
+<p>Note that the <code>AbstractList</code> class implements the iterator and listIterator methods using the index associated with the elements.</p>
+<ul>
+<li>Another way to implement the List interface is to extend the <code>AbstractSequentialList</code> class, implement the listIterator and size methods, and provide an inner class that implements the <code>ListIterator</code> interface. This was the approach we took in our <code>LinkedList</code>. Thus, by
+  changing the class declaration to</li>
+</ul>
+<p><code>java
+   public class LinkedList&lt;E&gt; extends AbstractSequentialList&lt;E&gt; implements List&lt;E&gt;</code></p>
+<p>it becomes a complete implementation of the List interface. </p>
+<ul>
+<li>Our <code>LinkedList</code> class included the add, get, remove, and set methods. These are provided by the <code>AbstractSequentialList</code>, so we could remove them from our <code>LinkedList</code> class and still have a complete List implementation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="the-list-and-randomaccess-interface">The <code>List</code> and <code>RandomAccess</code> Interface</h2>
+<ul>
+<li>The <code>RandomAccess</code> interface is applied only to those implementations in which indexed operations are efficient (e.g., ArrayList). An algorithm can then test to see if a parameter of type List is also of type <code>RandomAccess</code> and, if not, copy its contents into an <code>ArrayList</code> temporarily so that the indexed operations can proceed more efficiently. After the indexed operations are completed, the contents of the <code>ArrayList</code> are copied back to the original.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

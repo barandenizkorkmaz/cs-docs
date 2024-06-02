@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp2-stacks-and-queues/2-2-queues.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Queues - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Queues";
+        var mkdocs_page_input_path = "data-structures/chp2-stacks-and-queues/2-2-queues.md";
+        var mkdocs_page_url = "/data-structures/chp2-stacks-and-queues/2-2-queues.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Stacks and Queues</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Queues</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interface-javautilqueuee">Interface java.util.Queue&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#circular-array-based-queue">Circular Array-Based Queue</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#single-linked-list-based-queue">Single-Linked List-Based Queue</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#double-linked-list-based-queue">Double-Linked List-Based Queue</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#comparing-the-three-implementations">Comparing the Three Implementations</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Stacks and Queues</li>
+      <li class="breadcrumb-item active">Queues</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="2-queue">2. Queue</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>Another fundamental data structure is the queue. It is a close “cousin” of the stack, but a queue is a collection of objects that are inserted and removed according to the first-in, first-out (FIFO) principle.</li>
+</ul>
+<h3 id="interface-javautilqueuee">Interface <code>java.util.Queue&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code></td>
+<td>Inserts the specified element into this queue if space is available, returning true upon success. Throws IllegalStateException if no space is available.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offer(E e)</code></td>
+<td>Inserts the specified element into this queue if space is available, returning true upon success.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>element()</code></td>
+<td>Retrieves, but does not remove, the head of this queue.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peek()</code></td>
+<td>Retrieves, but does not remove, the head of this queue. Returns null if the queue is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>poll()</code></td>
+<td>Retrieves and removes the head of this queue. Returns null if the queue is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>remove()</code></td>
+<td>Retrieves and removes the head of this queue. Throws NoSuchElementException if the queue is empty.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image-20240110154606926" src="../../assets/images/data-structures/chp2/queue.png" /></p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="circular-array-based-queue">Circular Array-Based Queue</h3>
+<pre><code class="language-java">package datastructures.queue;
+
+import java.util.AbstractQueue;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+
+/** Implements the Queue interface using a circular array. */
+public class ArrayQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements Queue&lt;E&gt; {
+    // Data Fields
+    /** Index of the front of the queue. */
+    private int front;
+    /** Index of the rear of the queue. */
+    private int rear;
+    /** Current size of the queue. */
+    private int size;
+    /** Current capacity of the queue. */
+    private int capacity;
+    /** Default capacity of the queue. */
+    private static final int DEFAULT_CAPACITY = 10;
+    /** Array to hold the data. */
+    private E[] data;
+
+    // Constructors
+    /** Construct a queue with the default initial capacity. */
+    public ArrayQueue() {
+        this(DEFAULT_CAPACITY);
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    /** Construct a queue with the specified initial capacity.
+    @param initCapacity The initial capacity
+    */
+    public ArrayQueue(int initCapacity) {
+        capacity = initCapacity;
+        data = (E[]) new Object[capacity];
+        front = 0;
+        rear = capacity-1;
+        size = 0;
+    }
+
+    // Public Methods
+    /** Inserts an item at the rear of the queue.
+     @post item is added to the rear of the queue.
+     @param item The element to add
+     @return true (always successful)
+     */
+    @Override
+    public boolean offer(E item) {
+        if (size == capacity) {
+            reallocate();
+        }
+        size++;
+        rear = (rear + 1) % capacity; data[rear] = item;
+        return true;
+    }
+
+    /** Returns the item at the front of the queue without removing it.
+     @return The item at the front of the queue if successful; return null if
+     the queue is empty
+     */
+    @Override
+    public E peek() {
+        if (size == 0)
+            return null;
+        else
+            return data[front];
+    }
+
+    /** Removes the entry at the front of the queue and returns it if the queue is
+     not empty.
+     @post front references item that was second in the queue.
+     @return The item removed if successful or null if not
+     */
+    @Override
+    public E poll() {
+        if (size == 0) {
+            return null;
+        }
+        E result = data[front];
+        front = (front + 1) % capacity;
+        size--;
+        return result;
+    }
+
+    @Override
+    public boolean add(E e) {
+        return offer(e);
+    }
+
+    @Override
+    public E element() {
+        return peek();
+    }
+
+    @Override
+    public E remove() {
+        return poll();
+    }
+
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+        return new ArrayQueueIterator();
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    // Private Methods
+    /** Double the capacity and reallocate the data.
+     @pre The array is filled to capacity.
+     @post The capacity is doubled and the first half of the expanded array is
+     filled with data.
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private void reallocate() {
+        int newCapacity = 2 * capacity;
+        E[] newData = (E[]) new Object[newCapacity];
+        int j = front;
+        for (int i = 0; i &lt; size; i++) {
+            newData[i] = data[j];
+            j = (j + 1) % capacity;
+        }
+        front = 0;
+        rear = size-1;
+        capacity = newCapacity;
+        data = newData;
+    }
+
+    /** Inner class to implement the Iterator&lt;E&gt; interface. */
+    private class ArrayQueueIterator implements Iterator&lt;E&gt; {
+        // Data Fields
+        // Index of next element
+        private int index;
+        // Count of elements accessed so far
+        private int count = 0;
+
+        // Methods
+
+        // Constructor
+        /** Initializes the Iter object to reference the first queue element. */
+        public ArrayQueueIterator() {
+            index = front;
+        }
+        /** Returns true if there are more elements in the queue to access. */
+        @Override
+        public boolean hasNext() {
+            return count &lt; size;
+        }
+
+        /** Returns the next element in the queue.
+         @pre index references the next element to access.
+         @post index and count are incremented.
+         @return The element with subscript index
+         */
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            E returnValue = data[index];
+            index = (index + 1) % capacity;
+            count++;
+            return returnValue;
+        }
+
+        /** Remove the item accessed by the Iter object – not implemented. */
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+}
+</code></pre>
+<h4 id="increasing-queue-capacity">Increasing Queue Capacity</h4>
+<ul>
+<li>When the capacity is reached, we double the capacity and copy the array into the new one, as was done for the ArrayList. However, we can’t simply use the reallocate method we developed for the ArrayList because of the circular nature of the array. We can’t copy over elements from the original array to the first half of the expanded array, maintaining their position.</li>
+<li>We must first copy the elements from position front through the end of the original array to the beginning of the expanded array; then copy the elements from the beginning of the original array through rear to follow those in the expanded array.</li>
+</ul>
+<h3 id="single-linked-list-based-queue">Single-Linked List-Based Queue</h3>
+<pre><code class="language-java">package datastructures.queue;
+
+import java.util.*;
+
+/** Implements the Queue interface using a single‐linked list. */
+public class ListQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements Queue&lt;E&gt; {
+
+    /** A Node is the building block for a single‐linked list. */
+    private static class Node&lt;E&gt; {
+        // Data Fields
+        /** The reference to the data. */
+        private E data;
+        /** The reference to the next node. */
+        private Node&lt;E&gt; next;
+
+        // Constructors
+        /** Creates a new node with a null next field.
+         @param dataItem The data stored
+         */
+        private Node(E dataItem) {
+            data = dataItem;
+            next = null;
+        }
+
+        /** Creates a new node that references another node.
+         @param dataItem The data stored
+         @param nodeRef The node referenced by new node
+         */
+        private Node(E dataItem, Node&lt;E&gt; nodeRef) {
+            data = dataItem;
+            next = nodeRef;
+        }
+    }
+
+    // Data Fields
+    /** Reference to front of queue. */
+    private Node&lt;E&gt; front;
+    /** Reference to rear of queue. */
+    private Node&lt;E&gt; rear;
+    /** Size of queue. */
+    private int size;
+
+    // Insert inner class Node&lt;E&gt; for single‐linked list here.
+    // (See Listing 2.1.)
+
+    // Methods
+
+    /** Insert an item at the rear of the queue.
+     @post item is added to the rear of the queue.
+     @param item The element to add
+     @return true (always successful)
+     */
+    @Override
+    public boolean offer(E item) {
+        // Check for empty queue.
+        if (front == null) {
+            rear = new Node&lt;&gt;(item);
+            front = rear;
+        } else {
+        // Allocate a new node at end, store item in it, and
+        // link it to old end of queue.
+            rear.next = new Node&lt;&gt;(item);
+            rear = rear.next;
+        }
+        size++;
+        return true;
+    }
+
+    /** Remove the entry at the front of the queue and return it
+         if the queue is not empty.
+        @post front references item that was second in the queue.
+        @return The item removed if successful, or null if not
+     */
+
+    @Override
+    public E poll() {
+        E item = peek();
+        // Retrieve item at front.
+        if (item == null)
+            return null;
+        // Remove item at front.
+        front = front.next; size--;
+        return item;
+        // Return data at front of queue.
+    }
+
+    /** Return the item at the front of the queue without removing it.
+     @return The item at the front of the queue if successful;
+     return null if the queue is empty
+     */
+    @Override
+    public E peek() {
+        if (size == 0)
+            return null;
+        else
+            return front.data;
+    }
+
+    @Override
+    public boolean add(E e) {
+        return offer(e);
+    }
+
+    @Override
+    public E element() {
+        return peek();
+    }
+
+    @Override
+    public E remove() {
+        return poll();
+    }
+
+    // Insert class Iter.
+
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+}
+</code></pre>
+<h3 id="double-linked-list-based-queue">Double-Linked List-Based Queue</h3>
+<ul>
+<li>Use <code>java.util.LinkedList</code> class as adapter class.</li>
+</ul>
+<pre><code class="language-java">public class DoubleLinkedQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements Queue&lt;E&gt; {
+
+    private LinkedList&lt;E&gt; list; // an empty list
+
+    public DoubleLinkedQueue( ) {
+        list = new LinkedList&lt;&gt;();
+    }
+
+    @Override
+    public boolean add(E e) {
+        return list.add(e); // Appends e to the end of the list
+    }
+
+    @Override
+    public boolean offer(E e) {
+        return list.add(e); // Appends e to the end of the list
+    }
+
+    @Override
+    public E remove() {
+        return list.remove(); // Removes the element in the beginning of the list
+    }
+
+    @Override
+    public E poll() {
+        return list.remove();
+    }
+
+    @Override
+    public E element() {
+        return list.getFirst();
+    }
+
+    @Override
+    public E peek() {
+        return list.getFirst();
+    }
+
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+        return list.iterator();
+    }
+
+    @Override
+    public int size() {
+        return list.size();
+    }
+
+}
+</code></pre>
+<h3 id="comparing-the-three-implementations">Comparing the Three Implementations</h3>
+<ul>
+<li>As mentioned earlier, all three implementations of the Queue interface are comparable in terms of computation time. All operations are O(1) regardless of the implementation. Although reallocating an array is an O(n) operation, it is amortized over n items, so the cost per item is O(1).</li>
+<li>In terms of storage requirements, both linked‐list implementations require more storage because of the extra space required for links. To perform an analysis of the storage requirements, you need to know that Java stores a reference to the data for a queue element in each node in addition to the links. Therefore, each node for a single‐linked list would store a total of two references (one for the data and one for the link), a node for a double‐linked list would store a total of three references, and a node for a circular array would store just one reference. Therefore, a double-linked list would require 1.5 times the storage required for a single‐linked list with the same number of elements. A circular array that is filled to capacity would require half the storage of a single‐linked list to store the same number of elements. However, if the array were just reallocated, half the array would be empty, so it would require the same storage as a single‐linked list.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="2-1-stacks.html" class="btn btn-neutral float-left" title="Stacks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="2-3-deques.html" class="btn btn-neutral float-right" title="Deques">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="2-1-stacks.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="2-3-deques.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

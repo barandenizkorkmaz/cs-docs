@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/algorithms/sorting/sorting.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Sorting - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sorting";
+        var mkdocs_page_input_path = "algorithms/sorting/sorting.md";
+        var mkdocs_page_url = "/algorithms/sorting/sorting.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Sorting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#sorting-in-java">Sorting in Java</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#selection-sort">Selection Sort</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#algorithm">Algorithm</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#analysis">Analysis</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#program-style">PROGRAM STYLE</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#insertion-sort">Insertion Sort</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#algorithm_1">Algorithm</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation_1">Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#analysis_1">Analysis</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#more-on-this-chapter-coming-soon">🚨 More on This Chapter Coming Soon!</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Algorithms</li>
+      <li class="breadcrumb-item active">Sorting</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sorting">Sorting</h1>
+<h2 id="sorting-in-java">Sorting in Java</h2>
+<ul>
+<li>The Java API java.util provides a class Arrays with several overloaded sort methods for
+  different array types. In addition, the class Collections (also part of the API java.util) con-
+  tains similar sorting methods for Lists. The methods for arrays of primitive types are based
+  on the quicksort algorithm (Section 8.9), and the methods for arrays of Objects and for Lists
+  are based on the Timsort algorithm (Section 8.7). Both algorithms are O(n log n).</li>
+<li>Method Arrays.sort is defined as a public static void method and is overloaded (see
+    Table 8.1). The first argument in a call can be an array of any primitive type (although we
+    have just shown int[]) or an array of objects. If the first argument is an array of objects, then
+    either the class type of the array must implement the Comparable interface or a Comparator
+    object must be passed as the last argument (see Section 6.6). A class that implements the
+    Comparable interface must define a compareTo method that determines the natural ordering of
+    its objects. If a Comparator is passed, its compare method will be used to determine the
+    ordering.</li>
+<li>For method Collections.sort (see Table 8.1), the first argument must be a collection of
+    objects that implement the List interface (e.g., an ArrayList or a LinkedList). If only one
+    argument is provided, the objects in the List must implement the Comparable interface.
+    Method compareTo is called by the sorting method to determine the relative ordering of two
+    objects.</li>
+<li>Optionally, a Comparator can be passed as a second argument. Using a Comparator, you can
+    compare objects based on some other information rather than using their natural ordering
+    (as determined by method compareTo). The Comparator object must be the last argument in
+    the call to the sorting method. Rather than rearranging the elements in the List, method sort
+    first copies the List elements to an array, sorts the array using Arrays.sort, and then copies
+    them back to the List.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method <code>sort</code> in Class <code>Arrays</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sort(int[] items)</code></td>
+<td>Sorts the array <code>items</code> in ascending order</td>
+</tr>
+<tr>
+<td><code>sort(int[] items, int fromIndex, int toIndex)</code></td>
+<td>Sorts array elements <code>items[fromIndex]</code> to <code>items[toIndex]</code> in ascending order</td>
+</tr>
+<tr>
+<td><code>sort(Object[] items)</code></td>
+<td>Sorts the objects in array <code>items</code> in ascending order using their natural ordering (defined by <code>compareTo</code>)</td>
+</tr>
+<tr>
+<td><code>sort(Object[] items, int fromIndex, int toIndex)</code></td>
+<td>Sorts array elements <code>items[fromIndex]</code> to <code>items[toIndex]</code> in ascending order using natural ordering</td>
+</tr>
+<tr>
+<td><code>&lt;T&gt; void sort(T[] items, Comparator&lt;? super T&gt; comp)</code></td>
+<td>Sorts the objects in <code>items</code> in ascending order as defined by method <code>comp.compare</code></td>
+</tr>
+<tr>
+<td><code>&lt;T&gt; void sort(T[] items, int fromIndex, int toIndex, Comparator&lt;? super T&gt; comp)</code></td>
+<td>Sorts array elements <code>items[fromIndex]</code> to <code>items[toIndex]</code> in ascending order using method <code>comp.compare</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method <code>sort</code> in Class <code>Collections</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;T extends Comparable&lt;T&gt;&gt; void sort(List&lt;T&gt; list)</code></td>
+<td>Sorts the objects in <code>list</code> in ascending order using their natural ordering (defined by <code>compareTo</code>)</td>
+</tr>
+<tr>
+<td><code>&lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; comp)</code></td>
+<td>Sorts the objects in <code>list</code> in ascending order as defined by method <code>comp.compare</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method <code>sort</code> in Interface <code>List</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default void sort(Comparator&lt;? super E&gt; comp)</code></td>
+<td>Sorts the objects in the list in ascending order as defined by method <code>comp.compare</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>For the second method parameter, the notation <code>Comparator&lt;? super T&gt;</code> means that comp must be an object that implements the Comparator interface for type T or for a superclass of type T.</p>
+</li>
+<li>
+<p>In Java 8, you can pass a lambda expression as a <code>Comparator</code> object to the <code>List.sort</code> method
+  instead of writing a class that implements <code>Comparator</code>.</p>
+</li>
+</ul>
+<h2 id="selection-sort">Selection Sort</h2>
+<h3 id="algorithm">Algorithm</h3>
+<pre><code class="language-java">1.  for fill = 0 to n – 2 do
+2.      Set posMin to the subscript of the smallest item in the subarray starting at subscript fill.
+3.      Exchange the item at posMin with the one at fill.
+</code></pre>
+<pre><code class="language-java">Refinement of Selection Sort Algorithm (Step 2)
+
+2.1 Initialize posMin to fill.
+2.2 for next = fill + 1 to n ‐ 1
+2.3     if the item at next is less than the item at posMin
+2.4         Reset posMin to next.
+</code></pre>
+<h3 id="implementation">Implementation</h3>
+<pre><code class="language-java">/** Implements the selection sort algorithm. */
+public class SelectionSort {
+    /** Sort the array using selection sort algorithm.
+     @pre table contains Comparable objects.
+     @post table is sorted.
+     @param table The array to be sorted
+     */
+    public static void sort(Comparable[] table) {
+        int n = table.length;
+        for (int fill = 0; fill &lt; n - 1; fill++) {
+            // Invariant: table[0 . . . fill – 1] is sorted.
+            int posMin = fill;
+            for (int next = fill + 1; next &lt; n; next++) {
+                // Invariant: table[posMin] is the smallest item in
+                // table[fill . . . next ‐ 1].
+                if (table[next].compareTo(table[posMin]) &lt; 0) {
+                    posMin = next;
+                }
+            }
+            // assert: table[posMin] is the smallest item in
+            // table[fill . . . n ‐ 1].
+            // Exchange table[fill] and table[posMin].
+            Comparable temp = table[fill];
+            table[fill] = table[posMin];
+            table[posMin] = temp;
+            // assert: table[fill] is the smallest item in
+            // table[fill . . . n ‐ 1].
+        }
+        // assert: table[0 . . . n ‐ 1] is sorted.
+    }
+}
+</code></pre>
+<h3 id="analysis">Analysis</h3>
+<ul>
+<li>The number of comparisons is <script type="math/tex">O(n^2)</script>.</li>
+<li>
+<p>The number of exchanges is <script type="math/tex">O(n)</script>.</p>
+</li>
+<li>
+<p>The selection sort is a quadratic sort.</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="program-style">PROGRAM STYLE</h4>
+<h5 id="making-sort-methods-generic">Making Sort Methods Generic</h5>
+<p>The code above will compile, but it will generate a warning message regarding an unchecked call to <code>compareTo</code>. You can eliminate this warning message by making the sort a generic sort. To accomplish this for the sort above, change the method heading to
+  <code>public static &lt;T extends Comparable&lt;T&gt;&gt; void sort(T[] table) {</code>
+where the generic type parameter, T, must implement the Comparable<T> interface.
+Also, change the data type of variable temp from Comparable to type T, the data type of the array elements.
+  <code>T temp = table[fill];</code>
+We will code the other sorting algorithms in this chapter as generic methods.</p>
+</blockquote>
+<h2 id="insertion-sort">Insertion Sort</h2>
+<h3 id="algorithm_1">Algorithm</h3>
+<pre><code class="language-java">1. for each array element from the second (nextPos = 1) to the last
+2.    Insert the element at nextPos where it belongs in the array, increasing the length of the sorted subarray by 1 element.
+
+</code></pre>
+<pre><code class="language-java">Refinement of Insertion Sort Algorithm (Step 2)
+
+2.1 nextPos is the position of the element to insert.
+2.2 Save the value of the element to insert in nextVal.
+2.3 while nextPos &gt; 0 and the element at nextPos – 1 &gt; nextVal
+2.4   Shift the element at nextPos – 1 to position nextPos.
+2.5   Decrement nextPos by 1.
+2.6 Insert nextVal at nextPos.
+</code></pre>
+<h3 id="implementation_1">Implementation</h3>
+<pre><code class="language-java">/** Implements the insertion sort algorithm. */
+public class InsertionSort {
+    /**
+     * Sort the table using insertion sort algorithm.
+     * @pre table contains Comparable objects.
+     * @post table is sorted.
+     * @param table The array to be sorted
+     */
+    public static &lt;T extends Comparable&lt;T&gt;&gt; void sort(T[] table) {
+        for (int nextPos = 1; nextPos &lt; table.length; nextPos++) {
+            // Invariant: table[0 . . . nextPos - 1] is sorted.
+            // Insert element at position nextPos in the sorted subarray.
+            insert(table, nextPos);
+        } // End for.
+    } // End sort.
+
+    /**
+     * Insert the element at nextPos where it belongs in the array.
+     * @pre table[0 . . . nextPos - 1] is sorted.
+     * @post table[0 . . . nextPos] is sorted.
+     * @param table The array being sorted.
+     * @param nextPos The position of the element to insert.
+     */
+    private static &lt;T extends Comparable&lt;T&gt;&gt; void insert(T[] table, int nextPos) {
+        T nextVal = table[nextPos]; // Element to insert.
+
+        while (nextPos &gt; 0 &amp;&amp; nextVal.compareTo(table[nextPos - 1]) &lt; 0) {
+            table[nextPos] = table[nextPos - 1]; // Shift down.
+            nextPos--; // Check next smaller element.
+        }
+
+        // Insert nextVal at nextPos.
+        table[nextPos] = nextVal;
+    }
+}
+</code></pre>
+<ul>
+<li>We use the method <code>insert</code> to perform the insertion step so that it would be easier to implement the <code>Shell sort</code> algorithm later. </li>
+</ul>
+<h3 id="analysis_1">Analysis</h3>
+<ul>
+<li>The maximum number of comparisons is represented by the series <script type="math/tex">1 + 2 + ... + (n -2) + (n -1)</script>, which is <script type="math/tex">O(n^2)</script>.</li>
+</ul>
+<h2 id="more-on-this-chapter-coming-soon">🚨 More on This Chapter Coming Soon!</h2>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html" class="btn btn-neutral float-left" title="Advanced Trees"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

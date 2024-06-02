@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>The Iterator, ListIterator, and Iterable Interfaces - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The Iterator, ListIterator, and Iterable Interfaces";
+        var mkdocs_page_input_path = "data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.md";
+        var mkdocs_page_url = "/data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Lists and The Collection Framework</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">The Iterator, ListIterator, and Iterable Interfaces</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#the-iterator-interface">The Iterator Interface</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-javautiliteratore">Interface java.util.Iterator&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#extra">Extra</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-listiterator-interface">The ListIterator Interface</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#overview_1">Overview</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-javautillistiteratore">Interface java.util.ListIterator&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#comparison-of-iterator-and-listiterator">Comparison of Iterator and ListIterator</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-iterable-interface">The Iterable Interface</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#overview_2">Overview</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-javalangiterablet">Interface java.lang.Iterable&lt;T&gt;</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Lists and The Collection Framework</li>
+      <li class="breadcrumb-item active">The Iterator, ListIterator, and Iterable Interfaces</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="6-the-iterator-listiterator-and-iterable-interfaces">6. The <code>Iterator</code>, <code>ListIterator</code>, and <code>Iterable</code> Interfaces</h1>
+<h2 id="the-iterator-interface">The <code>Iterator</code> Interface</h2>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>The List interface declares the method iterator, which returns an Iterator object that will iterate over the elements of that list. </li>
+<li>The requirement for the iterator method is actually in the Collection interface, which is the superinterface for the List interface. The <code>Collection</code> interface extends the <code>Iterable</code> interface, so all classes that implement the <code>List</code> interface (a subinterface of <code>Collection</code>) must provide an <code>Iterator</code> method.</li>
+<li>An Iterator does not refer to or point to a particular object at any given time. Rather, you should think of an Iterator as pointing between objects within a list.</li>
+<li>Think of an iterator as a moving place marker that keeps track of the current position in a particular linked list. The Iterator object for a list starts at the first element in the list. The programmer can use the Iterator object’s <code>next</code> method to retrieve the next element. Each time it does a retrieval, the Iterator object advances to the next list element, where it waits until it is needed again. We can also ask the Iterator object to determine whether the list has more elements left to process (method <code>hasNext</code>). Iterator objects throw a <code>NoSuchElementException</code> if they are asked to retrieve the next element after all elements have been processed.</li>
+<li>You can use the Iterator remove method to remove elements from a list as you access them. You can remove only the element that was most recently accessed by next. Each call to remove must be preceded by a call to next to retrieve the next element.</li>
+</ul>
+<h3 id="interface-javautiliteratore">Interface <code>java.util.Iterator&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>hasNext()</td>
+<td>Returns true if the iteration has more elements.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>next()</td>
+<td>Returns the next element in the iteration.</td>
+</tr>
+<tr>
+<td>default void</td>
+<td>remove()</td>
+<td>Removes from the underlying collection the last element returned by this iterator (optional operation).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="extra">Extra</h3>
+<blockquote>
+<h4 id="efficient-access-to-list-elements-by-iterator">Efficient Access to List Elements by Iterator</h4>
+<p>We can use the following loop to access the list elements in sequence, starting with the one at index 0.
+  // Access each list element.
+  for (int index = 0; index &lt; aList.size(); index++) {
+      E nextElement = aList.get(index);
+      // Do something with the element at position index (nextElement)
+      . . .
+  }
+The loop is executed aList.size() times; thus it is O(<script type="math/tex">n</script>). During each iteration, we call the method get to retrieve the element at position index. If we assume that the method get begins at the first list node (head), each call to method get must advance a local reference (nodeRef) to the node at position index using a loop such as:
+  // Advance nodeRef to the element at position index.
+  Node<E> nodeRef = head;
+  for (int j = 0; j &lt; index; j++) {
+      nodeRef = nodeRef.next;
+  }</p>
+<p>This loop (in method get) executes index times, so it is also O(<script type="math/tex">n</script>). Therefore, the performance of the nested loops used to process each element in a LinkedList is O(<script type="math/tex">n^2</script>) and is very inefficient. We would like to have an alternative way to access the elements in a linked list sequentially.</p>
+<h4 id="removal-using-iteratorremove-versus-listremove">Removal Using <code>Iterator.remove</code> versus <code>List.remove</code></h4>
+<p>You could also use method LinkedList.remove to remove elements from a list. However, it is more efficient to remove multiple elements from a list using Iterator.remove than it would be to use LinkedList.remove. The LinkedList.remove method removes only one element at a time, so you would need to start at the beginning of the list each time and advance down the list to each element that you wanted to remove (O(n2) process). With the Iterator.remove method, you can remove elements as they are accessed by the Iterator object without having to go back to the beginning of the list (O(n) process).</p>
+<h4 id="the-enhanced-for-loop">The Enhanced <code>for</code> Loop</h4>
+<p>The enhanced for loop creates an Iterator object and implicitly calls its hasNext and next
+methods. Other Iterator methods, such as remove, are not available.</p>
+<p><strong>FORM</strong>:
+  for (formalParameter : expression) { . . . }</p>
+<p><strong>EXAMPLE</strong>:
+  for (String nextStr : myList) { . . . }
+  for (int nextInt : aList) { . . . }</p>
+<p><strong>MEANING</strong>:
+During each repetition of the loop, the variable specified by formalParameter accesses the next element of expression, starting with the first element and ending with the last. The expression must be an array or a collection that implements the Iterable interface. The Collection interface extends the Iterable interface so that all classes that implement it are implementors of the Iterable interface (see next section).</p>
+</blockquote>
+<h2 id="the-listiterator-interface">The <code>ListIterator</code> Interface</h2>
+<h3 id="overview_1">Overview</h3>
+<ul>
+<li>The Iterator has some limitations. It can traverse the List only in the forward direction. It also provides only a remove method, not an add method. Also, to start an Iterator somewhere other than at first List element, you must write your own loop to advance the Iterator to the desired starting position.</li>
+<li>The <code>next</code> method moves the iterator forward and returns the element that was jumped over. The <code>previous</code> method moves the iterator backward and also returns the element that was jumped over.</li>
+</ul>
+<h3 id="interface-javautillistiteratore">Interface <code>java.util.ListIterator&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td>add(E e)</td>
+<td>Inserts the specified element into the list (optional operation).<br />Inserts object obj into the list just before the item that would be returned by the next call to method next and after the item that would have been returned by method previous. If the method previous is called after add, the newly inserted object will be returned</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>hasNext()</td>
+<td>Returns true if this list iterator has more elements when traversing the list in the forward direction.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>hasPrevious()</td>
+<td>Returns true if this list iterator has more elements when traversing the list in the reverse direction.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>next()</td>
+<td>Returns the next element in the list and advances the cursor position.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>nextIndex()</td>
+<td>Returns the index of the element that would be returned by a subsequent call to next().</td>
+</tr>
+<tr>
+<td>E</td>
+<td>previous()</td>
+<td>Returns the previous element in the list and moves the cursor position backwards.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>previousIndex()</td>
+<td>Returns the index of the element that would be returned by a subsequent call to previous().</td>
+</tr>
+<tr>
+<td>void</td>
+<td>remove()</td>
+<td>Removes from the list the last element that was returned by next() or previous() (optional operation).<br />Removes the last item returned from a call to next or previous. If a call to remove is not preceded by a call to next or previous, the IllegalStateException is thrown</td>
+</tr>
+<tr>
+<td>void</td>
+<td>set(E e)</td>
+<td>Replaces the last element returned by next() or previous() with the specified element (optional).<br />Replaces the last item returned from a call to next or previous with obj. If a call to set is not preceded by a call to next or previous, the IllegalStateException is thrown</td>
+</tr>
+</tbody>
+</table>
+<h4 id="methods-in-javautillinkedliste-that-return-listiterator">Methods in <code>java.util.LinkedList&lt;E&gt;</code> that Return <code>ListIterator</code></h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ListIterator\<E></td>
+<td>listIterator()</td>
+<td>Returns a ListIterator that begins just before the first list element.</td>
+</tr>
+<tr>
+<td>ListIterator\<E></td>
+<td>listIterator(int index)</td>
+<td>Returns a ListIterator that begins just before the position index.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-of-iterator-and-listiterator">Comparison of <code>Iterator</code> and <code>ListIterator</code></h3>
+<ul>
+<li>Because the interface <code>ListIterator&lt;E&gt;</code> is a subinterface of <code>Iterator&lt;E&gt;</code>, classes that implement <code>ListIterator</code> must provide all of the capabilities of both. </li>
+<li>The <code>Iterator</code> interface requires fewer methods and can be used to iterate over more general data structures—that is, structures for which an index is not meaningful and ones for which traversing in only the <strong>forward</strong> direction is required. </li>
+<li>It is for this reason that the Iterator is required by the <code>Collection</code> interface (more general), whereas the <code>ListIterator</code> is required only by the <code>List</code>
+  interface (more specialized).</li>
+</ul>
+<h2 id="the-iterable-interface">The <code>Iterable</code> Interface</h2>
+<h3 id="overview_2">Overview</h3>
+<ul>
+<li>This interface requires only that a class that implements it provides an <code>iterator</code> method. As mentioned above, the <code>Collection</code> interface extends the <code>Iterable</code> interface, so all classes that implement the <code>List</code> interface (a subinterface of <code>Collection</code>) must provide an iterator method.</li>
+</ul>
+<h3 id="interface-javalangiterablet">Interface <code>java.lang.Iterable&lt;T&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method and Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default void</td>
+<td>forEach(Consumer&lt;? super T&gt; action)<br/>Performs the given action for each element of the Iterable until all elements have been processed or the action throws an exception.</td>
+</tr>
+<tr>
+<td>Iterator<T></td>
+<td>iterator()<br/>Returns an iterator over elements of type T.</td>
+</tr>
+<tr>
+<td>default Spliterator<T></td>
+<td>spliterator()<br/>Creates a Spliterator over the elements described by this Iterable.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="1-5-linked-list-class.html" class="btn btn-neutral float-left" title="LinkedList Class"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="1-7-double-linked-lists.html" class="btn btn-neutral float-right" title="Double-Linked Lists">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="1-5-linked-list-class.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="1-7-double-linked-lists.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
