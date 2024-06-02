@@ -6,17 +6,12 @@ Please support my work if you find it useful by giving the [repository](https://
 <h2 align="center" >About Me</h2>
 
 - 🎓 I am currently pursuing my Master's degree in Computer Science in <a href="https://www.tum.de/en/" target="blank">Technical University of Munich</a>.
-
-- 💻 I am DevOps Engineer as a working student at <a href="https://www.infineon.com/" target="blank">Infineon Technologies AG</a>.
-
 - 🎓 I studied my Bachelor's in Computer Engineering in <a href="https://bogazici.edu.tr/" target="blank">Boğaziçi University</a>.
-
+- :computer: I am currently doing my Master's Thesis at <a href="https://www.siemens.com/global/en.html" target="blank">Siemens AG</a>.
+- :computer: Previously at  <a href="https://www.infineon.com/" target="blank">Infineon Technologies AG</a>, <a href="https://www.huawei.com/en/" target="blank">Huawei Technologies</a>, <a href="https://www.pointr.tech/" target="blank">Pointr</a>, and <a href="https://www.sas.com/en_us/home.html" target="blank">SAS Institute</a>.
 - 🔎 I am interested in Software Engineering (Software Development, System Design, Cloud Information Systems) , Artificial Intelligence, Computer Vision, Quantum Computing, and Blockchain.
-
 - 🥳 In my free times, I enjoy Football, Formula 1, Chess, Guitar, and Movies.
-
 - ✉️ Feel free to reach me via **bdkorkmazdeveloper@gmail.com**!
-
 - 📄 For a more detailed background about me, check out my <a href="https://github.com/barandenizkorkmaz/barandenizkorkmaz/blob/main/docs/Resume.pdf" target="blank">resume</a>!
   <br/>
 
