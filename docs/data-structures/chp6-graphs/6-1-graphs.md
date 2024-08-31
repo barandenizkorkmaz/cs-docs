@@ -849,3 +849,91 @@ while V–S is not empty
 
 - Time Complexity: $O(|V|^2)$
 
+##### Implementation
+
+```java
+package algorithms.graph.minspanningtree;
+
+import datastructures.graph.Edge;
+import datastructures.graph.Graph;
+
+import java.util.*;
+
+public class Prim {
+
+    /** Prim's Minimum Spanning Tree algorithm.
+     @param graph The weighted graph to be searched
+     @param start The start vertex
+     @return An ArrayList of edges that forms the MST
+     */
+    public static ArrayList<Edge> primsAlgorithm(Graph graph, int start) {
+        ArrayList<Edge> result = new ArrayList<>();
+        int numV = graph.getNumV();
+
+        // Use a HashSet to represent V–S.
+        Set<Integer> vMinusS = new HashSet<>(numV);
+        // Declare the priority queue.
+        Queue<Edge> pQ = new PriorityQueue<>(numV, (e1, e2) -> Double.compare(e1.getWeight(), e2.getWeight()));
+
+        // Initialize V–S.
+        for (int i = 0; i < numV; i++) {
+            if (i != start) {
+                vMinusS.add(i);
+            }
+        }
+        int current = start;
+        // Main loop
+        while (!vMinusS.isEmpty()) {
+            // Update priority queue.
+            Iterator<Edge> iter = graph.edgeIterator(current);
+            while (iter.hasNext()) {
+                Edge edge = iter.next();
+                int dest = edge.getDest();
+                if (vMinusS.contains(dest)) {
+                    pQ.add(edge);
+                }
+            }
+            // Find the shortest edge whose source is in S and
+            // destination is in V–S.
+            int dest = -1;
+            Edge edge = null;
+            do {
+                edge = pQ.remove();
+                dest = edge.getDest();
+            } while(!vMinusS.contains(dest));
+            // Take dest out of vMinusS.
+            vMinusS.remove(dest);
+            // Add edge to result.
+            result.add(edge);
+            // Make this the current vertex.
+            current = dest;
+        }
+        return result;
+    }
+}
+```
+
+
+
+#### Kruskal's Algorithm
+
+```java
+Algorithm Kruskal(G):
+Input: A simple connected weighted graph G with n vertices and m edges
+Output: A minimum spanning tree T for G
+
+for each vertex v in G do
+	Define an elementary cluster C(v) = {v}.
+Initialize a priority queue Q to contain all edges in G, using the weights as keys.
+T =∅
+{T will ultimately contain the edges of an MST}
+while T has fewer than n − 1 edges do
+	(u, v) = value returned by Q.removeMin( )
+	Let C(u) be the cluster containing u, and let C(v) be the cluster containing v.
+	if C(u) not equal to C(v) then
+		Add edge (u, v) to T .
+		Merge C(u) and C(v) into one cluster.
+return tree T
+```
+
+- **NOTE: Prim's algorithm is better for denser graphs since it iterates over vertices, however Kruskal's algorithm is better for sparser graphs since it iterates over edges.**
