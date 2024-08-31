@@ -517,3 +517,232 @@ public class MapGraph extends AbstractGraph {
 }
 ```
 
+
+
+## Graph Traversals
+
+- The two most common traversal algorithms are **breadth-first** and **depth-first** search.
+
+
+
+### Breadth-First Search
+
+```java
+1. Take an arbitrary start vertex, mark it visited and place it in a queue.
+2. while the queue is not empty
+3.     Take a vertex u.
+4.     for all vertices, v, adjacent to this vertex, u
+5.         if v has not been visited
+6.             Mark it visited .
+7. 			   Insert vertex v into the queue.
+```
+
+**NOTE:** A path starting at the root to any vertex in the tree is the shortest path in the original graph from the start vertex to that vertex, where we consider all edges to have the same weight. Therefore, the shortest path is the one that goes through the smallest number of vertices. We can save the information we need to represent this tree by storing the parent of each vertex when we identify it (Step 7 of the breadth‐first algorithm).
+
+```java
+Refinement of Step 7 of Breadth‐First Search Algorithm
+7.1 Insert vertex v into the queue.
+7.2 Set the parent of v to u.
+```
+
+- Time Complexity: $O(|E|)$
+
+
+
+```java
+package algorithms.graph.search;
+
+import datastructures.graph.Edge;
+import datastructures.graph.Graph;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+/** Class to implement the breadth‐first search algorithm. */
+public class BreadthFirstSearch {
+
+    /** Perform a breadth‐first search of a graph.
+     @post The array parent will contain the predecessor
+     of each vertex in the breadth‐first search tree.
+     @param graph The graph to be searched
+     @param start The start vertex
+     @return The array of parents
+     */
+    public static int[] breadthFirstSearch(Graph graph, int start) {
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        // Declare array parent and initialize its elements to –1.
+        int[] parent = new int[graph.getNumV()];
+        for (int i = 0; i < graph.getNumV(); i++) {
+            parent[i] = -1;
+        }
+
+        // Declare array visited and initialize its elements to false.
+        boolean[] visited = new boolean[graph.getNumV()];
+
+        // Mark the start vertex as visited and insert it into the queue.
+        visited[start] = true;
+        queue.offer(start);
+
+        // Perform breadth‐first search until done
+        while (!queue.isEmpty()) {
+            // Take a vertex, current, out of the queue.
+            int current = queue.remove();
+            System.out.print(current + "\t");
+            // Examine each vertex, neighbor, adjacent to current.
+            Iterator<Edge> itr = graph.edgeIterator(current);
+            while (itr.hasNext()) {
+                Edge edge = itr.next();
+                int neighbor = edge.getDest();
+                if (!visited[neighbor]) {
+                    // Mark it visited.
+                    visited[neighbor] = true;
+                    // Place it into the queue.
+                    queue.offer(neighbor);
+                    // Insert the edge (current, neighbor) into the tree.
+                    parent[neighbor] = current;
+                }
+            }
+        }
+        return parent;
+    }
+}
+```
+
+
+
+### Depth-First Search
+
+```java
+1. Mark the current vertex, u, visited (color it light gray), and enter it in the discovery order list.
+2. for each vertex, v, adjacent to the current vertex, u
+3.     if v has not been visited
+4.         Set parent of v to u.
+5.         Recursively apply this algorithm starting at v.
+6. Mark u finished (color it dark gray) and enter u into the finish order list.
+```
+
+```java
+package algorithms.graph.search;
+
+import datastructures.graph.Edge;
+import datastructures.graph.Graph;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+/** Class to implement the breadth‐first search algorithm. */
+public class BreadthFirstSearch {
+
+    /** Perform a breadth‐first search of a graph.
+     @post The array parent will contain the predecessor
+     of each vertex in the breadth‐first search tree.
+     @param graph The graph to be searched
+     @param start The start vertex
+     @return The array of parents
+     */
+    public static int[] breadthFirstSearch(Graph graph, int start) {
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        // Declare array parent and initialize its elements to –1.
+        int[] parent = new int[graph.getNumV()];
+        for (int i = 0; i < graph.getNumV(); i++) {
+            parent[i] = -1;
+        }
+
+        // Declare array visited and initialize its elements to false.
+        boolean[] visited = new boolean[graph.getNumV()];
+
+        // Mark the start vertex as visited and insert it into the queue.
+        visited[start] = true;
+        queue.offer(start);
+
+        // Perform breadth‐first search until done
+        while (!queue.isEmpty()) {
+            // Take a vertex, current, out of the queue.
+            int current = queue.remove();
+            System.out.print(current + "\t");
+            // Examine each vertex, neighbor, adjacent to current.
+            Iterator<Edge> itr = graph.edgeIterator(current);
+            while (itr.hasNext()) {
+                Edge edge = itr.next();
+                int neighbor = edge.getDest();
+                if (!visited[neighbor]) {
+                    // Mark it visited.
+                    visited[neighbor] = true;
+                    // Place it into the queue.
+                    queue.offer(neighbor);
+                    // Insert the edge (current, neighbor) into the tree.
+                    parent[neighbor] = current;
+                }
+            }
+        }
+        return parent;
+    }
+}
+```
+
+- Time Complexity: $O(|E|)$. Please note that there is an implicit step 0 of the algorithm to that marks all vertices as unvisited. This is $O(|V|)$, thus, the total running time of the algorithm is $O(|V|+|E|)$.
+
+
+
+### Topological Sort
+
+- A topological sort of the vertices of a **DAG (Directed Acyclic Graph)** is an ordering of the vertices such that if $(u, v)$ is an edge, then u appears before v. This must be true for all edges.
+- **If there is an edge from u to v in a DAG, then if we perform depth-first search of this graph, the finish time of u must be after the finish time of v.**
+
+```java
+Algorithm for Topological Sort
+1. Perform a depth‐first search of the graph.
+2. List the vertices in reverse of their finish order.
+```
+
+```java
+package algorithms.graph.sort;
+
+import algorithms.graph.search.DepthFirstSearch;
+import datastructures.graph.AbstractGraph;
+import datastructures.graph.Graph;
+
+import java.io.File;
+import java.util.*;
+
+/** This program outputs the topological sort of a directed graph
+ that contains no cycles.
+ */
+public class TopologicalSort {
+    /**
+     * The main method that performs the topological sort.
+     *
+     * @param args The command line arguments
+     * @pre arg[0] contains the name of the file
+     * that contains the graph. It has no cycles.
+     */
+    public static void main(String[] args) {
+        Graph theGraph = null;
+        int numVertices = 0;
+        try {
+            // Connect Scanner to input file.
+            Scanner scan = new Scanner(new File(args[0]));
+            // Load the graph data from a file.
+            theGraph = AbstractGraph.createGraph(scan, true, "List");
+            numVertices = theGraph.getNumV();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.exit(1);
+            // Error exit.
+        }
+        // Perform the depth‐first search.
+        DepthFirstSearch.depthFirstSearch(theGraph, 0);
+
+        // Topological Sort is the reverse of finish order in dfs. Please update the print statements in the dfs to view topological sort.
+    }
+}
+```
+
+- **NOTE:** To keep **DepthFirstSearch** class simple, we don't add any data objects for storing discovery and finish orders. One can keep track of finish orders to output topological sort correctly.
+
+
+
