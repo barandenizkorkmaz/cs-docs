@@ -1,3 +1,7 @@
+# Customized by user
+*.pdf
+*.txt
+
 # Compiled class file
 *.class
 
