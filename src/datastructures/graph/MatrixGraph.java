@@ -34,7 +34,7 @@ public class MatrixGraph extends AbstractGraph{
 
     @Override
     public Edge getEdge(int source, int dest) {
-        return edges[source][dest] == Double.POSITIVE_INFINITY ? null : new Edge(source, dest);
+        return edges[source][dest] == Double.POSITIVE_INFINITY ? null : new Edge(source, dest, edges[source][dest]);
     }
 
     @Override
