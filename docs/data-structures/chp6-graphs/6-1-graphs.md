@@ -746,3 +746,106 @@ public class TopologicalSort {
 
 
 
+## Algorithms Using Weighted Graphs
+
+### Dijkstra's Algorithm
+
+- Used for finding the shortest path from a vertex to all other vertices.
+- Assumes that all of the edge values are positive.
+
+- Time Complexity: $O(|V|^2)$
+
+#### Pseudocode
+
+```java
+ 1  function Dijkstra(Graph, source):
+ 2     
+ 3      for each vertex v in Graph.Vertices:
+ 4          dist[v] ← INFINITY
+ 5          prev[v] ← UNDEFINED
+ 6          add v to Q
+ 7      dist[source] ← 0
+ 8     
+ 9      while Q is not empty:
+10          u ← vertex in Q with minimum dist[u]
+11          remove u from Q
+12         
+13          for each neighbor v of u still in Q:
+14              alt ← dist[u] + Graph.Edges(u, v)
+15              if alt < dist[v]:
+16                  dist[v] ← alt
+17                  prev[v] ← u
+18
+19      return dist[], prev[]
+```
+
+
+
+#### Using a Priority Queue
+
+```java
+1   function Dijkstra(Graph, source):
+2       create vertex priority queue Q
+3
+4       dist[source] ← 0                          // Initialization
+5       Q.add_with_priority(source, 0)            // associated priority equals dist[·]
+6
+7       for each vertex v in Graph.Vertices:
+8           if v ≠ source
+9               prev[v] ← UNDEFINED               // Predecessor of v
+10              dist[v] ← INFINITY                // Unknown distance from source to v
+11              Q.add_with_priority(v, INFINITY)
+12
+13
+14      while Q is not empty:                     // The main loop
+15          u ← Q.extract_min()                   // Remove and return best vertex
+16          for each neighbor v of u:             // Go through all v neighbors of u
+17              alt ← dist[u] + Graph.Edges(u, v)
+18              if alt < dist[v]:
+19                  prev[v] ← u
+20                  dist[v] ← alt
+21                  Q.decrease_priority(v, alt)
+22
+23      return dist, prev
+```
+
+
+
+### Minimum Spanning Trees
+
+- A spanning tree is a subset of the edges of a graph such that there is only one edge between each vertex, and all of the vertices are connected. 
+- If we have a spanning tree for a graph, then we can access all the vertices of the graph from the start node. 
+- The cost of a spanning tree is the sum of the weights of the edges. We want to find the **minimum** spanning tree or the spanning tree with the smallest cost.
+- Two algorithms for finding **Minimum Spanning Trees:**
+  - Prim's Algorithm
+  - Kruskal Algorithm
+
+
+
+#### Prim's Algorithm
+
+- The algorithm may informally be described as performing the following steps:
+  1. Initialize a tree with a single vertex, chosen arbitrarily from the graph.
+  2. Grow the tree by one edge: Of the edges that connect the tree to vertices not yet in the tree, find the minimum-weight edge, and transfer it to the tree.
+  3. Repeat step 2 (until all vertices are in the tree).
+
+```java
+Initialize S with the start vertex, s, and V–S with the remaining vertices.
+for all v in V–S
+	Set p[v] to s.
+	if there is an edge (s, v)
+		Set d[v] to w(s, v).
+	else
+		Set d[v] to ∞.
+while V–S is not empty
+	for all u in V–S, find the smallest d[u].
+	Remove u from V–S and add it to S.
+	Insert the edge (u, p[u]) into the spanning tree.
+	for all v in V–S
+		if w(u, v) < d[v]
+            Set d[v] to w(u, v).
+            Set p[v] to u.
+```
+
+- Time Complexity: $O(|V|^2)$
+
