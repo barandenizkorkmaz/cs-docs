@@ -30,6 +30,7 @@ public class DepthFirstSearch {
     private static void depthFirstSearchRecurse(Graph graph, int current, boolean[] visited, int[] parent) {
         /* Mark the current vertex visited. */
         visited[current] = true;
+        // Print by discovery order.
         System.out.print(current + "\t");
         /* Examine each vertex adjacent to the current vertex */
         Iterator<Edge> itr = graph.edgeIterator(current);
@@ -43,5 +44,7 @@ public class DepthFirstSearch {
                 depthFirstSearchRecurse(graph, neighbor, visited, parent);
             }
         }
+        // Print by finish order.
+        // System.out.print(current + "\t");
     }
 }
