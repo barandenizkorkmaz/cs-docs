@@ -7,8 +7,8 @@ Please support my work if you find it useful by giving the [repository](https://
 
 - 🎓 I am currently pursuing my Master's degree in Computer Science in <a href="https://www.tum.de/en/" target="blank">Technical University of Munich</a>.
 - 🎓 I studied my Bachelor's in Computer Engineering in <a href="https://bogazici.edu.tr/" target="blank">Boğaziçi University</a>.
-- :computer: I am currently doing my Master's Thesis at <a href="https://www.siemens.com/global/en.html" target="blank">Siemens AG</a>.
-- :computer: Previously at  <a href="https://www.infineon.com/" target="blank">Infineon Technologies AG</a>, <a href="https://www.huawei.com/en/" target="blank">Huawei Technologies</a>, <a href="https://www.pointr.tech/" target="blank">Pointr</a>, and <a href="https://www.sas.com/en_us/home.html" target="blank">SAS Institute</a>.
+- 💻 I am currently doing my Master's Thesis at <a href="https://www.siemens.com/global/en.html" target="blank">Siemens AG</a>.
+- 💻 Previously at  <a href="https://www.infineon.com/" target="blank">Infineon Technologies AG</a>, <a href="https://www.huawei.com/en/" target="blank">Huawei Technologies</a>, <a href="https://www.pointr.tech/" target="blank">Pointr</a>, and <a href="https://www.sas.com/en_us/home.html" target="blank">SAS Institute</a>.
 - 🔎 I am interested in Software Engineering (Software Development, System Design, Cloud Information Systems) , Artificial Intelligence, Computer Vision, Quantum Computing, and Blockchain.
 - 🥳 In my free times, I enjoy Football, Formula 1, Chess, Guitar, and Movies.
 - ✉️ Feel free to reach me via **bdkorkmazdeveloper@gmail.com**!
