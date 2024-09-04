@@ -57,6 +57,64 @@
 | `public int hashCode()`           | Returns the hash code for an edge. The hash code depends only on the source and destination |
 | `public String toString()`        | Returns a string representation of the edge                  |
 
+```java
+package datastructures.graph;
+
+public class Edge {
+    private int source;
+    private int dest;
+    private double weight;
+
+    public Edge(int source, int dest) {
+        this.source = source;
+        this.dest = dest;
+        this.weight = 1.0;
+    }
+
+    public Edge(int source, int dest, double weight) {
+        this.source = source;
+        this.dest = dest;
+        this.weight = weight;
+    }
+
+    public int getSource() {
+        return source;
+    }
+
+    public int getDest(){
+        return dest;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Edge edge = (Edge) o;
+        return source == edge.source && dest == edge.dest;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Integer.hashCode(source);
+        result = 31 * result + Integer.hashCode(dest);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "source=" + source +
+                ", dest=" + dest +
+                ", weight=" + weight +
+                '}';
+    }
+}
+```
+
 
 
 ## Implementing the Graph ADT
@@ -615,12 +673,11 @@ public class BreadthFirstSearch {
 ### Depth-First Search
 
 ```java
-1. Mark the current vertex, u, visited (color it light gray), and enter it in the discovery order list.
+1. Mark the current vertex, u, visited.
 2. for each vertex, v, adjacent to the current vertex, u
 3.     if v has not been visited
 4.         Set parent of v to u.
 5.         Recursively apply this algorithm starting at v.
-6. Mark u finished (color it dark gray) and enter u into the finish order list.
 ```
 
 ```java
@@ -629,57 +686,49 @@ package algorithms.graph.search;
 import datastructures.graph.Edge;
 import datastructures.graph.Graph;
 
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
 
-/** Class to implement the breadth‐first search algorithm. */
-public class BreadthFirstSearch {
+/** Class to implement the depth‐first search algorithm. */
+public class DepthFirstSearch {
 
-    /** Perform a breadth‐first search of a graph.
-     @post The array parent will contain the predecessor
-     of each vertex in the breadth‐first search tree.
-     @param graph The graph to be searched
+    /** Start depth‐first search the graph starting at vertex start.
+     @param graph The graph object.
      @param start The start vertex
-     @return The array of parents
      */
-    public static int[] breadthFirstSearch(Graph graph, int start) {
-        Queue<Integer> queue = new LinkedList<Integer>();
+    public static void depthFirstSearch(Graph graph, int start){
+        int n = graph.getNumV();
+        boolean[] visited = new boolean[n];
+        int[] parent = new int[n];
+        Arrays.fill(parent, -1);
+        depthFirstSearchRecurse(graph, start, visited, parent);
+    }
 
-        // Declare array parent and initialize its elements to –1.
-        int[] parent = new int[graph.getNumV()];
-        for (int i = 0; i < graph.getNumV(); i++) {
-            parent[i] = -1;
-        }
-
-        // Declare array visited and initialize its elements to false.
-        boolean[] visited = new boolean[graph.getNumV()];
-
-        // Mark the start vertex as visited and insert it into the queue.
-        visited[start] = true;
-        queue.offer(start);
-
-        // Perform breadth‐first search until done
-        while (!queue.isEmpty()) {
-            // Take a vertex, current, out of the queue.
-            int current = queue.remove();
-            System.out.print(current + "\t");
-            // Examine each vertex, neighbor, adjacent to current.
-            Iterator<Edge> itr = graph.edgeIterator(current);
-            while (itr.hasNext()) {
-                Edge edge = itr.next();
-                int neighbor = edge.getDest();
-                if (!visited[neighbor]) {
-                    // Mark it visited.
-                    visited[neighbor] = true;
-                    // Place it into the queue.
-                    queue.offer(neighbor);
-                    // Insert the edge (current, neighbor) into the tree.
-                    parent[neighbor] = current;
-                }
+    /** Recursively depth‐first search the graph starting at vertex current.
+     @param graph The graph object.
+     @param current The start vertex
+     @param visited Boolean array of visited nodes
+     @param parent Integer array of parent nodes for corresponding vertices.
+     */
+    private static void depthFirstSearchRecurse(Graph graph, int current, boolean[] visited, int[] parent) {
+        /* Mark the current vertex visited. */
+        visited[current] = true;
+        // Print by discovery order.
+        System.out.print(current + "\t");
+        /* Examine each vertex adjacent to the current vertex */
+        Iterator<Edge> itr = graph.edgeIterator(current);
+        while (itr.hasNext()) {
+            int neighbor = itr.next().getDest();
+            /* Process a neighbor that has not been visited */
+            if (!visited[neighbor]) {
+                /* Insert (current, neighbor) into the depth‐first search tree. */
+                parent[neighbor] = current;
+                /* Recursively apply the algorithm starting at neighbor. */
+                depthFirstSearchRecurse(graph, neighbor, visited, parent);
             }
         }
-        return parent;
+        // Print by finish order.
+        // System.out.print(current + "\t");
     }
 }
 ```
