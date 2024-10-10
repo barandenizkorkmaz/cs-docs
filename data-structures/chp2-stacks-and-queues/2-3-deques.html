@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp2-stacks-and-queues/2-3-deques.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Deques - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deques";
+        var mkdocs_page_input_path = "data-structures/chp2-stacks-and-queues/2-3-deques.md";
+        var mkdocs_page_url = "/data-structures/chp2-stacks-and-queues/2-3-deques.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Stacks and Queues</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Deques</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interface-javautildequee">Interface java.util.Deque&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-a-deque-as-a-queue">Using a Deque as a Queue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-a-deque-as-a-stack">Using a Deque as a Stack</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Stacks and Queues</li>
+      <li class="breadcrumb-item active">Deques</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-deque">3. Deque</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>The name deque (pronounced "deck") is short for double‐ended queue, which means that it is a data structure that allows insertions and removals from both ends (front and rear).</li>
+</ul>
+<h3 id="interface-javautildequee">Interface <code>java.util.Deque&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong><code>Modifier and Type</code></strong></th>
+<th><strong><code>Method</code></strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code></td>
+<td>Inserts the specified element into the queue represented by this deque (at the tail) if space is available, throws IllegalStateException if no space is available.</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>addFirst(E e)</code></td>
+<td>Inserts the specified element at the front of this deque, throws IllegalStateException if no space is available.</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>addLast(E e)</code></td>
+<td>Inserts the specified element at the end of this deque, throws IllegalStateException if no space is available.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offer(E e)</code></td>
+<td>Inserts the specified element into the queue represented by this deque (at the tail) if space is available, returns true upon success, false if no space is available.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offerFirst(E e)</code></td>
+<td>Inserts the specified element at the front of this deque unless it would violate capacity restrictions.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offerLast(E e)</code></td>
+<td>Inserts the specified element at the end of this deque unless it would violate capacity restrictions.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>poll()</code></td>
+<td>Retrieves and removes the head of the queue represented by this deque, returns null if this deque is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>pollFirst()</code></td>
+<td>Retrieves and removes the first element of this deque, returns null if this deque is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>pollLast()</code></td>
+<td>Retrieves and removes the last element of this deque, returns null if this deque is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>remove()</code></td>
+<td>Retrieves and removes the head of the queue represented by this deque.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>removeFirst()</code></td>
+<td>Retrieves and removes the first element of this deque.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>removeLast()</code></td>
+<td>Retrieves and removes the last element of this deque.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peek()</code></td>
+<td>Retrieves, but does not remove, the head of the queue represented by this deque, returns null if this deque is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peekFirst()</code></td>
+<td>Retrieves, but does not remove, the first element of this deque, returns null if this deque is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peekLast()</code></td>
+<td>Retrieves, but does not remove, the last element of this deque, returns null if this deque is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>element()</code></td>
+<td>Retrieves, but does not remove, the head of the queue represented by this deque.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>getFirst()</code></td>
+<td>Retrieves, but does not remove, the first element of this deque.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>getLast()</code></td>
+<td>Retrieves, but does not remove, the last element of this deque.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>removeFirstOccurrence(Object o)</code></td>
+<td>Removes the first occurrence of the specified element from this deque.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>removeLastOccurrence(Object o)</code></td>
+<td>Removes the last occurrence of the specified element from this deque.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>size()</code></td>
+<td>Returns the number of elements in this deque.</td>
+</tr>
+<tr>
+<td><code>Iterator&lt;E&gt;</code></td>
+<td><code>iterator()</code></td>
+<td>Returns an iterator over the elements in this deque in proper sequence.</td>
+</tr>
+<tr>
+<td><code>Iterator&lt;E&gt;</code></td>
+<td><code>descendingIterator()</code></td>
+<td>Returns an iterator over the elements in this deque in reverse sequential order.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>contains(Object o)</code></td>
+<td>Returns true if this deque contains the specified element.</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>push(E e)</code></td>
+<td>Pushes an element onto the stack represented by this deque (at the head) if space is available, throws IllegalStateException if no space is available.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>pop()</code></td>
+<td>Pops an element from the stack represented by this deque.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>remove(Object o)</code></td>
+<td>Removes the first occurrence of the specified element from this deque.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image-20240110161905039" src="../../assets/images/data-structures/chp2/deque.png" /></p>
+<h3 id="implementation">Implementation</h3>
+<ul>
+<li>The Java Collections Framework provides four implementations of the Deque interface, including <strong>ArrayDeque</strong> and <strong>LinkedList</strong>.<ul>
+<li>ArrayDeque utilizes a <strong>resizable circular array</strong> like our class <strong>ArrayQueue</strong> and is the <strong>recommended</strong> implementation because, unlike <strong>LinkedList, it does not support indexed operations.</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="using-a-deque-as-a-queue">Using a Deque as a Queue</h3>
+<p><img alt="image-20240110161920697" src="../../assets/images/data-structures/chp2/deque-queue.png" /></p>
+<h3 id="using-a-deque-as-a-stack">Using a Deque as a Stack</h3>
+<p><img alt="image-20240110161945272" src="../../assets/images/data-structures/chp2/deque-stack.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="2-2-queues.html" class="btn btn-neutral float-left" title="Queues"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chp3-trees/chp3-trees.html" class="btn btn-neutral float-right" title="Trees">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="2-2-queues.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chp3-trees/chp3-trees.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

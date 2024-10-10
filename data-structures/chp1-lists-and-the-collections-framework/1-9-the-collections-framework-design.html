@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>The Collections Framework Design - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The Collections Framework Design";
+        var mkdocs_page_input_path = "data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.md";
+        var mkdocs_page_url = "/data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Lists and The Collection Framework</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">The Collections Framework Design</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#the-collection-interface">The Collection Interface</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#common-features-of-collections">Common Features of Collections</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-javautilcollectione">Interface java.util.Collection&lt;E&gt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-abstractcollection-abstractlist-and-abstractsequentiallist-classes">The AbstractCollection, AbstractList, and AbstractSequentialList Classes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-list-and-randomaccess-interface">The List and RandomAccess Interface</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Lists and The Collection Framework</li>
+      <li class="breadcrumb-item active">The Collections Framework Design</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="9-the-collections-framework-design">9. The Collections Framework Design</h1>
+<h2 id="the-collection-interface">The <code>Collection</code> Interface</h2>
+<ul>
+<li>The <code>Collection</code> interface specifies a subset of the methods specified in the <code>List</code> interface.</li>
+<li>Specifically, the add(int, E), get(int), remove(int), set(int, E), and related methods (all of which have an int parameter that represents a position) are not in the <code>Collection</code> interface, but the add(E) and remove(Object) methods, which do not specify a position, are included.</li>
+<li>The <code>iterator</code> method is also included in the <code>Collection</code> interface. Thus, you can use an <code>Iterator</code> to access all of the items in a <code>Collection</code>, but the order in which they are retrieved is not necessarily related to the order in which they were inserted</li>
+<li>The Collection interface is part of the Collections Framework. This interface has three subinterfaces: the <code>List</code> interface, the <code>Queue</code> interface, and the <code>Set</code> interface. The Java API does not provide any direct implementation of the <code>Collection</code> interface. The interface is used to reference collections of data in the most general way.</li>
+</ul>
+<p><img alt="image-20240104223001533" src="/home/denizkorkmaz/.config/Typora/typora-user-images/image-20240104223001533.png" /></p>
+<h3 id="common-features-of-collections">Common Features of Collections</h3>
+<ul>
+<li>
+<p>A few features can be considered fundamental:</p>
+<ul>
+<li>
+<p>Collections grow as needed.</p>
+</li>
+<li>
+<p>Collections hold references to objects.</p>
+</li>
+<li>
+<p>Collections have at least two constructors: one to create an empty collection and one to make a copy of another collection.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>For collections implementing the List interface, the order of the elements is determined by the index of the elements. In the more general Collection, the order is not specified.</p>
+</li>
+</ul>
+<h3 id="interface-javautilcollectione">Interface <code>java.util.Collection&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method and Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)<br/>Ensures that this collection contains the specified element (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>addAll(Collection&lt;? extends E&gt; c)<br/>Adds all of the elements in the specified collection to this collection (optional operation).</td>
+</tr>
+<tr>
+<td>void</td>
+<td>clear()<br/>Removes all of the elements from this collection (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>contains(Object o)<br/>Returns true if this collection contains the specified element.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>containsAll(Collection&lt;?&gt; c)<br/>Returns true if this collection contains all of the elements in the specified collection.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>equals(Object o)<br/>Compares the specified object with this collection for equality.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>isEmpty()<br/>Returns true if this collection contains no elements.</td>
+</tr>
+<tr>
+<td>Iterator<E></td>
+<td>iterator()<br/>Returns an iterator over the elements in this collection.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)<br/>Removes a single instance of the specified element from this collection, if it is present (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>removeAll(Collection&lt;?&gt; c)<br/>Removes all of this collection's elements that are also contained in the specified collection (optional operation).</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>retainAll(Collection&lt;?&gt; c)<br/>Retains only the elements in this collection that are contained in the specified collection (optional operation).</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()<br/>Returns the number of elements in this collection.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()<br/>Returns an array containing all of the elements in this collection.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-abstractcollection-abstractlist-and-abstractsequentiallist-classes">The <code>AbstractCollection</code>, <code>AbstractList</code>, and <code>AbstractSequentialList</code> Classes</h2>
+<ul>
+<li>
+<p>If you look at the Java API documentation, you will see that the <code>Collection</code> and <code>List</code> interfaces specify a large number of methods. To help implement these interfaces, the Java API includes the <code>AbstractCollection</code> and <code>AbstractList</code> classes. You can think of these classes as a
+  kit that can be used to build implementations of their corresponding interface. Most of the methods are provided, but you need to add a few to make it complete.</p>
+<ul>
+<li>
+<p>To implement the <code>Collection</code> interface completely, you need only extend the <code>AbstractCollection</code> class, provide an implementation of the add, size, and iterator methods, and supply an inner class to implement the Iterator interface.</p>
+</li>
+<li>
+<p>To implement the <code>List</code> interface, you can extend the <code>AbstractList</code> class and provide an implementation of the add(int, E), get(int), remove(int),
+  set(int, E), and size() methods.</p>
+<ul>
+<li>Since we provided these methods in our <code>ArrayList</code>, we can make it a complete implementation of the <code>List</code> interface by changing the class declaration to
+  <code>java
+  public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt;</code></li>
+</ul>
+<p>Note that the <code>AbstractList</code> class implements the iterator and listIterator methods using the index associated with the elements.</p>
+<ul>
+<li>Another way to implement the List interface is to extend the <code>AbstractSequentialList</code> class, implement the listIterator and size methods, and provide an inner class that implements the <code>ListIterator</code> interface. This was the approach we took in our <code>LinkedList</code>. Thus, by
+  changing the class declaration to</li>
+</ul>
+<p><code>java
+   public class LinkedList&lt;E&gt; extends AbstractSequentialList&lt;E&gt; implements List&lt;E&gt;</code></p>
+<p>it becomes a complete implementation of the List interface.</p>
+<ul>
+<li>Our <code>LinkedList</code> class included the add, get, remove, and set methods. These are provided by the <code>AbstractSequentialList</code>, so we could remove them from our <code>LinkedList</code> class and still have a complete List implementation.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="the-list-and-randomaccess-interface">The <code>List</code> and <code>RandomAccess</code> Interface</h2>
+<ul>
+<li>The <code>RandomAccess</code> interface is applied only to those implementations in which indexed operations are efficient (e.g., ArrayList). An algorithm can then test to see if a parameter of type List is also of type <code>RandomAccess</code> and, if not, copy its contents into an <code>ArrayList</code> temporarily so that the indexed operations can proceed more efficiently. After the indexed operations are completed, the contents of the <code>ArrayList</code> are copied back to the original.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="1-8-circular-linked-lists.html" class="btn btn-neutral float-left" title="Circular-Linked Lists"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chp2-stacks-and-queues/2-1-stacks.html" class="btn btn-neutral float-right" title="Stacks">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="1-8-circular-linked-lists.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chp2-stacks-and-queues/2-1-stacks.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
