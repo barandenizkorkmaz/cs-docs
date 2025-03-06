@@ -581,13 +581,9 @@ private static int nextId = 1;
 private static Random generator = new Random();
 
 // static initialization block
-
 static
-
 {
-
-nextId = generator.nextInt(10000);
-
+	nextId = generator.nextInt(10000);
 }
 ```
 
@@ -596,3 +592,154 @@ nextId = generator.nextInt(10000);
 Static initialization occurs when the class is **first loaded**. Like instance fields, static fields are `0`, `false`, or `null` unless you explicitly set them to another value. All static field initializers and static initialization blocks are executed in the order in which they occur in the class declaration.
 
 ## 2.7. Records
+
+A `record` is a special form of a class whose state is `immutable` and `readable by the public`. Here is how you define Point as a record:
+
+```java
+record Point(double x, double y) {
+}
+```
+
+The result is a class with instance fields:
+
+```java
+private final double x;
+private final double y;
+```
+
+In the Java language specification, the instance fields of a record are called its `components`. The class has a constructor:
+
+```java
+Point(double x, double y)
+```
+
+and accessor methods
+
+```java
+public double x()
+public double y()
+```
+
+by default. Note that the accessors are called x and y, not getX and getY. (It is legal in Java to have an instance field and a method with the same name.)
+
+In addition to the field accessor methods, every record has three methods defined automatically: `toString`, `equals`, and `hashCode`.
+- A record is **also an object**, thus it also extends **`Object`** class.
+
+---
+**CAUTION:**
+
+You can define your own versions of the automatically provided methods, as long as they have the same parameter and return types. For example, this definition is **legal**:
+
+```java
+record Point(double x, double y) {
+
+public double x() { return y; } // BAD
+
+}
+```
+
+But it is surely not a good idea.
+
+---
+
+You can add your **own methods** to a record:
+
+```java
+
+record Point(double x, double y) {
+
+	public double distanceFromOrigin() { return Math.hypot(x, y); }
+	
+}
+```
+
+A record, like any class, can have `static fields` and `methods`:
+
+```java
+record Point(double x, double y) {
+
+	public static Point ORIGIN = new Point(0, 0);
+	
+	public static double distance(Point p, Point q) {
+	
+		return Math.hypot(p.x - q.x, p.y - q.y);
+	
+	}
+
+	...
+
+}
+```
+
+However, you **cannot** add instance fields to a record. (Because you declare class fields by **constructor**, and a record doesn't have a constructor in the same way as objects.)
+
+```java
+
+record Point(double x, double y) {
+
+	private double r; // ERROR
+
+}
+```
+
+---
+Instance fields of a record are automatically `final`. However, they may be references to mutable objects. 
+- **As always, having an object defined as `final` means that the reference of the object cannot be changed once initialized.**
+
+---
+
+---
+**TIP:**
+Use a record instead of a class for immutable data that is completely represented by a set of variables. Use a class if the data is mutable, or if the representation may evolve over time. Records are easier to read, more efficient, and safer in concurrent programs.
+
+---
+
+### 2.7.1. Constructors: Canonical, Custom, and Compact
+
+The automatically defined constructor that sets all instance fields is called the `canonical constructor`. You can define additional `custom constructors`. The first statement of **such a constructor must call another constructor**, so that **ultimately the canonical constructor is invoked**.
+
+```java
+record Point(double x, double y) {
+	
+	public Point() { this(0, 0); }
+
+}
+```
+
+This record has two constructors: **the canonical constructor** and a **no-argument custom constructor** yielding the origin. If the canonical constructor needs to do additional work, you can provide your own implementation:
+
+```java
+record Range(int from, int to) {
+
+	public Range(int from, int to) {
+		if (from <= to){
+			this.from = from;
+			this.to = to;		
+		}
+		else{
+			this.from = to;
+			this.to = from;
+		}
+	}
+
+}
+```
+
+
+However, you are encouraged to use a `compact form` when implementing the canonical constructor. **You don’t specify the parameter list**:
+
+```java
+record Range(int from, int to) {
+
+	public Range{ // Compact form 
+		if (from > to){ // Swap the bounds
+			int temp = from;
+			from = to;
+			to = temp;
+		}
+	}
+	
+}
+```
+
+The body of the compact form is the **“prelude”** to the canonical constructor. It merely modifies the parameter variables from and to before they are assigned to the instance fields `this.from` and `this.to`. You cannot read or modify the instance fields in the body of the compact constructor.
