@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp2-stacks-and-queues/2-1-stacks.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Stacks - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Stacks";
+        var mkdocs_page_input_path = "data-structures/chp2-stacks-and-queues/2-1-stacks.md";
+        var mkdocs_page_url = "/data-structures/chp2-stacks-and-queues/2-1-stacks.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Stacks and Queues</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Stacks</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stack-adt">Stack ADT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-javautilstacke">Class java.util.Stack&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#our-interface-stacke">Our Interface Stack&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#array-based-stack-implementation">Array-Based Stack Implementation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#singly-linked-list-based-stack">Singly-Linked List-Based Stack</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#extra">Extra</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#comparisons-of-stack-implementations">Comparisons of Stack Implementations</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Stacks and Queues</li>
+      <li class="breadcrumb-item active">Stacks</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-stack">1. Stack</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>A stack is a data structure with the property that only the top element of the stack is accessible. In a stack, the top element is the data value that was most recently stored in the stack.</li>
+<li>Sometimes this storage policy is known as last-in, first-out, or LIFO.</li>
+</ul>
+<h3 id="stack-adt">Stack ADT</h3>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>empty()</td>
+<td>Tests if this stack is empty.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>peek()</td>
+<td>Looks at the object at the top of this stack without removing it from the stack.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>pop()</td>
+<td>Removes the object at the top of this stack and returns that object as the value of this function.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>push(E item)</td>
+<td>Pushes an item onto the top of this stack.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="class-javautilstacke">Class <code>java.util.Stack&lt;E&gt;</code></h3>
+<ul>
+<li>The <code>java.util.Stack</code> class is part of the original Java API but is not recommended for new applications. Instead, the Java designers recommend that we use the <code>java.util.Deque</code> interface and the <code>java.util.ArrayDeque</code> class to provide the methods listed above. The <code>Deque</code> interface specifies the methods in our interface <code>StackInt</code> (see Table) and also those needed for a queue. We will discuss the <code>Deque</code> interface and class <code>ArrayDeque</code> later.</li>
+</ul>
+<h3 id="our-interface-stacke">Our Interface <code>Stack&lt;E&gt;</code></h3>
+<pre><code class="language-java">/**
+ * A collection of objects that are inserted and removed according to the last-in
+ * first-out principle. Although similar in purpose, this interface differs from
+ * java.util.Stack.
+ */
+public interface Stack&lt;E&gt; {
+
+    /**
+     * Returns the number of elements in the stack.
+     * 
+     * @return number of elements in the stack
+     */
+    int size();
+
+    /**
+     * Tests whether the stack is empty.
+     * 
+     * @return true if the stack is empty, false otherwise
+     */
+    boolean empty();
+
+    /**
+     * Inserts an element at the top of the stack.
+     * 
+     * @param e the element to be inserted
+     */
+    void push(E e);
+
+    /**
+     * Returns, but does not remove, the element at the top of the stack.
+     * 
+     * @return top element in the stack (or null if empty)
+     */
+    E top();
+
+    /**
+     * Removes and returns the top element from the stack.
+     * 
+     * @return element removed (or null if empty)
+     */
+    E pop();
+}
+</code></pre>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations</th>
+<th>Big O (Worst-case Complexity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>empty()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>peek()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>push(E item)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation">Implementation</h2>
+<ul>
+<li>We are going to cover two ways of implementing a Stack:<ul>
+<li><code>Array (or ArrayList can also be adapted)</code></li>
+<li><code>LinkedList</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="array-based-stack-implementation">Array-Based Stack Implementation</h3>
+<ul>
+<li>The following class implements generic <code>Stack&lt;E&gt;</code> interface.</li>
+</ul>
+<h4 id="implementation_1">Implementation</h4>
+<pre><code class="language-java">public class ArrayStack&lt;E&gt; implements Stack&lt;E&gt; {
+
+    public static final int INITIAL_CAPACITY = 10; // Default array capacity
+    private E[] data; // Generic array used for storage
+    private int top = -1; // Index of the top element in the stack
+    private int capacity;
+
+    public ArrayStack() {
+        this(INITIAL_CAPACITY); // Constructs stack with default capacity
+    }
+
+    public ArrayStack(int capacity) {
+        // Constructs stack with given capacity
+        this.capacity = capacity;
+        data = (E[]) new Object[capacity]; // Safe cast; compiler may give warning
+    }
+
+    public int size() {
+        return (top + 1);
+    }
+
+    public boolean empty() {
+        return (top == -1);
+    }
+
+    public void push(E e) throws IllegalStateException {
+        if (size() == data.length) {
+            reallocate();
+        }
+        data[++top] = e; // Increment t before storing the new item
+    }
+
+    public E top() {
+        if (empty()) return null;
+        return data[top];
+    }
+
+    public E pop() {
+        if (empty()) return null;
+        E answer = data[top];
+        data[top] = null; // Dereference to help garbage collection
+        top--;
+        return answer;
+    }
+
+    private void reallocate(){
+        capacity = 2 * capacity;
+        data = Arrays.copyOf(data, capacity);
+    }
+}
+</code></pre>
+<p>**Drawbacks of Array-Based Implementation   **</p>
+<ul>
+<li>Fixed-capacity array<ul>
+<li>If the application needs much less space than the reserved capacity, memory is <strong>wasted</strong>.<ul>
+<li>Performance of a stack realized by an array. The space usage is <script type="math/tex">O(N)</script>, where N is the size of the array, determined at the time the stack is instantiated, and independent from the number n <script type="math/tex">\leq</script> N of elements that are actually in the stack.</li>
+</ul>
+</li>
+<li>When the stack has reached the capacity, it will refuse storing a new element throwing <strong>IllegalStateException</strong>. This problem can be fixed by using <code>ArrayList</code> as adapter instead of implementation from scratch using <code>Array</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="singly-linked-list-based-stack">Singly-Linked List-Based Stack</h3>
+<h4 id="implementation_2">Implementation</h4>
+<pre><code class="language-java">import java.util.LinkedList;
+
+public class LinkedStack&lt;E&gt; implements Stack&lt;E&gt; {
+
+    private LinkedList&lt;E&gt; list = new LinkedList&lt;&gt;(); // An empty list
+
+    public LinkedStack() { }
+    // New stack relies on the initially empty list
+
+    public int size() {
+        return list.size();
+    }
+
+    public boolean empty() {
+        return list.isEmpty();
+    }
+
+    public void push(E element) {
+        list.addFirst(element);
+    }
+
+    public E top() {
+        return list.getFirst();
+    }
+
+    public E pop() {
+        return list.removeFirst();
+    }
+}
+</code></pre>
+<h3 id="extra">Extra</h3>
+<blockquote>
+<h4 id="the-adapter-pattern">The Adapter Pattern</h4>
+<p>The <strong>adapter</strong> design pattern applies to any context where we effectively want to modify an existing class so that its methods match those of a related, but different, class or interface. One general way to apply the adapter pattern is to define a new class in such a way that it contains an instance of the existing class as a hidden field, and then to implement each method of the new class using methods of this hidden instance variable. By applying the adapter pattern in this way, we have created a new class that performs some of the same functions as an existing class, but repackaged in a more convenient way.</p>
+</blockquote>
+<h3 id="comparisons-of-stack-implementations">Comparisons of Stack Implementations</h3>
+<ul>
+<li>As we discussed before, in array-based implementation If the application needs much less space than the reserved capacity, memory is <strong>wasted</strong>.</li>
+<li>Whereas a linked list based implementation has the advantage of using exactly as much storage as needed for the stack. However, also note that since a linked-list node stores 2 data field references for the previous and next node references and 1 data field for stored data element, a linked-list based implementation of the full size is 3 times more expensive in terms of memory than a full array-based stack.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html" class="btn btn-neutral float-left" title="The Collections Framework Design"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="2-2-queues.html" class="btn btn-neutral float-right" title="Queues">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="2-2-queues.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
