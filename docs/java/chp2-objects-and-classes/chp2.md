@@ -271,3 +271,328 @@ public void giveGoldStar(){
 
 ## 2.4. Static Fields and Methods
 
+### 2.4.1. Static Fields
+
+If you define a field as static, then the field is not present in the objects of the class. There is only a single copy of each static field. You can think of static fields as belonging to the class, not to the individual objects.
+
+---
+**NOTE:**
+In some object-oriented programming languages, static fields are called class fields. The term “static” is a meaningless holdover from C++.
+
+---
+
+### 2.4.2. Static Constants
+
+Static variables are quite rare. However, static constants are more common.
+```java
+public class Math {
+
+	public static final double PI = 3.14159265358979323846;
+	
+}
+```
+You can access this constant in your programs as Math.PI.
+
+If the keyword `static` had been omitted, then PI would have been an instance field of the `Math` class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.
+
+Another static constant that you have used many times is `System.out`. It is declared in the System class as follows:
+
+```java
+public class System {
+	
+	public static final PrintStream out = . . .;
+	
+}
+```
+
+As mentioned several times, it is never a good idea to have public fields, because everyone can modify them. However, public constants (that is, final fields) are fine. Since out has been declared as final, you cannot reassign another print stream to it:
+
+```java
+System.out = new PrintStream(. . .); // ERROR--out is final
+```
+
+### 2.4.3. Static Methods
+
+Static methods are methods that do not operate on objects. You can think of static methods as methods that don’t have a this parameter. (In a nonstatic method, the this parameter refers to the implicit parameter of the method.)
+
+A `static` method of the Employee class **cannot** access the id `instance field` because it does not operate on an object. However, a static method can access a static field.
+
+Use static methods in two situations:
+- When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
+- When a method only needs to access static fields of the class (example: Employee.advanceId).
+
+---
+**C++ NOTE**
+
+Static fields and methods have the same functionality in Java and C++. However, the syntax is slightly different. In C++, you use the :: operator to access a static field or method outside its scope, such as Math::PI.
+
+---
+
+### 2.4.4. Factory Methods
+
+Here is **another common use for static methods**. Classes such as `LocalDate` and `NumberFormat` use **static factory methods that construct objects**. You have already seen the factory methods `LocalDate.now` and `LocalDate.of`. 
+
+Why doesn’t the `NumberFormat` class use a constructor instead? There are two reasons:
+- You can’t give names to constructors. The constructor name is always the same as the class name. But we want two different names to get the currency instance and the percent instance.
+- When you use a constructor, you can’t vary the type of the constructed object. But the factory methods actually return objects of the class DecimalFormat, a subclass that inherits from NumberFormat.
+
+### 2.4.5. The `main` Method
+
+Every class **can** have a `main` method. That is a handy trick for adding demonstration code to a class.
+
+To see a demo of the Employee class, simply execute
+```
+java Employee
+```
+
+If the Employee class is a part of a larger application, you start the application with
+```
+java Application
+```
+and the main method of the Employee class is never executed.
+
+| Modifier and Type | Method                                                      | Description                                                                                            |
+| ----------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `static <T> void` | `requireNonNull(T obj)`                                     |                                                                                                        |
+| `static <T> void` | `requireNonNull(T obj, String message)`                     |                                                                                                        |
+| `static <T> void` | `requireNonNull(T obj, Supplier<String> messageSupplier)`   | If `obj` is `null`, these methods throw a `NullPointerException` with no message or the given message. |
+| `static <T> T`    | `requireNonNullElse(T obj, T defaultObj)`                   |                                                                                                        |
+| `static <T> T`    | `requireNonNullElseGet(T obj, Supplier<T> defaultSupplier)` | Returns `obj` if it is not `null`, or the default object if `obj` is `null`.                           |
+
+## 2.5. Method Parameters
+
+Let us review the computer science terms that describe how parameters can be passed to a method (or a function) in a programming language. The term `call by value` means that the method gets just the value that the caller provides. In contrast, `call by reference` means that the method gets the location of the variable that the caller provides. Thus, a method can modify
+the value stored in a variable passed by reference but not in one passed by value. 
+
+These “call by . . .” terms are standard computer science terminology describing the behavior of method parameters in various programming languages, not just Java. (There is also a `call by name` that is mainly of  historical interest, being employed in the Algol programming language, one of the oldest high-level languages.)
+
+The Java programming language **always** uses `call by value`. That means that **the method gets a copy of all parameter values**. In particular, the method cannot modify the contents of any parameter variables passed to it.
+
+There are, however, two kinds of method parameters:
+- Primitive types (numbers, boolean values)
+- Object references
+
+You have seen that it is impossible for a method to change the value of a primitive type parameter. The situation is different for object parameters.
+
+As you have seen, it is easily possible—and in fact very common—to implement methods that change the state of an object parameter. The reason is simple. **The method gets a copy of the object reference, and both the original and the copy refer to the same object.**
+
+Many programming languages (in particular, C++ and Pascal) have two mechanisms for parameter passing: `call by value` and `call by reference`. Some programmers (and unfortunately even some book authors) claim that Java uses call by reference for objects. That is false. As this is such a common misunderstanding, it is worth examining a counterexample in detail.
+
+```java
+public static void swap(Employee x, Employee y) // doesn't work
+{
+
+	Employee temp = x;
+	
+	x = y;
+	
+	y = temp;
+
+}
+
+```
+
+If Java used `call by reference` for objects, this method would work:
+
+```java
+var a = new Employee("Alice", . . .);
+
+var b = new Employee("Bob", . . .);
+
+swap(a, b);
+
+// does a now refer to Bob, b to Alice?
+```
+
+However, the method does not actually change the object references that are stored in the variables a and b. **The x and y parameters of the swap method are initialized with copies of these references. The method then proceeds to swap these copies.**
+
+```java
+public static void swap(Employee x, Employee y) // doesn't work
+
+{
+	// x refers to Alice, y to Bob
+	Employee temp = x;
+	
+	x = y;
+	
+	y = temp;
+	// now x refers to Bob, y to Alice
+}
+
+```
+
+But ultimately, this is a **wasted** effort. When the method ends, the parameter variables x and y are abandoned. The original variables a and b still refer to the same objects as they did before the method call
+
+This demonstrates that the Java programming language **does not** use `call by reference` for objects. Instead, `object references are passed by value`.
+
+Here is a summary of what you can and cannot do with method parameters in Java:
+- A method cannot modify a parameter of a primitive type (that is, numbers or boolean values).
+- A method can change the state of an object parameter.
+- A method cannot make an object parameter refer to a new object.
+
+C++ has **both** `call by value` and `call by reference`. You tag reference parameters with `&`. For example, you can easily implement methods void `tripleValue(double& x)` or `void swap(Employee& x, Employee& y)` that modify their reference parameters.
+
+## 2.6. Object Construction
+
+Since object construction is so important, Java offers quite a variety of mechanisms for writing constructors.
+
+### 2.6.1. Overloading
+Overloading occurs if several methods have **the same name** (in this case, the `StringBuilder` constructor method) **but different parameters**. The compiler must sort out which method to call. It picks the correct method by matching the parameter types in the headers of  the various methods with the types of the values used in the specific method call. A **compile-time error** occurs if the compiler cannot match the  parameters, either because there is no match at all or because there is not one that is better than all others. (The process of finding a match is called `overloading resolution`.)
+
+Classes can have more than one constructor. For example, you can construct an empty `StringBuilder` object as
+
+```java
+var messages = new StringBuilder();
+```
+
+Alternatively, you can specify an initial string:
+
+```java
+var todoList = new StringBuilder("To do:\n");
+```
+
+### 2.6.2. Default Field Initialization
+
+If you don’t set a field explicitly in a constructor, it is automatically set to a `default value`: numbers to `0`, boolean values to `false`, and object references to `null`.
+
+---
+This is an important difference between **fields** and **local variables**. You must always explicitly initialize local variables in a method. But in a class, **if you don’t initialize a field, it is automatically initialized to a default (0, false, or null)**.
+
+---
+
+### 2.6.3. The Constructor with No Arguments
+
+If you write a class with no constructors whatsoever, then a `no-argument constructor` is provided for you. This constructor sets all the instance fields to their default values. So, all numeric data contained in the instance fields would be 0, all boolean values would be false, and all object variables would be null.
+
+If a class supplies at least one constructor but does not supply a no-argument constructor, it is **illegal** to construct objects without supplying arguments.
+
+For example, our original Employee class in Listing 4.2 provided a single constructor:
+
+```java
+public Employee(String n, double s, int year, int month, int day)
+```
+
+With that class, it was not legal to construct default employees. That is, the call
+
+```java
+e = new Employee();
+```
+
+would have been an error.
+
+---
+
+**CAUTION:**
+
+Please keep in mind that **you get a free no-argument constructor only when your class has no other constructors.** If you write your class with even a **single** constructor of your own and you want the users of your class to have the ability to create an instance by a call to
+
+```java
+new ClassName();
+```
+
+then you **must** provide a no-argument constructor. Of course, if you are happy with the default values for all fields, you can simply supply
+
+```java
+public ClassName(){} // without any initializations
+```
+
+
+---
+
+### 2.6.4. Explicit Field Initialization
+
+This assignment is carried out before the constructor executes. This syntax is particularly useful if all constructors of a class need to set a particular instance field to the same value. The initialization value doesn’t have to be a constant value. It can also be done by a method call.
+
+### 2.6.5. Shadowing Constructor Parameters
+
+A commonly used trick relies on the fact that parameter variables shadow instance fields with the same name. For example, if you call a parameter salary, then salary refers to the parameter, not the instance field. But you can still access the instance field as this.salary. Recall that this denotes the implicit parameter—that is, the object being constructed. Here is an example:
+
+```java
+public Employee(String name, double salary){
+
+	this.name = name;
+	this.salary = salary;
+
+}
+```
+
+
+### 2.6.6. Calling Another Constructor
+
+The keyword `this` refers to the current instance of the class.  If the first statement of a constructor has the form `this(. . .)`, then the constructor calls another constructor of the same class.
+
+### 2.6.7. Initialization Blocks
+
+You have already seen two ways to initialize a instance field:
+- By setting a value in a constructor
+- By assigning a value in the declaration
+
+There is a third mechanism in Java, called an `initialization block`. Class declarations can contain arbitrary blocks of code. **These blocks are executed whenever an object of that class is constructed.**
+
+```java
+
+class Employee{
+
+	private static int nextId;
+	private int id;
+	private String name;
+	private double salary;
+	
+	// object initialization block 
+	{
+		id = nextId;
+		nextId++;
+	}
+
+	public Employee(String n, double s){
+		name = n;
+		salary = s;
+	}
+
+	public Employee(){
+		name = "";
+		salary = 0;
+	}
+	
+	. . .
+	
+}
+
+```
+
+
+In this example, the id field is initialized in the object initialization block, **no matter which constructor is used to construct an object. The initialization block runs first, and then the body of the constructor is executed.**
+
+This mechanism is never necessary and is **not common**. It is usually more straightforward to place the initialization code inside a constructor.
+
+
+Here is what happens in detail when a constructor is called:
+1. If the first line of the constructor calls a second constructor, then the second constructor executes with the provided arguments. 
+2. Otherwise:
+	- All instance fields are initialized to their default values (0, false, or null).
+	- All field initializers and initialization blocks are executed, in the order in which they occur in the class declaration.
+3. The body of the constructor is executed.
+
+
+If the static fields of your class require complex initialization code, use a `static initialization block`. Place the code inside a block and tag it with the keyword `static`. 
+
+```java
+private static int nextId = 1;
+private static Random generator = new Random();
+
+// static initialization block
+
+static
+
+{
+
+nextId = generator.nextInt(10000);
+
+}
+```
+
+- **NOTE:** Like `field variables`, `static varibles` are also initialized by default variables if they are not explicitly initialized.
+
+Static initialization occurs when the class is **first loaded**. Like instance fields, static fields are `0`, `false`, or `null` unless you explicitly set them to another value. All static field initializers and static initialization blocks are executed in the order in which they occur in the class declaration.
+
+## 2.7. Records
