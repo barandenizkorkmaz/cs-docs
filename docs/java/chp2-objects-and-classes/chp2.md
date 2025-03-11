@@ -11,8 +11,8 @@
 
 There are two types of polymorphism as listed below:
 
-1. Static or Compile-time Polymorphism
-2. Dynamic or Run-time Polymorphism
+1. Static or Compile-time Polymorphism (Overloading)
+2. Dynamic or Run-time Polymorphism (Overriding)
 
 ***Static or Compile-time Polymorphism*** occurs when the compiler is able to determine the actual function, it’s called ***compile-time** polymorphism. Compile-time polymorphism can be achieved by ***method overloading*** in Java. When different functions in a class have the same name but different signatures, it’s called **method overloading**. A method signature contains the name and method arguments. So, overloaded methods have different arguments. The arguments might differ in the numbers or the type of arguments.
 ***Dynamic or Run-time Polymorphism*** occurs when the compiler is not able to determine at compile-time which method (superclass or subclass) will be called. This decision is made at run-time. Run-time polymorphism is achieved through **method overriding**, which happens when a method in a subclass has the same name, return type, and parameters as a method in its superclass. When the superclass method is overridden in the subclass, it is called method overriding.

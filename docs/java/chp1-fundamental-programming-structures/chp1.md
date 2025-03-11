@@ -143,7 +143,8 @@ String seasonName = switch (seasonCode)
 
 # 1.4. Strings
 
-
+--- 
+NOTE: We should include `Integer`, `Double`, and `String` classes. I had some notes for them at some interview prep place (maybe for AWS?).
 
 
 
