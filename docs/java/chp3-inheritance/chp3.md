@@ -405,3 +405,54 @@ Abstract methods are an important concept in the Java programming language. You 
 
 ## 3.7. Enumeration Classes
 
+```java
+public enum Size { SMALL, MEDIUM, LARGE, EXTRA_LARGE }
+```
+
+- The type defined by this declaration is actually a class. The class has exactly four instances—it is not possible to construct new objects. 
+- Therefore, you never need to use equals for values of enumerated types. Simply use `==` to compare them.
+- You can, if you like, add constructors, methods, and fields to an enumerated type.
+- The constructor of an enumeration is always `private`. You can omit the private modifier, as in the preceding example. It is a **syntax error** to declare an enum constructor as public or protected.
+- All enumerated types are subclasses of the abstract class Enum. They inherit a number of methods from that class. The most useful one is `toString`, which returns the name of the enumerated constant.
+- The converse of toString is the static valueOf method.
+
+```java
+Size s = Enum.valueOf(Size.class, "SMALL");
+```
+
+- Each enumerated type has a static values method that returns an array of all values of the enumeration.
+
+```java
+Size[] values = Size.values();
+```
+
+- The ordinal method yields the position of an enumerated constant in the enum declaration, counting from zero. For example, Size.MEDIUM.ordinal() returns 1.
+
+- The Enum class has a type parameter that I have ignored for simplicity. For example, the enumerated type Size actually extends `Enum<Size>`. The type parameter is used in the compareTo method.
+
+---
+#### java.lang.Enum<`E`>
+
+| Modifier and Type  | Method                                  | Description |
+|--------------------|----------------------------------------|-------------|
+| `static Enum`     | `valueOf(Class enumClass, String name)` | Returns the enumerated constant of the given class with the given name. |
+| `String`          | `toString()`                            | Returns the name of this enumerated constant. |
+| `int`            | `ordinal()`                             | Returns the zero-based position of this enumerated constant in the enum declaration. |
+| `int`            | `compareTo(E other)`                    | Returns a negative integer if this enumerated constant comes before `other`, zero if `this == other`, and a positive integer otherwise. The ordering of the constants is given by the enum declaration. |
+
+---
+## 3.8. Sealed Classes
+
+In Java, a sealed class controls which classes may inherit from it. Sealed classes were added as a preview feature in Java 15 and finalized in Java 17.
+
+```java
+public abstract sealed class JSONValue
+
+permits JSONArray, JSONNumber, JSONString, JSONBoolean, JSONObject, JSONNull
+
+{
+	. . .
+}
+```
+
+In this section, we learned about sealed classes. In the next chapter, we will learn about interfaces, a generalization of abstract classes. Java interfaces can also have subtypes. Sealed interfaces work exactly the same as sealed classes, controlling the direct subtypes.
