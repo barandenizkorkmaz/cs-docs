@@ -82,7 +82,75 @@ class Manager extends Employee {
 ---
 ### Object Cloning and `Cloneable` Interface
 
+To understand what cloning means, recall what happens when you make a copy of a variable holding an object reference. The original and the copy are references to the same object. This means a change to either variable also affects the other.
 
+The clone method is a protected method of Object, which means that your code cannot simply call it. Only the Employee class can clone Employee objects. There is a reason for this restriction. Think about the way in which the Object class can implement clone. It knows nothing about the object at all, so it can make only a field-by-field copy. If all instance fields in the object are numbers or other basic types, copying the fields is just fine. But if the object contains references to subobjects, then copying the field gives you another reference to the same subobject, so the original and the cloned objects still share some information.
 
+As you can see, the default cloning operation is “shallow”—it doesn’t clone objects that are referenced inside other objects.
+
+Does it matter if the copy is shallow? It depends. If the subobject shared between the original and the shallow clone is immutable, then the sharing is safe.
+
+Quite frequently, however, subobjects are mutable, and you must redefine the clone method to make a deep copy that clones the subobjects as well.
+
+For every class, you need to decide whether:
+1. The default clone method is good enough;
+2. The default clone method can be patched up by calling clone on the mutable subobjects; or
+3. clone should not be attempted.
+
+The third option is actually the default. To choose either the first or the second option, a class must
+1. Implement the Cloneable interface; and
+2. Redefine the clone method with the public access modifier.
+
+**The clone method is declared protected in the Object class, so that your code can’t simply call anObject.clone(). But aren’t protected methods accessible from any subclass, and isn’t every class a subclass of Object? Fortunately, the rules for protected access are more subtle. A subclass can call a protected clone method only to clone its own objects. You must redefine clone to be public to allow objects to be cloned by any method.**
+
+A tagging interface has no methods; its only purpose is to allow the use of instanceof in a type inquiry.
+
+Even if the default (shallow copy) implementation of clone is adequate, you still need to implement the Cloneable interface, redefine clone to be public, and call super.clone(). **The clone method that you just saw adds no functionality to the shallow copy provided by Object.clone. It merely makes the method public.**
+
+```java
+class Employee implements Cloneable
+
+{
+
+// public access, change return type
+
+public Employee clone() throws CloneNotSupportedException {
+
+	return (Employee) super.clone();
+
+}
+
+	. . .
+
+}
+```
+
+Here is an example of a clone method that creates a deep copy:
+
+```java
+class Employee implements Cloneable
+
+{
+
+	public Employee clone() throws CloneNotSupportedException {
+		
+		// call Object.clone()
+		
+		Employee cloned = (Employee) super.clone();
+		
+		// clone mutable fields
+		
+		cloned.hireDay = (Date) hireDay.clone();
+		
+		return cloned;
+	
+	}
+
+}
+```
+
+The clone method of the Object class threatens to throw a **CloneNotSupportedException**—it does that whenever clone is invoked on an object whose class does not implement the `Cloneable` interface.
+
+You have to be careful about cloning of subclasses. For example, once you have defined the clone method for the Employee class, anyone can use it to clone Manager objects. Can the Employee clone method do the job? It depends on the fields of the Manager class. In our case, there is no problem because the bonus field has primitive type. But Manager might have acquired fields that require a deep copy or are not cloneable. There is no guarantee that the implementor of the subclass has fixed clone to do the right thing. **For that reason, the clone method is declared as protected in the Object class.** But you don’t have that luxury if you want the users of your classes to invoke clone.
 
 ---
