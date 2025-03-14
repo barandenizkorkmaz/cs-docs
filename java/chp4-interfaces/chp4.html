@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/java/chp4-interfaces/chp4.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Chapter 4: Interfaces, Lambda Expressions, and Inner Classes - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 4: Interfaces, Lambda Expressions, and Inner Classes";
+        var mkdocs_page_input_path = "java/chp4-interfaces/chp4.md";
+        var mkdocs_page_url = "/java/chp4-interfaces/chp4.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 4: Interfaces, Lambda Expressions, and Inner Classes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-4-interfaces-lambda-expressions-and-inner-classes">Chapter 4: Interfaces, Lambda Expressions, and Inner Classes</h1>
+<h2 id="41-interfaces">4.1. Interfaces</h2>
+<ul>
+<li>An interface is not a class but a set of requirements for the classes that want to conform to the interface.</li>
+<li>All methods of an interface are automatically <code>public</code>.<ul>
+<li>However, when implementing the interface, you must declare the method as <code>public</code>, as the default method definition makes it package accessible. </li>
+<li>If <code>public</code> keyword not provided, the compiler then complains that you're trying to supply a more restrictive access privilege.</li>
+</ul>
+</li>
+<li><strong>Interfaces can never have instance fields.</strong></li>
+<li>Interfaces can define constants, e.g. <code>static final</code> variables.<ul>
+<li>Fields that are defined in interfaces are always <code>public static final</code>.
+```java
+public interface Powered extends Moveable {
+    double milesPerGallon();
+    double SPEED_LIMIT = 95;
+}</li>
+</ul>
+</li>
+</ul>
+<pre><code>- It is possible to have `static` and `private` methods as well as `default` methods 
+- Interfaces might be tedious when inheritance comes into play.
+    - Since Manager extends Employee, it implements `Comparable&lt;Employee&gt;` and not `Comparable&lt;Manager&gt;`. If Manager chooses to override compareTo, it must be prepared to compare managers to employees.
+        ```java
+class Manager extends Employee {
+
+    public int compareTo(Employee other) {
+
+        Manager otherManager = (Manager) other; // NO
+
+        . . .
+
+    }
+
+    . . .
+
+}
+</code></pre>
+<pre><code>- This violates the `antisymmetry` rule: If x is an Employee and y is a Manager, then the call x.compareTo(y) doesn’t throw an exception—it simply compares x and y as employees. But the reverse, y.compareTo(x), throws a `ClassCastException`.
+- There are two possible remedies:
+    - If subclasses have different notions of comparison, then you should outlaw comparison of objects that belong to different classes.
+    ```java
+    if (getClass() != other.getClass()) throw new ClassCastException();
+</code></pre>
+<pre><code>        - If there is a common algorithm for comparing subclass objects, simply provide a single `compareTo` method in the superclass and declare it as `final`.
+- Interfaces cannot be instantiated.
+    - However, even though you can’t construct interface objects, you can still declare interface variables (same as **abstract classes**).
+    - An interface variable must refer to an object of a class that implements the interface.
+- Next, just as you use `instanceof` to check whether an object is of a specific class, you can use `instanceof` to check whether an object implements an interface.
+- Just as you can build hierarchies of classes, **you can extend interfaces.**
+- While each class can have **only one superclass**, classes **can implement multiple interfaces**.
+- **Records and enumeration classes cannot extend other classes (since they implicitly extend the Record and Enum class). However, they can implement interfaces.**
+- Interfaces can be `sealed`.
+    - As with sealed classes, the direct subtypes (which can be classes or interfaces) must be declared in a permits clause or be located in the same source file.
+- **Interfaces vs Abstract Classes**
+    - You may wonder why the designers of the Java programming language bothered with introducing the concept of interfaces.
+    - There is, unfortunately, a major problem with using an abstract base class to express a generic property. A class can only extend a single class. 
+    - But each class can implement as many interfaces as it likes.
+    - Other programming languages, in particular C++, allow a class to have more than one superclass. This feature is called **multiple inheritance**.
+    - **Java does not support multiple inheritance.**
+- **Static and Private Methods**
+    - As of Java 8, you are allowed to add static methods to interfaces.
+    - Up to now, it has been common to place static methods in companion classes, e.g. `Paths` and `Collections` classes. However, when you implement your own interfaces, there is no longer a reason to provide a separate companion class for utility methods.
+    - As of Java 9, methods in an interface can be `private`. A private method can be `static` or an `instance method`. **Since private methods can only be used in the methods of the interface itself, their use is limited to being helper methods for the other methods of the interface.**
+- **Default Methods**
+    - You can supply a default implementation for any interface method.
+    ```java
+    public interface Comparable&lt;T&gt;
+    {
+
+        default int compareTo(T other) { return 0; } // by default, all elements are the same
+
+    }
+</code></pre>
+<pre><code>- **Resolving Default Method Conflicts**
+    - What happens if the exact same method is defined as a default method in one interface and then again as a method of a superclass or another interface?
+    - Rules
+        1.  Superclasses win. If a superclass provides a concrete method, default methods with the same name and parameter types are simply ignored.
+        2. Interfaces clash. If an interface provides a default method, and another interface contains a method with the same name and parameter types (default or not), then you must resolve the conflict by overriding that method.
+</code></pre>
+<ul>
+<li><strong>Interfaces and Callbacks</strong><ul>
+<li>A common pattern in programming is the callback pattern. In this pattern, you specify the action that should occur whenever a particular event happens.</li>
+<li>Interfaces allow implementing callbacks by enforcing what a class should do.</li>
+<li>In many programming languages, you supply the name of a function that the timer should call periodically. However, the classes in the Java standard library take an object- oriented approach. You pass an object of some class. The timer then calls one of the methods on that object. Passing an object is more flexible than passing a function because the object can carry additional information.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="object-cloning-and-cloneable-interface">Object Cloning and <code>Cloneable</code> Interface</h3>
+<p>To understand what cloning means, recall what happens when you make a copy of a variable holding an object reference. The original and the copy are references to the same object. This means a change to either variable also affects the other.</p>
+<p>The clone method is a protected method of Object, which means that your code cannot simply call it. Only the Employee class can clone Employee objects. There is a reason for this restriction. Think about the way in which the Object class can implement clone. It knows nothing about the object at all, so it can make only a field-by-field copy. If all instance fields in the object are numbers or other basic types, copying the fields is just fine. But if the object contains references to subobjects, then copying the field gives you another reference to the same subobject, so the original and the cloned objects still share some information.</p>
+<p>As you can see, the default cloning operation is “shallow”—it doesn’t clone objects that are referenced inside other objects.</p>
+<p>Does it matter if the copy is shallow? It depends. If the subobject shared between the original and the shallow clone is immutable, then the sharing is safe.</p>
+<p>Quite frequently, however, subobjects are mutable, and you must redefine the clone method to make a deep copy that clones the subobjects as well.</p>
+<p>For every class, you need to decide whether:
+1. The default clone method is good enough;
+2. The default clone method can be patched up by calling clone on the mutable subobjects; or
+3. clone should not be attempted.</p>
+<p>The third option is actually the default. To choose either the first or the second option, a class must
+1. Implement the Cloneable interface; and
+2. Redefine the clone method with the public access modifier.</p>
+<p><strong>The clone method is declared protected in the Object class, so that your code can’t simply call anObject.clone(). But aren’t protected methods accessible from any subclass, and isn’t every class a subclass of Object? Fortunately, the rules for protected access are more subtle. A subclass can call a protected clone method only to clone its own objects. You must redefine clone to be public to allow objects to be cloned by any method.</strong></p>
+<p>A tagging interface has no methods; its only purpose is to allow the use of instanceof in a type inquiry.</p>
+<p>Even if the default (shallow copy) implementation of clone is adequate, you still need to implement the Cloneable interface, redefine clone to be public, and call super.clone(). <strong>The clone method that you just saw adds no functionality to the shallow copy provided by Object.clone. It merely makes the method public.</strong></p>
+<pre><code class="language-java">class Employee implements Cloneable
+
+{
+
+// public access, change return type
+
+public Employee clone() throws CloneNotSupportedException {
+
+    return (Employee) super.clone();
+
+}
+
+    . . .
+
+}
+</code></pre>
+<p>Here is an example of a clone method that creates a deep copy:</p>
+<pre><code class="language-java">class Employee implements Cloneable
+
+{
+
+    public Employee clone() throws CloneNotSupportedException {
+
+        // call Object.clone()
+
+        Employee cloned = (Employee) super.clone();
+
+        // clone mutable fields
+
+        cloned.hireDay = (Date) hireDay.clone();
+
+        return cloned;
+
+    }
+
+}
+</code></pre>
+<p>The clone method of the Object class threatens to throw a <strong>CloneNotSupportedException</strong>—it does that whenever clone is invoked on an object whose class does not implement the <code>Cloneable</code> interface.</p>
+<p>You have to be careful about cloning of subclasses. For example, once you have defined the clone method for the Employee class, anyone can use it to clone Manager objects. Can the Employee clone method do the job? It depends on the fields of the Manager class. In our case, there is no problem because the bonus field has primitive type. But Manager might have acquired fields that require a deep copy or are not cloneable. There is no guarantee that the implementor of the subclass has fixed clone to do the right thing. <strong>For that reason, the clone method is declared as protected in the Object class.</strong> But you don’t have that luxury if you want the users of your classes to invoke clone.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

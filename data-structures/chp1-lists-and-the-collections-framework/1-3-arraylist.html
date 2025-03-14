@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>ArrayLists - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ArrayLists";
+        var mkdocs_page_input_path = "data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.md";
+        var mkdocs_page_url = "/data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Lists and The Collection Framework</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">ArrayLists</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-javautilarrayliste">Class java.util.ArrayList&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#extra">Extra</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#syntax-creating-a-generic-collection">Syntax: Creating a Generic Collection</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor-declaration-for-generic-classes">Constructor Declaration for Generic Classes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pitfall">PITFALL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#declaring-a-generic-array">Declaring a Generic Array</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Lists and The Collection Framework</li>
+      <li class="breadcrumb-item active">ArrayLists</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-arraylist">3. ArrayList</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>Java uses <code>array</code> internally to contain the data of a <code>ArrayList</code>.</li>
+<li>The physical size of the array is indicated by the data field <code>capacity</code>.</li>
+<li>The number of data items is indicated by the data field <code>size</code>.</li>
+<li>The data type of the references stored in the underlying array theData (type E[]) is also determined when the <code>MyArrayList</code> object is declared. If no parameter type is specified, the implicit parameter type is Object, and the underlying data array is type Object[].</li>
+</ul>
+<h3 id="class-javautilarrayliste">Class <code>java.util.ArrayList&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method and Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td><code>add(E e)</code><br />Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><code>add(int index, E element)</code><br />Inserts the specified element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)<br/>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>Iterator\<E></td>
+<td>iterator()<br/>Returns an iterator over the elements in this list in proper sequence.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)<br/>Removes the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)<br/>Removes the first occurrence of the specified element from this list, if it is present.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)<br/>Replaces the element at the specified position in this list with the specified element.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()<br/>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()<br/>Returns an array containing all of the elements in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation">Implementation</h3>
+<pre><code class="language-java">import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MyArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt; {
+
+    // Data Fields
+    /** The default initial capacity */
+    private static final int INITIAL_CAPACITY = 10;
+    /** The underlying data array */
+    private E[] data;
+    /** The current size */
+    private int size = 0;
+    /** The current capacity */
+    private int capacity = 0;
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public MyArrayList(){
+        this.capacity = INITIAL_CAPACITY;
+        data = (E[]) new Object[capacity];
+    }
+
+    public boolean add(E anEntry) {
+        if (size == capacity) {
+            reallocate();
+        }
+        data[size] = anEntry;
+        size++;
+        return true;
+    }
+
+    public void add(int index, E anEntry) {
+        if (index &lt; 0 || index &gt; size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        if (size == capacity) {
+            reallocate();
+        }
+        // Shift data in elements from index to size ‐ 1
+        for (int i = size; i &gt; index; i--) {
+            data[i] = data[i - 1];
+        }
+        // Insert the new item.
+        data[index] = anEntry;
+        size++;
+    }
+
+    public E get(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        return data[index];
+    }
+    public E set(int index, E newValue) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        E oldValue = data[index];
+        data[index] = newValue;
+        return oldValue;
+    }
+
+    public E remove(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        E returnValue = data[index];
+        for (int i = index + 1; i &lt; size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return returnValue;
+    }
+
+    private void reallocate() {
+        capacity = 2 * capacity;
+        data = Arrays.copyOf(data, capacity);
+    }
+
+    public int size() {
+        return this.size;
+    }
+}
+</code></pre>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Big O (Worst-Case Complexity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add(E e)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>add(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>get(int index)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>set(int index, E element)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>remove(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(Object o)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Recall that when we reallocate the array, we double its size. Doubling an array of size n allows us to add n more items before we need to do another array copy. Therefore, we can add n new items after we have copied over n existing items. This averages out to 1 copy per add. Therefore, reallocation is effectively an O(1) operation, so the insertion (to any index) is still O(n).</li>
+</ul>
+<h3 id="extra">Extra</h3>
+<blockquote>
+<h4 id="syntax-creating-a-generic-collection">Syntax: Creating a Generic Collection</h4>
+<p><strong>FORM:</strong>
+  CollectionClassName\<E> variable = new CollectionClassName&lt;&gt;();
+  CollectionClassName\<E> variable = new CollectionClassName\<E>();</p>
+<p><strong>EXAMPLE:</strong>
+  List\<Person> people = new ArrayList&lt;&gt;();
+  List\<String> myList = new ArrayList\<String>();
+  ArrayList\<Integer> numList = new ArrayList&lt;&gt;();</p>
+<p><strong>MEANING:</strong>
+An initially empty CollectionClassName\<E> object is created that can be used to store references to objects of type E (the type parameter). The  actual object type stored in an object of type CollectionClassName\<E> is specified when the object is created. If the CollectionClassName on the left is an interface, the CollectionClassName on the right must be a class that implements it. Otherwise, it must be the same class or a subclass of the one on the left.
+The examples above show different ways to create an ArrayList. In this text, we normally specify the interface name on the left of the = operator and the implementing class name on the right as shown in the first two examples. Since the type parameter E must be the same on both sides of the assignment operator, Java 7 introduced the diamond operator &lt;&gt; which eliminates the need to specify the type parameter twice. We will follow this convention. In some cases, we will declare the variable type in one statement and create it in a later statement. In earlier versions of Java, generic collections were not supported. In these versions, you use the statement
+  List yourList = new ArrayList();
+to create an initially empty ArrayList. Each element of yourList is a type Object reference. The data types of the actual objects referenced by elements of yourList are not specified, and in fact, different elements can reference objects of different types. Use of the adjective “generic” is a bit confusing. A nongeneric collection in Java is very general in that it can store objects of different data types. A generic collection, however, can store objects of one specified data type only. Therefore, generics enable the compiler to do more strict type checking to detect errors at compile time instead of at run time. They also eliminate the need to downcast from type Object to a specific type. For these reasons, we will always use generic collections.</p>
+<h4 id="constructor-declaration-for-generic-classes">Constructor Declaration for Generic Classes</h4>
+<p>The constructor declaration follows. Because the constructor is for a generic class, the type parameter \<E> is implied but it must not appear in the constructor heading.</p>
+<p>​ public MyArrayList() {
+​     capacity = INITIAL_CAPACITY;
+​     data = (E[]) new Object[capacity];
+​ }</p>
+<p>The statement
+  data = (E[]) new Object[capacity];
+allocates storage for an array with type Object references and then casts this array object to type E[] so that it is type compatible with variable theData. Because the actual type corresponding to E is not known, the compiler issues the warning message: MyArrayList.java uses unchecked or unsafe operations. Don’t be concerned about this warning—everything is fine.</p>
+<h4 id="pitfall">PITFALL</h4>
+<h4 id="declaring-a-generic-array"><strong>Declaring a Generic Array</strong></h4>
+<p>Rather than use the approach shown in the above constructor, you might try to create a
+generic array directly using the statement
+  theData = new E[capacity]; // Invalid generic array type.
+However, this statement will not compile because Java does not allow you to create an array with an unspecified type. Remember, E is a type parameter that is not specified until a generic ArrayList object is created. Therefore, the constructor must create an array of type Object[] since Object is the superclass of all types and then downcast this array object to type E[].</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="1-2-list-interface.html" class="btn btn-neutral float-left" title="List Interface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="1-4-single-linked-lists.html" class="btn btn-neutral float-right" title="Single-Linked Lists">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="1-2-list-interface.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="1-4-single-linked-lists.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp5-sets-and-maps/5-3-hash-tables.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Hash Tables - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Hash Tables";
+        var mkdocs_page_input_path = "data-structures/chp5-sets-and-maps/5-3-hash-tables.md";
+        var mkdocs_page_url = "/data-structures/chp5-sets-and-maps/5-3-hash-tables.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Sets and Maps</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Hash Tables</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#open-addressing">Open Addressing</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#table-wraparound-and-search-termination">Table Wraparound and Search Termination</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#traversing-a-hash-table">Traversing a Hash Table</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#deleting-an-item-using-open-addressing">Deleting an Item Using Open Addressing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#reducing-collisions-by-expanding-the-table-size">Reducing Collisions by Expanding the Table Size</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#reducing-collisions-using-quadratic-probing">Reducing Collisions Using Quadratic Probing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#chaining">Chaining</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance-of-hash-tables">Performance of Hash Tables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementing-the-hash-table">Implementing the Hash Table</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-ihashmap">Interface IHashMap</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#class-hashtableopen">Class HashTableOpen</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#class-hashtablechain">Class HashTableChain</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Sets and Maps</li>
+      <li class="breadcrumb-item active">Hash Tables</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-hash-tables">3. Hash Tables</h1>
+<ul>
+<li>Before we discuss the details of implementing the required methods of the Set and Map interfaces, we will describe a data structure, the hash table, that can be used as the basis for such an implementation.</li>
+<li>Using a hash table enables us to retrieve an item in constant time (expected O(1)). We say expected O(1) rather than just O(1) because there will be some cases where the performance will be much worse than O(1) and may even be O(n), but on the average, we expect that it will be O(1).</li>
+<li>Properties of Hash Functions<ul>
+<li>Simple and efficient to compute</li>
+<li>Provides a large set of possible values to map domain</li>
+<li>Should provide an (almost) equal distribution (mapping) of values</li>
+<li>The probability of two distinct items to generate the same hash value should be as low as possible</li>
+</ul>
+</li>
+</ul>
+<h2 id="open-addressing">Open Addressing</h2>
+<ul>
+<li>Two ways to organize a hash tables:<ul>
+<li>open addressing</li>
+<li>chaining</li>
+</ul>
+</li>
+<li><strong>Procedure:</strong> Open Addressing<ul>
+<li>Each hash table element (type Object) references a single key–value pair.</li>
+<li>We can use the following simple approach (called <code>linear probing</code>) to access an item in a hash table.</li>
+<li>If the index calculated for an item’s key is occupied by an item with that key, we have found
+  the item.</li>
+<li>If that element contains an item with a different key, we increment the index by 1.</li>
+<li>We keep incrementing the index (modulo the table length) until either we find the key we are seeking or we reach a null entry.</li>
+<li>A null entry indicates that the key is not in the table.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">Algorithm For Accessing an Item in a Hash Table
+
+Compute the index by taking the item’s hashCode() % table.length.
+if table[index] is null
+    The item is not in the table.
+else if table[index] is equal to the item
+    The item is in the table.
+else
+    Continue to search the table by incrementing the index until either the item is found   or a null entry is found.
+</code></pre>
+<h3 id="table-wraparound-and-search-termination">Table Wraparound and Search Termination</h3>
+<ul>
+<li>Note that as you increment the table index, your table should wrap around (as in a circular array) so that the element with subscript 0 “follows” the element with subscript table.length ‐ 1.</li>
+<li>This enables you to use the entire table, not just the part with subscripts larger than the hash code value, but it leads to the potential for an infinite loop in Step 6 of the algorithm. If the table is full and the objects examined so far do not match the one you are seeking, how do you know when to stop?</li>
+<li>One approach would be to stop when the index value for the next probe is the same as the hash code value for the object. This means that you have come full circle to the starting value for the index.</li>
+<li>A second approach would be to ensure that the table is never full by increasing its size after an insertion <strong>if its occupancy rate exceeds a specifieif its occupancy rate exceeds a specified thresholdd threshold</strong>. <strong>This is the approach that we take in our implementation.</strong></li>
+</ul>
+<h3 id="traversing-a-hash-table">Traversing a Hash Table</h3>
+<ul>
+<li>One thing that you cannot do is traverse a hash table in a meaningful way.</li>
+</ul>
+<h3 id="deleting-an-item-using-open-addressing">Deleting an Item Using Open Addressing</h3>
+<ul>
+<li>When an item is deleted, we cannot just set its table entry to <code>null</code>. If we do, then when we search for an item that may have collided with the deleted item, we may incorrectly conclude that the item is not in the table. (Because the item that collided was inserted after the deleted item, we will have stopped our search prematurely.)</li>
+<li>By storing a dummy value when an item is deleted, we force the search algorithm to keep looking until either the desired item is found or a null value, representing a free cell, is located. Although the use of a dummy value solves the problem, keep in mind that it can lead to search inefficiency, particularly when there are many deletions. Removing items from the table does not reduce the search time because the dummy value is still in the table and is part of a search chain.</li>
+<li>In fact, you <strong>cannot</strong> even replace a deleted value with a new item because you still need to go to the end of the search chain to ensure that the new item is not already present in the table. So deleted items waste storage space and reduce search efficiency.</li>
+<li>In the worst case, if the table is almost full and then most of the items are deleted, you will have <script type="math/tex">O(n)</script> performance when searching for the few items remaining in the table.</li>
+</ul>
+<h3 id="reducing-collisions-by-expanding-the-table-size">Reducing Collisions by Expanding the Table Size</h3>
+<ul>
+<li>The first step in reducing these collisions is to use a prime number for the size of the table.</li>
+<li>
+<p>In addition, the probability of a collision is proportional to how full the table is. Therefore, when the hash table becomes sufficiently full, a larger table should be allocated and the entries reinserted.</p>
+</li>
+<li>
+<p>You expand a hash table using an algorithm called <code>rehashing</code>.</p>
+</li>
+</ul>
+<pre><code class="language-bash">Algorithm For Rehashing
+1. Allocate a new hash table with twice the capacity of the original.
+2. Reinsert each old table entry that has not been deleted into the new hash table.
+3. Reference the new table instead of the original.
+</code></pre>
+<h3 id="reducing-collisions-using-quadratic-probing">Reducing Collisions Using Quadratic Probing</h3>
+<ul>
+<li>The problem with <code>linear probing</code> is that it tends to form clusters of keys in the table, causing longer search chains.</li>
+<li>One approach to reduce the effect of clustering is to use <code>quadratic probing</code> instead of <code>linear probing</code>. In quadratic probing, the increments form a quadratic series <script type="math/tex">(1 + 2^2 + 3^2 + · · ·)</script>.</li>
+</ul>
+<pre><code class="language-java">probeNum++;
+index = (startIndex + probeNum * probeNum) % table.length
+</code></pre>
+<ul>
+<li>
+<p><strong>Problems with Quadratic Probing</strong></p>
+<ul>
+<li>
+<p>One disadvantage of quadratic probing is that the next index calculation is a bit time‐consuming as it involves a multiplication, an addition, and a modulo division.</p>
+</li>
+<li>
+<p>A more efficient way to calculate the next index follows:</p>
+</li>
+</ul>
+<p><code>java
+  k += 2;
+  index = (index + k) % table.length;</code></p>
+<ul>
+<li>
+<p>A more serious problem with quadratic probing is that not all table elements are examined when looking for an insertion index, so it is possible that an item can’t be inserted even when the table is not full.</p>
+</li>
+<li>
+<p>It is also possible that your program can get stuck in an infinite loop while searching for an empty slot.</p>
+</li>
+<li>
+<p>It can be proved that if the table size is a prime number and the table is never more than half full, this can’t happen. However, requiring that the table be half empty at all times wastes quite a bit of memory.</p>
+</li>
+<li>
+<p>For these reasons, we will use linear probing in our implementation.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="chaining">Chaining</h2>
+<ul>
+<li>An alternative to open addressing is a technique called <code>chaining</code>, in which each table element references a linked list that contains all the items that hash to the same table index.</li>
+<li>This linked list is often called a <code>bucket</code>, and this approach is sometimes called <code>bucket hashing</code>.</li>
+<li>Instead of incrementing the table index to access the next item with a particular hash code value, you traverse the linked list referenced by the table element with index <code>hashCode() % table.length</code>.</li>
+<li>One advantage of chaining is that only items that have the same value for <code>hashCode() % table. length</code> will be examined when looking for an object. In open addressing, search chains can overlap, so a search chain may include items in the table that have different starting index values.</li>
+<li>A second advantage is that you can store more elements in the table than the number of table slots (indexes), which is not the case for open addressing.</li>
+<li>To <strong>delete</strong> an item, simply remove it from the list. In contrast to open addressing, removing an item actually deletes it, so it will not be part of future search chains.</li>
+</ul>
+<h2 id="performance-of-hash-tables">Performance of Hash Tables</h2>
+<ul>
+<li><code>load factor</code>: The number of filled cells divided by table size.<ul>
+<li>The load factor has the greatest effect on hash table performance.</li>
+<li>Lower the load factor the better the performance because there is less chance of collision.</li>
+<li>If there are no collisions, the performance for search and retrieval is <script type="math/tex">O(1)</script>.</li>
+</ul>
+</li>
+<li><strong>Performance of Open Addressing versus Chaining</strong><ul>
+<li>Expected number of comparisons, c, for open addressing with linear probing and a load factor L:<ul>
+<li>
+<script type="math/tex">c = \dfrac{1}{2}(1 + \dfrac{1}{1 - L})</script>
+</li>
+<li>L = number of filled cells/table size</li>
+</ul>
+</li>
+<li>Expected number of comparisons, c, for chaining and a load factor L (L is average number of items in a list here = # of items divided by table size:<ul>
+<li>
+<script type="math/tex">c = 1 + \dfrac{L}{2}</script>
+</li>
+</ul>
+</li>
+<li>For values of L between 0.0 and 0.75, the results for chaining are similar to those of linear probing. But chaining gives better performance than linear probing for higher load factors.</li>
+<li><strong>Quadratic probing</strong> gives performance that is between those of linear probing and chaining.</li>
+</ul>
+</li>
+<li><strong>Performance of Hash Tables versus Sorted Arrays and Binary Trees</strong><ul>
+<li>The performance of hashing is certainly preferable to that of binary search of an array (or a binary search tree), particularly if L is less than 0.75.</li>
+<li>However, the trade-off is that the lower the load factor, the more unfilled storage cells there are in a hash table, whereas there are no empty cells in a sorted array.</li>
+<li>Because a binary search tree requires three references per node (the item, the left subtree, and the right subtrees), more storage would be required for a binary search tree than for a hash table with a load factor of 0.75.</li>
+</ul>
+</li>
+<li><strong>Storage Requirements for Open Addressing and Chaining</strong><ul>
+<li>Next, we consider the effect of chaining on storage requirements. For a table with a load factor of L, the number of table elements required is n (the size of the table).</li>
+<li>For open addressing, the number of references to an item (a key–value pair) is n.</li>
+<li>For chaining, the average number of nodes in a list is <strong>L</strong>. If we use the <code>Java API LinkedList</code>, there will be three references in each node (the item, the next list element, and the previous element). However, we could use our own single‐linked list and eliminate the previous‐element reference (at some time cost for deletions). Therefore, we will require storage for <script type="math/tex">n + n*2L</script> references.</li>
+</ul>
+</li>
+</ul>
+<h2 id="implementing-the-hash-table">Implementing the Hash Table</h2>
+<h3 id="interface-ihashmap">Interface <code>IHashMap</code></h3>
+<pre><code class="language-java">package datastructures.setmap;
+
+public interface IHashMap&lt;K, V&gt; {
+    V get(Object key);
+
+    boolean isEmpty();
+
+    V put(K key, V value);
+
+    V remove(Object key);
+
+    int size();
+}
+</code></pre>
+<h3 id="class-hashtableopen">Class <code>HashTableOpen</code></h3>
+<pre><code class="language-java">package datastructures.setmap;
+
+/** Hash table implementation using open addressing. */
+public class HashTableOpen&lt;K, V&gt; implements IHashMap&lt;K, V&gt; {
+    // Insert inner class Entry&lt;K, V&gt; here.
+    /** Contains key‐value pairs for a hash table. */
+    private static class Entry&lt;K, V&gt; {
+        /** The key */
+        private final K key;
+        /** The value */
+        private V value;
+        /** Creates a new key‐value pair.
+         @param key The key
+         @param value The value
+         */
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+        /** Retrieves the key.
+         @return The key
+         */
+        public K getKey() {
+            return key;
+        }
+        /** Retrieves the value.
+         @return The value
+         */
+        public V getValue() {
+            return value;
+        }
+        /** Sets the value.
+         @param val The new value
+         @return The old value
+         */
+        public V setValue(V val) {
+            V oldVal = value;
+            value = val;
+            return oldVal;
+        }
+    }
+
+    // Data Fields
+    private Entry&lt;K, V&gt;[] table;
+    private static final int START_CAPACITY = 101;
+
+    private double LOAD_THRESHOLD = 0.75;
+    private int numKeys;
+    private int numDeletes;
+    private final Entry&lt;K, V&gt; DELETED =
+            new Entry&lt;&gt;(null, null);
+
+    // Constructor
+    public HashTableOpen() {
+        table = new Entry[START_CAPACITY];
+    }
+
+    /** Finds either the target key or the first empty slot in the
+     search chain using linear probing.
+     @pre The table is not full.
+     @param key The key of the target object
+     @return The position of the target or the first empty slot if
+     the target is not in the table.
+     */
+    private int find(Object key) {
+        // Calculate the starting index.
+        int index = key.hashCode() % table.length;
+        if (index &lt; 0)
+            index += table.length;
+            // Make it positive.
+            // Increment index until an empty slot is reached or the key is found.
+        while ((table[index] != null)
+                &amp;&amp; (!key.equals(table[index].getKey()))) {
+            index++;
+            // Check for wraparound.
+            if (index &gt;= table.length)
+                index = 0;
+                // Wrap around.
+        }
+        return index;
+    }
+
+    /** Method get for class HashtableOpen.
+     @param key The key being sought
+     @return the value associated with this key if found;
+     otherwise, null
+     */
+    @Override
+    public V get(Object key) {
+        // Find the first table element that is empty
+        // or the table element that contains the key.
+        int index = find(key);
+        // If the search is successful, return the value.
+        if (table[index] != null)
+            return table[index].getValue();
+        else
+            return null; // key not found.
+    }
+
+    /** Method put for class HashtableOpen.
+     @post This key‐value pair is inserted in the
+     table and numKeys is incremented. If the key is already
+     in the table, its value is changed to the argument
+     value and numKeys is not changed. If the LOAD_THRESHOLD
+     is exceeded, the table is expanded.
+     @param key The key of item being inserted
+     @param value The value for this key
+     @return Old value associated with this key if found;
+     otherwise, null
+     */
+    @Override
+    public V put(K key, V value) {
+        // Find the first table element that is empty
+        // or the table element that contains the key.
+        int index = find(key);
+        // If an empty element was found, insert new entry.
+        if (table[index] == null) {
+            table[index] = new Entry&lt;&gt;(key, value);
+            numKeys++;
+            // Check whether rehash is needed.
+            double loadFactor =
+                    (double) (numKeys + numDeletes) / table.length;
+            if (loadFactor &gt; LOAD_THRESHOLD)
+                rehash();
+            return null;
+        }
+        // assert: table element that contains the key was found.
+        // Replace value for this key.
+        V oldVal = table[index].getValue();
+        table[index].setValue(value);
+        return oldVal;
+    }
+
+    @Override
+    public V remove(Object key) {
+        // Find the first table element that is empty or the table element that contains the key.
+        int index = find(key);
+        // if an empty element was found return null
+        if(table[index] == null || table[index] == this.DELETED){
+            return null;
+        }
+        // Key was found. Remove this table element by setting it to reference DELETED, increment
+        // numDeletes, and decrement numKeys.
+        V oldVal = table[index].getValue();
+        table[index] = this.DELETED;
+        this.numDeletes++;
+        this.numKeys--;
+        // Return the value associated with this key.
+        return oldVal;
+    }
+
+    @Override
+    public int size() {
+        return this.numKeys;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (this.numKeys != 0);
+    }
+
+    /** Expands table size when loadFactor exceeds LOAD_THRESHOLD
+     @post The size of the table is doubled and is an odd integer.
+     Each nondeleted entry from the original table is
+     reinserted into the expanded table.
+     The value of numKeys is reset to the number of items
+     actually inserted; numDeletes is reset to 0.
+     */
+    private void rehash() {
+        // Save a reference to oldTable.
+        Entry&lt;K, V&gt;[] oldTable = table;
+        // Double capacity of this table.
+        table = new Entry[2 * oldTable.length + 1];
+        // Reinsert all items in oldTable into expanded table.
+        numKeys = 0;
+        numDeletes = 0;
+        for (int i = 0; i &lt; oldTable.length; i++) {
+            if ((oldTable[i] != null) &amp;&amp; (oldTable[i] != DELETED)) {
+                // Insert entry in expanded table
+                put(oldTable[i].getKey(), oldTable[i].getValue());
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="class-hashtablechain">Class <code>HashTableChain</code></h3>
+<pre><code class="language-java">package datastructures.setmap;
+
+import java.util.*;
+/** Hash table implementation using chaining. */
+public class HashTableChain&lt;K, V&gt; implements IHashMap&lt;K, V&gt; {
+    // Insert inner class Entry&lt;K, V&gt; here.
+    /** Contains key‐value pairs for a hash table. */
+    private static class Entry&lt;K, V&gt; {
+        /** The key */
+        private final K key;
+        /** The value */
+        private V value;
+        /** Creates a new key‐value pair.
+         @param key The key
+         @param value The value
+         */
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+        /** Retrieves the key.
+         @return The key
+         */
+        public K getKey() {
+            return key;
+        }
+        /** Retrieves the value.
+         @return The value
+         */
+        public V getValue() {
+            return value;
+        }
+        /** Sets the value.
+         @param val The new value
+         @return The old value
+         */
+        public V setValue(V val) {
+            V oldVal = value;
+            value = val;
+            return oldVal;
+        }
+    }
+
+    /** The table */
+    private LinkedList&lt;Entry&lt;K, V&gt;&gt;[] table;
+    /** The number of keys */
+    private int numKeys;
+    /** The capacity */
+    private static final int CAPACITY = 101;
+    /** The maximum load factor */
+    private static final double LOAD_THRESHOLD = 3.0;
+    // Constructor
+    public HashTableChain() {
+        table = new LinkedList[CAPACITY];
+    }
+
+    /** Method get for class HashtableChain.
+     @param key The key being sought
+     @return The value associated with this key if found;
+     otherwise, null
+     */
+    @Override
+    public V get(Object key) {
+        int index = key.hashCode() % table.length;
+        if (index &lt; 0)
+            index += table.length;
+        if (table[index] == null)
+            return null; // key is not in the table.
+        // Search the list at table[index] to find the key.
+        for (Entry&lt;K, V&gt; nextItem : table[index]) {
+            if (nextItem.getKey().equals(key))
+                return nextItem.getValue();
+        }
+        // assert: key is not in the table.
+        return null;
+    }
+
+    /** Method put for class HashtableChain.
+     @post This key‐value pair is inserted in the
+     table and numKeys is incremented. If the key is already
+     in the table, its value is changed to the argument
+     value and numKeys is not changed.
+     @param key The key of item being inserted
+     @param value The value for this key
+     @return The old value associated with this key if
+     found; otherwise, null
+     */
+    @Override
+    public V put(K key, V value) {
+        int index = key.hashCode() % table.length;
+        if (index &lt; 0)
+            index += table.length;
+        if (table[index] == null) {
+            // Create a new linked list at table[index].
+            table[index] = new LinkedList&lt;&gt;();
+        }
+        // Search the list at table[index] to find the key.
+        for (Entry&lt;K, V&gt; nextItem : table[index]) {
+            // If the search is successful, replace the old value.
+            if (nextItem.getKey().equals(key)) {
+                // Replace value for this key.
+                V oldVal = nextItem.getValue();
+                nextItem.setValue(value);
+                return oldVal;
+            }
+        }
+        // assert: key is not in the table, add new item.
+        table[index].addFirst(new Entry&lt;&gt;(key, value));
+        numKeys++;
+        if (numKeys &gt; (LOAD_THRESHOLD * table.length))
+            rehash();
+        return null;
+    }
+
+    @Override
+    public V remove(Object key) {
+        // Set index to key.hashCode() % table.length.
+        // if index is negative, add table.length.
+        int index = key.hashCode() % table.length;
+        if(index &lt; 0){
+            index += table.length;
+        }
+
+        // if table[index] is null
+        // key is not in the table; return null.
+        if(table[index] == null){
+            return null;
+        }
+        for(int i = 0 ; i &lt; table[index].size(); i++){
+            //Search the list at table[index] to find the key.
+            if(table[index].get(i).getKey() == key){
+                V oldVal = table[index].get(i).getValue();
+
+                // if the search is successful
+                // Remove the entry with this key and decrement numKeys.
+                table[index].remove(i);
+                this.numKeys--;
+
+                //if the list at table[index] is empty
+                //Set table[index] to null.
+                if(table[index].isEmpty()){
+                    table[index] = null;
+                }
+                //Return the value associated with this key.
+                return oldVal;
+            }
+        }
+        //The key is not in the table; return null.
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return this.numKeys;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (this.numKeys != 0);
+    }
+
+    private void rehash() {
+        // Save a reference to oldTable.
+        LinkedList&lt;Entry&lt;K, V&gt;&gt;[] oldTable = table;
+        // Double capacity of this table.
+        table = new LinkedList[2 * oldTable.length + 1];
+
+        // Reinsert all items in oldTable into expanded table.
+        this.numKeys = 0;
+        for (LinkedList&lt;Entry&lt;K, V&gt;&gt; entries : oldTable) {
+            for (Entry&lt;K, V&gt; entry : entries) {
+                int index = entry.getKey().hashCode() % table.length;
+                if (index &lt; 0)
+                    index += table.length;
+                if (table[index] == null) {
+                    // Create a new linked list at table[index].
+                    table[index] = new LinkedList&lt;&gt;();
+                }
+                table[index].add(entry);
+                this.numKeys++;
+            }
+        }
+    }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="5-2-maps.html" class="btn btn-neutral float-left" title="Maps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="5-4-considerations.html" class="btn btn-neutral float-right" title="Implementation Considerations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="5-2-maps.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="5-4-considerations.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
