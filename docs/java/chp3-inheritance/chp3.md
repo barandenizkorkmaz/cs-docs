@@ -385,6 +385,7 @@ public abstract class Person
 - A class can even be declared as abstract though it has no abstract methods.
 - Abstract classes **cannot** be instantiated.
 - Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a non-abstract subclass.
+	- Same for interfaces!
 
 ```java
 Person p = new Student("Vince Vu", "Economics");
