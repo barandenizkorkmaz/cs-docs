@@ -301,3 +301,46 @@ var timer = new Timer(1000, System.out::println);
 
 ### 4.2.4. Constructor References
 
+- Constructor references are just like method references, except that the name of the method is new.
+- For example, `Person::new` is a reference to a Person constructor. Which constructor? It depends on the context.
+
+```java
+ArrayList<String> names = . . .;
+Stream<Person> stream = names.stream().map(Person::new);
+List<Person> people = stream.toList();
+```
+
+### 4.2.5. Variable Scope
+
+- To understand what is happening, we need to refine our understanding of a lambda expression. A lambda expression has three ingredients: 
+	1. A block of code
+	2. Parameters
+	3. Values for the free variables—that is, the variables that are not parameters and not defined inside the code
+- The technical term for a block of code together with the values of the free variables is a `closure`. If someone gloats that their language has closures, rest assured that Java has them as well. In Java, lambda expressions are closures.
+- As you have seen, a lambda expression can capture the value of a variable in the enclosing scope.
+- Mutating variables in a lambda expression is not safe when multiple actions are executed concurrently. The rule is that any captured variable in a lambda expression must be effectively `final`. 
+- The body of a lambda expression has the same scope as a nested block. The same rules for name conflicts and shadowing apply. It is illegal to declare a parameter or a local variable in the lambda that has the same name as a local variable.
+
+### 4.2.6. Processing Lambda Expressions
+
+Up to now, you have seen how to produce lambda expressions and pass them to a method that expects a functional interface. Now let us see how to write methods that can consume lambda expressions.
+
+The point of using lambdas is `deferred execution`. To accept the lambda, we need to pick (or, in rare cases, provide) a functional interface. Table below the most important functional interfaces that are provided in the Java API.
+
+**NOTE:** If you design your own interface with a single abstract method, you can tag it with the `@FunctionalInterface` annotation. This has two advantages. The compiler gives an error message if you accidentally add another abstract method. And the javadoc page includes a statement that your interface is a functional interface. It is not required to use the annotation. Any interface with a single abstract method is, by definition, a functional interface. But using the `@FunctionalInterface` annotation is a good idea.
+
+| Functional Interface  | Parameter Types | Return Type | Abstract Method Name | Description | Other Methods |
+|----------------------|----------------|-------------|----------------------|-------------|--------------|
+| `Runnable`         | none           | `void`      | `run`                | Runs an action without arguments or return value | |
+| `Supplier<T>`      | none           | `T`         | `get`                | Supplies a value of type `T` | |
+| `Consumer<T>`      | `T`            | `void`      | `accept`             | Consumes a value of type `T` | `andThen` |
+| `BiConsumer<T, U>` | `T, U`         | `void`      | `accept`             | Consumes values of types `T` and `U` | `andThen` |
+| `Function<T, R>`   | `T`            | `R`         | `apply`              | A function with argument of type `T` | `compose`, `andThen`, `identity` |
+| `BiFunction<T, U, R>` | `T, U`      | `R`         | `apply`              | A function with arguments of types `T` and `U` | `andThen` |
+| `UnaryOperator<T>` | `T`            | `T`         | `apply`              | A unary operator on the type `T` | `compose`, `andThen`, `identity` |
+| `BinaryOperator<T>`| `T, T`         | `T`         | `apply`              | A binary operator on the type `T` | `andThen`, `maxBy`, `minBy` |
+| `Predicate<T>`     | `T`            | `boolean`   | `test`               | A boolean-valued function | `and`, `or`, `negate`, `isEqual`, `not` |
+| `BiPredicate<T, U>`| `T, U`         | `boolean`   | `test`               | A boolean-valued function with two arguments | `and`, `or`, `negate` |
+
+## 4.3. Inner Classes
+
