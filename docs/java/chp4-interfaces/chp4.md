@@ -154,3 +154,150 @@ The clone method of the Object class threatens to throw a **CloneNotSupportedExc
 You have to be careful about cloning of subclasses. For example, once you have defined the clone method for the Employee class, anyone can use it to clone Manager objects. Can the Employee clone method do the job? It depends on the fields of the Manager class. In our case, there is no problem because the bonus field has primitive type. But Manager might have acquired fields that require a deep copy or are not cloneable. There is no guarantee that the implementor of the subclass has fixed clone to do the right thing. **For that reason, the clone method is declared as protected in the Object class.** But you don’t have that luxury if you want the users of your classes to invoke clone.
 
 ---
+
+## 4.2. Lambda Expressions
+
+A lambda expression is a block of code that you can pass around so it can be executed later, once or multiple times.
+
+### 4.2.1. The Syntax of Lambda Expressions
+
+A simple form of lambda expressions in Java:
+
+parameters, the -> arrow, and an expression. If the code carries out a
+
+computation that doesn’t fit in a single expression, write it exactly like you
+
+would have written a method: enclosed in {} and with explicit return
+
+statements.
+
+```java
+// FIRST
+
+(String first, String second) -> first.length() - second.length();
+
+// SECOND
+
+(String first, String second) ->
+{
+	if (first.length() < second.length()) return -1;
+	else if (first.length() > second.length()) return 1;
+	else return 0;
+}
+```
+
+- If a lambda expression has no parameters, you still supply empty parentheses
+
+```java
+() -> { for (int i = 100; i >= 0; i--) System.out.println(i); }
+```
+
+- If the parameter types of a lambda expression can be inferred, you can omit
+
+them.
+
+```java
+Comparator<String> comp = (first, second) // same as (String first, String second)
+-> first.length() - second.length();
+```
+
+- If a method has a single parameter with inferred type, you can even omit the
+
+parentheses
+
+```java
+ActionListener listener = event -> System.out.println("The time is "
+
++ Instant.ofEpochMilli(event.getWhen()));
+
+// instead of (event) -> . . . or (ActionEvent event) -> .
+
+. .
+```
+
+- You never specify the result type of a lambda expression. It is always inferred from context. The following can be used in a context where a result of type `int` is expected.
+
+```java
+(String first, String second) -> first.length() -
+
+second.length()
+```
+
+### 4.2.2. Functional Interfaces
+
+- As we discussed, there are many existing interfaces in Java that encapsulate blocks of code, such as `ActionListener` or `Comparator`. 
+- Lambdas are compatible with these interfaces. 
+- You can supply a lambda expression whenever an object of an interface with a single abstract method is expected. Such an interface is called a functional interface.
+- To demonstrate the conversion to a functional interface, consider the Arrays.sort method. Its second parameter requires an instance of `Comparator`, an interface with a single method. Simply supply a lambda. Behind the scenes, the `Arrays.sort` method receives an object of some class that implements `Comparator<String>`. Invoking the compare method on that object executes the body of the lambda expression. **In fact, conversion to a functional interface is the only thing that you can do with a lambda expression in Java.**
+```java
+Arrays.sort(words, (first, second) -> first.length() - second.length());
+```
+
+---
+
+A particularly useful interface in the java.util.function package is `Predicate`:
+
+```java
+public interface Predicate<T>
+{
+	
+	boolean test(T t);
+	
+	// additional default and static methods
+}
+```
+
+- The ArrayList class has a `removeIf` method whose parameter is a `Predicate`.
+
+```java
+list.removeIf(e -> e == null);
+```
+
+---
+
+---
+Another useful functional interface is `Supplier<T>`:
+
+```java
+public interface Supplier<T>
+{
+	T get();
+}
+```
+
+A supplier has no arguments and yields a value of type T when it is called. Suppliers are used for `lazy evaluation`. For example, consider the call:
+
+```java
+LocalDate hireDay = Objects.requireNonNullElseGet(day, () -> new LocalDate.of(1970, 1, 1));
+```
+
+---
+
+### 4.2.3. Method References
+
+- Sometimes, a lambda expression involves a single method. For example, suppose you simply want to print the event object whenever a timer event occurs.
+
+```java
+var timer = new Timer(1000, System.out::println);
+```
+
+- The expression `System.out::println` is a method reference. It directs the compiler to produce an instance of a functional interface, overriding the single abstract method of the interface to call the given method. In this example, an `ActionListener` is produced whose `actionPerformed(ActionEvent e)` method calls `System.out.println(e)`.
+- **Like a lambda expression, a method reference is not an object. It gives rise to an object when assigned to a variable whose type is a functional interface.**
+- The `::` operator separates the method name from the name of an object or class. There are three variants:
+	1. `object::instanceMethod`
+	2. `Class:instanceMethod`
+	3. `Class:staticMethod`
+
+| Method Reference    | Equivalent Lambda Expression |
+| ------------------- | ---------------------------- |
+| `separator::equals` | `x -> separator.equals(x)`   |
+| `String::trim`      | `x -> x.strip()`             |
+| `String::concat`    | `(x,y) -> x.concat(y)`       |
+| `Integer::valueOf`  | `x -> Integer.valueOf(x)`    |
+| `Integer::sum`      | `(x,y) -> Integer.sum(x,y)`  |
+| `String::new`       | `x -> new String(x)`         |
+| `String[]::new`     | `n -> new String[n]`         |
+- **NOTE:** You can capture the `this` parameter in a method reference. For example, `this::equals` is the same as `x -> this.equals(x)`. It is also valid to use `super`. The method expression `super::instanceMethod` uses this as the target and invokes the superclass version of the given method.
+
+### 4.2.4. Constructor References
+
