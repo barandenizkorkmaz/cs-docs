@@ -356,3 +356,156 @@ An object that comes from an inner class has an implicit reference to the outer 
 - An inner class **cannot** have `static` methods.
 - Any static-fields declared in an inner class must be `final` and initialized with a compile-time constant.
 - The inner class can access the private data of the outer class, but the outer class cannot. Thus, inner classes are genuinely more powerful than regular classes because they have more access privileges.
+### 4.3.1. Local Inner Classes
+
+- You can define the class locally in a single method.
+
+```java
+public void start()
+
+{
+
+	class TimePrinter implements ActionListener
+	
+	{
+	
+		public void actionPerformed(ActionEvent event)
+		
+		{
+		
+		System.out.println("At the tone, the time is "
+		
+		+ Instant.ofEpochMilli(event.getWhen()));
+		
+		if (beep) Toolkit.getDefaultToolkit().beep();
+		
+		}
+	
+	}
+	
+	var listener = new TimePrinter();
+	var timer = new Timer(interval, listener);
+	timer.start();
+
+}
+```
+
+- Local classes are never declared with an access specifier (that is, public or private). Their scope is always restricted to the block in which they are declared.
+- **Local classes have one great advantage: They are completely hidden from the outside world.**
+- Local classes have another advantage over other inner classes.
+	- Not only can they access the fields of their outer classes; they can even access `local variables`! However, those local variables must be effectively final. That means, they may never change once they have been assigned.
+
+#### 4.3.1.1. Anonymous Inner Classes
+
+If you want to make only a single object of this class, you don’t even need to give the class a name. Such a class is called an `anonymous inner class`.
+
+```java
+public void start(int interval, boolean beep)
+
+{
+
+var listener = new ActionListener() {
+
+		public void actionPerformed(ActionEvent event)
+		
+		{
+			
+			System.out.println("At the tone, the time is "
+			
+			+ Instant.ofEpochMilli(event.getWhen()));
+			
+			if (beep) Toolkit.getDefaultToolkit().beep();
+		
+		}
+
+	};
+
+var timer = new Timer(interval, listener);
+
+timer.start();
+}
+```
+
+- In general, the syntax is
+```
+new SuperType(construction parameters) {
+
+	inner class methods and data
+}
+
+```
+
+- Here, ``SuperType`` can be an **interface**, such as ActionListener; then, **the inner class implements that interface**. `SuperType` can also be a **class**; then, **the inner class extends that class.**
+- An anonymous inner class **cannot** have constructors because the name of a constructor must be the same as the name of a class, and the class has no name. Instead, the construction parameters are given to the superclass constructor.
+- You have to look carefully to see the difference between the construction of a new object of a class and the construction of an object of an anonymous inner class extending that class.
+
+```java
+var queen = new Person("Mary");
+
+// a Person object
+
+var count = new Person("Dracula") { . . . };
+
+// an object of an inner class extending Person
+```
+
+- For many years, Java programmers routinely used anonymous inner classes for event listeners and other callbacks. Nowadays, you are better off using a lambda expression.
+```java
+public void start(int interval, boolean beep)
+
+{
+
+// Simply by using lambda
+
+	var timer = new Timer(interval, event -> {
+	
+	System.out.println(
+	
+	"At the tone, the time is " +
+	
+	Instant.ofEpochMilli(event.getWhen()));
+	
+	if (beep) Toolkit.getDefaultToolkit().beep(); });
+	
+	timer.start();
+
+}
+```
+
+---
+**NOTE:** Double Brace Initialization
+
+The following trick, called double brace initialization, takes advantage of the inner class syntax. Suppose you want to construct an array list and pass it to a method:
+
+```java
+var friends = new ArrayList<String>();
+friends.add("Harry");
+friends.add("Tony");
+invite(friends);
+```
+
+If you don’t need the array list again, it would be nice to make it anonymous. But then how can you add the elements?
+
+```java
+invite(new ArrayList<String>() {{ add("Harry"); add("Ron");}});
+
+// double brace initialization
+var friends = new ArrayList<String>() {
+	{
+		add("Harry");
+		add("Ron");
+	}
+}
+```
+
+Note the double braces. The outer braces make an anonymous subclass of ArrayList. **The inner braces are an object initialization block** (see previous chapter).
+
+---
+
+### 4.3.2. Static Inner Class
+
+Occasionally, you may want to use an inner class simply to hide one class inside another—**but you don’t need the inner class to have a reference to the outer class object.** You can suppress the generation of that reference by declaring the inner class `static`.
+- Use a static inner class whenever the inner class does not need to access an outer class object.
+- **Unlike regular inner classes, static inner classes can have static fields and methods.**
+- **Classes that are declared inside an interface are automatically static and public.**
+- **Interfaces, records, and enumerations that are declared inside a class are automatically static.**
