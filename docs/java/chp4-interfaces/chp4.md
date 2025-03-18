@@ -344,3 +344,15 @@ The point of using lambdas is `deferred execution`. To accept the lambda, we nee
 
 ## 4.3. Inner Classes
 
+An inner class is a class that is defined inside another class. Why would you want to do that? There are two reasons: 
+- Inner classes can be hidden from other classes in the same package.
+- Inner class methods can access the data from the scope in which they are defined—including the data that would otherwise be private.
+An object that comes from an inner class has an implicit reference to the outer class object that instantiated it. Through this pointer, it gains access to the total state of the outer object.
+- For example, in Java, the `Iterator` class would not need an explicit pointer to the `LinkedList` into which it points.
+- An inner class object has a reference to an outer class object.
+	- The syntax for the outer reference is the following
+`OuterClass.this`.
+- We could declare an inner class as `private`. Then only the outer class would be able to construct inner class objects. Only inner classes can be private. Regular classes always have either package or public access.
+- An inner class **cannot** have `static` methods.
+- Any static-fields declared in an inner class must be `final` and initialized with a compile-time constant.
+- The inner class can access the private data of the outer class, but the outer class cannot. Thus, inner classes are genuinely more powerful than regular classes because they have more access privileges.
