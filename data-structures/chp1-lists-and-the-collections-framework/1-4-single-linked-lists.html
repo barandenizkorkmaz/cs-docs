@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Single-Linked Lists - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Single-Linked Lists";
+        var mkdocs_page_input_path = "data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.md";
+        var mkdocs_page_url = "/data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Lists and The Collection Framework</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Single-Linked Lists</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-linkedliste">Class LinkedList&lt;E&gt;</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#extra">Extra</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Lists and The Collection Framework</li>
+      <li class="breadcrumb-item active">Single-Linked Lists</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-single-linked-lists">4. Single-Linked Lists</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>Java does not have a class that implements single-linked lists. Instead, it has a more general double-linked list class.</li>
+</ul>
+<h2 id="class-linkedliste">Class <code>LinkedList&lt;E&gt;</code></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>void</td>
+<td>add(int index, E element)</td>
+<td>Inserts the specified element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>get(int index)</td>
+<td>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>indexOf(Object o)</td>
+<td>Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.</td>
+</tr>
+<tr>
+<td>Iterator\<E></td>
+<td>iterator()</td>
+<td>Returns an iterator over the elements in this list in proper sequence.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>remove(int index)</td>
+<td>Removes the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove(Object o)</td>
+<td>Removes the first occurrence of the specified element from this list, if it is present.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>set(int index, E element)</td>
+<td>Replaces the element at the specified position in this list with the specified element.</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray()</td>
+<td>Returns an array containing all of the elements in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Note that the <code>LinkedList</code> class, part of Java API package <code>java.util</code>, is a double-linked list. However, the API description above is still valid.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<pre><code class="language-java">import java.util.AbstractSequentialList;
+import java.util.List;
+import java.util.ListIterator;
+
+/** Class to represent a linked list with a link from each node to the next
+ node. SingleLinkedList does not implement the List interface.
+ */
+
+public class SingleLinkedList&lt;E&gt; extends AbstractSequentialList&lt;E&gt; implements List&lt;E&gt; {
+
+    /** A Node is the building block for a single‐linked list. */
+    private static class Node&lt;E&gt; {
+        // Data Fields
+        /** The reference to the data. */
+        private E data;
+        /** The reference to the next node. */
+        private Node&lt;E&gt; next;
+
+        // Constructors
+        /** Creates a new node with a null next field.
+         @param dataItem The data stored
+         */
+        private Node(E dataItem) {
+            data = dataItem;
+            next = null;
+        }
+
+        /** Creates a new node that references another node.
+         @param dataItem The data stored
+         @param nodeRef The node referenced by new node
+         */
+        private Node(E dataItem, Node&lt;E&gt; nodeRef) {
+            data = dataItem;
+            next = nodeRef;
+        }
+    }
+
+    /**
+     * Reference to list head.
+     */
+    private Node&lt;E&gt; head = null;
+    /**
+     * The number of items in the list
+     */
+    private int size = 0;
+
+    /** Insert the specified item at index
+     @param index The position where item is to be inserted
+     @param item The item to be inserted
+     @throws IndexOutOfBoundsException if index is out of range
+     */
+    public void add(int index, E item) {
+        if (index &lt; 0 || index &gt; size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        if (index == 0) {
+            addFirst(item);
+        } else {
+            Node&lt;E&gt; node = getNode(index-1);
+            addAfter(node, item);
+        }
+    }
+
+    /** Append item to the end of the list
+     @param item The item to be appended
+     @return true (as specified by the Collection interface)
+     */
+    public boolean add(E item) {
+        add(size, item);
+        return true;
+    }
+
+    /** Add an item to the front of the list.
+     @param item The item to be added
+     */
+    public void addFirst(E item) {
+        head = new Node&lt;&gt;(item, head);
+        size++;
+    }
+
+    /** Add a node after a given node
+     @param node The node preceding the new item
+     @param item The item to insert
+     */
+    private void addAfter(Node&lt;E&gt; node, E item) {
+        node.next = new Node&lt;&gt;(item, node.next);
+        size++;
+    }
+
+    /**
+     * Returns the list iterator object.
+     * @param i the index of the iterator.
+     * @return the list iterator object.
+     */
+    @Override
+    public ListIterator&lt;E&gt; listIterator(int i) {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Removes the element at the specified position in this list.
+     *
+     * @param index the index of the element to be removed
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
+    public E remove(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+
+        E removedData;
+        if (index == 0) {
+            removedData = removeFirst();
+        } else {
+            Node&lt;E&gt; prevNode = getNode(index - 1);
+            removedData = removeAfter(prevNode);
+        }
+        return removedData;
+    }
+
+    /** Remove the node after a given node
+     @param node The node before the one to be removed
+     @return The data from the removed node, or null
+     if there is no node to remove
+     */
+    private E removeAfter(Node&lt;E&gt; node) {
+        Node&lt;E&gt; temp = node.next;
+        if (temp != null) {
+            node.next = temp.next;
+            size--;
+            return temp.data;
+        } else {
+            return null;
+        }
+    }
+
+    /** Remove the first node from the list
+     @return The removed node's data or null if the list is empty
+     */
+    private E removeFirst() {
+        Node&lt;E&gt; temp = head;
+        if (head != null) {
+            head = head.next;
+        }
+        // Return data at old head or null if list is empty
+        if (temp != null) {
+            size--;
+            return temp.data;
+        } else {
+            return null;
+        }
+    }
+
+    /** Get the data at index
+     @param index The position of the data to return
+     @return The data at index
+     @throws IndexOutOfBoundsException if index is out of range
+     */
+    public E get(int index) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        Node&lt;E&gt; node = getNode(index);
+        return node.data;
+    }
+
+    /** Find the node at a specified position
+     @param index The position of the node sought
+     @return The node at index or null if it does not exist
+     */
+    private Node&lt;E&gt; getNode(int index) {
+        Node&lt;E&gt; node = head;
+        for (int i = 0; i &lt; index &amp;&amp; node != null; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
+    /** Store a reference to anEntry in the element at position index.
+     @param index The position of the item to change
+     @param newValue The new data
+     @return The data previously at index
+     @throws IndexOutOfBoundsException if index is out of range
+     */
+    public E set(int index, E newValue) {
+        if (index &lt; 0 || index &gt;= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        Node&lt;E&gt; node = getNode(index);
+        E result = node.data;
+        node.data = newValue;
+        return result;
+    }
+
+    /**
+     * Return the current number of elements in the list.
+     * @return The size of the list
+     */
+    public int size(){
+        return size;
+    }
+
+    /**
+     * Returns the index of the first occurrence of the specified element in this list,
+     * or -1 if this list does not contain the element. This method allows searching for
+     * an object of type Object.
+     *
+     * @param target the object to search for in the list
+     * @return the index of the first occurrence of the object in the list, or -1 if not found
+     */
+    public int indexOf(Object target) {
+        Node&lt;E&gt; current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data.equals(target)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1; // Return -1 if the element is not found
+    }
+
+}
+</code></pre>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations/Complexity</th>
+<th>Big O (Worst-Case Complexity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add(E e)</td>
+<td>O(N)<br />- Insertion at the beginning: O(1)<br />- Insertion in the end: O(N)<br />- Insertion into the middle: O(N)</td>
+</tr>
+<tr>
+<td>add(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>get(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>set(int index, E element)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(int index)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>remove(Object o)</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="extra">Extra</h3>
+<blockquote>
+<p>The keyword static in the class header indicates that the Node<E> class will not reference its outer class. (It can’t because it has no methods other than constructors.) In the Java API documentation, static inner classes are also called nested classes.
+Generally, we want to keep the details of the Node class private. Thus, the qualifier private is applied to the class as well as to the data fields and the constructor. However, the data fields and methods of an inner class are visible anywhere within the enclosing class (also called the parent class).</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="1-3-arraylist.html" class="btn btn-neutral float-left" title="ArrayLists"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="1-5-linked-list-class.html" class="btn btn-neutral float-right" title="LinkedList Class">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="1-3-arraylist.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="1-5-linked-list-class.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
