@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Interface Comparable and Comparator - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Interface Comparable and Comparator";
+        var mkdocs_page_input_path = "data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.md";
+        var mkdocs_page_url = "/data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Heaps and Priority Queues</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Interface Comparable and Comparator</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#interface-comparablee">Interface Comparable&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interface-comparatore">Interface Comparator&lt;E&gt;</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#using-comparators">Using Comparators</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Heaps and Priority Queues</li>
+      <li class="breadcrumb-item active">Interface Comparable and Comparator</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="interface-comparablee-and-comparatore">Interface <code>Comparable&lt;E&gt;</code> and <code>Comparator&lt;E&gt;</code></h1>
+<ul>
+<li>How do we compare elements in a PriorityQueue?</li>
+</ul>
+<h2 id="interface-comparablee">Interface <code>Comparable&lt;E&gt;</code></h2>
+<ul>
+<li>In many cases, we will insert objects that implement <code>Comparable&lt;E&gt;</code>and use their natural ordering as specified by method <code>compareTo</code>.</li>
+<li><code>Comparable&lt;E&gt;</code> is used to define the natural ordering of an object type.</li>
+</ul>
+<h2 id="interface-comparatore">Interface <code>Comparator&lt;E&gt;</code></h2>
+<ul>
+<li>However, we may need to insert objects that do not implement <code>Comparable&lt;E&gt;</code>, or we may
+  want to specify a different ordering from that defined by the object’s <code>compareTo</code> method.<ul>
+<li>For example, files to be printed may be ordered by their name using the compareTo method, but
+  we may want to assign priority based on their length.</li>
+</ul>
+</li>
+<li>The Java API contains the <code>Comparator&lt;E&gt;</code> interface, which allows us to specify alternative ways to compare objects. An implementer of the <code>Comparator&lt;E&gt;</code> interface must define a <code>compare</code> method that is similar to <code>compareTo</code> except that it has two parameters.</li>
+</ul>
+<pre><code class="language-java">public interface Comparator&lt;T&gt; {
+    public int compare(T first, T second);
+}
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="language-java">public class RectangleAreaComparator implements Comparator&lt;Rectangle&gt; {
+    // compare in ascending order by area (WxH)
+    public int compare(Rectangle r1, Rectangle r2) {
+        return r1.getArea() - r2.getArea();
+    }
+}
+</code></pre>
+<h3 id="using-comparators">Using Comparators</h3>
+<ol>
+<li>TreeSet, TreeMap , PriorityQueue can use Comparator:</li>
+</ol>
+<p><code>java
+   Comparator&lt;Rectangle&gt; comp = new RectangleAreaComparator();
+   Set&lt;Rectangle&gt; set = new TreeSet&lt;Rectangle&gt;(comp);
+   Queue&lt;Rectangle&gt; pq = new PriorityQueue&lt;Rectangle&gt;(10,comp);</code></p>
+<ol>
+<li>Searching and sorting methods can accept Comparators.</li>
+</ol>
+<p><code>java
+   Arrays.binarySearch(array, value, comparator)
+   Arrays.sort(array, comparator)
+   Collections.binarySearch(list, comparator)
+   Collections.max(collection, comparator)
+   Collections.min(collection, comparator)
+   Collections.sort(list, comparator)</code></p>
+<ol>
+<li>Methods are provided to reverse a Comparator's ordering:</li>
+</ol>
+<p><code>java
+   public static Comparator Collections.reverseOrder()
+   public static Comparator Collections.reverseOrder(comparator)</code></p>
+<p><strong>Example:</strong> Using Comparator for ordering a Priority Queue</p>
+<pre><code class="language-java">public class LengthComparator implements Comparator&lt;String&gt; {
+    public int compare(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            // if lengths are unequal, compare by length
+            return s1.length() - s2.length();
+        } else {
+            // break ties by ABC order
+            return s1.compareTo(s2);
+        }
+    }
+}
+
+Queue&lt;String&gt; pq = new PriorityQueue&lt;String&gt;(100, new LengthComparator());
+</code></pre>
+<ul>
+<li>Observe that, in the example, we are still making use of the fact that the class <code>String</code> is implementing <code>Comparable&lt;E&gt;</code> interface to define its own natural ordering by implementing <code>compareTo</code> method.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="4-2-priority-queues.html" class="btn btn-neutral float-left" title="Priority Queues"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chp5-sets-and-maps/5-1-sets.html" class="btn btn-neutral float-right" title="Sets">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="4-2-priority-queues.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chp5-sets-and-maps/5-1-sets.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
