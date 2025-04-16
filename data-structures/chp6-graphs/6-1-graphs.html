@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp6-graphs/6-1-graphs.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Graphs - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Graphs";
+        var mkdocs_page_input_path = "data-structures/chp6-graphs/6-1-graphs.md";
+        var mkdocs_page_url = "/data-structures/chp6-graphs/6-1-graphs.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Graphs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#graph-terminology">Graph Terminology</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#directed-and-undirected-graphs">Directed and Undirected Graphs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#paths-and-cycles">Paths and Cycles</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-graph-adt-and-edge-class">The Graph ADT and Edge Class</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementing-the-graph-adt">Implementing the Graph ADT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#adjacency-list">Adjacency List</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adjacency-matrix">Adjacency Matrix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview-of-the-hierarchy">Overview of the Hierarchy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-abstractgraph">Class AbstractGraph</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-listgraph-class">The ListGraph Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#implementation_1">Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-matrixgraph-class">The MatrixGraph Class</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#complexity-analysis">Complexity Analysis</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#time-efficiency">Time Efficiency</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#storage-efficiency">Storage Efficiency</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-mapgraph-class">The MapGraph Class</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#graph-traversals">Graph Traversals</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#breadth-first-search">Breadth-First Search</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#depth-first-search">Depth-First Search</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#topological-sort">Topological Sort</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#algorithms-using-weighted-graphs">Algorithms Using Weighted Graphs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dijkstras-algorithm">Dijkstra's Algorithm</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pseudocode">Pseudocode</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#using-a-priority-queue">Using a Priority Queue</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#implementation_2">Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#minimum-spanning-trees">Minimum Spanning Trees</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#prims-algorithm">Prim's Algorithm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#kruskals-algorithm">Kruskal's Algorithm</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+      <li class="breadcrumb-item active">Graphs</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="graphs">Graphs</h1>
+<h2 id="graph-terminology">Graph Terminology</h2>
+<ul>
+<li>A graph <code>G(V, E)</code> is a data structure that consists of a set of <strong>vertices</strong> (or nodes) and a set of <strong>edges</strong> (relations) between the pairs of vertices.</li>
+</ul>
+<h3 id="directed-and-undirected-graphs">Directed and Undirected Graphs</h3>
+<ul>
+<li><code>Directed Edges</code>: The edges of a graph are directed if the existence of an edge from A to B does not necessarily guarantee that there is a path in both directions. </li>
+<li><code>Directed Graph</code>: A graph that contains directed edges is known as a <strong>directed graph</strong> or <strong>digraph</strong>.</li>
+<li><code>Undirected Graph</code>: A graph that contains undirected edges is known as an undirected graph or simply a graph.</li>
+<li><code>Weighted Edges</code>: The edges in a graph may have values associated with them known as their <strong>weights</strong>.</li>
+<li><code>Weighted Graph</code>: A graph with weighted edges is known as <strong>weighted graph</strong>.</li>
+</ul>
+<h3 id="paths-and-cycles">Paths and Cycles</h3>
+<ul>
+<li><code>Adjacent Vertex</code>: A vertex is adjacent to another vertex if there is an edge to it from that other vertex.</li>
+<li>Note that in the case of <strong>directed graph</strong>, adjacency is not necessarily associative, i.e. if A is adjacent to B, it doesn't necessarily mean that B is adjacent to A (if there is no edge from B to A). </li>
+<li><code>Path</code>: A sequence of vertices in which each successive vertex is adjacent to its predecessor.</li>
+<li><code>Simple Path</code>: In a simple path, the vertices and edges are distinct, except that the first and last vertices may be the same.</li>
+<li><code>Cycle</code>: A cycle is a simple path in which only the first and final vertices are the same. A cycle must contain at least three distinct vertices.</li>
+<li><code>Connected Graph</code>: An undirected graph is called a connected graph if there is a path from every vertex to every other vertex.</li>
+<li>If a graph is not connected, it is considered <strong>unconnected</strong>, but it will still consist of connected components.</li>
+</ul>
+<h2 id="the-graph-adt-and-edge-class">The Graph ADT and <code>Edge</code> Class</h2>
+<ul>
+<li><code>Java</code> does not provide a <strong>Graph ADT</strong>.</li>
+<li>We can represent the vertices by integers from 0 up to, but not including, <strong>|V|</strong>. (<strong>|V|</strong> means the cardinality of V, or the number of vertices in set V.) </li>
+<li>For edges we will define the class Edge that will contain the source vertex, the destination vertex, and the weight.</li>
+<li>For unweighted edges we will use the default value of 1.0.</li>
+<li>Observe that an Edge is directed. For undirected graphs, we will always have two Edge objects: one in each direction for each pair of vertices that has an edge between them. </li>
+<li>A vertex is represented by a type int variable.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Data Field</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private int dest</code></td>
+<td>The destination vertex for an edge</td>
+</tr>
+<tr>
+<td><code>private int source</code></td>
+<td>The source vertex for an edge</td>
+</tr>
+<tr>
+<td><code>private double weight</code></td>
+<td>The weight</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public Edge(int source, int dest)</code></td>
+<td>Constructs an Edge from source to dest. Sets the weight to 1.0</td>
+</tr>
+<tr>
+<td><code>public Edge(int source, int dest, double w)</code></td>
+<td>Constructs an Edge from source to dest. Sets the weight to w</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public boolean equals(Object o)</code></td>
+<td>Compares two edges for equality. Edges are equal if their source and destination vertices are the same. The weight is not considered</td>
+</tr>
+<tr>
+<td><code>public int getDest()</code></td>
+<td>Returns the destination vertex</td>
+</tr>
+<tr>
+<td><code>public int getSource()</code></td>
+<td>Returns the source vertex</td>
+</tr>
+<tr>
+<td><code>public double getWeight()</code></td>
+<td>Returns the weight</td>
+</tr>
+<tr>
+<td><code>public int hashCode()</code></td>
+<td>Returns the hash code for an edge. The hash code depends only on the source and destination</td>
+</tr>
+<tr>
+<td><code>public String toString()</code></td>
+<td>Returns a string representation of the edge</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">package datastructures.graph;
+
+public class Edge {
+    private int source;
+    private int dest;
+    private double weight;
+
+    public Edge(int source, int dest) {
+        this.source = source;
+        this.dest = dest;
+        this.weight = 1.0;
+    }
+
+    public Edge(int source, int dest, double weight) {
+        this.source = source;
+        this.dest = dest;
+        this.weight = weight;
+    }
+
+    public int getSource() {
+        return source;
+    }
+
+    public int getDest(){
+        return dest;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Edge edge = (Edge) o;
+        return source == edge.source &amp;&amp; dest == edge.dest;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Integer.hashCode(source);
+        result = 31 * result + Integer.hashCode(dest);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Edge{&quot; +
+                &quot;source=&quot; + source +
+                &quot;, dest=&quot; + dest +
+                &quot;, weight=&quot; + weight +
+                '}';
+    }
+}
+</code></pre>
+<h2 id="implementing-the-graph-adt">Implementing the Graph ADT</h2>
+<ul>
+<li>Two representations of graphs are most common:</li>
+<li><code>Adjacency List</code>: Edges are represented by an array of lists called <code>adjacency lists</code>, where each list stores the vertices adjacent to a particular vertex.</li>
+<li><code>Adjacency Matrix</code>: Edges are represented by a two‐dimensional array, called an <code>adjacency matrix</code>, with |V|rows and |V| columns.</li>
+</ul>
+<h3 id="adjacency-list">Adjacency List</h3>
+<ul>
+<li>An adjacency list representation of a graph uses an array of lists. There is one list for each vertex.</li>
+<li>The vertices are in no particular order.</li>
+<li>The <code>Edge</code> must be stored (not just the destination) because weighted graphs can have different values for weights.</li>
+<li>For an undirected graph (or simply a “graph”), symmetric entries are required.</li>
+</ul>
+<h3 id="adjacency-matrix">Adjacency Matrix</h3>
+<ul>
+<li>The adjacency matrix uses a two‐dimensional array to represent the graph. </li>
+<li>For an unweighted graph, the entries in this matrix can be <strong>boolean</strong> values, where true represents the presence of an edge and false its absence. Another popular method is to use the value 1 for an edge and 0 for no edge. The <strong>integer</strong> coding has benefits over the boolean approach for some graph algorithms that use matrix multiplication.</li>
+<li>For a weighted graph, the matrix would contain the weights. Since 0 is a valid weight, we will use <code>Double.POSITIVE_INFINITY</code> (a special double value in Java that approximates the mathematical behavior of infinity) to indicate the absence of an edge, and in an unweighted graph we will use a weight of 1.0 to indicate the presence of an edge.</li>
+<li>If the graph is undirected, then the matrix is symmetric, and only the lower diagonal of the matrix needs be saved.</li>
+</ul>
+<h3 id="overview-of-the-hierarchy">Overview of the Hierarchy</h3>
+<p><img alt="" src="../../assets/images/data-structures/chp6/overview-of-hierarchy.png" /></p>
+<h3 id="class-abstractgraph">Class <code>AbstractGraph</code></h3>
+<table>
+<thead>
+<tr>
+<th>Data Field</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private boolean directed</code></td>
+<td>True if this is a directed graph</td>
+</tr>
+<tr>
+<td><code>private int numV</code></td>
+<td>The number of vertices</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public AbstractGraph(int numV, boolean directed)</code></td>
+<td>Constructs an empty graph with the specified number of vertices and with the specified directed flag. If directed is true, this is a directed graph</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public int getNumV()</code></td>
+<td>Gets the number of vertices</td>
+</tr>
+<tr>
+<td><code>public boolean isDirected()</code></td>
+<td>Returns true if the graph is a directed graph</td>
+</tr>
+<tr>
+<td><code>public void loadEdgesFromFile(Scanner scan)</code></td>
+<td>Loads edges from a data file</td>
+</tr>
+<tr>
+<td><code>public static Graph createGraph(Scanner scan, boolean isDirected, String type)</code></td>
+<td>Factory method to create a graph and load the data from an input file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="implementation">Implementation</h4>
+<pre><code class="language-java">package datastructures.graph;
+
+import java.util.*;
+import java.io.*;
+/** Abstract base class for graphs. A graph is a set of vertices and
+ a set of edges. Vertices are represented by integers
+ from 0 to n ‐ 1. Edges are ordered pairs of vertices.
+ */
+public abstract class AbstractGraph implements Graph {
+// Data Fields
+    /**
+     * The number of vertices
+     */
+    private int numV;
+    /**
+     * Flag to indicate whether this is a directed graph
+     */
+    private boolean directed;
+
+    // Constructor
+
+    /**
+     * Construct a graph with the specified number of vertices and the directed
+     * flag. If the directed flag is true, this is a directed graph.
+     *
+     * @param numV     The number of vertices
+     * @param directed The directed flag
+     */
+    public AbstractGraph(int numV, boolean directed) {
+        this.numV = numV;
+        this.directed = directed;
+    }
+
+    // Accessor Methods
+
+    /**
+     * Return the number of vertices.
+     *
+     * @return The number of vertices
+     */
+    public int getNumV() {
+        return numV;
+    }
+
+    /**
+     * Return whether this is a directed graph.
+     *
+     * @return true if this is a directed graph
+     */
+    public boolean isDirected() {
+        return directed;
+    }
+
+    // Other Methods
+
+    /**
+     * Load the edges of a graph from the data in an input file. The file
+     * should contain a series of lines, each line with two or
+     * three data values. The first is the source, the second is
+     * the destination, and the optional third is the weight.
+     *
+     * @param scan The Scanner connected to the data file
+     */
+    public void loadEdgesFromFile(Scanner scan) {
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine().trim();
+            if (line.isEmpty()) continue; // Skip empty lines
+
+            String[] tokens = line.split(&quot;\\s+&quot;);
+            if (tokens.length &lt; 2 || tokens.length &gt; 3) {
+                throw new IllegalArgumentException(&quot;Invalid edge format: &quot; + line);
+            }
+
+            try {
+                int source = Integer.parseInt(tokens[0]);
+                int dest = Integer.parseInt(tokens[1]);
+                double weight = (tokens.length == 3) ? Double.parseDouble(tokens[2]) : 1.0;
+
+                // Add edge to the graph
+                insert(new Edge(source, dest, weight));
+
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(&quot;Invalid number format in line: &quot; + line, e);
+            }
+        }
+    }
+
+    /**
+     * Factory method to create a graph and load the data from an input
+     * file. The first line of the input file should contain the number
+     * of vertices. The remaining lines should contain the edge data as
+     * described under loadEdgesFromFile.
+     *
+     * @param scan       The Scanner connected to the data file
+     * @param isDirected true if this is a directed graph,
+     *                   false otherwise
+     * @param type       The string &quot;Matrix&quot; if an adjacency matrix is to be
+     *                   created, and the string &quot;List&quot; if an adjacency list
+     *                   is to be created
+     * @throws IllegalArgumentException if type is neither &quot;Matrix&quot;
+     *                                  nor &quot;List&quot;
+     */
+    public static Graph createGraph(Scanner scan, boolean isDirected,
+                                    String type) {
+        int numV = scan.nextInt();
+        AbstractGraph returnValue;
+        type = type.toLowerCase();
+        switch (type) {
+            case &quot;matrix&quot;:
+                returnValue = new MatrixGraph(numV, isDirected);
+                break;
+            case &quot;list&quot;:
+                returnValue = new ListGraph(numV, isDirected);
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+        returnValue.loadEdgesFromFile(scan);
+        return returnValue;
+    }
+}
+</code></pre>
+<h3 id="the-listgraph-class">The <code>ListGraph</code> Class</h3>
+<table>
+<thead>
+<tr>
+<th>Data Field</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private List&lt;Edge&gt;[] edges</code></td>
+<td>An array of Lists to contain the edges that originate with each vertex</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public ListGraph(int numV, boolean directed)</code></td>
+<td>Constructs a graph with the specified number of vertices and directionality</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public Iterator&lt;Edge&gt; edgeIterator(int source)</code></td>
+<td>Returns an iterator to the edges that originate from a given vertex</td>
+</tr>
+<tr>
+<td><code>public Edge getEdge(int source, int dest)</code></td>
+<td>Gets the edge between two vertices</td>
+</tr>
+<tr>
+<td><code>public void insert(Edge e)</code></td>
+<td>Inserts a new edge into the graph</td>
+</tr>
+<tr>
+<td><code>public boolean isEdge(int source, int dest)</code></td>
+<td>Determines if there is an edge between the given vertices</td>
+</tr>
+</tbody>
+</table>
+<h4 id="implementation_1">Implementation</h4>
+<pre><code class="language-java">package datastructures.graph;
+
+import java.util.*;
+
+/** A ListGraph is an extension of the AbstractGraph abstract class
+ that uses an array of lists to represent the edges.
+ */
+public class ListGraph extends AbstractGraph {
+    // Data Field
+    /**
+     * An array of Lists to contain the edges that
+     * originate with each vertex.
+     */
+    private List&lt;Edge&gt;[] edges;
+
+    /**
+     * Construct a graph with the specified number of vertices and directionality.
+     *
+     * @param numV     The number of vertices
+     * @param directed The directionality flag
+     */
+    public ListGraph(int numV, boolean directed) {
+        super(numV, directed);
+        edges = new List[numV];
+        for (int i = 0; i &lt; numV; i++) {
+            edges[i] = new LinkedList&lt;Edge&gt;();
+        }
+    }
+
+    /**
+     * Insert a new edge into the graph.
+     *
+     * @param edge The new edge
+     */
+    public void insert(Edge edge) {
+        edges[edge.getSource()].add(edge);
+        if (!isDirected()) {
+            edges[edge.getDest()].add(new Edge(edge.getDest(), edge.getSource(),
+                    edge.getWeight()));
+        }
+    }
+
+    /**
+     * Get the edge between two vertices.
+     *
+     * @param source The source
+     * @param dest   The destination
+     * @return the edge between these two vertices
+     * or null if an edge does not exist.
+     */
+    public Edge getEdge(int source, int dest) {
+        Edge target = new Edge(source, dest, Double.POSITIVE_INFINITY);
+        for (Edge edge : edges[source]) {
+            if (edge.equals(target))
+                return edge; // Desired edge found, return it.
+        }
+        // Assert: All edges for source checked.
+        return null; // Desired edge not found.
+    }
+
+    /**
+     * Determine whether an edge exists.
+     *
+     * @param source The source vertex
+     * @param dest   The destination vertex
+     * @return true if there is an edge from source to dest
+     */
+    public boolean isEdge(int source, int dest) {
+        return edges[source].contains(new Edge(source, dest));
+    }
+
+    public Iterator&lt;Edge&gt; edgeIterator(int source) {
+        return edges[source].iterator();
+    }
+
+}
+</code></pre>
+<h3 id="the-matrixgraph-class">The <code>MatrixGraph</code> Class</h3>
+<pre><code class="language-java">package datastructures.graph;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class MatrixGraph extends AbstractGraph{
+
+    private double[][] edges;
+
+    public MatrixGraph(int numV, boolean isDirected) {
+        super(numV, isDirected);
+        edges = new double[numV][numV];
+        for (int i = 0; i &lt; numV; i++) {
+            for (int j = 0; j &lt; numV; j++) {
+                edges[i][j] = Double.POSITIVE_INFINITY;
+            }
+        }
+    }
+
+    @Override
+    public void insert(Edge edge) {
+        edges[edge.getSource()][edge.getDest()] = edge.getWeight();
+        if(!isDirected()){
+            edges[edge.getDest()][edge.getSource()] = edge.getWeight();
+        }
+    }
+
+    @Override
+    public boolean isEdge(int source, int dest) {
+        return edges[source][dest] != Double.POSITIVE_INFINITY;
+    }
+
+    @Override
+    public Edge getEdge(int source, int dest) {
+        return edges[source][dest] == Double.POSITIVE_INFINITY ? null : new Edge(source, dest);
+    }
+
+    @Override
+    public Iterator&lt;Edge&gt; edgeIterator(int source) {
+        List&lt;Edge&gt; edges = new LinkedList&lt;&gt;();
+        for(int i = 0; i &lt; this.getNumV(); i++){
+            if(this.edges[source][i] != Double.POSITIVE_INFINITY){
+                edges.add(getEdge(source, i));
+            }
+        }
+        return edges.iterator();
+    }
+}
+</code></pre>
+<h3 id="complexity-analysis">Complexity Analysis</h3>
+<ul>
+<li>The density of a graph is the ratio of <script type="math/tex">|E|</script> to <script type="math/tex">|V|^2</script>.</li>
+<li>A dense graph is one in which <script type="math/tex">|E|</script> is close to but less than <script type="math/tex">|V|^2</script>.</li>
+</ul>
+<h4 id="time-efficiency">Time Efficiency</h4>
+<ul>
+<li>Many graph algorithms are of the form:</li>
+</ul>
+<p><code>java
+  1. for each vertex u in the graph
+  2. for each vertex v adjacent to u
+  3.     Do something with edge (u, v).</code></p>
+<ul>
+<li>Adjacency List: <script type="math/tex">O(|E|)</script>.</li>
+<li>Adjacency Matrix: <script type="math/tex">O(|V|^2)</script>.</li>
+<li>
+<p>Thus, for a sparse graph, the adjacency list gives better performance for this type of algorithm.</p>
+</li>
+<li>
+<p>Some graph are of the form:</p>
+</li>
+</ul>
+<p><code>java
+  1. for each vertex u in some subset of the vertices
+  2. for each vertex v in some subset of the vertices
+  3.     if (u, v) is an edge
+  4.         Do something with edge (u, v).</code></p>
+<ul>
+<li>Adjacency List: <script type="math/tex">O(|V||E|)</script>.</li>
+<li>Adjacency Matrix: <script type="math/tex">O(|V|^2)</script>. Since the search step is <script type="math/tex">O(1)</script>.</li>
+<li>Thus, for a dense graph, the adjacency matrix gives better performance for this type of algorithm.</li>
+</ul>
+<h4 id="storage-efficiency">Storage Efficiency</h4>
+<ul>
+<li>Adjacency Matrix: <script type="math/tex">O(|V|^2)</script>
+</li>
+<li>If the graph is sparse, there will be a lot of wasted space in the adjacency matrix.</li>
+<li>On the other hand, in an adjacency list, each edge is represented by a reference to an <code>Edge</code> object containing data about the source, destination, and weight as well as a reference to the next edge in the list.</li>
+<li>Therefore, the adjacency list uses less storage when less than 25 percent of the adjacency matrix would be filled.</li>
+</ul>
+<h3 id="the-mapgraph-class">The <code>MapGraph</code> Class</h3>
+<ul>
+<li>We can achieve the performance benefits of both the <code>ListGraph</code> and <code>MatrixGraph</code> by making a slight modification to the <code>ListGraph</code>. Replacing the array of <code>List&lt;Edge&gt;</code> with an array of <code>Map&lt;Integer, Edge&gt;</code> allows us to query the existence of an edge in <script type="math/tex">O(1)</script> time, and using the <code>LinkedHashMap</code> allows iterating through the edges adjacent to a given vertex in <script type="math/tex">O(|E_u|)</script>.</li>
+</ul>
+<pre><code class="language-java">package datastructures.graph;
+
+import java.util.*;
+
+/** A MapGraph is an extension of the AbstractGraph abstract class
+ that uses an array of maps to represent the edges.
+ */
+public class MapGraph extends AbstractGraph {
+    // Data Field
+    /**
+     * An array of maps to contain the edges that
+     * originate with each vertex.
+     */
+    private Map&lt;Integer, Edge&gt;[] outgoingEdges;
+
+    /**
+     * Construct a graph with the specified number of vertices and directionality.
+     *
+     * @param numV     The number of vertices
+     * @param directed The directionality flag
+     */
+    public MapGraph(int numV, boolean directed) {
+        super(numV, directed);
+        outgoingEdges = new Map[numV];
+        for (int i = 0; i &lt; numV; i++) {
+            outgoingEdges[i] = new LinkedHashMap&lt;&gt;();
+        }
+    }
+
+    /**
+     * Insert a new edge into the graph.
+     *
+     * @param edge The new edge
+     */
+    public void insert(Edge edge) {
+        int source = edge.getSource();
+        int dest = edge.getDest();
+        double weight = edge.getWeight();
+        outgoingEdges[source].put(dest, edge);
+        if (!isDirected()) {
+            Edge reverseEdge = new Edge(dest, source, weight);
+            outgoingEdges[dest].put(source, reverseEdge);
+        }
+    }
+
+    /**
+     * Get the edge between two vertices.
+     *
+     * @param source The source
+     * @param dest   The destination
+     * @return the edge between these two vertices
+     * or null if an edge does not exist.
+     */
+    public Edge getEdge(int source, int dest) {
+        return outgoingEdges[source].get(dest);
+    }
+
+    /**
+     * Determine whether an edge exists.
+     *
+     * @param source The source vertex
+     * @param dest   The destination vertex
+     * @return true if there is an edge from source to dest
+     */
+    public boolean isEdge(int source, int dest) {
+        return outgoingEdges[source].containsKey(dest);
+    }
+
+    public Iterator&lt;Edge&gt; edgeIterator(int source) {
+        return outgoingEdges[source].values().iterator();
+    }
+
+}
+</code></pre>
+<h2 id="graph-traversals">Graph Traversals</h2>
+<ul>
+<li>The two most common traversal algorithms are <strong>breadth-first</strong> and <strong>depth-first</strong> search.</li>
+</ul>
+<h3 id="breadth-first-search">Breadth-First Search</h3>
+<pre><code class="language-java">1. Take an arbitrary start vertex, mark it visited and place it in a queue.
+2. while the queue is not empty
+3.     Take a vertex u.
+4.     for all vertices, v, adjacent to this vertex, u
+5.         if v has not been visited
+6.             Mark it visited .
+7.             Insert vertex v into the queue.
+</code></pre>
+<p><strong>NOTE:</strong> A path starting at the root to any vertex in the tree is the shortest path in the original graph from the start vertex to that vertex, where we consider all edges to have the same weight. Therefore, the shortest path is the one that goes through the smallest number of vertices. We can save the information we need to represent this tree by storing the parent of each vertex when we identify it (Step 7 of the breadth‐first algorithm).</p>
+<pre><code class="language-java">Refinement of Step 7 of Breadth‐First Search Algorithm
+7.1 Insert vertex v into the queue.
+7.2 Set the parent of v to u.
+</code></pre>
+<ul>
+<li>Time Complexity: <script type="math/tex">O(|E|)</script>
+</li>
+</ul>
+<pre><code class="language-java">package algorithms.graph.search;
+
+import datastructures.graph.Edge;
+import datastructures.graph.Graph;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+/** Class to implement the breadth‐first search algorithm. */
+public class BreadthFirstSearch {
+
+    /** Perform a breadth‐first search of a graph.
+     @post The array parent will contain the predecessor
+     of each vertex in the breadth‐first search tree.
+     @param graph The graph to be searched
+     @param start The start vertex
+     @return The array of parents
+     */
+    public static int[] breadthFirstSearch(Graph graph, int start) {
+        Queue&lt;Integer&gt; queue = new LinkedList&lt;Integer&gt;();
+
+        // Declare array parent and initialize its elements to –1.
+        int[] parent = new int[graph.getNumV()];
+        for (int i = 0; i &lt; graph.getNumV(); i++) {
+            parent[i] = -1;
+        }
+
+        // Declare array visited and initialize its elements to false.
+        boolean[] visited = new boolean[graph.getNumV()];
+
+        // Mark the start vertex as visited and insert it into the queue.
+        visited[start] = true;
+        queue.offer(start);
+
+        // Perform breadth‐first search until done
+        while (!queue.isEmpty()) {
+            // Take a vertex, current, out of the queue.
+            int current = queue.remove();
+            System.out.print(current + &quot;\t&quot;);
+            // Examine each vertex, neighbor, adjacent to current.
+            Iterator&lt;Edge&gt; itr = graph.edgeIterator(current);
+            while (itr.hasNext()) {
+                Edge edge = itr.next();
+                int neighbor = edge.getDest();
+                if (!visited[neighbor]) {
+                    // Mark it visited.
+                    visited[neighbor] = true;
+                    // Place it into the queue.
+                    queue.offer(neighbor);
+                    // Insert the edge (current, neighbor) into the tree.
+                    parent[neighbor] = current;
+                }
+            }
+        }
+        return parent;
+    }
+}
+</code></pre>
+<h3 id="depth-first-search">Depth-First Search</h3>
+<pre><code class="language-java">1. Mark the current vertex, u, visited.
+2. for each vertex, v, adjacent to the current vertex, u
+3.     if v has not been visited
+4.         Set parent of v to u.
+5.         Recursively apply this algorithm starting at v.
+</code></pre>
+<pre><code class="language-java">package algorithms.graph.search;
+
+import datastructures.graph.Edge;
+import datastructures.graph.Graph;
+
+import java.util.Arrays;
+import java.util.Iterator;
+
+/** Class to implement the depth‐first search algorithm. */
+public class DepthFirstSearch {
+
+    /** Start depth‐first search the graph starting at vertex start.
+     @param graph The graph object.
+     @param start The start vertex
+     */
+    public static void depthFirstSearch(Graph graph, int start){
+        int n = graph.getNumV();
+        boolean[] visited = new boolean[n];
+        int[] parent = new int[n];
+        Arrays.fill(parent, -1);
+        depthFirstSearchRecurse(graph, start, visited, parent);
+    }
+
+    /** Recursively depth‐first search the graph starting at vertex current.
+     @param graph The graph object.
+     @param current The start vertex
+     @param visited Boolean array of visited nodes
+     @param parent Integer array of parent nodes for corresponding vertices.
+     */
+    private static void depthFirstSearchRecurse(Graph graph, int current, boolean[] visited, int[] parent) {
+        /* Mark the current vertex visited. */
+        visited[current] = true;
+        // Print by discovery order.
+        System.out.print(current + &quot;\t&quot;);
+        /* Examine each vertex adjacent to the current vertex */
+        Iterator&lt;Edge&gt; itr = graph.edgeIterator(current);
+        while (itr.hasNext()) {
+            int neighbor = itr.next().getDest();
+            /* Process a neighbor that has not been visited */
+            if (!visited[neighbor]) {
+                /* Insert (current, neighbor) into the depth‐first search tree. */
+                parent[neighbor] = current;
+                /* Recursively apply the algorithm starting at neighbor. */
+                depthFirstSearchRecurse(graph, neighbor, visited, parent);
+            }
+        }
+        // Print by finish order.
+        // System.out.print(current + &quot;\t&quot;);
+    }
+}
+</code></pre>
+<ul>
+<li>Time Complexity: <script type="math/tex">O(|E|)</script>. Please note that there is an implicit step 0 of the algorithm to that marks all vertices as unvisited. This is <script type="math/tex">O(|V|)</script>, thus, the total running time of the algorithm is <script type="math/tex">O(|V|+|E|)</script>.</li>
+</ul>
+<h3 id="topological-sort">Topological Sort</h3>
+<ul>
+<li>A topological sort of the vertices of a <strong>DAG (Directed Acyclic Graph)</strong> is an ordering of the vertices such that if <script type="math/tex">(u, v)</script> is an edge, then u appears before v. This must be true for all edges.</li>
+<li><strong>If there is an edge from u to v in a DAG, then if we perform depth-first search of this graph, the finish time of u must be after the finish time of v.</strong></li>
+</ul>
+<pre><code class="language-java">Algorithm for Topological Sort
+1. Perform a depth‐first search of the graph.
+2. List the vertices in reverse of their finish order.
+</code></pre>
+<pre><code class="language-java">package algorithms.graph.sort;
+
+import algorithms.graph.search.DepthFirstSearch;
+import datastructures.graph.AbstractGraph;
+import datastructures.graph.Graph;
+
+import java.io.File;
+import java.util.*;
+
+/** This program outputs the topological sort of a directed graph
+ that contains no cycles.
+ */
+public class TopologicalSort {
+    /**
+     * The main method that performs the topological sort.
+     *
+     * @param args The command line arguments
+     * @pre arg[0] contains the name of the file
+     * that contains the graph. It has no cycles.
+     */
+    public static void main(String[] args) {
+        Graph theGraph = null;
+        int numVertices = 0;
+        try {
+            // Connect Scanner to input file.
+            Scanner scan = new Scanner(new File(args[0]));
+            // Load the graph data from a file.
+            theGraph = AbstractGraph.createGraph(scan, true, &quot;List&quot;);
+            numVertices = theGraph.getNumV();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.exit(1);
+            // Error exit.
+        }
+        // Perform the depth‐first search.
+        DepthFirstSearch.depthFirstSearch(theGraph, 0);
+
+        // Topological Sort is the reverse of finish order in dfs. Please update the print statements in the dfs to view topological sort.
+    }
+}
+</code></pre>
+<ul>
+<li><strong>NOTE:</strong> To keep <strong>DepthFirstSearch</strong> class simple, we don't add any data objects for storing discovery and finish orders. One can keep track of finish orders to output topological sort correctly.</li>
+</ul>
+<h2 id="algorithms-using-weighted-graphs">Algorithms Using Weighted Graphs</h2>
+<h3 id="dijkstras-algorithm">Dijkstra's Algorithm</h3>
+<ul>
+<li>Used for finding the shortest path from a vertex to all other vertices.</li>
+<li>
+<p>Assumes that all of the edge values are positive.</p>
+</li>
+<li>
+<p>Time Complexity: <script type="math/tex">O(|V|^2)</script>
+</p>
+</li>
+</ul>
+<h4 id="pseudocode">Pseudocode</h4>
+<pre><code class="language-java"> 1  function Dijkstra(Graph, source):
+ 2     
+ 3      for each vertex v in Graph.Vertices:
+ 4          dist[v] ← INFINITY
+ 5          prev[v] ← UNDEFINED
+ 6          add v to Q
+ 7      dist[source] ← 0
+ 8     
+ 9      while Q is not empty:
+10          u ← vertex in Q with minimum dist[u]
+11          remove u from Q
+12         
+13          for each neighbor v of u still in Q:
+14              alt ← dist[u] + Graph.Edges(u, v)
+15              if alt &lt; dist[v]:
+16                  dist[v] ← alt
+17                  prev[v] ← u
+18
+19      return dist[], prev[]
+</code></pre>
+<h4 id="using-a-priority-queue">Using a Priority Queue</h4>
+<pre><code class="language-java">1   function Dijkstra(Graph, source):
+2       create vertex priority queue Q
+3
+4       dist[source] ← 0                          // Initialization
+5       Q.add_with_priority(source, 0)            // associated priority equals dist[·]
+6
+7       for each vertex v in Graph.Vertices:
+8           if v ≠ source
+9               prev[v] ← UNDEFINED               // Predecessor of v
+10              dist[v] ← INFINITY                // Unknown distance from source to v
+11              Q.add_with_priority(v, INFINITY)
+12
+13
+14      while Q is not empty:                     // The main loop
+15          u ← Q.extract_min()                   // Remove and return best vertex
+16          for each neighbor v of u:             // Go through all v neighbors of u
+17              alt ← dist[u] + Graph.Edges(u, v)
+18              if alt &lt; dist[v]:
+19                  prev[v] ← u
+20                  dist[v] ← alt
+21                  Q.decrease_priority(v, alt)
+22
+23      return dist, prev
+</code></pre>
+<h4 id="implementation_2">Implementation</h4>
+<pre><code class="language-java">package algorithms.graph.shortestpath;
+
+import datastructures.graph.Graph;
+
+import java.util.HashSet;
+
+public class Dijkstra {
+
+    public static final int UNDEFINED = Integer.MIN_VALUE;
+    public static final double INFINITY = Double.POSITIVE_INFINITY;
+
+    /**
+     * Dijkstra's Shortest‐Path algorithm.
+     *
+     * @param graph The weighted graph to be searched
+     * @param start The start vertex
+     * @param pred  Output array to contain the predecessors in the shortest path
+     * @param dist  Output array to contain the distance in the shortest path
+     */
+    public static void dijkstrasAlgorithm(Graph graph, int start, int[] pred, double[] dist) {
+        int numV = graph.getNumV();
+        System.out.println(numV);
+        HashSet&lt;Integer&gt; vMinusS = new HashSet&lt;&gt;(numV);
+
+        // Initialization.
+        for (int v = 0; v &lt; numV; v++) {
+            dist[v] = INFINITY;
+            pred[v] = UNDEFINED;
+            vMinusS.add(v);
+        }
+
+        dist[start] = 0;
+
+        // Main loop
+        while (!vMinusS.isEmpty()) {
+            // Find the value u in V–S with the smallest dist[u].
+            double minDist = INFINITY;
+            int u = UNDEFINED;
+
+            for (int v : vMinusS) {
+                if (dist[v] &lt; minDist) {
+                    minDist = dist[v];
+                    u = v;
+                }
+            }
+
+            // Remove u from vMinusS
+            vMinusS.remove(u);
+
+            // Update the distances.
+            for (int v : vMinusS) {
+                if (graph.isEdge(u, v)) {
+                    double weight = graph.getEdge(u, v).getWeight();
+                    if (dist[u] + weight &lt; dist[v]) {
+                        dist[v] = dist[u] + weight;
+                        pred[v] = u;
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="minimum-spanning-trees">Minimum Spanning Trees</h3>
+<ul>
+<li>A spanning tree is a subset of the edges of a graph such that there is only one edge between each vertex, and all of the vertices are connected. </li>
+<li>If we have a spanning tree for a graph, then we can access all the vertices of the graph from the start node. </li>
+<li>The cost of a spanning tree is the sum of the weights of the edges. We want to find the <strong>minimum</strong> spanning tree or the spanning tree with the smallest cost.</li>
+<li>Two algorithms for finding <strong>Minimum Spanning Trees:</strong></li>
+<li>Prim's Algorithm</li>
+<li>Kruskal Algorithm</li>
+</ul>
+<h4 id="prims-algorithm">Prim's Algorithm</h4>
+<ul>
+<li>The algorithm may informally be described as performing the following steps:</li>
+<li>Initialize a tree with a single vertex, chosen arbitrarily from the graph.</li>
+<li>Grow the tree by one edge: Of the edges that connect the tree to vertices not yet in the tree, find the minimum-weight edge, and transfer it to the tree.</li>
+<li>Repeat step 2 (until all vertices are in the tree).</li>
+</ul>
+<pre><code class="language-java">Initialize S with the start vertex, s, and V–S with the remaining vertices.
+for all v in V–S
+    Set p[v] to s.
+    if there is an edge (s, v)
+        Set d[v] to w(s, v).
+    else
+        Set d[v] to ∞.
+while V–S is not empty
+    for all u in V–S, find the smallest d[u].
+    Remove u from V–S and add it to S.
+    Insert the edge (u, p[u]) into the spanning tree.
+    for all v in V–S
+        if w(u, v) &lt; d[v]
+            Set d[v] to w(u, v).
+            Set p[v] to u.
+</code></pre>
+<ul>
+<li>Time Complexity: <script type="math/tex">O(|V|^2)</script>
+</li>
+</ul>
+<h5 id="implementation_3">Implementation</h5>
+<pre><code class="language-java">package algorithms.graph.minspanningtree;
+
+import datastructures.graph.Edge;
+import datastructures.graph.Graph;
+
+import java.util.*;
+
+public class Prim {
+
+    /** Prim's Minimum Spanning Tree algorithm.
+     @param graph The weighted graph to be searched
+     @param start The start vertex
+     @return An ArrayList of edges that forms the MST
+     */
+    public static ArrayList&lt;Edge&gt; primsAlgorithm(Graph graph, int start) {
+        ArrayList&lt;Edge&gt; result = new ArrayList&lt;&gt;();
+        int numV = graph.getNumV();
+
+        // Use a HashSet to represent V–S.
+        Set&lt;Integer&gt; vMinusS = new HashSet&lt;&gt;(numV);
+        // Declare the priority queue.
+        Queue&lt;Edge&gt; pQ = new PriorityQueue&lt;&gt;(numV, (e1, e2) -&gt; Double.compare(e1.getWeight(), e2.getWeight()));
+
+        // Initialize V–S.
+        for (int i = 0; i &lt; numV; i++) {
+            if (i != start) {
+                vMinusS.add(i);
+            }
+        }
+        int current = start;
+        // Main loop
+        while (!vMinusS.isEmpty()) {
+            // Update priority queue.
+            Iterator&lt;Edge&gt; iter = graph.edgeIterator(current);
+            while (iter.hasNext()) {
+                Edge edge = iter.next();
+                int dest = edge.getDest();
+                if (vMinusS.contains(dest)) {
+                    pQ.add(edge);
+                }
+            }
+            // Find the shortest edge whose source is in S and
+            // destination is in V–S.
+            int dest = -1;
+            Edge edge = null;
+            do {
+                edge = pQ.remove();
+                dest = edge.getDest();
+            } while(!vMinusS.contains(dest));
+            // Take dest out of vMinusS.
+            vMinusS.remove(dest);
+            // Add edge to result.
+            result.add(edge);
+            // Make this the current vertex.
+            current = dest;
+        }
+        return result;
+    }
+}
+</code></pre>
+<h4 id="kruskals-algorithm">Kruskal's Algorithm</h4>
+<pre><code class="language-java">Algorithm Kruskal(G):
+Input: A simple connected weighted graph G with n vertices and m edges
+Output: A minimum spanning tree T for G
+
+for each vertex v in G do
+    Define an elementary cluster C(v) = {v}.
+Initialize a priority queue Q to contain all edges in G, using the weights as keys.
+T =∅
+{T will ultimately contain the edges of an MST}
+while T has fewer than n − 1 edges do
+    (u, v) = value returned by Q.removeMin( )
+    Let C(u) be the cluster containing u, and let C(v) be the cluster containing v.
+    if C(u) not equal to C(v) then
+        Add edge (u, v) to T .
+        Merge C(u) and C(v) into one cluster.
+return tree T
+</code></pre>
+<ul>
+<li><strong>NOTE: Prim's algorithm is better for denser graphs since it iterates over vertices, however Kruskal's algorithm is better for sparser graphs since it iterates over edges.</strong></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chp5-sets-and-maps/5-4-considerations.html" class="btn btn-neutral float-left" title="Implementation Considerations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chp7-advanced-trees/7-1-advanced-trees.html" class="btn btn-neutral float-right" title="Advanced Trees">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chp5-sets-and-maps/5-4-considerations.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chp7-advanced-trees/7-1-advanced-trees.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

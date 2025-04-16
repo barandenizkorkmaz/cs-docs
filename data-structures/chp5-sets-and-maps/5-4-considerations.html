@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp5-sets-and-maps/5-4-considerations.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Implementation Considerations - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Implementation Considerations";
+        var mkdocs_page_input_path = "data-structures/chp5-sets-and-maps/5-4-considerations.md";
+        var mkdocs_page_url = "/data-structures/chp5-sets-and-maps/5-4-considerations.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Sets and Maps</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Implementation Considerations</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#methods-hashcode-and-equals">Methods hashCode and equals</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementing-hashsetopen">Implementing HashSetOpen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#writing-hashsetopen-as-an-adapter-class">Writing HashSetOpen as an Adapter Class</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementing-the-java-map-and-set-interfaces">Implementing the Java Map and Set Interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interface-mapentry-and-class-abstractmapsimpleentry">Interface Map.Entry and Class AbstractMap.SimpleEntry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-set-view-of-a-map">Creating a Set View of a Map</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#classes-treemap-and-treeset">Classes TreeMap and TreeSet</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Sets and Maps</li>
+      <li class="breadcrumb-item active">Implementation Considerations</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-implementation-considerations-for-maps-and-sets">4. Implementation Considerations for Maps and Sets</h1>
+<h3 id="methods-hashcode-and-equals">Methods <code>hashCode</code> and <code>equals</code></h3>
+<ul>
+<li>
+<p>Method <code>Object.equals</code> compares two objects based on their addresses, not their contents. Similarly, method <code>Object.hashCode</code> calculates an object’s hash code based on its address, not its contents.</p>
+</li>
+<li>
+<p>Most predefined classes (e.g., String and Integer) override method <code>equals</code> and method <code>hashCode</code>.</p>
+</li>
+<li>
+<p>If you override the equals method, Java recommends you also override the <code>hashCode</code> method. Otherwise, your class will violate the Java contract for <code>hashCode</code>, which states:</p>
+</li>
+</ul>
+<p><code>java
+  if obj1.equals(obj2) is true, then obj1.hashCode() == obj2.hashCode().</code></p>
+<h3 id="implementing-hashsetopen">Implementing <code>HashSetOpen</code></h3>
+<ul>
+<li>We can modify the hash table methods to implement a hash set. Table below compares corresponding Map and Set methods.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Map Method</strong></th>
+<th><strong>Set Method</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V get(Object key)</td>
+<td>boolean contains(Object key)</td>
+</tr>
+<tr>
+<td>V put(K key, V value)</td>
+<td>boolean add(K key)</td>
+</tr>
+<tr>
+<td>V remove(Object key)</td>
+<td>boolean remove(Object key)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="writing-hashsetopen-as-an-adapter-class">Writing <code>HashSetOpen</code> as an Adapter Class</h3>
+<ul>
+<li>Instead of writing new methods from scratch, we can implement <code>HashSetOpen</code> as an adapter class with the data field.</li>
+</ul>
+<pre><code class="language-java">private final IHashMap&lt;K, V&gt; setMap = new HashtableOpen&lt;&gt;();
+</code></pre>
+<ul>
+<li>We can write methods contains, add, and remove as follows. Because the map stores key–value pairs, we will have each set element reference an Entry object with the same key and value.</li>
+</ul>
+<h3 id="implementing-the-java-map-and-set-interfaces">Implementing the Java <code>Map</code> and <code>Set</code> Interfaces</h3>
+<ul>
+<li>Java API uses a hash table to implement both the <code>Map</code> and <code>Set</code> interfaces (class <code>HashMap</code> and class <code>HashSet</code>).</li>
+<li>The task of implementing these interfaces is simplified by the inclusion of abstract classes <code>AbstractMap</code> and <code>AbstractSet</code> in the <code>Collections</code> framework. These classes provide implementations of several methods for the Map and Set interfaces. So if class <code>HashTableOpen</code> extends class <code>AbstractMap</code>, we can reduce the amount of additional work we need to do.<ul>
+<li>We should also replace <code>IHashMap</code> with <code>Map</code>. Thus, the declaration for <code>HashTableOpen</code> would be class <code>HashTableOpen&lt;K, V&gt;</code> extends <code>AbstractMap&lt;K, V&gt;</code> implements <code>Map&lt;K, V&gt;</code>.</li>
+</ul>
+</li>
+<li>The <code>AbstractMap</code> provides relatively inefficient <script type="math/tex">O(n)</script> implementations of the get and put methods. Because we overrode these methods in both our implementations (<code>HashTableOpen</code> and <code>HashTableChain</code>), we will get <script type="math/tex">O(1)</script> expected performance. There are other, less critical methods that we don’t need to provide because they are implemented in <code>AbstractMap</code> or its superclasses, such as <code>clear</code>, <code>isEmpty</code>, <code>putAll</code>, <code>equals</code>, <code>hashCode</code>, and <code>toString</code>.</li>
+</ul>
+<h3 id="interface-mapentry-and-class-abstractmapsimpleentry">Interface <code>Map.Entry</code> and Class <code>AbstractMap.SimpleEntry</code></h3>
+<ul>
+<li>One requirement on the key–value pairs for a Map object is that they implement the interface <code>Map.Entry&lt;K, V&gt;</code>, which is an inner interface of interface <code>Map</code>.</li>
+<li>This may sound a bit confusing, but what it means is that an implementer of the Map interface must contain an inner class <code>Entry</code>. The <code>AbstractMap</code> includes the inner class <code>SimpleEntry</code> that implements the <code>Map.Entry</code> interface. We can remove the inner class <code>Entry&lt;K, V&gt;</code>and replace new <code>Entry</code> with new <code>SimpleEntry</code>.</li>
+</ul>
+<h3 id="creating-a-set-view-of-a-map">Creating a Set View of a Map</h3>
+<ul>
+<li>Method <code>entrySet</code> creates a set view of the entries in a Map. This means that method entrySet
+  returns an object that implements the Set interface—that is, a set.</li>
+</ul>
+<h3 id="classes-treemap-and-treeset">Classes <code>TreeMap</code> and <code>TreeSet</code></h3>
+<ul>
+<li>Besides <code>HashMap</code> and <code>HashSet</code>, the <code>Java Collections Framework</code> provides classes <code>TreeMap</code> and
+  <code>TreeSet</code> that implement the <code>Map</code> and <code>Set</code> interfaces. These classes use a <code>Red–Black tree</code>, which is a balanced binary search tree.</li>
+<li>We discussed earlier that the performances for search, retrieval, insertion, and removal operations are better for a hash table than for a binary search tree (expected O(1) versus O(log n)).</li>
+<li>However, the primary advantage of a binary search tree is that it can be traversed in sorted order. Hash tables, however, can’t be traversed in any meaningful way. Also, subsets based on a range of key values can be selected using a <code>TreeMap</code> but not by using a <code>HashMap</code></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="5-3-hash-tables.html" class="btn btn-neutral float-left" title="Hash Tables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chp6-graphs/6-1-graphs.html" class="btn btn-neutral float-right" title="Graphs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="5-3-hash-tables.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chp6-graphs/6-1-graphs.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

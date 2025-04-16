@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/java/chp4-interfaces/chp4-interfaces.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Chapter 4: Interfaces, Lambda Expressions, and Inner Classes - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 4: Interfaces, Lambda Expressions, and Inner Classes";
+        var mkdocs_page_input_path = "java/chp4-interfaces/chp4-interfaces.md";
+        var mkdocs_page_url = "/java/chp4-interfaces/chp4-interfaces.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 4: Interfaces, Lambda Expressions, and Inner Classes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-4-interfaces-lambda-expressions-and-inner-classes">Chapter 4: Interfaces, Lambda Expressions, and Inner Classes</h1>
+<h2 id="41-interfaces">4.1. Interfaces</h2>
+<ul>
+<li>An interface is not a class but a set of requirements for the classes that want to conform to the interface.</li>
+<li>All methods of an interface are automatically <code>public</code>.<ul>
+<li>However, when implementing the interface, you must declare the method as <code>public</code>, as the default method definition makes it package accessible. </li>
+<li>If <code>public</code> keyword not provided, the compiler then complains that you're trying to supply a more restrictive access privilege.</li>
+</ul>
+</li>
+<li><strong>Interfaces can never have instance fields.</strong></li>
+<li>Interfaces can define constants, e.g. <code>static final</code> variables.<ul>
+<li>Fields that are defined in interfaces are always <code>public static final</code>.
+```java
+public interface Powered extends Moveable {
+    double milesPerGallon();
+    double SPEED_LIMIT = 95;
+}</li>
+</ul>
+</li>
+</ul>
+<pre><code>- It is possible to have `static` and `private` methods as well as `default` methods 
+- Interfaces might be tedious when inheritance comes into play.
+    - Since Manager extends Employee, it implements `Comparable&lt;Employee&gt;` and not `Comparable&lt;Manager&gt;`. If Manager chooses to override compareTo, it must be prepared to compare managers to employees.
+        ```java
+class Manager extends Employee {
+
+    public int compareTo(Employee other) {
+
+        Manager otherManager = (Manager) other; // NO
+
+        . . .
+
+    }
+
+    . . .
+
+}
+</code></pre>
+<pre><code>- This violates the `antisymmetry` rule: If x is an Employee and y is a Manager, then the call x.compareTo(y) doesn’t throw an exception—it simply compares x and y as employees. But the reverse, y.compareTo(x), throws a `ClassCastException`.
+- There are two possible remedies:
+    - If subclasses have different notions of comparison, then you should outlaw comparison of objects that belong to different classes.
+    ```java
+    if (getClass() != other.getClass()) throw new ClassCastException();
+</code></pre>
+<pre><code>        - If there is a common algorithm for comparing subclass objects, simply provide a single `compareTo` method in the superclass and declare it as `final`.
+- Interfaces cannot be instantiated.
+    - However, even though you can’t construct interface objects, you can still declare interface variables (same as **abstract classes**).
+    - An interface variable must refer to an object of a class that implements the interface.
+- Next, just as you use `instanceof` to check whether an object is of a specific class, you can use `instanceof` to check whether an object implements an interface.
+- Just as you can build hierarchies of classes, **you can extend interfaces.**
+- While each class can have **only one superclass**, classes **can implement multiple interfaces**.
+- **Records and enumeration classes cannot extend other classes (since they implicitly extend the Record and Enum class). However, they can implement interfaces.**
+- Interfaces can be `sealed`.
+    - As with sealed classes, the direct subtypes (which can be classes or interfaces) must be declared in a permits clause or be located in the same source file.
+- **Interfaces vs Abstract Classes**
+    - You may wonder why the designers of the Java programming language bothered with introducing the concept of interfaces.
+    - There is, unfortunately, a major problem with using an abstract base class to express a generic property. A class can only extend a single class. 
+    - But each class can implement as many interfaces as it likes.
+    - Other programming languages, in particular C++, allow a class to have more than one superclass. This feature is called **multiple inheritance**.
+    - **Java does not support multiple inheritance.**
+- **Static and Private Methods**
+    - As of Java 8, you are allowed to add static methods to interfaces.
+    - Up to now, it has been common to place static methods in companion classes, e.g. `Paths` and `Collections` classes. However, when you implement your own interfaces, there is no longer a reason to provide a separate companion class for utility methods.
+    - As of Java 9, methods in an interface can be `private`. A private method can be `static` or an `instance method`. **Since private methods can only be used in the methods of the interface itself, their use is limited to being helper methods for the other methods of the interface.**
+- **Default Methods**
+    - You can supply a default implementation for any interface method.
+    ```java
+    public interface Comparable&lt;T&gt;
+    {
+
+        default int compareTo(T other) { return 0; } // by default, all elements are the same
+
+    }
+</code></pre>
+<pre><code>- **Resolving Default Method Conflicts**
+    - What happens if the exact same method is defined as a default method in one interface and then again as a method of a superclass or another interface?
+    - Rules
+        1.  Superclasses win. If a superclass provides a concrete method, default methods with the same name and parameter types are simply ignored.
+        2. Interfaces clash. If an interface provides a default method, and another interface contains a method with the same name and parameter types (default or not), then you must resolve the conflict by overriding that method.
+</code></pre>
+<ul>
+<li><strong>Interfaces and Callbacks</strong><ul>
+<li>A common pattern in programming is the callback pattern. In this pattern, you specify the action that should occur whenever a particular event happens.</li>
+<li>Interfaces allow implementing callbacks by enforcing what a class should do.</li>
+<li>In many programming languages, you supply the name of a function that the timer should call periodically. However, the classes in the Java standard library take an object- oriented approach. You pass an object of some class. The timer then calls one of the methods on that object. Passing an object is more flexible than passing a function because the object can carry additional information.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="object-cloning-and-cloneable-interface">Object Cloning and <code>Cloneable</code> Interface</h3>
+<p>To understand what cloning means, recall what happens when you make a copy of a variable holding an object reference. The original and the copy are references to the same object. This means a change to either variable also affects the other.</p>
+<p>The clone method is a protected method of Object, which means that your code cannot simply call it. Only the Employee class can clone Employee objects. There is a reason for this restriction. Think about the way in which the Object class can implement clone. It knows nothing about the object at all, so it can make only a field-by-field copy. If all instance fields in the object are numbers or other basic types, copying the fields is just fine. But if the object contains references to subobjects, then copying the field gives you another reference to the same subobject, so the original and the cloned objects still share some information.</p>
+<p>As you can see, the default cloning operation is “shallow”—it doesn’t clone objects that are referenced inside other objects.</p>
+<p>Does it matter if the copy is shallow? It depends. If the subobject shared between the original and the shallow clone is immutable, then the sharing is safe.</p>
+<p>Quite frequently, however, subobjects are mutable, and you must redefine the clone method to make a deep copy that clones the subobjects as well.</p>
+<p>For every class, you need to decide whether:
+1. The default clone method is good enough;
+2. The default clone method can be patched up by calling clone on the mutable subobjects; or
+3. clone should not be attempted.</p>
+<p>The third option is actually the default. To choose either the first or the second option, a class must
+1. Implement the Cloneable interface; and
+2. Redefine the clone method with the public access modifier.</p>
+<p><strong>The clone method is declared protected in the Object class, so that your code can’t simply call anObject.clone(). But aren’t protected methods accessible from any subclass, and isn’t every class a subclass of Object? Fortunately, the rules for protected access are more subtle. A subclass can call a protected clone method only to clone its own objects. You must redefine clone to be public to allow objects to be cloned by any method.</strong></p>
+<p>A tagging interface has no methods; its only purpose is to allow the use of instanceof in a type inquiry.</p>
+<p>Even if the default (shallow copy) implementation of clone is adequate, you still need to implement the Cloneable interface, redefine clone to be public, and call super.clone(). <strong>The clone method that you just saw adds no functionality to the shallow copy provided by Object.clone. It merely makes the method public.</strong></p>
+<pre><code class="language-java">class Employee implements Cloneable
+
+{
+
+// public access, change return type
+
+public Employee clone() throws CloneNotSupportedException {
+
+    return (Employee) super.clone();
+
+}
+
+    . . .
+
+}
+</code></pre>
+<p>Here is an example of a clone method that creates a deep copy:</p>
+<pre><code class="language-java">class Employee implements Cloneable
+
+{
+
+    public Employee clone() throws CloneNotSupportedException {
+
+        // call Object.clone()
+
+        Employee cloned = (Employee) super.clone();
+
+        // clone mutable fields
+
+        cloned.hireDay = (Date) hireDay.clone();
+
+        return cloned;
+
+    }
+
+}
+</code></pre>
+<p>The clone method of the Object class threatens to throw a <strong>CloneNotSupportedException</strong>—it does that whenever clone is invoked on an object whose class does not implement the <code>Cloneable</code> interface.</p>
+<p>You have to be careful about cloning of subclasses. For example, once you have defined the clone method for the Employee class, anyone can use it to clone Manager objects. Can the Employee clone method do the job? It depends on the fields of the Manager class. In our case, there is no problem because the bonus field has primitive type. But Manager might have acquired fields that require a deep copy or are not cloneable. There is no guarantee that the implementor of the subclass has fixed clone to do the right thing. <strong>For that reason, the clone method is declared as protected in the Object class.</strong> But you don’t have that luxury if you want the users of your classes to invoke clone.</p>
+<hr />
+<h2 id="42-lambda-expressions">4.2. Lambda Expressions</h2>
+<p>A lambda expression is a block of code that you can pass around so it can be executed later, once or multiple times.</p>
+<h3 id="421-the-syntax-of-lambda-expressions">4.2.1. The Syntax of Lambda Expressions</h3>
+<p>A simple form of lambda expressions in Java:</p>
+<p>parameters, the -&gt; arrow, and an expression. If the code carries out a</p>
+<p>computation that doesn’t fit in a single expression, write it exactly like you</p>
+<p>would have written a method: enclosed in {} and with explicit return</p>
+<p>statements.</p>
+<pre><code class="language-java">// FIRST
+
+(String first, String second) -&gt; first.length() - second.length();
+
+// SECOND
+
+(String first, String second) -&gt;
+{
+    if (first.length() &lt; second.length()) return -1;
+    else if (first.length() &gt; second.length()) return 1;
+    else return 0;
+}
+</code></pre>
+<ul>
+<li>If a lambda expression has no parameters, you still supply empty parentheses</li>
+</ul>
+<pre><code class="language-java">() -&gt; { for (int i = 100; i &gt;= 0; i--) System.out.println(i); }
+</code></pre>
+<ul>
+<li>If the parameter types of a lambda expression can be inferred, you can omit</li>
+</ul>
+<p>them.</p>
+<pre><code class="language-java">Comparator&lt;String&gt; comp = (first, second) // same as (String first, String second)
+-&gt; first.length() - second.length();
+</code></pre>
+<ul>
+<li>If a method has a single parameter with inferred type, you can even omit the</li>
+</ul>
+<p>parentheses</p>
+<pre><code class="language-java">ActionListener listener = event -&gt; System.out.println(&quot;The time is &quot;
+
++ Instant.ofEpochMilli(event.getWhen()));
+
+// instead of (event) -&gt; . . . or (ActionEvent event) -&gt; .
+
+. .
+</code></pre>
+<ul>
+<li>You never specify the result type of a lambda expression. It is always inferred from context. The following can be used in a context where a result of type <code>int</code> is expected.</li>
+</ul>
+<pre><code class="language-java">(String first, String second) -&gt; first.length() -
+
+second.length()
+</code></pre>
+<h3 id="422-functional-interfaces">4.2.2. Functional Interfaces</h3>
+<ul>
+<li>As we discussed, there are many existing interfaces in Java that encapsulate blocks of code, such as <code>ActionListener</code> or <code>Comparator</code>. </li>
+<li>Lambdas are compatible with these interfaces. </li>
+<li>You can supply a lambda expression whenever an object of an interface with a single abstract method is expected. Such an interface is called a functional interface.</li>
+<li>To demonstrate the conversion to a functional interface, consider the Arrays.sort method. Its second parameter requires an instance of <code>Comparator</code>, an interface with a single method. Simply supply a lambda. Behind the scenes, the <code>Arrays.sort</code> method receives an object of some class that implements <code>Comparator&lt;String&gt;</code>. Invoking the compare method on that object executes the body of the lambda expression. <strong>In fact, conversion to a functional interface is the only thing that you can do with a lambda expression in Java.</strong></li>
+</ul>
+<pre><code class="language-java">Arrays.sort(words, (first, second) -&gt; first.length() - second.length());
+</code></pre>
+<hr />
+<p>A particularly useful interface in the java.util.function package is <code>Predicate</code>:</p>
+<pre><code class="language-java">public interface Predicate&lt;T&gt;
+{
+
+    boolean test(T t);
+
+    // additional default and static methods
+}
+</code></pre>
+<ul>
+<li>The ArrayList class has a <code>removeIf</code> method whose parameter is a <code>Predicate</code>.</li>
+</ul>
+<pre><code class="language-java">list.removeIf(e -&gt; e == null);
+</code></pre>
+<hr />
+<hr />
+<p>Another useful functional interface is <code>Supplier&lt;T&gt;</code>:</p>
+<pre><code class="language-java">public interface Supplier&lt;T&gt;
+{
+    T get();
+}
+</code></pre>
+<p>A supplier has no arguments and yields a value of type T when it is called. Suppliers are used for <code>lazy evaluation</code>. For example, consider the call:</p>
+<pre><code class="language-java">LocalDate hireDay = Objects.requireNonNullElseGet(day, () -&gt; new LocalDate.of(1970, 1, 1));
+</code></pre>
+<hr />
+<h3 id="423-method-references">4.2.3. Method References</h3>
+<ul>
+<li>Sometimes, a lambda expression involves a single method. For example, suppose you simply want to print the event object whenever a timer event occurs.</li>
+</ul>
+<pre><code class="language-java">var timer = new Timer(1000, System.out::println);
+</code></pre>
+<ul>
+<li>The expression <code>System.out::println</code> is a method reference. It directs the compiler to produce an instance of a functional interface, overriding the single abstract method of the interface to call the given method. In this example, an <code>ActionListener</code> is produced whose <code>actionPerformed(ActionEvent e)</code> method calls <code>System.out.println(e)</code>.</li>
+<li><strong>Like a lambda expression, a method reference is not an object. It gives rise to an object when assigned to a variable whose type is a functional interface.</strong></li>
+<li>The <code>::</code> operator separates the method name from the name of an object or class. There are three variants:<ol>
+<li><code>object::instanceMethod</code></li>
+<li><code>Class:instanceMethod</code></li>
+<li><code>Class:staticMethod</code></li>
+</ol>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method Reference</th>
+<th>Equivalent Lambda Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>separator::equals</code></td>
+<td><code>x -&gt; separator.equals(x)</code></td>
+</tr>
+<tr>
+<td><code>String::trim</code></td>
+<td><code>x -&gt; x.strip()</code></td>
+</tr>
+<tr>
+<td><code>String::concat</code></td>
+<td><code>(x,y) -&gt; x.concat(y)</code></td>
+</tr>
+<tr>
+<td><code>Integer::valueOf</code></td>
+<td><code>x -&gt; Integer.valueOf(x)</code></td>
+</tr>
+<tr>
+<td><code>Integer::sum</code></td>
+<td><code>(x,y) -&gt; Integer.sum(x,y)</code></td>
+</tr>
+<tr>
+<td><code>String::new</code></td>
+<td><code>x -&gt; new String(x)</code></td>
+</tr>
+<tr>
+<td><code>String[]::new</code></td>
+<td><code>n -&gt; new String[n]</code></td>
+</tr>
+<tr>
+<td>- <strong>NOTE:</strong> You can capture the <code>this</code> parameter in a method reference. For example, <code>this::equals</code> is the same as <code>x -&gt; this.equals(x)</code>. It is also valid to use <code>super</code>. The method expression <code>super::instanceMethod</code> uses this as the target and invokes the superclass version of the given method.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="424-constructor-references">4.2.4. Constructor References</h3>
+<ul>
+<li>Constructor references are just like method references, except that the name of the method is new.</li>
+<li>For example, <code>Person::new</code> is a reference to a Person constructor. Which constructor? It depends on the context.</li>
+</ul>
+<pre><code class="language-java">ArrayList&lt;String&gt; names = . . .;
+Stream&lt;Person&gt; stream = names.stream().map(Person::new);
+List&lt;Person&gt; people = stream.toList();
+</code></pre>
+<h3 id="425-variable-scope">4.2.5. Variable Scope</h3>
+<ul>
+<li>To understand what is happening, we need to refine our understanding of a lambda expression. A lambda expression has three ingredients: <ol>
+<li>A block of code</li>
+<li>Parameters</li>
+<li>Values for the free variables—that is, the variables that are not parameters and not defined inside the code</li>
+</ol>
+</li>
+<li>The technical term for a block of code together with the values of the free variables is a <code>closure</code>. If someone gloats that their language has closures, rest assured that Java has them as well. In Java, lambda expressions are closures.</li>
+<li>As you have seen, a lambda expression can capture the value of a variable in the enclosing scope.</li>
+<li>Mutating variables in a lambda expression is not safe when multiple actions are executed concurrently. The rule is that any captured variable in a lambda expression must be effectively <code>final</code>. </li>
+<li>The body of a lambda expression has the same scope as a nested block. The same rules for name conflicts and shadowing apply. It is illegal to declare a parameter or a local variable in the lambda that has the same name as a local variable.</li>
+</ul>
+<h3 id="426-processing-lambda-expressions">4.2.6. Processing Lambda Expressions</h3>
+<p>Up to now, you have seen how to produce lambda expressions and pass them to a method that expects a functional interface. Now let us see how to write methods that can consume lambda expressions.</p>
+<p>The point of using lambdas is <code>deferred execution</code>. To accept the lambda, we need to pick (or, in rare cases, provide) a functional interface. Table below the most important functional interfaces that are provided in the Java API.</p>
+<p><strong>NOTE:</strong> If you design your own interface with a single abstract method, you can tag it with the <code>@FunctionalInterface</code> annotation. This has two advantages. The compiler gives an error message if you accidentally add another abstract method. And the javadoc page includes a statement that your interface is a functional interface. It is not required to use the annotation. Any interface with a single abstract method is, by definition, a functional interface. But using the <code>@FunctionalInterface</code> annotation is a good idea.</p>
+<table>
+<thead>
+<tr>
+<th>Functional Interface</th>
+<th>Parameter Types</th>
+<th>Return Type</th>
+<th>Abstract Method Name</th>
+<th>Description</th>
+<th>Other Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Runnable</code></td>
+<td>none</td>
+<td><code>void</code></td>
+<td><code>run</code></td>
+<td>Runs an action without arguments or return value</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Supplier&lt;T&gt;</code></td>
+<td>none</td>
+<td><code>T</code></td>
+<td><code>get</code></td>
+<td>Supplies a value of type <code>T</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Consumer&lt;T&gt;</code></td>
+<td><code>T</code></td>
+<td><code>void</code></td>
+<td><code>accept</code></td>
+<td>Consumes a value of type <code>T</code></td>
+<td><code>andThen</code></td>
+</tr>
+<tr>
+<td><code>BiConsumer&lt;T, U&gt;</code></td>
+<td><code>T, U</code></td>
+<td><code>void</code></td>
+<td><code>accept</code></td>
+<td>Consumes values of types <code>T</code> and <code>U</code></td>
+<td><code>andThen</code></td>
+</tr>
+<tr>
+<td><code>Function&lt;T, R&gt;</code></td>
+<td><code>T</code></td>
+<td><code>R</code></td>
+<td><code>apply</code></td>
+<td>A function with argument of type <code>T</code></td>
+<td><code>compose</code>, <code>andThen</code>, <code>identity</code></td>
+</tr>
+<tr>
+<td><code>BiFunction&lt;T, U, R&gt;</code></td>
+<td><code>T, U</code></td>
+<td><code>R</code></td>
+<td><code>apply</code></td>
+<td>A function with arguments of types <code>T</code> and <code>U</code></td>
+<td><code>andThen</code></td>
+</tr>
+<tr>
+<td><code>UnaryOperator&lt;T&gt;</code></td>
+<td><code>T</code></td>
+<td><code>T</code></td>
+<td><code>apply</code></td>
+<td>A unary operator on the type <code>T</code></td>
+<td><code>compose</code>, <code>andThen</code>, <code>identity</code></td>
+</tr>
+<tr>
+<td><code>BinaryOperator&lt;T&gt;</code></td>
+<td><code>T, T</code></td>
+<td><code>T</code></td>
+<td><code>apply</code></td>
+<td>A binary operator on the type <code>T</code></td>
+<td><code>andThen</code>, <code>maxBy</code>, <code>minBy</code></td>
+</tr>
+<tr>
+<td><code>Predicate&lt;T&gt;</code></td>
+<td><code>T</code></td>
+<td><code>boolean</code></td>
+<td><code>test</code></td>
+<td>A boolean-valued function</td>
+<td><code>and</code>, <code>or</code>, <code>negate</code>, <code>isEqual</code>, <code>not</code></td>
+</tr>
+<tr>
+<td><code>BiPredicate&lt;T, U&gt;</code></td>
+<td><code>T, U</code></td>
+<td><code>boolean</code></td>
+<td><code>test</code></td>
+<td>A boolean-valued function with two arguments</td>
+<td><code>and</code>, <code>or</code>, <code>negate</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="43-inner-classes">4.3. Inner Classes</h2>
+<p>An inner class is a class that is defined inside another class. Why would you want to do that? There are two reasons: 
+- Inner classes can be hidden from other classes in the same package.
+- Inner class methods can access the data from the scope in which they are defined—including the data that would otherwise be private.
+An object that comes from an inner class has an implicit reference to the outer class object that instantiated it. Through this pointer, it gains access to the total state of the outer object.
+- For example, in Java, the <code>Iterator</code> class would not need an explicit pointer to the <code>LinkedList</code> into which it points.
+- An inner class object has a reference to an outer class object.
+    - The syntax for the outer reference is the following
+<code>OuterClass.this</code>.
+- We could declare an inner class as <code>private</code>. Then only the outer class would be able to construct inner class objects. Only inner classes can be private. Regular classes always have either package or public access.
+- An inner class <strong>cannot</strong> have <code>static</code> methods.
+- Any static-fields declared in an inner class must be <code>final</code> and initialized with a compile-time constant.
+- The inner class can access the private data of the outer class, but the outer class cannot. Thus, inner classes are genuinely more powerful than regular classes because they have more access privileges.</p>
+<h3 id="431-local-inner-classes">4.3.1. Local Inner Classes</h3>
+<ul>
+<li>You can define the class locally in a single method.</li>
+</ul>
+<pre><code class="language-java">public void start()
+
+{
+
+    class TimePrinter implements ActionListener
+
+    {
+
+        public void actionPerformed(ActionEvent event)
+
+        {
+
+        System.out.println(&quot;At the tone, the time is &quot;
+
+        + Instant.ofEpochMilli(event.getWhen()));
+
+        if (beep) Toolkit.getDefaultToolkit().beep();
+
+        }
+
+    }
+
+    var listener = new TimePrinter();
+    var timer = new Timer(interval, listener);
+    timer.start();
+
+}
+</code></pre>
+<ul>
+<li>Local classes are never declared with an access specifier (that is, public or private). Their scope is always restricted to the block in which they are declared.</li>
+<li><strong>Local classes have one great advantage: They are completely hidden from the outside world.</strong></li>
+<li>Local classes have another advantage over other inner classes.<ul>
+<li>Not only can they access the fields of their outer classes; they can even access <code>local variables</code>! However, those local variables must be effectively final. That means, they may never change once they have been assigned.</li>
+</ul>
+</li>
+</ul>
+<h4 id="4311-anonymous-inner-classes">4.3.1.1. Anonymous Inner Classes</h4>
+<p>If you want to make only a single object of this class, you don’t even need to give the class a name. Such a class is called an <code>anonymous inner class</code>.</p>
+<pre><code class="language-java">public void start(int interval, boolean beep)
+
+{
+
+var listener = new ActionListener() {
+
+        public void actionPerformed(ActionEvent event)
+
+        {
+
+            System.out.println(&quot;At the tone, the time is &quot;
+
+            + Instant.ofEpochMilli(event.getWhen()));
+
+            if (beep) Toolkit.getDefaultToolkit().beep();
+
+        }
+
+    };
+
+var timer = new Timer(interval, listener);
+
+timer.start();
+}
+</code></pre>
+<ul>
+<li>In general, the syntax is</li>
+</ul>
+<pre><code>new SuperType(construction parameters) {
+
+    inner class methods and data
+}
+
+</code></pre>
+<ul>
+<li>Here, <code>SuperType</code> can be an <strong>interface</strong>, such as ActionListener; then, <strong>the inner class implements that interface</strong>. <code>SuperType</code> can also be a <strong>class</strong>; then, <strong>the inner class extends that class.</strong></li>
+<li>An anonymous inner class <strong>cannot</strong> have constructors because the name of a constructor must be the same as the name of a class, and the class has no name. Instead, the construction parameters are given to the superclass constructor.</li>
+<li>You have to look carefully to see the difference between the construction of a new object of a class and the construction of an object of an anonymous inner class extending that class.</li>
+</ul>
+<pre><code class="language-java">var queen = new Person(&quot;Mary&quot;);
+
+// a Person object
+
+var count = new Person(&quot;Dracula&quot;) { . . . };
+
+// an object of an inner class extending Person
+</code></pre>
+<ul>
+<li>For many years, Java programmers routinely used anonymous inner classes for event listeners and other callbacks. Nowadays, you are better off using a lambda expression.</li>
+</ul>
+<pre><code class="language-java">public void start(int interval, boolean beep)
+
+{
+
+// Simply by using lambda
+
+    var timer = new Timer(interval, event -&gt; {
+
+    System.out.println(
+
+    &quot;At the tone, the time is &quot; +
+
+    Instant.ofEpochMilli(event.getWhen()));
+
+    if (beep) Toolkit.getDefaultToolkit().beep(); });
+
+    timer.start();
+
+}
+</code></pre>
+<hr />
+<p><strong>NOTE:</strong> Double Brace Initialization</p>
+<p>The following trick, called double brace initialization, takes advantage of the inner class syntax. Suppose you want to construct an array list and pass it to a method:</p>
+<pre><code class="language-java">var friends = new ArrayList&lt;String&gt;();
+friends.add(&quot;Harry&quot;);
+friends.add(&quot;Tony&quot;);
+invite(friends);
+</code></pre>
+<p>If you don’t need the array list again, it would be nice to make it anonymous. But then how can you add the elements?</p>
+<pre><code class="language-java">invite(new ArrayList&lt;String&gt;() {{ add(&quot;Harry&quot;); add(&quot;Ron&quot;);}});
+
+// double brace initialization
+var friends = new ArrayList&lt;String&gt;() {
+    {
+        add(&quot;Harry&quot;);
+        add(&quot;Ron&quot;);
+    }
+}
+</code></pre>
+<p>Note the double braces. The outer braces make an anonymous subclass of ArrayList. <strong>The inner braces are an object initialization block</strong> (see previous chapter).</p>
+<hr />
+<h3 id="432-static-inner-class">4.3.2. Static Inner Class</h3>
+<p>Occasionally, you may want to use an inner class simply to hide one class inside another—<strong>but you don’t need the inner class to have a reference to the outer class object.</strong> You can suppress the generation of that reference by declaring the inner class <code>static</code>.
+- Use a static inner class whenever the inner class does not need to access an outer class object.
+- <strong>Unlike regular inner classes, static inner classes can have static fields and methods.</strong>
+- <strong>Classes that are declared inside an interface are automatically static and public.</strong>
+- <strong>Interfaces, records, and enumerations that are declared inside a class are automatically static.</strong></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

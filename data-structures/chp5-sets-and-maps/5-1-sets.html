@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp5-sets-and-maps/5-1-sets.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Sets - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sets";
+        var mkdocs_page_input_path = "data-structures/chp5-sets-and-maps/5-1-sets.md";
+        var mkdocs_page_url = "/data-structures/chp5-sets-and-maps/5-1-sets.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Sets and Maps</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Sets</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#the-set-hierarchy">The Set Hierarchy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interface-javautilset">Interface java.util.Set</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#comparison-of-list-and-set">Comparison of List and Set</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hashset-vs-treeset-vs-linkedhashset">HashSet vs TreeSet vs LinkedHashSet</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Sets and Maps</li>
+      <li class="breadcrumb-item active">Sets</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-sets">1. Sets</h1>
+<h3 id="the-set-hierarchy">The <code>Set</code> Hierarchy</h3>
+<p><img alt="image-20240113234433002" src="/home/denizkorkmaz/.config/Typora/typora-user-images/image-20240113234433002.png" /></p>
+<ul>
+<li>Figure above shows the part of the <code>Collections Framework</code> that relates to sets. It includes interfaces <code>Set</code>, <code>Sortedset</code>, and <code>Navigableset</code>; abstract class <code>AbstractSet</code>; and actual classes <code>HashSet</code>, <code>TreeSet</code>, and <code>ConcurrentSkipListSet</code>. The <code>HashSet</code> is a set that is implemented using a hash table (discussed later). The <code>TreeSet</code> is implemented using a special kind of binary search tree, called the <code>Red–Black tree</code> (discussed in future chapters). The <code>ConcurrentSkipListSet</code> is implemented using a <code>skip list</code> (discussed in future chapters).</li>
+</ul>
+<h3 id="interface-javautilset">Interface <code>java.util.Set</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code></td>
+<td>Adds the specified element to this set if it is not already present (optional operation).</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>addAll(Collection&lt;? extends E&gt; c)</code></td>
+<td>Adds all of the elements in the specified collection to this set if they're not already present (optional operation).</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>clear()</code></td>
+<td>Removes all of the elements from this set (optional operation).</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>contains(Object o)</code></td>
+<td>Returns true if this set contains the specified element.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>containsAll(Collection&lt;?&gt; c)</code></td>
+<td>Returns true if this set contains all of the elements of the specified collection.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>equals(Object o)</code></td>
+<td>Compares the specified object with this set for equality.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>hashCode()</code></td>
+<td>Returns the hash code value for this set.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>isEmpty()</code></td>
+<td>Returns true if this set contains no elements.</td>
+</tr>
+<tr>
+<td><code>Iterator&lt;E&gt;</code></td>
+<td><code>iterator()</code></td>
+<td>Returns an iterator over the elements in this set.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>remove(Object o)</code></td>
+<td>Removes the specified element from this set if it is present (optional operation).</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>removeAll(Collection&lt;?&gt; c)</code></td>
+<td>Removes from this set all of its elements that are contained in the specified collection (optional operation).</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>retainAll(Collection&lt;?&gt; c)</code></td>
+<td>Retains only the elements in this set that are contained in the specified collection (optional operation).</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>size()</code></td>
+<td>Returns the number of elements in this set (its cardinality).</td>
+</tr>
+<tr>
+<td><code>Object[]</code></td>
+<td><code>toArray()</code></td>
+<td>Returns an array containing all of the elements in this set.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="comparison-of-list-and-set">Comparison of <code>List</code> and <code>Set</code></h4>
+<ul>
+<li>Collections implementing the Set interface must contain unique elements. Unlike the List.add method, the Set.add method will return false if you attempt to insert a duplicate item.</li>
+<li>Unlike a List, a Set does not have a get method. Therefore, elements cannot be accessed by index. So if setA is a Set object, the method call setA.get(0) would cause the syntax error method get(int) not found.</li>
+<li>Although you can’t reference a specific element of a Set, you can iterate through all its elements using an Iterator object. The loop below accesses each element of Set object setA. However, the elements will be accessed in arbitrary order. This means that they will not necessarily be accessed in the order in which they were inserted.</li>
+</ul>
+<h3 id="hashset-vs-treeset-vs-linkedhashset"><code>HashSet</code> vs <code>TreeSet</code> vs <code>LinkedHashSet</code></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Features</th>
+<th style="text-align: center;">HashSet</th>
+<th style="text-align: center;">TreeSet</th>
+<th style="text-align: center;">LinkedHashSet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Internal Working</td>
+<td style="text-align: center;">HashSet internally uses HashMap for storing objects</td>
+<td style="text-align: center;">TreeSet uses TreeMap internally to store objects</td>
+<td style="text-align: center;">LinkedHashSet uses LinkedHashMap internally to store objects</td>
+</tr>
+<tr>
+<td style="text-align: center;">When To Use</td>
+<td style="text-align: center;">If you don’t want to maintain insertion order but want to store unique objects</td>
+<td style="text-align: center;">If you want to sort the elements according to some Comparator then use TreeSet</td>
+<td style="text-align: center;">If you want to maintain the insertion order of elements then you can use LinkedHashSet</td>
+</tr>
+<tr>
+<td style="text-align: center;">Order</td>
+<td style="text-align: center;">HashSet does not maintain insertion order</td>
+<td style="text-align: center;">While TreeSet orders the elements according to supplied Comparator. By default, objects will be placed according to their natural ascending order.</td>
+<td style="text-align: center;">LinkedHashSet maintains the insertion order of objects</td>
+</tr>
+<tr>
+<td style="text-align: center;">Complexity of Operations</td>
+<td style="text-align: center;">HashSet gives O(1) complexity for insertion, removing, and retrieving objects</td>
+<td style="text-align: center;">While TreeSet gives the performance of order O(log(n)) for insertion, removing, and retrieving operations.</td>
+<td style="text-align: center;">LinkedHashSet gives insertion, removing, and retrieving operations performance in order O(1).</td>
+</tr>
+<tr>
+<td style="text-align: center;">Performance</td>
+<td style="text-align: center;">The performance of HashSet is better when compared to LinkedHashSet and TreeSet.</td>
+<td style="text-align: center;">TreeSet performance is better than LinkedHashSet except for insertion and removal operations because it has to sort the elements after each insertion and removal operation.</td>
+<td style="text-align: center;">The performance of LinkedHashSet is slower than TreeSet. It is almost similar to HashSet but slower because LinkedHashSet internally maintains LinkedList to maintain the insertion order of elements</td>
+</tr>
+<tr>
+<td style="text-align: center;">Compare</td>
+<td style="text-align: center;">HashSet uses equals() and hashCode() methods to compare the objects</td>
+<td style="text-align: center;">TreeSet uses compare() and compareTo() methods to compare the objects</td>
+<td style="text-align: center;">LinkedHashSet uses equals() and hashCode() methods to compare it’s objects</td>
+</tr>
+<tr>
+<td style="text-align: center;">Null Elements</td>
+<td style="text-align: center;">HashSet allows only one null value.</td>
+<td style="text-align: center;">TreeSet does not permit null value. If you insert null value into TreeSet, it will throw NullPointerException.</td>
+<td style="text-align: center;">LinkedHashSet allows only one null value.</td>
+</tr>
+<tr>
+<td style="text-align: center;">Syntax</td>
+<td style="text-align: center;">HashSet obj = new HashSet();</td>
+<td style="text-align: center;">TreeSet obj = new TreeSet();</td>
+<td style="text-align: center;">LinkedHashSet obj = new LinkedHashSet();</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html" class="btn btn-neutral float-left" title="Interface Comparable and Comparator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="5-2-maps.html" class="btn btn-neutral float-right" title="Maps">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="5-2-maps.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

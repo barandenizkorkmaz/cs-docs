@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp3-trees/chp3-trees.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Trees - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Trees";
+        var mkdocs_page_input_path = "data-structures/chp3-trees/chp3-trees.md";
+        var mkdocs_page_url = "/data-structures/chp3-trees/chp3-trees.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Trees</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Trees</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#tree-terminology">Tree Terminology</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#binary-trees">Binary Trees</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#binary-search-tree">Binary Search Tree</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#searching-a-binary-tree">Searching a Binary Tree</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tree-traversals">Tree Traversals</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#preorder-traversal">Preorder Traversal</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#inorder-traversal">Inorder Traversal</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#postorder-traversal">Postorder Traversal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementing-a-binary-tree-class">Implementing a Binary Tree Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#class-binarytreee">Class BinaryTree&lt;E&gt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementing-a-binarysearchtree-class">Implementing a BinarySearchTree Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-searchtreee">Interface SearchTree&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#operations">Operations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Trees</li>
+      <li class="breadcrumb-item active">Trees</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-trees">5. Trees</h1>
+<h2 id="tree-terminology">Tree Terminology</h2>
+<ul>
+<li><code>root</code>: The node at the top of a tree. It has no parents.</li>
+<li><code>edge (branch)</code>: The link from a node to its successor.</li>
+<li><code>children</code>: The successors of a node.</li>
+<li><code>parent</code>: The predecessor of a node.</li>
+<li><code>siblings</code>: The nodes that have the same parent.</li>
+<li><code>leaf</code>: A node that has no children.</li>
+<li><code>external nodes</code>: Leaves are also known as external nodes.</li>
+<li><code>internal nodes</code>: Non-leaf nodes are also known as internal nodes.</li>
+<li><code>subtree of a node</code>: A tree whose root is a child of that node.</li>
+<li><code>depth</code>: The depth of a node is the length of the path from the root to the node.</li>
+<li><code>level</code>: The set of all nodes at given depth is called the <code>level</code> of the tree. The <code>root</code> node is at level <code>zero</code>. </li>
+<li><code>level</code> and <code>depth</code> describe the same concept but level is a tree-oriented term while depth is a node-oriented term (e.g. level of tree vs depth of node).</li>
+<li><code>height</code>: The height of a node is the length of the path from that node to the deepest node. The height of a tree is the length of the path from the root to the deepest node in the tree. A (rooted) tree with only one node (the root) has a height of <code>zero</code>.</li>
+<li><code>height of the tree</code>: The height of root node.</li>
+<li><code>depth of the tree</code>: The maximum depth among all the nodes in the tree.</li>
+<li>For a given tree, <code>height of the tree</code> <script type="math/tex">=</script>
+<code>depth of the tree</code>.</li>
+<li><code>size</code>: The size of a node is the number of descendants it has including itself.</li>
+<li><code>skew tree</code>: If every node in a tree has only one child (except leaf nodes).</li>
+<li><code>left skew tree</code>: If every node has only left child.</li>
+<li><code>right skew tree:</code> If every node has only right child.</li>
+<li><code>strict binary tree</code>: All nodes have either 2 children or 0 children (leaf nodes).</li>
+<li><code>full binary tree</code>: All nodes have exactly 2 children except the leaf nodes in the final level, level n, for a tree of height n. In other words, a binary tree is full binary tree if each node has exactly two children and all leaf nodes are at the same level.</li>
+<li><code>complete binary tree</code>: A complete binary tree is a full binary tree through level n -1 with some extra leaf nodes at level n and all of the nodes at level n are towards the left of the tree.</li>
+</ul>
+<h2 id="binary-trees">Binary Trees</h2>
+<ul>
+<li>A set of nodes <code>T</code> is a <code>binary tree</code> if either of the following is true:</li>
+<li>T is empty</li>
+<li>
+<p>Else, its root node has two subtrees, <script type="math/tex">T_L</script> and <script type="math/tex">T_R</script>, such that they are binary trees.</p>
+</li>
+<li>
+<p>A tree is called <code>binary tree</code> if each node has at most two children.</p>
+</li>
+<li>Observe that a binary tree has a recursive definition.</li>
+</ul>
+<h2 id="binary-search-tree">Binary Search Tree</h2>
+<ul>
+<li>A set of nodes in T is a <code>binary search tree</code> if either of the following is true</li>
+<li>T is empty</li>
+<li>Else, its root node has two subtrees,  <script type="math/tex">T_L</script> and <script type="math/tex">T_R</script>, such that they are binary search trees and the value in the root node of T is greater than all values in <script type="math/tex">T_L</script> and is less than all values in <script type="math/tex">T_R</script>.</li>
+<li>Observe that a binary search tree has a recursive definition as well.</li>
+</ul>
+<h3 id="searching-a-binary-tree">Searching a Binary Tree</h3>
+<pre><code class="language-bash">if the tree is empty
+    Return null (target is not found).
+else if the target matches the root node’s data
+    Return the data stored at the root node.
+else if the target is less than the root node’s data
+    Return the result of searching the left subtree of the root.
+else
+    Return the result of searching the right subtree of the root.
+</code></pre>
+<ul>
+<li>Just as with a binary search of an array, each probe into the binary search tree has the potential of eliminating half the elements in the tree. If the binary search tree is relatively balanced (i.e., the depths of the leaves are approximately the same), searching a binary search tree is an <script type="math/tex">O(log n)</script> process, just like a binary search of an ordered array.</li>
+</ul>
+<h2 id="tree-traversals">Tree Traversals</h2>
+<h3 id="preorder-traversal">Preorder Traversal</h3>
+<pre><code class="language-bash">if the tree is empty
+    Return.
+else
+    Visit the root.
+    Preorder traverse the left subtree
+    Preorder traverse the right subtree
+</code></pre>
+<h3 id="inorder-traversal">Inorder Traversal</h3>
+<pre><code class="language-bash">if the tree is empty
+    Return.
+else
+    Inorder traverse the left subtree
+    Visit the root.
+    Inorder traverse the right subtree
+</code></pre>
+<h3 id="postorder-traversal">Postorder Traversal</h3>
+<pre><code class="language-bash">if the tree is empty
+    Return.
+else
+    Postorder traverse the left subtree
+    Postorder traverse the right subtree
+    Visit the root.
+</code></pre>
+<h2 id="implementing-a-binary-tree-class">Implementing a <code>Binary Tree</code> Class</h2>
+<h3 id="class-binarytreee">Class <code>BinaryTree&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Data Field/Attribute</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>protected Node&lt;E&gt; root</code></td>
+<td>Reference to the root of the tree</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Constructor/Behavior</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public BinaryTree()</code></td>
+<td>Constructs an empty binary tree</td>
+</tr>
+<tr>
+<td><code>protected BinaryTree(Node&lt;E&gt; root)</code></td>
+<td>Constructs a binary tree with the given node as the root</td>
+</tr>
+<tr>
+<td><code>public BinaryTree(E data, BinaryTree&lt;E&gt; leftTree, BinaryTree&lt;E&gt; rightTree)</code></td>
+<td>Constructs a binary tree with the given data at the root and the two given subtrees</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Method/Behavior</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public BinaryTree&lt;E&gt; getLeftSubtree()</code></td>
+<td>Returns the left subtree</td>
+</tr>
+<tr>
+<td><code>public BinaryTree&lt;E&gt; getRightSubtree()</code></td>
+<td>Returns the right subtree</td>
+</tr>
+<tr>
+<td><code>public E getData()</code></td>
+<td>Returns the data in the root</td>
+</tr>
+<tr>
+<td><code>public boolean isLeaf()</code></td>
+<td>Returns true if this tree is a leaf, false otherwise</td>
+</tr>
+<tr>
+<td><code>public String toString()</code></td>
+<td>Returns a String representation of the tree</td>
+</tr>
+<tr>
+<td><code>public void preOrderTraversal()</code></td>
+<td>Prints the output of preorder traversal</td>
+</tr>
+<tr>
+<td><code>public void inOrderTraversal()</code></td>
+<td>Prints the output of inorder traversal</td>
+</tr>
+<tr>
+<td><code>public void postOrderTraversal()</code></td>
+<td>Prints the output of postorder traversal</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">package datastructures.tree;
+
+import java.io.Serializable;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class BinaryTree&lt;E&gt; implements Serializable{
+
+    /** Class to encapsulate a tree node. */
+    protected static class Node&lt;E&gt; implements Serializable {
+        // Data Fields
+        /** The information stored in this node. */
+        protected E data;
+        /** Reference to the left child. */
+        protected Node&lt;E&gt; left;
+        /** Reference to the right child. */
+        protected Node&lt;E&gt; right;
+
+        // Constructors
+        /** Construct a node with given data and no children.
+         @param data The data to store in this node
+         */
+        public Node(E data) {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+        // Methods
+        /** Return a string representation of the node.
+         @return A string representation of the data fields
+         */
+        public String toString () {
+            return data.toString();
+        }
+    }
+
+    // Data Field
+    /** The root of the binary tree */
+    protected Node&lt;E&gt; root;
+
+    // Data Fields
+    /** Return value from the public add method. */
+    protected boolean addReturn;
+    /** Return value from the public delete method. */
+    protected E deleteReturn;
+
+    public BinaryTree() {
+        root = null;
+    }
+
+    protected BinaryTree(Node&lt;E&gt; root) {
+        this.root = root;
+    }
+
+    /** Constructs a new binary tree with data in its root leftTree
+     as its left subtree and rightTree as its right subtree.
+     */
+    public BinaryTree(E data, BinaryTree&lt;E&gt; leftTree,
+                      BinaryTree&lt;E&gt; rightTree) {
+        root = new Node&lt;&gt;(data);
+        if (leftTree != null) {
+            root.left = leftTree.root;
+        } else {
+            root.left = null;
+        }
+        if (rightTree != null) {
+            root.right = rightTree.root;
+        } else {
+            root.right = null;
+        }
+    }
+
+    /** Return the left subtree.
+     @return The left subtree or null if either the root or
+     the left subtree is null
+     */
+    public BinaryTree&lt;E&gt; getLeftSubtree() {
+        if (root != null &amp;&amp; root.left != null) {
+            return new BinaryTree&lt;&gt;(root.left);
+        } else {
+            return null;
+        }
+    }
+
+    /** Return the right subtree.
+     @return The right subtree or null if either the root or
+     the right subtree is null
+     */
+    public BinaryTree&lt;E&gt; getRightSubtree() {
+        if (root != null &amp;&amp; root.right != null) {
+            return new BinaryTree&lt;&gt;(root.right);
+        } else {
+            return null;
+        }
+    }
+
+    /** Determine whether this tree is a leaf.
+     @return true if the root has no children
+     */
+    public boolean isLeaf() {
+        return (root.left == null &amp;&amp; root.right == null);
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        toString(root, 1, sb);
+        return sb.toString();
+    }
+
+    /** Converts a sub‐tree to a string.
+     Performs a preorder traversal.
+     @param node The local root
+     @param depth The depth
+     @param sb The StringBuilder to save the output
+     */
+    private void toString(Node&lt;E&gt; node, int depth,
+                          StringBuilder sb) {
+        for (int i = 1; i &lt; depth; i++) {
+            sb.append(&quot; &quot;);
+        }
+        if (node == null) {
+            sb.append(&quot;null\n&quot;);
+        } else {
+            sb.append(node.toString());
+            sb.append(&quot;\n&quot;);
+            toString(node.left, depth + 1, sb);
+            toString(node.right, depth + 1, sb);
+        }
+    }
+
+    public void preOrderTraversal(){
+        preOrderTraversal(root);
+    }
+
+    private void preOrderTraversal(Node&lt;E&gt; node){
+        if(node != null){
+            System.out.println(node.toString());
+            preOrderTraversal(node.left);
+            preOrderTraversal(node.right);
+        }
+    }
+
+    public void inOrderTraversal(){
+        inOrderTraversal(root);
+    }
+
+    private void inOrderTraversal(Node&lt;E&gt; node){
+        if(node != null){
+            inOrderTraversal(node.left);
+            System.out.println(node.toString());
+            inOrderTraversal(node.right);
+        }
+    }
+
+    public void postOrderTraversal(){
+        postOrderTraversal(root);
+    }
+
+    private void postOrderTraversal(Node&lt;E&gt; node){
+        if(node != null){
+            postOrderTraversal(node.left);
+            postOrderTraversal(node.right);
+            System.out.println(node.toString());
+        }
+    }
+}
+
+</code></pre>
+<h2 id="implementing-a-binarysearchtree-class">Implementing a <code>BinarySearchTree</code> Class</h2>
+<h3 id="interface-searchtreee">Interface <code>SearchTree&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean add(E item)</code></td>
+<td>Inserts <code>item</code> where it belongs in the tree. Returns true if <code>item</code> is inserted; false if it isn’t (already in tree)</td>
+</tr>
+<tr>
+<td><code>boolean contains(E target)</code></td>
+<td>Returns true if <code>target</code> is found in the tree</td>
+</tr>
+<tr>
+<td><code>E search(E target)</code></td>
+<td>Returns a reference to the data in the node that is equal to <code>target</code>. If no such node is found, returns <code>null</code></td>
+</tr>
+<tr>
+<td><code>E delete(E target)</code></td>
+<td>Removes <code>target</code> (if found) from the tree and returns it; otherwise, returns <code>null</code></td>
+</tr>
+<tr>
+<td><code>boolean remove(E target)</code></td>
+<td>Removes <code>target</code> (if found) from the tree and returns true; otherwise, returns false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operations">Operations</h3>
+<h4 id="search">Search</h4>
+<pre><code class="language-bash">if the tree is empty
+    Return null (target is not found).
+else if the target matches the root node’s data
+    Return the data stored at the root node.
+else if the target is less than the root node’s data
+    Return the result of searching the left subtree of the root.
+else
+    Return the result of searching the right subtree of the root.
+</code></pre>
+<h4 id="insert">Insert</h4>
+<pre><code class="language-bash">if the root is null
+    Replace empty tree with a new tree with the item at the root and return true.
+else if the item is equal to root.data
+    The item is already in the tree; return false.
+else if the item is less than root.data
+    Recursively insert the item in the left subtree.
+else
+    Recursively insert the item in the right subtree.
+</code></pre>
+<h4 id="remove">Remove</h4>
+<pre><code class="language-bash">if the root is null
+    The item is not in tree – return null.
+Compare the item to the data at the local root.
+if the item is less than the data at the local root
+    Return the result of deleting from the left subtree.
+else if the item is greater than the local root
+    Return the result of deleting from the right subtree.
+else # The item is in the local root
+    Store the data in the local root in deleteReturn.
+    if the local root has no children
+        Set the parent of the local root to reference null.
+    else if the local root has one child
+        Set the parent of the local root to reference that child.
+    else # Find the inorder predecessor
+        if the left child has no right child it is the inorder predecessor
+            Set the parent of the local root to reference the left child.
+        else
+            Find the rightmost node in the right subtree of the left child.
+            Copy its data into the local root’s data and remove it by setting its parent to reference its left child.
+</code></pre>
+<h3 id="implementation">Implementation</h3>
+<pre><code class="language-java">package datastructures.tree;
+
+import java.util.NoSuchElementException;
+
+public class BinarySearchTree&lt;E extends Comparable&lt;E&gt;&gt;
+        extends BinaryTree&lt;E&gt; implements SearchTree&lt;E&gt; {
+    // Data Fields
+    /** Return value from the public add method. */
+    protected boolean addReturn;
+    /** Return value from the public delete method. */
+    protected E deleteReturn;
+
+    /** Starter method find.
+     pre: The target object must implement
+     the Comparable interface.
+     @param target The Comparable object being sought
+     @return The object, if found, otherwise null
+     */
+    public E search(E target) {
+        return search(root, target);
+    }
+
+    /** Recursive find method.
+     @param localRoot The local subtree's root
+     @param target The object being sought
+     @return The object, if found, otherwise null
+     */
+    private E search(Node&lt;E&gt; localRoot, E target) {
+        if (localRoot == null)
+            return null;
+        // Compare the target with the data field at the root.
+        int compResult = target.compareTo(localRoot.data);
+        if (compResult == 0)
+            return localRoot.data;
+        else if (compResult &lt; 0)
+            return search(localRoot.left, target);
+        else
+            return search(localRoot.right, target);
+    }
+
+    /** Starter method add.
+     pre: The object to insert must implement the
+     Comparable interface.
+     @param item The object being inserted
+     @return true if the object is inserted, false
+     if the object already exists in the tree
+     */
+    public boolean add(E item) {
+        root = add(root, item);
+        return addReturn;
+    }
+
+    /** Recursive add method.
+     post: The data field addReturn is set true if the item is added to
+     the tree, false if the item is already in the tree.
+     @param localRoot The local root of the subtree
+     @param item The object to be inserted
+     @return The new local root that now contains the
+     inserted item
+     */
+    private Node&lt;E&gt; add(Node&lt;E&gt; localRoot, E item) {
+        if (localRoot == null) {
+            // item is not in the tree — insert it.
+            addReturn = true;
+            return new Node&lt;&gt;(item);
+        } else if (item.compareTo(localRoot.data) == 0) {
+            // item is equal to localRoot.data
+            addReturn = false;
+            return localRoot;
+        } else if (item.compareTo(localRoot.data) &lt; 0) {
+            // item is less than localRoot.data
+            localRoot.left = add(localRoot.left, item);
+            return localRoot;
+        } else {
+            // item is greater than localRoot.data
+            localRoot.right = add(localRoot.right, item);
+            return localRoot;
+        }
+    }
+
+    /** Starter method delete.
+     post: The object is not in the tree.
+     @param target The object to be deleted
+     @return The object deleted from the tree
+     or null if the object was not in the tree
+     @throws ClassCastException if target does not implement
+     Comparable
+     */
+    public E delete(E target) {
+        root = delete(root, target);
+        return deleteReturn;
+    }
+
+    /** Recursive delete method.
+     post: The item is not in the tree;
+     deleteReturn is equal to the deleted item
+     as it was stored in the tree or null
+     if the item was not found.
+     @param localRoot The root of the current subtree
+     @param item The item to be deleted
+     @return The modified local root that does not contain
+     the item
+     */
+    private Node&lt;E&gt; delete(Node&lt;E&gt; localRoot, E item) {
+        if (localRoot == null) {
+            // item is not in the tree.
+            deleteReturn = null;
+            return localRoot;
+        }
+        // Search for item to delete.
+        int compResult = item.compareTo(localRoot.data);
+        if (compResult &lt; 0) {
+            // item is smaller than localRoot.data.
+            localRoot.left = delete(localRoot.left, item);
+        } else if (compResult &gt; 0) {
+            // item is larger than localRoot.data.
+            localRoot.right = delete(localRoot.right, item);
+        } else {
+            // item is at local root.
+            deleteReturn = localRoot.data;
+            if (localRoot.left == null) {
+                // If there is no left child, return right child
+                // which can also be null.
+                return localRoot.right;
+            } else if (localRoot.right == null) {
+                // If there is no right child, return left child.
+                return localRoot.left;
+            } else {
+                // Node being deleted has 2 children, replace the data with inorder predecessor.
+                localRoot.data = getMin(localRoot.right);
+                localRoot.right = delete(localRoot.right, localRoot.data);
+            }
+        }
+        return localRoot;
+    }
+
+    private E getMin(){
+        if(root == null){
+            throw new NoSuchElementException();
+        }
+        return getMin(root);
+    }
+
+    private E getMin(Node&lt;E&gt; localRoot){
+        if(localRoot.left == null){
+            return localRoot.data;
+        }
+        else{
+            return getMin(localRoot.left);
+        }
+    }
+
+    @Override
+    public boolean remove(E target) {
+        root = delete(root, target);
+        return deleteReturn != null;
+    }
+
+    @Override
+    public boolean contains(E target) {
+        return search(target) != null;
+    }
+
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chp2-stacks-and-queues/2-3-deques.html" class="btn btn-neutral float-left" title="Deques"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chp4-heaps-and-priority-queues/4-1-heaps.html" class="btn btn-neutral float-right" title="Heaps">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chp2-stacks-and-queues/2-3-deques.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chp4-heaps-and-priority-queues/4-1-heaps.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

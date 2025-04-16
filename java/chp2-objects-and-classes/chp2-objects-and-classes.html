@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/java/chp2-objects-and-classes/chp2-objects-and-classes.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Chapter 2: Objects and Classes - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 2: Objects and Classes";
+        var mkdocs_page_input_path = "java/chp2-objects-and-classes/chp2-objects-and-classes.md";
+        var mkdocs_page_url = "/java/chp2-objects-and-classes/chp2-objects-and-classes.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 2: Objects and Classes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-2-objects-and-classes">Chapter 2: Objects and Classes</h1>
+<h2 id="21-introduction-to-object-oriented-programming">2.1. Introduction to Object-Oriented Programming</h2>
+<p>4 Pillars of OOP:
+1. Abstraction: The process of hiding implementation details and exposing only the functionality to the user. In abstraction, we deal with ideas and not events. This means the user will only know “what it does” rather than “how it does”.
+2. Encapsulation: In software systems, <strong>encapsulation</strong> refers to the bundling of data with the mechanisms or methods that operate on the data. It may also refer to the limiting of direct access to some of that data, such as an object's components. Essentially, encapsulation prevents external code from being concerned with the internal workings of an object.
+3. Inheritance: The process of one class inheriting properties and methods from another class in Java. Inheritance is used when we have <strong><em>is-a</em></strong> relationship between objects.  Inheritance in Java is implemented using <strong><em>extends</em></strong> keyword.
+4. Polymorphism: Polymorphism in Java is <strong>a core concept of object-oriented programming (OOP) that allows objects to be treated as instances of their parent class</strong>. It facilitates flexibility and the ability to define methods in multiple forms. Polymorphism is primarily achieved through method overriding and method overloading.</p>
+<p>There are two types of polymorphism as listed below:</p>
+<ol>
+<li>Static or Compile-time Polymorphism (Overloading)</li>
+<li>Dynamic or Run-time Polymorphism (Overriding)</li>
+</ol>
+<p><strong><em>Static or Compile-time Polymorphism</em></strong> occurs when the compiler is able to determine the actual function, it’s called <strong><em>compile-time</em>* polymorphism. Compile-time polymorphism can be achieved by </strong><em>method overloading</em><strong> in Java. When different functions in a class have the same name but different signatures, it’s called </strong>method overloading<strong>. A method signature contains the name and method arguments. So, overloaded methods have different arguments. The arguments might differ in the numbers or the type of arguments.
+</strong><em>Dynamic or Run-time Polymorphism</em><strong> occurs when the compiler is not able to determine at compile-time which method (superclass or subclass) will be called. This decision is made at run-time. Run-time polymorphism is achieved through </strong>method overriding**, which happens when a method in a subclass has the same name, return type, and parameters as a method in its superclass. When the superclass method is overridden in the subclass, it is called method overriding.</p>
+<h3 id="211-classes">2.1.1. Classes</h3>
+<p>A class is a blueprint for objects. In Java, all classes extend the cosmic superclass called `Object.</p>
+<h3 id="212-objects">2.1.2. Objects</h3>
+<p>An object is an instance of the class, which has consists of a <code>state</code> and <code>behavior</code>.</p>
+<h3 id="213-identifying-classes">2.1.3. Identifying Classes</h3>
+<p>In a traditional procedural program, you start the process at the top, with the <code>main</code> function. When designing an OOP system, there is no <code>top</code> and newcomers to OOP often wonder where to begin. A simple rule of thumb in identifying classes is to look for <code>nouns</code> in the problem analysis. Methods, on the other hand, correspond to <code>verbs</code>.</p>
+<h3 id="214-relationships-between-classes">2.1.4. Relationships Between Classes</h3>
+<p>The most common relationships between classes are:
+- Dependence (<code>uses-a</code>)
+- Aggregation (<code>has-a</code>)
+- Inheritance (<code>is-a</code>)</p>
+<p><strong>NOTE:</strong> UML notations are used for describing the relationships between classes.</p>
+<h2 id="22-using-predefined-classes">2.2. Using Predefined Classes</h2>
+<h3 id="221-objects-and-object-variables">2.2.1. Objects and Object Variables</h3>
+<p>There is an important difference between objects and object variables.</p>
+<pre><code class="language-java">Date startTime; // startTime doesn't refer to any object
+</code></pre>
+<p>The statement defines an object variable, <code>startTime</code>, that can refer to objects of type <code>Date</code>. It is important to realize that the variable <code>startTime</code> is not an object and, in fact, does not even refer to an object yet. You cannot use any <code>Date</code> methods on this variable at this time. The statement</p>
+<pre><code class="language-java">s = startTime.toString();
+</code></pre>
+<p>would cause a compile-time error.</p>
+<p>You must first initialize the <code>startTime</code> variable. It is important to realize that <strong>an object variable doesn't actually contain an object</strong>. It only refers to an object.
+In Java, the value of any object variable is <strong>a reference to an object</strong> that is stored elsewhere. The return value of the <code>new</code> operator is also a <strong>reference</strong>. You can explicitly set an object variable to <code>null</code> to indicate that it currently refers to no object.</p>
+<hr />
+<p><strong>C++ NOTE</strong></p>
+<p>Some people mistakenly believe that Java object variables behave like C++ references. But in C++ there are no null references and references cannot be assigned. You should think of Java object variables as analogous to <code>object pointers</code> in C++. </p>
+<p>Date rightNow; // Java</p>
+<p>is really the same as</p>
+<p>Date* rightNow; // C++</p>
+<p>Of course, a <code>Date*</code> pointer isn't initialized until you initialize it with a call to <code>new</code>. The syntax is almost the same in C++ and Java.</p>
+<p>Date* rightNow = new Date(); // C++</p>
+<p>If you copy one variable to another, then both variables refer to the same date-- they are pointers to the same object. The equivalent of the Java null reference is the C++ NULL pointer.</p>
+<p>All Java objects live on the <code>heap</code>. When an object contains another object variable, it contains just a pointer to yet another heap object.</p>
+<hr />
+<h3 id="222-the-date-and-localdate-class-of-the-java-library">2.2.2. The <code>Date</code> and <code>LocalDate</code> Class of the Java Library</h3>
+<p>An instance of the <code>Date</code> class has a state-- namely, a particular point in time. The standard Java library contains two separate classes: the <code>Date</code> class, which represents a point in time, and the <code>LocalDate</code> class, which expresses days in the familiar calendar notation.</p>
+<pre><code class="language-java">LocalDate.now();
+LocalDate.of(1999, 12, 31);
+
+LocalDate newYearsEve = LocalDate.of(1999, 12, 31);
+int year = newYearsEve.getYear();
+int month = newYearsEve. getMonthValue();
+int day = newYearsEve.getDayOfMonth();
+
+LocalDate aThousandDaysLater = newYearsEve.plusDays(1000);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static LocalDate</code></td>
+<td><code>now()</code></td>
+<td>Constructs an object that represents the current date.</td>
+</tr>
+<tr>
+<td><code>static LocalDate</code></td>
+<td><code>of(int year, int month, int day)</code></td>
+<td>Constructs an object that represents the given date.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>getYear()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>getMonthValue()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>getDayOfMonth()</code></td>
+<td>Gets the year, month, and day of this date.</td>
+</tr>
+<tr>
+<td><code>DayOfWeek</code></td>
+<td><code>getDayOfWeek()</code></td>
+<td>Gets the weekday of this date as an instance of the <code>DayOfWeek</code> class. Call <code>getValue()</code> on the <code>DayOfWeek</code> instance to get a weekday between 1 (Monday) and 7 (Sunday).</td>
+</tr>
+<tr>
+<td><code>LocalDate</code></td>
+<td><code>plusDays(int n)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>LocalDate</code></td>
+<td><code>minusDays(int n)</code></td>
+<td>Yields the date that is <code>n</code> days after or before this date.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="23-defining-your-own-classes">2.3. Defining Your Own Classes</h1>
+<hr />
+<p><strong>C++ NOTE</strong></p>
+<p>Constructors work the same way in Java as they do in C++. Keep in mind, however, that all Java objects are constructed on the heap and that a constructor must be combined with new. It is a common error of C++ programmers to forget the new operator:</p>
+<pre><code class="language-cpp">Employee number007(&quot;James Bond&quot;, 100000, 1950, 1, 1); // C++, not Java!
+</code></pre>
+<p>That works in C++ but not in Java.</p>
+<hr />
+<h3 id="231-declaring-local-variables-with-var">2.3.1. Declaring Local Variables with <code>var</code></h3>
+<p>As of Java 10, you can declare local variables with the <code>var</code> keyword instead of specifying their type, provided their type can be inferred from the initial value. For example, instead of declaring</p>
+<pre><code class="language-java">Employee harry = new Employee(&quot;Harry Hacker&quot;, 50000, 1989, 10, 1);
+</code></pre>
+<p>you simply write</p>
+<pre><code class="language-java">var harry = new Employee(&quot;Harry Hacker&quot;, 50000, 1989, 10, 1);
+</code></pre>
+<p>This is nice since it avoids the repetition of the type name Employee. Note that the var keyword can only be used with <strong>local variables inside methods</strong>. You must always declare the types of parameters and fields.</p>
+<h3 id="232-working-with-null-references">2.3.2. Working with <code>null</code> References</h3>
+<p>The Objects class has a convenience method for this purpose:</p>
+<pre><code class="language-java">public Employee(String n, double s, int year, int month, int day){
+
+    name = Objects.requireNonNullElse(n, &quot;unknown&quot;);
+
+    . . .
+
+}
+
+</code></pre>
+<p>The “tough love” approach is to reject a null argument:</p>
+<pre><code class="language-java">public Employee(String n, double s, int year, int month, int day){
+
+    name = Objects.requireNonNull(n, &quot;The name cannot be null&quot;);
+
+    . . .
+
+}
+</code></pre>
+<h3 id="233-implicit-and-explicit-parameters">2.3.3. Implicit and Explicit Parameters</h3>
+<p>Any class method has two kinds of parameters. The first type of parameter, called the <code>implicit parameter</code>, is the callee object itself that appears before the method name. The second kind of parameter, inside the parentheses after the method name, is an <code>explicit parameter</code>. (Some people call the implicit parameter the target or receiver of the method call.) </p>
+<p>The implicit parameter does not appear in the method declaration. In every method, the keyword <code>this</code> refers to <code>the implicit parameter</code>.  Some programmers prefer that style because it clearly distinguishes between instance fields and local variables.</p>
+<hr />
+<p><strong>C++ NOTE:</strong></p>
+<p>In C++, you generally define methods outside the class:</p>
+<pre><code class="language-cpp">void Employee::raiseSalary(double byPercent) // C++, not Java
+{
+    . . .
+}
+</code></pre>
+<p>If you define a method inside a class, then it is, automatically, an inline method.</p>
+<pre><code class="language-cpp">class Employee{
+    . . .
+    int getName() { return name; } // inline in C++
+}
+</code></pre>
+<hr />
+<p><strong>In Java, all methods are defined inside the class itself.</strong> This does not make them inline. Finding opportunities for inline replacement is the job of the Java virtual machine. The just-in-time compiler watches for calls to methods that are short, commonly called, and not overridden, and optimizes them away.</p>
+<h3 id="234-benefits-of-encapsulation">2.3.4. Benefits of Encapsulation</h3>
+<p>Two kinds of class methods:
+- Accessor methods
+- Mutator methods</p>
+<hr />
+<p><strong>CAUTION:</strong></p>
+<p>Be careful not to write accessor methods that return references to mutable objects. In a previous edition of this book, I violated that rule in the <code>Employee</code> class in which the <code>getHireDay</code> method returned an object of class Date:</p>
+<pre><code class="language-java">class Employee{
+
+    private Date hireDay;
+
+    . . .
+
+    public Date getHireDay(){
+        return hireDay; // BAD
+    }
+
+    . . .
+
+}
+</code></pre>
+<pre><code class="language-java">class Employee{
+
+    private Date hireDay;
+
+    . . .
+
+    public Date getHireDay(){
+        return (Date) hireDay.clone(); // OK
+    }
+
+    . . .
+
+}
+</code></pre>
+<p>As a rule of thumb, always use <code>clone</code> whenever you need to return a copy of a mutable field.</p>
+<hr />
+<h3 id="235-final-instance-fields">2.3.5. Final Instance Fields</h3>
+<p>You can define an instance field as <code>final</code>. <strong>Such a field must be initialized when the object is constructed.</strong> That is, you must guarantee that the field  value has been set after the end of every constructor. Afterwards, the field may not be modified again. </p>
+<p>The final modifier is particularly useful for fields whose type is primitive or an <code>immutable</code> class. A class is <code>immutable</code> if <strong>none of its methods ever mutate its objects</strong>. For example, the String class is immutable. For mutable classes, the final modifier can be confusing. For example, consider a field:</p>
+<pre><code class="language-java">private final StringBuilder evaluations;
+</code></pre>
+<p>that is initialized in the <code>Employee</code> constructor as</p>
+<pre><code class="language-java">evaluations = new StringBuilder();
+</code></pre>
+<p>The final keyword merely means that the object reference stored in the evaluations variable will <strong>never again refer to a different StringBuilder object</strong>. But the object can be mutated:</p>
+<pre><code class="language-java">public void giveGoldStar(){
+    evaluations.append(LocalDate.now() + &quot;: Gold star!\n&quot;);
+}
+</code></pre>
+<h2 id="24-static-fields-and-methods">2.4. Static Fields and Methods</h2>
+<h3 id="241-static-fields">2.4.1. Static Fields</h3>
+<p>If you define a field as static, then the field is not present in the objects of the class. There is only a single copy of each static field. You can think of static fields as belonging to the class, not to the individual objects.</p>
+<hr />
+<p><strong>NOTE:</strong>
+In some object-oriented programming languages, static fields are called class fields. The term “static” is a meaningless holdover from C++.</p>
+<hr />
+<h3 id="242-static-constants">2.4.2. Static Constants</h3>
+<p>Static variables are quite rare. However, static constants are more common.</p>
+<pre><code class="language-java">public class Math {
+
+    public static final double PI = 3.14159265358979323846;
+
+}
+</code></pre>
+<p>You can access this constant in your programs as Math.PI.</p>
+<p>If the keyword <code>static</code> had been omitted, then PI would have been an instance field of the <code>Math</code> class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.</p>
+<p>Another static constant that you have used many times is <code>System.out</code>. It is declared in the System class as follows:</p>
+<pre><code class="language-java">public class System {
+
+    public static final PrintStream out = . . .;
+
+}
+</code></pre>
+<p>As mentioned several times, it is never a good idea to have public fields, because everyone can modify them. However, public constants (that is, final fields) are fine. Since out has been declared as final, you cannot reassign another print stream to it:</p>
+<pre><code class="language-java">System.out = new PrintStream(. . .); // ERROR--out is final
+</code></pre>
+<h3 id="243-static-methods">2.4.3. Static Methods</h3>
+<p>Static methods are methods that do not operate on objects. You can think of static methods as methods that don’t have a this parameter. (In a nonstatic method, the this parameter refers to the implicit parameter of the method.)</p>
+<p>A <code>static</code> method of the Employee class <strong>cannot</strong> access the id <code>instance field</code> because it does not operate on an object. However, a static method can access a static field.</p>
+<p>Use static methods in two situations:
+- When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
+- When a method only needs to access static fields of the class (example: Employee.advanceId).</p>
+<hr />
+<p><strong>C++ NOTE</strong></p>
+<p>Static fields and methods have the same functionality in Java and C++. However, the syntax is slightly different. In C++, you use the :: operator to access a static field or method outside its scope, such as Math::PI.</p>
+<hr />
+<h3 id="244-factory-methods">2.4.4. Factory Methods</h3>
+<p>Here is <strong>another common use for static methods</strong>. Classes such as <code>LocalDate</code> and <code>NumberFormat</code> use <strong>static factory methods that construct objects</strong>. You have already seen the factory methods <code>LocalDate.now</code> and <code>LocalDate.of</code>. </p>
+<p>Why doesn’t the <code>NumberFormat</code> class use a constructor instead? There are two reasons:
+- You can’t give names to constructors. The constructor name is always the same as the class name. But we want two different names to get the currency instance and the percent instance.
+- When you use a constructor, you can’t vary the type of the constructed object. But the factory methods actually return objects of the class DecimalFormat, a subclass that inherits from NumberFormat.</p>
+<h3 id="245-the-main-method">2.4.5. The <code>main</code> Method</h3>
+<p>Every class <strong>can</strong> have a <code>main</code> method. That is a handy trick for adding demonstration code to a class.</p>
+<p>To see a demo of the Employee class, simply execute</p>
+<pre><code>java Employee
+</code></pre>
+<p>If the Employee class is a part of a larger application, you start the application with</p>
+<pre><code>java Application
+</code></pre>
+<p>and the main method of the Employee class is never executed.</p>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static &lt;T&gt; void</code></td>
+<td><code>requireNonNull(T obj)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static &lt;T&gt; void</code></td>
+<td><code>requireNonNull(T obj, String message)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static &lt;T&gt; void</code></td>
+<td><code>requireNonNull(T obj, Supplier&lt;String&gt; messageSupplier)</code></td>
+<td>If <code>obj</code> is <code>null</code>, these methods throw a <code>NullPointerException</code> with no message or the given message.</td>
+</tr>
+<tr>
+<td><code>static &lt;T&gt; T</code></td>
+<td><code>requireNonNullElse(T obj, T defaultObj)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static &lt;T&gt; T</code></td>
+<td><code>requireNonNullElseGet(T obj, Supplier&lt;T&gt; defaultSupplier)</code></td>
+<td>Returns <code>obj</code> if it is not <code>null</code>, or the default object if <code>obj</code> is <code>null</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="25-method-parameters">2.5. Method Parameters</h2>
+<p>Let us review the computer science terms that describe how parameters can be passed to a method (or a function) in a programming language. The term <code>call by value</code> means that the method gets just the value that the caller provides. In contrast, <code>call by reference</code> means that the method gets the location of the variable that the caller provides. Thus, a method can modify
+the value stored in a variable passed by reference but not in one passed by value. </p>
+<p>These “call by . . .” terms are standard computer science terminology describing the behavior of method parameters in various programming languages, not just Java. (There is also a <code>call by name</code> that is mainly of  historical interest, being employed in the Algol programming language, one of the oldest high-level languages.)</p>
+<p>The Java programming language <strong>always</strong> uses <code>call by value</code>. That means that <strong>the method gets a copy of all parameter values</strong>. In particular, the method cannot modify the contents of any parameter variables passed to it.</p>
+<p>There are, however, two kinds of method parameters:
+- Primitive types (numbers, boolean values)
+- Object references</p>
+<p>You have seen that it is impossible for a method to change the value of a primitive type parameter. The situation is different for object parameters.</p>
+<p>As you have seen, it is easily possible—and in fact very common—to implement methods that change the state of an object parameter. The reason is simple. <strong>The method gets a copy of the object reference, and both the original and the copy refer to the same object.</strong></p>
+<p>Many programming languages (in particular, C++ and Pascal) have two mechanisms for parameter passing: <code>call by value</code> and <code>call by reference</code>. Some programmers (and unfortunately even some book authors) claim that Java uses call by reference for objects. That is false. As this is such a common misunderstanding, it is worth examining a counterexample in detail.</p>
+<pre><code class="language-java">public static void swap(Employee x, Employee y) // doesn't work
+{
+
+    Employee temp = x;
+
+    x = y;
+
+    y = temp;
+
+}
+
+</code></pre>
+<p>If Java used <code>call by reference</code> for objects, this method would work:</p>
+<pre><code class="language-java">var a = new Employee(&quot;Alice&quot;, . . .);
+
+var b = new Employee(&quot;Bob&quot;, . . .);
+
+swap(a, b);
+
+// does a now refer to Bob, b to Alice?
+</code></pre>
+<p>However, the method does not actually change the object references that are stored in the variables a and b. <strong>The x and y parameters of the swap method are initialized with copies of these references. The method then proceeds to swap these copies.</strong></p>
+<pre><code class="language-java">public static void swap(Employee x, Employee y) // doesn't work
+
+{
+    // x refers to Alice, y to Bob
+    Employee temp = x;
+
+    x = y;
+
+    y = temp;
+    // now x refers to Bob, y to Alice
+}
+
+</code></pre>
+<p>But ultimately, this is a <strong>wasted</strong> effort. When the method ends, the parameter variables x and y are abandoned. The original variables a and b still refer to the same objects as they did before the method call</p>
+<p>This demonstrates that the Java programming language <strong>does not</strong> use <code>call by reference</code> for objects. Instead, <code>object references are passed by value</code>.</p>
+<p>Here is a summary of what you can and cannot do with method parameters in Java:
+- A method cannot modify a parameter of a primitive type (that is, numbers or boolean values).
+- A method can change the state of an object parameter.
+- A method cannot make an object parameter refer to a new object.</p>
+<p>C++ has <strong>both</strong> <code>call by value</code> and <code>call by reference</code>. You tag reference parameters with <code>&amp;</code>. For example, you can easily implement methods void <code>tripleValue(double&amp; x)</code> or <code>void swap(Employee&amp; x, Employee&amp; y)</code> that modify their reference parameters.</p>
+<h2 id="26-object-construction">2.6. Object Construction</h2>
+<p>Since object construction is so important, Java offers quite a variety of mechanisms for writing constructors.</p>
+<h3 id="261-overloading">2.6.1. Overloading</h3>
+<p>Overloading occurs if several methods have <strong>the same name</strong> (in this case, the <code>StringBuilder</code> constructor method) <strong>but different parameters</strong>. The compiler must sort out which method to call. It picks the correct method by matching the parameter types in the headers of  the various methods with the types of the values used in the specific method call. A <strong>compile-time error</strong> occurs if the compiler cannot match the  parameters, either because there is no match at all or because there is not one that is better than all others. (The process of finding a match is called <code>overloading resolution</code>.)</p>
+<p>Classes can have more than one constructor. For example, you can construct an empty <code>StringBuilder</code> object as</p>
+<pre><code class="language-java">var messages = new StringBuilder();
+</code></pre>
+<p>Alternatively, you can specify an initial string:</p>
+<pre><code class="language-java">var todoList = new StringBuilder(&quot;To do:\n&quot;);
+</code></pre>
+<h3 id="262-default-field-initialization">2.6.2. Default Field Initialization</h3>
+<p>If you don’t set a field explicitly in a constructor, it is automatically set to a <code>default value</code>: numbers to <code>0</code>, boolean values to <code>false</code>, and object references to <code>null</code>.</p>
+<hr />
+<p>This is an important difference between <strong>fields</strong> and <strong>local variables</strong>. You must always explicitly initialize local variables in a method. But in a class, <strong>if you don’t initialize a field, it is automatically initialized to a default (0, false, or null)</strong>.</p>
+<hr />
+<h3 id="263-the-constructor-with-no-arguments">2.6.3. The Constructor with No Arguments</h3>
+<p>If you write a class with no constructors whatsoever, then a <code>no-argument constructor</code> is provided for you. This constructor sets all the instance fields to their default values. So, all numeric data contained in the instance fields would be 0, all boolean values would be false, and all object variables would be null.</p>
+<p>If a class supplies at least one constructor but does not supply a no-argument constructor, it is <strong>illegal</strong> to construct objects without supplying arguments.</p>
+<p>For example, our original Employee class in Listing 4.2 provided a single constructor:</p>
+<pre><code class="language-java">public Employee(String n, double s, int year, int month, int day)
+</code></pre>
+<p>With that class, it was not legal to construct default employees. That is, the call</p>
+<pre><code class="language-java">e = new Employee();
+</code></pre>
+<p>would have been an error.</p>
+<hr />
+<p><strong>CAUTION:</strong></p>
+<p>Please keep in mind that <strong>you get a free no-argument constructor only when your class has no other constructors.</strong> If you write your class with even a <strong>single</strong> constructor of your own and you want the users of your class to have the ability to create an instance by a call to</p>
+<pre><code class="language-java">new ClassName();
+</code></pre>
+<p>then you <strong>must</strong> provide a no-argument constructor. Of course, if you are happy with the default values for all fields, you can simply supply</p>
+<pre><code class="language-java">public ClassName(){} // without any initializations
+</code></pre>
+<hr />
+<h3 id="264-explicit-field-initialization">2.6.4. Explicit Field Initialization</h3>
+<p>This assignment is carried out before the constructor executes. This syntax is particularly useful if all constructors of a class need to set a particular instance field to the same value. The initialization value doesn’t have to be a constant value. It can also be done by a method call.</p>
+<h3 id="265-shadowing-constructor-parameters">2.6.5. Shadowing Constructor Parameters</h3>
+<p>A commonly used trick relies on the fact that parameter variables shadow instance fields with the same name. For example, if you call a parameter salary, then salary refers to the parameter, not the instance field. But you can still access the instance field as this.salary. Recall that this denotes the implicit parameter—that is, the object being constructed. Here is an example:</p>
+<pre><code class="language-java">public Employee(String name, double salary){
+
+    this.name = name;
+    this.salary = salary;
+
+}
+</code></pre>
+<h3 id="266-calling-another-constructor">2.6.6. Calling Another Constructor</h3>
+<p>The keyword <code>this</code> refers to the current instance of the class.  If the first statement of a constructor has the form <code>this(. . .)</code>, then the constructor calls another constructor of the same class.</p>
+<h3 id="267-initialization-blocks">2.6.7. Initialization Blocks</h3>
+<p>You have already seen two ways to initialize a instance field:
+- By setting a value in a constructor
+- By assigning a value in the declaration</p>
+<p>There is a third mechanism in Java, called an <code>initialization block</code>. Class declarations can contain arbitrary blocks of code. <strong>These blocks are executed whenever an object of that class is constructed.</strong></p>
+<pre><code class="language-java">
+class Employee{
+
+    private static int nextId;
+    private int id;
+    private String name;
+    private double salary;
+
+    // object initialization block 
+    {
+        id = nextId;
+        nextId++;
+    }
+
+    public Employee(String n, double s){
+        name = n;
+        salary = s;
+    }
+
+    public Employee(){
+        name = &quot;&quot;;
+        salary = 0;
+    }
+
+    . . .
+
+}
+
+</code></pre>
+<p>In this example, the id field is initialized in the object initialization block, <strong>no matter which constructor is used to construct an object. The initialization block runs first, and then the body of the constructor is executed.</strong></p>
+<p>This mechanism is never necessary and is <strong>not common</strong>. It is usually more straightforward to place the initialization code inside a constructor.</p>
+<p>Here is what happens in detail when a constructor is called:
+1. If the first line of the constructor calls a second constructor, then the second constructor executes with the provided arguments. 
+2. Otherwise:
+    - All instance fields are initialized to their default values (0, false, or null).
+    - All field initializers and initialization blocks are executed, in the order in which they occur in the class declaration.
+3. The body of the constructor is executed.</p>
+<p>If the static fields of your class require complex initialization code, use a <code>static initialization block</code>. Place the code inside a block and tag it with the keyword <code>static</code>. </p>
+<pre><code class="language-java">private static int nextId = 1;
+private static Random generator = new Random();
+
+// static initialization block
+static
+{
+    nextId = generator.nextInt(10000);
+}
+</code></pre>
+<ul>
+<li><strong>NOTE:</strong> Like <code>field variables</code>, <code>static varibles</code> are also initialized by default variables if they are not explicitly initialized.</li>
+</ul>
+<p>Static initialization occurs when the class is <strong>first loaded</strong>. Like instance fields, static fields are <code>0</code>, <code>false</code>, or <code>null</code> unless you explicitly set them to another value. All static field initializers and static initialization blocks are executed in the order in which they occur in the class declaration.</p>
+<h2 id="27-records">2.7. Records</h2>
+<p>A <code>record</code> is a special form of a class whose state is <code>immutable</code> and <code>readable by the public</code>. Here is how you define Point as a record:</p>
+<pre><code class="language-java">record Point(double x, double y) {
+}
+</code></pre>
+<p>The result is a class with instance fields:</p>
+<pre><code class="language-java">private final double x;
+private final double y;
+</code></pre>
+<p>In the Java language specification, the instance fields of a record are called its <code>components</code>. The class has a constructor:</p>
+<pre><code class="language-java">Point(double x, double y)
+</code></pre>
+<p>and accessor methods</p>
+<pre><code class="language-java">public double x()
+public double y()
+</code></pre>
+<p>by default. Note that the accessors are called x and y, not getX and getY. (It is legal in Java to have an instance field and a method with the same name.)</p>
+<p>In addition to the field accessor methods, every record has three methods defined automatically: <code>toString</code>, <code>equals</code>, and <code>hashCode</code>.
+- A record is <strong>also an object</strong>, thus it also extends <strong><code>Object</code></strong> class.</p>
+<hr />
+<p><strong>CAUTION:</strong></p>
+<p>You can define your own versions of the automatically provided methods, as long as they have the same parameter and return types. For example, this definition is <strong>legal</strong>:</p>
+<pre><code class="language-java">record Point(double x, double y) {
+
+public double x() { return y; } // BAD
+
+}
+</code></pre>
+<p>But it is surely not a good idea.</p>
+<hr />
+<p>You can add your <strong>own methods</strong> to a record:</p>
+<pre><code class="language-java">
+record Point(double x, double y) {
+
+    public double distanceFromOrigin() { return Math.hypot(x, y); }
+
+}
+</code></pre>
+<p>A record, like any class, can have <code>static fields</code> and <code>methods</code>:</p>
+<pre><code class="language-java">record Point(double x, double y) {
+
+    public static Point ORIGIN = new Point(0, 0);
+
+    public static double distance(Point p, Point q) {
+
+        return Math.hypot(p.x - q.x, p.y - q.y);
+
+    }
+
+    ...
+
+}
+</code></pre>
+<p>However, you <strong>cannot</strong> add instance fields to a record. (Because you declare class fields by <strong>constructor</strong>, and a record doesn't have a constructor in the same way as objects.)</p>
+<pre><code class="language-java">
+record Point(double x, double y) {
+
+    private double r; // ERROR
+
+}
+</code></pre>
+<hr />
+<p>Instance fields of a record are automatically <code>final</code>. However, they may be references to mutable objects. 
+- <strong>As always, having an object defined as <code>final</code> means that the reference of the object cannot be changed once initialized.</strong></p>
+<hr />
+<hr />
+<p><strong>TIP:</strong>
+Use a record instead of a class for immutable data that is completely represented by a set of variables. Use a class if the data is mutable, or if the representation may evolve over time. Records are easier to read, more efficient, and safer in concurrent programs.</p>
+<hr />
+<h3 id="271-constructors-canonical-custom-and-compact">2.7.1. Constructors: Canonical, Custom, and Compact</h3>
+<p>The automatically defined constructor that sets all instance fields is called the <code>canonical constructor</code>. You can define additional <code>custom constructors</code>. The first statement of <strong>such a constructor must call another constructor</strong>, so that <strong>ultimately the canonical constructor is invoked</strong>.</p>
+<pre><code class="language-java">record Point(double x, double y) {
+
+    public Point() { this(0, 0); }
+
+}
+</code></pre>
+<p>This record has two constructors: <strong>the canonical constructor</strong> and a <strong>no-argument custom constructor</strong> yielding the origin. If the canonical constructor needs to do additional work, you can provide your own implementation:</p>
+<pre><code class="language-java">record Range(int from, int to) {
+
+    public Range(int from, int to) {
+        if (from &lt;= to){
+            this.from = from;
+            this.to = to;       
+        }
+        else{
+            this.from = to;
+            this.to = from;
+        }
+    }
+
+}
+</code></pre>
+<p>However, you are encouraged to use a <code>compact form</code> when implementing the canonical constructor. <strong>You don’t specify the parameter list</strong>:</p>
+<pre><code class="language-java">record Range(int from, int to) {
+
+    public Range{ // Compact form 
+        if (from &gt; to){ // Swap the bounds
+            int temp = from;
+            from = to;
+            to = temp;
+        }
+    }
+
+}
+</code></pre>
+<p>The body of the compact form is the <strong>“prelude”</strong> to the canonical constructor. It merely modifies the parameter variables from and to before they are assigned to the instance fields <code>this.from</code> and <code>this.to</code>. You cannot read or modify the instance fields in the body of the compact constructor.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

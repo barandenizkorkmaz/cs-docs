@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp4-heaps-and-priority-queues/chp4-heaps-and-priority-queues.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1. Heaps - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1. Heaps";
+        var mkdocs_page_input_path = "data-structures/chp4-heaps-and-priority-queues/chp4-heaps-and-priority-queues.md";
+        var mkdocs_page_url = "/data-structures/chp4-heaps-and-priority-queues/chp4-heaps-and-priority-queues.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1. Heaps</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-heaps">1. Heaps</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>At each level of a heap, the value in a node is less than all values in its two subtrees.</li>
+<li>Implies that minimum element is always the root (a "min-heap").</li>
+<li><strong>Variation</strong>: "max-heap" stores largest element at root, reverses ordering</li>
+<li>More formally, a heap is a complete binary tree with the following properties:</li>
+<li>The value in the root is the smallest item in the tree.</li>
+<li>Every subtree is a heap.</li>
+</ul>
+<h3 id="operations">Operations</h3>
+<h4 id="insertion">Insertion</h4>
+<pre><code class="language-bash">Insert the new item in the next position at the bottom of the heap.
+while new item is not at the root and new item is smaller than its parent
+    Swap the new item with its parent, moving the new item up the heap.
+</code></pre>
+<h4 id="removal">Removal</h4>
+<pre><code class="language-bash">Remove the item in the root node by replacing it with the last item in the heap (LIH).
+while item LIH has children, and item LIH is larger than either of its children
+    Swap item LIH with its smaller child, moving LIH down the heap.
+</code></pre>
+<h3 id="implementation">Implementation</h3>
+<ul>
+<li>Because a heap is a complete binary tree, we can implement it efficiently using an <code>array</code> (or
+  ArrayList) instead of a linked data structure.</li>
+<li>Definitions:</li>
+<li>Root index = 0</li>
+<li>For a node at position p<ul>
+<li>left child = 2p + 1</li>
+<li>right child = 2p +2</li>
+<li>parent: (c - 1)/2</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public class Heap&lt;E extends Comparable&lt;E&gt;&gt; implements IPriorityQueue&lt;E&gt; {
+
+    private E[] elements;
+    private int size;
+    private int capacity;
+    public static final int INITIAL_CAPACITY = 10;
+
+    // constructs a new empty priority queue
+    public Heap() {
+        this(INITIAL_CAPACITY);
+    }
+
+    public Heap(int capacity){
+        this.elements = (E[]) new Object[capacity];
+        this.size = 0;
+        this.capacity = capacity;
+    }
+
+    // Adds the given value to this priority queue in order.
+    public void add(E value) {
+        // resize to enlarge the heap if necessary
+        if (size == capacity) {
+            reallocate();
+        }
+
+        elements[size] = value;  // add as rightmost leaf
+
+        // &quot;bubble up&quot; as necessary to fix ordering
+        int index = size;
+        boolean found = false;
+        while (!found &amp;&amp; hasParent(index)) {
+            int parent = parent(index);
+            if (elements[index].compareTo(elements[parent]) &lt; 0) {
+                swap(elements, index, parent(index));
+                index = parent(index);
+            } else {
+                found = true;  // found proper location; stop
+            }
+        }
+
+        size++;
+    }
+
+    public E peek() {
+        return elements[0];
+    }
+
+    public E remove() {   // precondition: queue is not empty
+        E result = elements[0];      // last leaf -&gt; root
+        elements[0] = elements[size - 1];
+        size--;
+        int index = 0;    // &quot;bubble down&quot; to fix ordering
+        boolean found = false;
+        while (!found &amp;&amp; hasLeftChild(index)) {
+            int left = leftChild(index);
+            int right = rightChild(index);
+            int child = left;
+            if (hasRightChild(index) &amp;&amp;
+                    elements[right].compareTo(elements[left]) &lt; 0) {
+                child = right;
+            }
+            if (elements[index].compareTo(elements[child]) &gt; 0) {
+                swap(elements, index, child);
+                index = child;
+            } else {
+                found = true;  // found proper location; stop
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public void clear() {
+        Arrays.fill(elements, null);
+        size = 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size &gt; 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    // helpers for navigating indexes up/down the tree
+    private int parent(int index)        { return (index - 1)/2; }
+    private int leftChild(int index)     { return 2 * index + 1; }
+    private int rightChild(int index)    { return 2 * index + 2; }
+    private boolean hasParent(int index) { return index &gt; 0; }
+    private boolean hasLeftChild(int index) {
+        return leftChild(index) &lt; size;
+    }
+    private boolean hasRightChild(int index) {
+        return rightChild(index) &lt; size;
+    }
+    private void swap(E[] a, int index1, int index2) {
+        E temp = a[index1];
+        a[index1] = a[index2];
+        a[index2] = temp;
+    }
+
+    private void reallocate(){
+        this.capacity = 2 * this.capacity;
+        elements = Arrays.copyOf(elements, capacity);
+    }
+}
+
+</code></pre>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations</th>
+<th>Big-O Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add</td>
+<td>O(logN) [height of tree]</td>
+</tr>
+<tr>
+<td>Peek</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Remove</td>
+<td>O(logN) [height of tree]</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-priority-queues">2. Priority Queues</h1>
+<h3 id="overview_1">Overview</h3>
+<ul>
+<li>A priority queue is a data structure in which only the highest priority item is accessible.</li>
+<li>In computer science, a heap is used as the basis of a very efficient algorithm for sorting arrays, called heapsort (we'll cover later). </li>
+<li>The heap is also used to implement a special kind of queue called a priority queue. However, the heap is not very useful as an abstract data type (ADT) on its own. Consequently, we will not create a Heap interface or code a class that implements it. </li>
+<li>Instead we will incorporate its algorithms when we implement a priority queue class and heapsort.</li>
+</ul>
+<h3 id="class-javautilpriorityqueuee">Class <code>java.util.PriorityQueue&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Constructor</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PriorityQueue()</code></td>
+<td>Creates a PriorityQueue with the default initial capacity (11) that orders its elements according to their natural ordering.</td>
+</tr>
+<tr>
+<td><code>PriorityQueue(Comparator&lt;? super E&gt; comparator)</code></td>
+<td>Creates a PriorityQueue with the default initial capacity and whose elements are ordered according to the specified comparator.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code></td>
+<td>Inserts the specified element into this priority queue.</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>clear()</code></td>
+<td>Removes all of the elements from this priority queue.</td>
+</tr>
+<tr>
+<td><code>Comparator&lt;? super E&gt;</code></td>
+<td><code>comparator()</code></td>
+<td>Returns the comparator used to order the elements in this queue, or null if this queue is sorted according to the natural ordering of its elements.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>contains(Object o)</code></td>
+<td>Returns true if this queue contains the specified element.</td>
+</tr>
+<tr>
+<td><code>Iterator&lt;E&gt;</code></td>
+<td><code>iterator()</code></td>
+<td>Returns an iterator over the elements in this queue.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offer(E e)</code></td>
+<td>Inserts the specified element into this priority queue.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peek()</code></td>
+<td>Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>poll()</code></td>
+<td>Retrieves and removes the head of this queue, or returns null if this queue is empty.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>remove(Object o)</code></td>
+<td>Removes a single instance of the specified element from this queue, if it is present.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>size()</code></td>
+<td>Returns the number of elements in this collection.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The class <code>java.util.PriorityQueue</code> uses an array of type <code>Object[]</code> for heap storage.</li>
+</ul>
+<h3 id="class-priorityqueuee">Class <code>PriorityQueue&lt;E&gt;</code></h3>
+<ul>
+<li>In our case, as an example, we use <code>ArrayList</code> for implementing a PriorityQueue class.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Data Field/Attribute</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ArrayList&lt;E&gt; theData</code></td>
+<td>An ArrayList to hold the data</td>
+</tr>
+<tr>
+<td><code>Comparator&lt;E&gt; comparator</code></td>
+<td>An optional object that implements the <code>Comparator&lt;E&gt;</code> interface by providing a <code>compare</code> method</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Constructor</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KWPriorityQueue()</code></td>
+<td>Constructs a heap-based priority queue that uses the elements' natural ordering</td>
+</tr>
+<tr>
+<td><code>KWPriorityQueue(Comparator&lt;E&gt; comp)</code></td>
+<td>Constructs a heap-based priority queue that uses the <code>compare</code> method of <code>Comparator comp</code> to determine the ordering of the elements</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Private Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private int compare(E left, E right)</code></td>
+<td>Compares two objects and returns a negative number if object <code>left</code> is less than object <code>right</code>, zero if they are equal, and a positive number if object <code>left</code> is greater than object <code>right</code></td>
+</tr>
+<tr>
+<td><code>private void swap(int i, int j)</code></td>
+<td>Exchanges the object references in <code>theData</code> at indexes <code>i</code> and <code>j</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">package datastructures.heap;
+
+import java.util.*;
+
+/** The PriorityQueue implements the Queue interface
+ by building a heap in an ArrayList. The heap is structured
+ so that the “smallest” item is at the top.
+ */
+
+public class PriorityQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements Queue&lt;E&gt; {
+// Data Fields
+    /**
+     * The ArrayList to hold the data.
+     */
+    private ArrayList&lt;E&gt; data;
+    /**
+     * An optional reference to a Comparator object.
+     */
+    Comparator&lt;E&gt; comparator = null;
+
+    // Methods
+// Constructor
+    public PriorityQueue() {
+        data = new ArrayList&lt;&gt;();
+    }
+
+    /** Creates a heap‐based priority queue with the specified initial
+     capacity that orders its elements according to the specified
+     comparator.
+     @param capacity The initial capacity for this priority queue
+     @param comp The comparator used to order this priority queue
+     @throws IllegalArgumentException if capacity is less than 1
+     */
+    public PriorityQueue(int capacity, Comparator&lt;E&gt; comp) {
+        if (capacity &lt; 1)
+            throw new IllegalArgumentException();
+        data = new ArrayList&lt;&gt;();
+        comparator = comp;
+    }
+
+    /**
+     * Insert an item into the priority queue.
+     * pre: The ArrayList theData is in heap order.
+     * post: The item is in the priority queue and
+     * theData is in heap order.
+     *
+     * @param item The item to be inserted
+     * @throws NullPointerException if the item to be inserted is null.
+     */
+    @Override
+    public boolean offer(E item) {
+        // Add the item to the heap.
+        data.add(item);
+        // child is newly inserted item.
+        int child = data.size()-1;
+        int parent = (child - 1) /2; // Find child's parent.
+        // Reheap
+        while (parent &gt;= 0 &amp;&amp; compare(data.get(parent),
+                data.get(child)) &gt; 0) {
+            swap(parent, child);
+            child = parent;
+            parent = (child - 1) /2;
+        }
+        return true;
+    }
+
+    /**
+     * Remove an item from the priority queue
+     * pre: The ArrayList theData is in heap order.
+     * post: Removed smallest item, theData is in heap order.
+     *
+     * @return The item with the smallest priority value or null if empty.
+     */
+    @Override
+    public E poll() {
+        if (isEmpty()) {
+            return null;
+        }
+        // Save the top of the heap.
+        E result = data.get(0);
+        // If only one item then remove it.
+        if (data.size() == 1) {
+            data.remove(0);
+            return result;
+        }
+        /* Remove the last item from the ArrayList and place it into the first position. */
+        data.set(0, data.remove(data.size() - 1));
+        // The parent starts at the top.
+        int parent = 0;
+        while (true) {
+            int leftChild = 2 * parent + 1;
+            if (leftChild &gt;= data.size()) {
+                break; // Out of heap.
+            }
+            int rightChild = leftChild + 1;
+            int minChild = leftChild; // Assume leftChild is smaller.
+            // See whether rightChild is smaller.
+            if (rightChild &lt; data.size()
+                    &amp;&amp; compare(data.get(leftChild),
+                    data.get(rightChild)) &gt; 0) {
+                minChild = rightChild;
+            }
+            // assert: minChild is the index of the smaller child.
+            // Move smaller child up heap if necessary.
+            if (compare(data.get(parent),
+                    data.get(minChild)) &gt; 0) {
+                swap(parent, minChild);
+                parent = minChild;
+            } else { // Heap property is restored.
+                break;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public E peek() {
+        return data.get(0);
+    }
+
+    /** Compare two items using either a Comparator object's compare method
+     or their natural ordering using method compareTo.
+     @pre: If comparator is null, left and right implement Comparable&lt;E&gt;.
+     @param left One item
+     @param right The other item
+     @return Negative int if left less than right,
+     0 if left equals right,
+     positive int if left &gt; right
+     @throws ClassCastException if items are not Comparable
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private int compare(E left, E right) {
+        if (comparator != null) {
+            // A Comparator is defined.
+            return comparator.compare(left, right);
+        } else {
+            // Use left's compareTo method.
+            return ((Comparable&lt;E&gt;) left).compareTo(right);
+        }
+    }
+
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return data.size();
+    }
+
+    private void swap(int index1, int index2) {
+        E temp = data.get(index1);
+        data.set(index1, data.get(index2));
+        data.set(index2, temp);
+    }
+}
+</code></pre>
+<h1 id="interface-comparablee-and-comparatore">Interface <code>Comparable&lt;E&gt;</code> and <code>Comparator&lt;E&gt;</code></h1>
+<ul>
+<li>How do we compare elements in a PriorityQueue? </li>
+</ul>
+<h3 id="interface-comparablee">Interface <code>Comparable&lt;E&gt;</code></h3>
+<ul>
+<li>In many cases, we will insert objects that implement <code>Comparable&lt;E&gt;</code>and use their natural ordering as specified by method <code>compareTo</code>.</li>
+<li><code>Comparable&lt;E&gt;</code> is used to define the natural ordering of an object type.</li>
+</ul>
+<h3 id="interface-comparatore">Interface <code>Comparator&lt;E&gt;</code></h3>
+<ul>
+<li>However, we may need to insert objects that do not implement <code>Comparable&lt;E&gt;</code>, or we may
+  want to specify a different ordering from that defined by the object’s <code>compareTo</code> method. </li>
+<li>For example, files to be printed may be ordered by their name using the compareTo method, but
+    we may want to assign priority based on their length. </li>
+<li>The Java API contains the <code>Comparator&lt;E&gt;</code> interface, which allows us to specify alternative ways to compare objects. An implementer of the <code>Comparator&lt;E&gt;</code> interface must define a <code>compare</code> method that is similar to <code>compareTo</code> except that it has two parameters.</li>
+</ul>
+<pre><code class="language-java">public interface Comparator&lt;T&gt; {
+    public int compare(T first, T second);
+}
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="language-java">public class RectangleAreaComparator implements Comparator&lt;Rectangle&gt; {
+    // compare in ascending order by area (WxH)
+    public int compare(Rectangle r1, Rectangle r2) {
+        return r1.getArea() - r2.getArea();
+    }
+}
+</code></pre>
+<h4 id="using-comparators">Using Comparators</h4>
+<ol>
+<li>TreeSet, TreeMap , PriorityQueue can use Comparator:</li>
+</ol>
+<p><code>java
+   Comparator&lt;Rectangle&gt; comp = new RectangleAreaComparator();
+   Set&lt;Rectangle&gt; set = new TreeSet&lt;Rectangle&gt;(comp);
+   Queue&lt;Rectangle&gt; pq = new PriorityQueue&lt;Rectangle&gt;(10,comp);</code></p>
+<ol>
+<li>Searching and sorting methods can accept Comparators.</li>
+</ol>
+<p><code>java
+   Arrays.binarySearch(array, value, comparator)
+   Arrays.sort(array, comparator)
+   Collections.binarySearch(list, comparator)
+   Collections.max(collection, comparator)
+   Collections.min(collection, comparator)
+   Collections.sort(list, comparator)</code></p>
+<ol>
+<li>Methods are provided to reverse a Comparator's ordering:</li>
+</ol>
+<p><code>java
+   public static Comparator Collections.reverseOrder()
+   public static Comparator Collections.reverseOrder(comparator)</code></p>
+<p><strong>Example:</strong> Using Comparator for ordering a Priority Queue</p>
+<pre><code class="language-java">public class LengthComparator implements Comparator&lt;String&gt; {
+    public int compare(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            // if lengths are unequal, compare by length
+            return s1.length() - s2.length();
+        } else {
+            // break ties by ABC order
+            return s1.compareTo(s2);
+        }
+    }
+}
+
+Queue&lt;String&gt; pq = new PriorityQueue&lt;String&gt;(100, new LengthComparator());
+</code></pre>
+<ul>
+<li>Observe that, in the example, we are still making use of the fact that the class <code>String</code> is implementing <code>Comparable&lt;E&gt;</code> interface to define its own natural ordering by implementing <code>compareTo</code> method.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Heaps - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Heaps";
+        var mkdocs_page_input_path = "data-structures/chp4-heaps-and-priority-queues/4-1-heaps.md";
+        var mkdocs_page_url = "/data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Heaps and Priority Queues</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Heaps</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#operations">Operations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#insertion">Insertion</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#removal">Removal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Heaps and Priority Queues</li>
+      <li class="breadcrumb-item active">Heaps</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-heaps">1. Heaps</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>At each level of a heap, the value in a node is less than all values in its two subtrees.<ul>
+<li>Implies that minimum element is always the root (a "min-heap").</li>
+<li><strong>Variation</strong>: "max-heap" stores largest element at root, reverses ordering</li>
+</ul>
+</li>
+<li>More formally, a heap is a complete binary tree with the following properties:<ul>
+<li>The value in the root is the smallest item in the tree.</li>
+<li>Every subtree is a heap.</li>
+</ul>
+</li>
+</ul>
+<h3 id="operations">Operations</h3>
+<h4 id="insertion">Insertion</h4>
+<pre><code class="language-bash">Insert the new item in the next position at the bottom of the heap.
+while new item is not at the root and new item is smaller than its parent
+    Swap the new item with its parent, moving the new item up the heap.
+</code></pre>
+<h4 id="removal">Removal</h4>
+<pre><code class="language-bash">Remove the item in the root node by replacing it with the last item in the heap (LIH).
+while item LIH has children, and item LIH is larger than either of its children
+    Swap item LIH with its smaller child, moving LIH down the heap.
+</code></pre>
+<h3 id="implementation">Implementation</h3>
+<ul>
+<li>Because a heap is a complete binary tree, we can implement it efficiently using an <code>array</code> (or
+  ArrayList) instead of a linked data structure.</li>
+<li>Definitions:<ul>
+<li>Root index = 0</li>
+<li>For a node at position p<ul>
+<li>left child = 2p + 1</li>
+<li>right child = 2p +2</li>
+<li>parent: (c - 1)/2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public class Heap&lt;E extends Comparable&lt;E&gt;&gt; implements IPriorityQueue&lt;E&gt; {
+
+    private E[] elements;
+    private int size;
+    private int capacity;
+    public static final int INITIAL_CAPACITY = 10;
+
+    // constructs a new empty priority queue
+    public Heap() {
+        this(INITIAL_CAPACITY);
+    }
+
+    public Heap(int capacity){
+        this.elements = (E[]) new Object[capacity];
+        this.size = 0;
+        this.capacity = capacity;
+    }
+
+    // Adds the given value to this priority queue in order.
+    public void add(E value) {
+        // resize to enlarge the heap if necessary
+        if (size == capacity) {
+            reallocate();
+        }
+
+        elements[size] = value;  // add as rightmost leaf
+
+        // &quot;bubble up&quot; as necessary to fix ordering
+        int index = size;
+        boolean found = false;
+        while (!found &amp;&amp; hasParent(index)) {
+            int parent = parent(index);
+            if (elements[index].compareTo(elements[parent]) &lt; 0) {
+                swap(elements, index, parent(index));
+                index = parent(index);
+            } else {
+                found = true;  // found proper location; stop
+            }
+        }
+
+        size++;
+    }
+
+    public E peek() {
+        return elements[0];
+    }
+
+    public E remove() {   // precondition: queue is not empty
+        E result = elements[0];      // last leaf -&gt; root
+        elements[0] = elements[size - 1];
+        size--;
+        int index = 0;    // &quot;bubble down&quot; to fix ordering
+        boolean found = false;
+        while (!found &amp;&amp; hasLeftChild(index)) {
+            int left = leftChild(index);
+            int right = rightChild(index);
+            int child = left;
+            if (hasRightChild(index) &amp;&amp;
+                    elements[right].compareTo(elements[left]) &lt; 0) {
+                child = right;
+            }
+            if (elements[index].compareTo(elements[child]) &gt; 0) {
+                swap(elements, index, child);
+                index = child;
+            } else {
+                found = true;  // found proper location; stop
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public void clear() {
+        Arrays.fill(elements, null);
+        size = 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size &gt; 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    // helpers for navigating indexes up/down the tree
+    private int parent(int index)        { return (index - 1)/2; }
+    private int leftChild(int index)     { return 2 * index + 1; }
+    private int rightChild(int index)    { return 2 * index + 2; }
+    private boolean hasParent(int index) { return index &gt; 0; }
+    private boolean hasLeftChild(int index) {
+        return leftChild(index) &lt; size;
+    }
+    private boolean hasRightChild(int index) {
+        return rightChild(index) &lt; size;
+    }
+    private void swap(E[] a, int index1, int index2) {
+        E temp = a[index1];
+        a[index1] = a[index2];
+        a[index2] = temp;
+    }
+
+    private void reallocate(){
+        this.capacity = 2 * this.capacity;
+        elements = Arrays.copyOf(elements, capacity);
+    }
+}
+
+</code></pre>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Operations</th>
+<th>Big-O Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add</td>
+<td>O(logN) [height of tree]</td>
+</tr>
+<tr>
+<td>Peek</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Remove</td>
+<td>O(logN) [height of tree]</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chp3-trees/chp3-trees.html" class="btn btn-neutral float-left" title="Trees"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="4-2-priority-queues.html" class="btn btn-neutral float-right" title="Priority Queues">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chp3-trees/chp3-trees.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="4-2-priority-queues.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

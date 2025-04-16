@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/java/chp3-inheritance/chp3-inheritance.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Chapter 3: Inheritance - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 3: Inheritance";
+        var mkdocs_page_input_path = "java/chp3-inheritance/chp3-inheritance.md";
+        var mkdocs_page_url = "/java/chp3-inheritance/chp3-inheritance.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 3: Inheritance</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-3-inheritance">Chapter 3: Inheritance</h1>
+<h2 id="31-classes-superclasses-and-subclasses">3.1. Classes, Superclasses, and Subclasses</h2>
+<ul>
+<li><code>Is-a</code> relationship is the hallmark of inheritance.</li>
+<li>The existing class is called the superclass, base class, or parent class. The new class is called the subclass, derived class, or child class.</li>
+<li><strong>Subclasses</strong> have more functionality than their superclasses.</li>
+</ul>
+<hr />
+<p><strong>NOTE</strong>: Java Language Specification
+The Java language specification states: “Members of a class that are declared private are not inherited by subclasses of that class.” This has confused the readers over the years. The specification uses the word “inherits” narrowly. It considers the private fields <code>non-inherited</code> because the Manager class cannot access them directly. Thus, every Manager object has three fields from the superclass, but the Manager class does not “inherit” them.</p>
+<hr />
+<ul>
+<li>You cannot extend a record, and a record cannot extend another class.</li>
+<li>If subclass methods want to access those private fields, they have to do what every other method does—use the public interface.<ul>
+<li>Use the special keyword <code>super</code> for this purpose.</li>
+<li><code>super</code> is a special keyword that directs the compiler to invoke the superclass method.<ul>
+<li>Some people think of super as being analogous to the this reference. However, that analogy is not quite accurate: <code>super</code> is not a reference to an object.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A subclass can add fields, and it can add methods or override the methods of the superclass. However, inheritance can never take away any fields or methods.</li>
+<li>Since a subclass constructor cannot access the private fields of the parent class, it must initialize them through a <code>constructor</code>. The constructor is invoked with the special <code>super</code> syntax. The call using super must be the <strong>first</strong> statement in the constructor for the subclass.<ul>
+<li>When a subclass object is constructed without explicit invocation of a super-class constructor, the superclass must have a no-argument constructor.That constructor is invoked prior to the subclass construction.</li>
+<li>The constructor calls can only occur as the first statement in another constructor.<ul>
+<li>The constructor parameters are either passed to another constructor of the same class (<code>this</code>) or a constructor of the superclass (<code>super</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When e refers to an Employee object, the call e.getSalary() calls the getSalary method of the Employee class. However, when e refers to a Manager object, then the getSalary method of the Manager class is called instead. The virtual machine knows about the actual type of the object to which e refers, and therefore can invoke the correct method.</li>
+<li>The fact that an object variable (such as the variable e) can refer to multiple actual types is called <code>polymorphism</code>. Automatically selecting the appropriate method at runtime is called <code>dynamic binding</code>. </li>
+<li>In C++, you need to declare a member function as virtual if you want dynamic binding. <strong>In Java, dynamic binding is the default behavior</strong>; if you do not want a method to be virtual, you tag it as <code>final</code>.</li>
+<li>Inheritance need not stop at deriving one layer of classes. The collection of all classes extending a common superclass is called an <strong>inheritance hierarchy</strong>.</li>
+<li>In C++, a class can have multiple superclasses. <strong>Java does not support multiple inheritance.</strong></li>
+<li>A simple rule can help you decide whether or not inheritance is the right design for your data. The<code>is–a</code> rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Naturally, the opposite is not true—not every employee is a manager.</li>
+<li>Another way of formulating the “is–a” rule is the substitution principle. That principle states that you can use a subclass object whenever the program expects a superclass object.<ul>
+<li>In the Java programming language, object variables are <code>polymorphic</code>: A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on).</li>
+<li>However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><strong>Understanding Method Calls</strong></p>
+<p>It is important to understand exactly how a method call is applied to an object. Let’s say we call x.f(args), and the implicit parameter x is declared to be an object of class C. Here is what happens:
+1. The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) <strong>Now the compiler knows all possible candidates for the method to be called.</strong>
+2. Next, the compiler determines the types of the arguments supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called <strong>overloading resolution</strong>. For example, in a call x.f("Hello"), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot find any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. <strong>Now the compiler knows the name and parameter types of the method that needs to be called.</strong>
+3. If the method is <code>private</code>, <code>static</code>, <code>final</code>, or a <code>constructor</code>, then the compiler knows exactly which method to call. This is called <strong>static binding</strong>. Otherwise, the method to be called depends on <strong>the actual type of the implicit parameter</strong>, and <strong>dynamic binding</strong> must be used at runtime. In our example, the compiler would generate an instruction to call f(String) with dynamic binding.
+    -  Subclasses do not have access to <code>private</code> methods, thus cannot be <code>overridden</code>.
+        - Recall: The Java language specification states: “Members of a class that are declared private are not inherited by subclasses of that class.”
+4. When the program runs and uses dynamic binding to call a method, the virtual machine must call the version of the method that is appropriate for the actual type of the object to which x refers. Let’s say the actual type is D, a subclass of C. If the class D defines a method f(String), that method is called. If not, D’s superclass is searched for a method f(String), and so on.</p>
+<hr />
+<ul>
+<li>When you override a method, the subclass method <strong>must</strong> be at least as <strong>visible</strong> as the superclass method. In particular, if the superclass method is public, the subclass method must also be declared public.</li>
+</ul>
+<hr />
+<p><strong>The <code>final</code> Keyword</strong>
+ Classes that cannot be extended are called final classes.
+    - You can also make a specific method in a class final. If you do this, then no subclass can override that method.
+        - All methods in a final class are automatically final.
+    - Fields can also be declared as <code>final</code>. A final field cannot be changed after the object has been constructed. <strong>However, if a class is declared final, only the methods, not the fields, are automatically final.</strong>
+    - <strong>Enumerations</strong> and <strong>records</strong> are always <code>final</code>—you cannot extend them.</p>
+<hr />
+<hr />
+<p><strong>Casting</strong>
+The process of forcing a conversion from one type to another is called <code>casting</code>.
+- There is only one reason why you would want to make a cast—to use an object in its full capacity after its actual type has been temporarily forgotten.
+- You can cast only within an inheritance hierarchy.
+- Use <code>instanceof</code> to check before casting from a superclass to a subclass.
+    - This check returns a boolean value.
+- The getSalary method will work correctly on both objects of both classes. The dynamic binding that makes <strong>polymorphism</strong> work locates the correct method automatically.
+- The only reason to make the cast is to use a method that is unique to a subclass, therefore the compiler can know about the method definitions.
+- Pattern Matching for <code>instanceof</code></p>
+<pre><code class="language-java">if (staff[i] instanceof Manager boss){
+    boss.setBonus(5000);
+}
+</code></pre>
+<ul>
+<li>The variable-declaring <code>instanceof</code> form is called <code>pattern-matching</code>. It is similar to type patterns in <code>switch</code>.</li>
+</ul>
+<pre><code class="language-java">String description = switch (e){
+    case Executive exec -&gt; &quot;An executive with a fancy title of &quot; + exec.getTitle();
+    case Manager m -&gt; &quot;A manager with a bonus of &quot; + m.getBonus();
+    default -&gt; &quot;A lowly employee with a salary of &quot; + e.getSalary();
+}
+</code></pre>
+<hr />
+<hr />
+<p><strong>Protected Access</strong>
+- A subclass cannot access the <code>private</code> fields of its superclass.
+- A <code>protected</code> field is accessible by any class in the same package.
+    - Now consider an Administrator subclass in a different package. The methods of the Administrator class can peek inside the hireDay field of Administrator objects only, not of other Employee objects. This restriction is made so that you can’t abuse the protected mechanism by forming subclasses just to gain access to the protected fields.</p>
+<p>Here is a summary of the four access control modifiers in Java:</p>
+<ol>
+<li><code>private</code>: Accessible in the class only.</li>
+<li><code>public</code>: Accessible by the world.</li>
+<li><code>protected</code>: Accessible in the package and all subclasses.</li>
+<li><code>default</code>: Accessible in the package—the (unfortunate) default. No modifiers are needed.</li>
+</ol>
+<hr />
+<h2 id="32-object-the-cosmic-superclass">3.2. <code>Object</code>: The Cosmic Superclass</h2>
+<ul>
+<li>The ultimate superclass <code>Object</code> is taken for granted if no superclass is explicitly mentioned.</li>
+<li>You can use a variable of type Object to refer to objects of any type:</li>
+</ul>
+<pre><code class="language-java">Object obj = new Employee(&quot;Harry&quot;, 35000);
+</code></pre>
+<ul>
+<li>A variable of type <code>Object</code> is only useful as a generic holder for arbitrary values. To do anything specific with the value, you need to have some knowledge about the original type and apply a cast:</li>
+</ul>
+<pre><code class="language-java">Employee e = (Employee) obj;
+</code></pre>
+<ul>
+<li><strong>The <code>equals</code> Method</strong><ul>
+<li>The equals method in the <code>Object</code> class tests whether one object is considered equal to another.</li>
+<li>When you define the equals method for a subclass, <strong>first</strong> call equals on the <code>super-class</code>. If that test doesn’t pass, then the objects can’t be equal. If the superclass fields are equal, you are ready to compare the instance fields of the subclass.</li>
+</ul>
+</li>
+</ul>
+<p>Here is a recipe for writing the perfect <code>equals</code> method:
+1. Name the explicit parameter <code>otherObject</code>—later, you will need to cast it to another variable that you should call other.
+2. Test whether <code>this</code> happens to be identical to <code>otherObject</code> (same address location):</p>
+<pre><code class="language-java">if (this == otherObject) return true;
+</code></pre>
+<ol>
+<li>Test whether <code>otherObject</code> is <code>null</code> and return false if it is. This test is required.</li>
+</ol>
+<pre><code class="language-java">if (otherObject == null) return false;
+</code></pre>
+<ol>
+<li>Compare the classes of <code>this</code> and <code>otherObject</code>. If the semantics of <code>equals</code> can change in subclasses, use the <code>getClass</code> test.</li>
+</ol>
+<pre><code class="language-java">if (getClass() != otherObject.getClass()) return false;
+ClassName other = (ClassName) otherObject;
+</code></pre>
+<p>If the same semantics holds for all subclasses, you can use an <code>instanceof</code> test:</p>
+<pre><code class="language-java">if (!(otherObject instanceof ClassName other)) return false;
+</code></pre>
+<ol>
+<li>Now compare the fields, as required by your notion of equality. Use <code>==</code> for <strong>primitive</strong> type fields, <code>Objects.equals</code> for <strong>object</strong> fields. Return true if all fields match, false otherwise. If you redefine equals in a <strong>subclass</strong>, include a call to <code>super.equals(other)</code>.</li>
+</ol>
+<pre><code class="language-java">return field1 == other.field1 &amp;&amp; Objects.equals(field2, other.field2) &amp;&amp; . . .;
+</code></pre>
+<hr />
+<p><strong>TIP</strong>:</p>
+<p>If you have fields of array type, you can use the static <code>Arrays.equals</code> method to check that the corresponding array elements are equal. Use the <code>Arrays.deepEquals</code> method for multidimensional arrays.</p>
+<hr />
+<hr />
+<p><strong>TIP</strong>: @Override</p>
+<pre><code class="language-java">public class Employee
+{
+
+public boolean equals(Employee other)
+{
+    return other != null
+        &amp;&amp; getClass() == other.getClass()
+        &amp;&amp; Objects.equals(name, other.name)
+        &amp;&amp; salary == other.salary
+        &amp;&amp; Objects.equals(hireDay, other.hireDay);
+}
+
+. . .
+
+}
+</code></pre>
+<p>This method declares the explicit parameter type as <strong>Employee</strong>. As a result, it <strong>does not override the equals method of the Object class</strong> but defines a completely unrelated method.</p>
+<p>You can protect yourself against this type of error by tagging methods that are intended to override superclass methods with @Override:</p>
+<pre><code class="language-java">@Override
+public boolean equals(Object other)
+</code></pre>
+<p>If you made a mistake and are defining a new method, the compiler reports an error.</p>
+<hr />
+<ul>
+<li><strong>The <code>hashCode</code> Method</strong><ul>
+<li>A hash code is an integer that is derived from an object. Hash codes should be scrambled—if x and y are two distinct objects, there should be a high probability that x.hashCode() and y.hashCode() are different.</li>
+<li>The hashCode method is defined in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object’s memory address.</li>
+<li>A <code>record</code> type automatically provides a <code>hashCode</code> method that derives a hash code from the hash codes of the field values.</li>
+</ul>
+</li>
+<li>**The `toString Method<ul>
+<li>Another important method in <code>Object</code> is the <code>toString</code> method that returns a string representing the value of this object.</li>
+<li>If x is any object and you call <code>System.out.println(x);</code> then the <code>println</code> method simply calls <code>x.toString()</code> and prints the resulting string.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><strong>CAUTION</strong>
+Annoyingly, arrays inherit the toString method from Object, with the added twist that the array type is printed in an archaic format. For example,</p>
+<pre><code class="language-java">int[] luckyNumbers = { 2, 3, 5, 7, 11, 13 };
+String s = &quot;&quot; + luckyNumbers;
+</code></pre>
+<p>yields the string <code>[I@1a46e30</code>. (The prefix <code>[I</code> denotes an array of integers.) The remedy is to call the static <code>Arrays.toString</code> method instead. The code</p>
+<pre><code class="language-java">String s = Arrays.toString(luckyNumbers);
+</code></pre>
+<p>yields the string <code>[2, 3, 5, 7, 11, 13]</code>. 
+To correctly print multidimensional arrays (that is, arrays of arrays), use <code>Arrays.deepToString</code>.</p>
+<hr />
+<h4 id="javalangobject">java.lang.Object</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Class</code></td>
+<td><code>getClass()</code></td>
+<td>Returns a class object that contains information about the object. Java has a runtime representation for classes that is encapsulated in the <code>Class</code> class.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>equals(Object otherObject)</code></td>
+<td>Compares two objects for equality; returns <code>true</code> if the objects point to the same area of memory, and <code>false</code> otherwise. You should override this method in your own classes.</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><code>toString()</code></td>
+<td>Returns a string that represents the value of this object. You should override this method in your own classes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="javalangclass">java.lang.Class</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>String</code></td>
+<td><code>getName()</code></td>
+<td>Returns the name of this class.</td>
+</tr>
+<tr>
+<td><code>Class</code></td>
+<td><code>getSuperclass()</code></td>
+<td>Returns the superclass of this class as a <code>Class</code> object.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="33-generic-array-lists">3.3. Generic Array Lists</h2>
+<p>ArrayList is a generic class with a type parameter. To specify the type of the element objects that the array list holds, you append a class name enclosed in angle brackets, such as <code>ArrayList&lt;Employee&gt;</code>.</p>
+<pre><code class="language-java">// ArrayList Initialization
+ArrayList&lt;Employee&gt; staff = new ArrayList&lt;Employee&gt;();
+
+var staff = new ArrayList&lt;Employee&gt;();
+
+ArrayList&lt;Employee&gt; staff = new ArrayList&lt;&gt;();
+</code></pre>
+<ul>
+<li>Before Java 5, there were no generic classes. Instead, there was a single ArrayList class, a one-size-fits-all collection holding elements of type Object. You can still use ArrayList without a &lt;. . .&gt; suffix. It is considered a “raw” type, with the type parameter erased.</li>
+<li>When there were no generic classes, the get method of the raw ArrayList class had no choice but to return an Object. Consequently, callers of get had to cast the returned value to the desired type</li>
+</ul>
+<pre><code class="language-java">Employee e = (Employee) staff.get(i);
+</code></pre>
+<h2 id="34-object-wrappers-and-autoboxing">3.4. Object Wrappers and Autoboxing</h2>
+<ul>
+<li>Occasionally, you need to convert a primitive type like int to an object.</li>
+<li>All primitive types have class counterparts.</li>
+<li>These kinds of classes are usually called <code>wrappers</code>.</li>
+<li>The wrapper classes have obvious names: <code>Integer</code>, <code>Long</code>, <code>Float</code>, <code>Double</code>, <code>Short</code>, <code>Byte</code>, <code>Character</code>, and <code>Boolean</code>. <ul>
+<li>(The first six inherit from the common superclass <code>Number</code>.)</li>
+</ul>
+</li>
+<li>The wrapper classes are <strong>immutable</strong> — you cannot change a wrapped value after the wrapper has been constructed. </li>
+<li>They are also <code>final</code>, so <strong>you cannot subclass them</strong>.</li>
+</ul>
+<hr />
+<p><strong>Autoboxing</strong></p>
+<pre><code class="language-java">list.add(3);
+</code></pre>
+<p>is automatically translated to</p>
+<pre><code class="language-java">list.add(Integer.valueOf(3));
+</code></pre>
+<p>This conversion is called <strong>autoboxing</strong>.</p>
+<p>Conversely, when you assign an Integer object to an int value, it is automatically <strong>unboxed</strong>. That is, the compiler translates</p>
+<pre><code class="language-java">int n = list.get(i);
+</code></pre>
+<p>into</p>
+<pre><code class="language-java">int n = list.get(i).intValue();
+</code></pre>
+<p>The <code>==</code> operator, applied to wrapper objects, only tests whether the objects have identical memory locations. The following comparison would therefore probably fail:</p>
+<pre><code class="language-java">Integer a = 1000;
+Integer b = 1000;
+if (a == b) . . .
+</code></pre>
+<p>The remedy is to call the <code>equals</code> method when comparing wrapper objects.</p>
+<p>Don’t use the wrapper class constructors. They are deprecated and scheduled for removal. For example, use <code>Integer.valueOf(1000)</code>, <strong>never</strong> <code>new Integer(1000)</code>. Or, simply rely on <strong>autoboxing</strong>: <code>Integer a = 1000</code>.</p>
+<p>To convert a string to an integer, use the following statement:</p>
+<pre><code class="language-java">int x = Integer.parseInt(s);
+</code></pre>
+<hr />
+<hr />
+<h4 id="javalanginteger">java.lang.Integer</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>intValue()</code></td>
+<td>Returns the value of this <code>Integer</code> object as an <code>int</code> (overrides the <code>intValue</code> method in the <code>Number</code> class).</td>
+</tr>
+<tr>
+<td><code>static String</code></td>
+<td><code>toString(int i)</code></td>
+<td>Returns a new <code>String</code> object representing the number <code>i</code> in base 10.</td>
+</tr>
+<tr>
+<td><code>static String</code></td>
+<td><code>toString(int i, int radix)</code></td>
+<td>Returns a representation of the number <code>i</code> in the base specified by the <code>radix</code> parameter.</td>
+</tr>
+<tr>
+<td><code>static int</code></td>
+<td><code>parseInt(String s)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static int</code></td>
+<td><code>parseInt(String s, int radix)</code></td>
+<td>Returns the integer whose digits are contained in the string <code>s</code>. The string must represent an integer in base 10 (for the first method) or in the base given by the <code>radix</code> parameter (for the second method).</td>
+</tr>
+<tr>
+<td><code>static Integer</code></td>
+<td><code>valueOf(String s)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>static Integer</code></td>
+<td><code>valueOf(String s, int radix)</code></td>
+<td>Returns a new <code>Integer</code> object initialized to the integer whose digits are contained in the string <code>s</code>. The string must represent an integer in base 10 (for the first method) or in the base given by the <code>radix</code> parameter (for the second method).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="35-methods-with-a-variable-number-of-parameters">3.5. Methods with a Variable Number of Parameters</h2>
+<p>It is possible to provide methods that can be called with a variable number of parameters. (These are sometimes called “varargs” methods.)</p>
+<p>The printf method is defined like this:</p>
+<pre><code class="language-java">public class PrintStream
+
+{
+
+    public PrintStream printf(String fmt, Object... args)
+    {
+        return format(fmt, args);
+    }
+
+}
+</code></pre>
+<p>Here, the ellipsis ... is part of the Java code. It denotes that the method can receive an arbitrary number of objects. The printf method actually receives two parameters: the format string and an <code>Object[]</code> array that holds all other parameters. In other words, for the implementor of printf, the Object... parameter type is exactly the same as <code>Object[]</code>. The compiler needs to transform each call to printf, bundling the parameters into an array and <strong>autoboxing</strong> as necessary:</p>
+<pre><code class="language-java">System.out.printf(&quot;%d %s&quot;, new Object[] { Integer.valueOf(n), &quot;widgets&quot; } );
+</code></pre>
+<h2 id="36-abstract-classes">3.6. Abstract Classes</h2>
+<ul>
+<li>As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specific instances you want to use.</li>
+<li>If you use the abstract keyword, you do not need to implement the method at all. </li>
+<li>For added clarity, a class with one or more abstract methods must itself be declared <code>abstract</code>.</li>
+</ul>
+<pre><code class="language-java">public abstract class Person 
+{
+
+    . . .
+
+    public abstract String getDescription();
+
+}
+</code></pre>
+<ul>
+<li>In addition to abstract methods, <strong>abstract classes can have fields and concrete methods.</strong> For example, the Person class stores the name of the person and has a concrete method that returns it.</li>
+</ul>
+<pre><code class="language-java">public abstract class Person
+
+{
+
+    private String name;
+
+    public Person(String name){
+        this.name = name;
+    }
+
+    public abstract String getDescription();
+
+    public String getName(){
+        return name;
+    }
+
+}
+</code></pre>
+<ul>
+<li>You should always move common fields and methods (whether abstract or not) to the superclass (whether abstract or not).</li>
+<li><strong>Abstract methods act as placeholders for methods that are implemented in the subclasses.</strong> When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods <strong>undefined</strong>; then, <strong>you must tag the subclass as abstract as well</strong>. Or, you can define all methods, and the subclass is no longer abstract.<ul>
+<li>An abstract class can extend another abstract class.</li>
+</ul>
+</li>
+<li>A class can even be declared as abstract though it has no abstract methods.</li>
+<li>Abstract classes <strong>cannot</strong> be instantiated.</li>
+<li>Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a non-abstract subclass.<ul>
+<li>Same for interfaces!</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">Person p = new Student(&quot;Vince Vu&quot;, &quot;Economics&quot;);
+</code></pre>
+<ul>
+<li>Isn’t this a call to an undefined method? Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. The variable p always refers to an object of a concrete subclass such as Employee or Student. For these objects, the getDescription method is defined.</li>
+</ul>
+<pre><code class="language-java">var people = new Person[2];
+
+people[0] = new Employee(. . .);people[1] = new Student(. . .);
+
+for (Person p : people)
+    System.out.println(p.getName() + &quot;, &quot; + p.getDescription());
+</code></pre>
+<p>Abstract methods are an important concept in the Java programming language. You will encounter them most commonly inside interfaces.</p>
+<h2 id="37-enumeration-classes">3.7. Enumeration Classes</h2>
+<pre><code class="language-java">public enum Size { SMALL, MEDIUM, LARGE, EXTRA_LARGE }
+</code></pre>
+<ul>
+<li>The type defined by this declaration is actually a class. The class has exactly four instances—it is not possible to construct new objects. </li>
+<li>Therefore, you never need to use equals for values of enumerated types. Simply use <code>==</code> to compare them.</li>
+<li>You can, if you like, add constructors, methods, and fields to an enumerated type.</li>
+<li>The constructor of an enumeration is always <code>private</code>. You can omit the private modifier, as in the preceding example. It is a <strong>syntax error</strong> to declare an enum constructor as public or protected.</li>
+<li>All enumerated types are subclasses of the abstract class Enum. They inherit a number of methods from that class. The most useful one is <code>toString</code>, which returns the name of the enumerated constant.</li>
+<li>The converse of toString is the static valueOf method.</li>
+</ul>
+<pre><code class="language-java">Size s = Enum.valueOf(Size.class, &quot;SMALL&quot;);
+</code></pre>
+<ul>
+<li>Each enumerated type has a static values method that returns an array of all values of the enumeration.</li>
+</ul>
+<pre><code class="language-java">Size[] values = Size.values();
+</code></pre>
+<ul>
+<li>
+<p>The ordinal method yields the position of an enumerated constant in the enum declaration, counting from zero. For example, Size.MEDIUM.ordinal() returns 1.</p>
+</li>
+<li>
+<p>The Enum class has a type parameter that I have ignored for simplicity. For example, the enumerated type Size actually extends <code>Enum&lt;Size&gt;</code>. The type parameter is used in the compareTo method.</p>
+</li>
+</ul>
+<hr />
+<h4 id="javalangenume">java.lang.Enum&lt;<code>E</code>&gt;</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static Enum</code></td>
+<td><code>valueOf(Class enumClass, String name)</code></td>
+<td>Returns the enumerated constant of the given class with the given name.</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><code>toString()</code></td>
+<td>Returns the name of this enumerated constant.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>ordinal()</code></td>
+<td>Returns the zero-based position of this enumerated constant in the enum declaration.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>compareTo(E other)</code></td>
+<td>Returns a negative integer if this enumerated constant comes before <code>other</code>, zero if <code>this == other</code>, and a positive integer otherwise. The ordering of the constants is given by the enum declaration.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="38-sealed-classes">3.8. Sealed Classes</h2>
+<p>In Java, a sealed class controls which classes may inherit from it. Sealed classes were added as a preview feature in Java 15 and finalized in Java 17.</p>
+<pre><code class="language-java">public abstract sealed class JSONValue
+
+permits JSONArray, JSONNumber, JSONString, JSONBoolean, JSONObject, JSONNull
+
+{
+    . . .
+}
+</code></pre>
+<p>In this section, we learned about sealed classes. In the next chapter, we will learn about interfaces, a generalization of abstract classes. Java interfaces can also have subtypes. Sealed interfaces work exactly the same as sealed classes, controlling the direct subtypes.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

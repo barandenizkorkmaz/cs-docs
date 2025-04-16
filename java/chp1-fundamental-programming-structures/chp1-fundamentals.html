@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/java/chp1-fundamental-programming-structures/chp1-fundamentals.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1.1. Data Types - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1.1. Data Types";
+        var mkdocs_page_input_path = "java/chp1-fundamental-programming-structures/chp1-fundamentals.md";
+        var mkdocs_page_url = "/java/chp1-fundamental-programming-structures/chp1-fundamentals.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Heaps and Priority Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html">Priority Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp4-heaps-and-priority-queues/4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data-structures/chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data-structures/chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1.1. Data Types</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="11-data-types">1.1. Data Types</h1>
+<ul>
+<li>There are eight primitive types in Java. </li>
+<li>Four of them are integer types</li>
+<li>Two are ﬂoating-point number types</li>
+<li>One is the character type <code>char</code>, used for code units in the Unicode encoding scheme</li>
+<li>One is a <code>boolean</code> type for truth values.</li>
+<li>Since Java programs must run with the same results on all machines, the ranges for the various types are ﬁxed.</li>
+</ul>
+<h2 id="111-integer-types">1.1.1. Integer Types</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Storage Requirement</strong></th>
+<th><strong>Range (Inclusive)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>4 bytes</td>
+<td>-2,147,483,648 to 2,147,483,647 (just over 2 billion)</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2 bytes</td>
+<td>-32,768 to 32,767</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8 bytes</td>
+<td>-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1 byte</td>
+<td>-128 to 127</td>
+</tr>
+</tbody>
+</table>
+<h2 id="112-floating-point-types">1.1.2. Floating-Point Types</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Storage Requirement</strong></th>
+<th><strong>Range</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4 bytes</td>
+<td>Approximately ±3.40282347×10³⁸ (6–7 significant decimal digits)</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8 bytes</td>
+<td>Approximately ±1.79769313486231570×10³⁰⁸ (15 significant decimal digits)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>NOTE:</strong> If you need precise numerical computations without roundoff errors, use the <code>BigDecimal</code> class</li>
+</ul>
+<h2 id="113-the-char-type">1.1.3. The <code>char</code> Type</h2>
+<ul>
+<li>In Java, the char type describes a code unit in the UTF-16 encoding <strong>(2 bytes)</strong>.</li>
+<li>It is strongly recommended against using the char type in your programs unless you are actually manipulating UTF-16 code units. You are almost always better off treating <code>strings</code> as abstract data types.</li>
+</ul>
+<h2 id="114-the-boolean-type">1.1.4. The <code>boolean</code> Type</h2>
+<ul>
+<li>The boolean type has two values, <code>false</code> and <code>true</code>.</li>
+</ul>
+<h1 id="12-variables-and-constants">1.2. Variables and Constants</h1>
+<ul>
+<li>It is probably more common in Java to create a <strong>constant</strong> so it’s available to multiple methods inside a single class. </li>
+<li>These are usually called class constants.</li>
+<li>Set up a class constant with the keywords <code>static final</code>.</li>
+<li>Note that the deﬁnition of the class constant appears outside the main method. Thus, the constant can also be used in other methods of the same class. </li>
+<li>Furthermore, if the constant is declared, as in this example, <code>public</code>, methods of other classes can also use it.</li>
+</ul>
+<h1 id="13-operators">1.3. Operators</h1>
+<h2 id="131-mathematical-functions">1.3.1. Mathematical Functions</h2>
+<ul>
+<li>
+<p>Useful mathematical functions:</p>
+</li>
+<li>
+<p><code>Math.floorMod</code></p>
+</li>
+<li>
+<p><code>Math.pow</code></p>
+</li>
+<li>
+<p><strong>Static Imports</strong> You can avoid the Math preﬁx for the mathematical methods and constants by adding the following line to the top of your source ﬁle:</p>
+</li>
+</ul>
+<p><code>java 
+  import static java.lang.Math.*;</code></p>
+<ul>
+<li>The Math class provides several methods to make integer arithmetic <strong>safer</strong>. The mathematical operators quietly return wrong results when a
+  computation overﬂows. If you call <code>Math.multiplyExact(1000000000, 3)</code> instead, an exception is generated. You can catch that exception or let the program terminate rather than quietly continue with a wrong result. There are also methods <code>addExact</code>, <code>subtractExact</code>, <code>incrementExact</code>, <code>decrementExact</code>, <code>negateExact</code>, and <code>absExact</code>, all with <code>int</code> and <code>long</code> parameters.</li>
+</ul>
+<h2 id="132-conversion-between-numeric-types">1.3.2 Conversion between Numeric Types</h2>
+<p><img alt="image-20241010210324418" src="/home/denizkorkmaz/Git/BDK-Repositories/Personal/cs-docs/docs/assets/images/java/chp1/conversion-between-types.png" /></p>
+<ul>
+<li>The three dotted arrows denote conversions that may lose precision.</li>
+</ul>
+<h2 id="133-increment-and-decrement-operators">1.3.3. Increment and Decrement Operators</h2>
+<p>There is also a preﬁx form, <code>++n</code>. Both change the value of the variable by 1. The difference between the two appears only when they are used inside expressions. The preﬁx form does the addition ﬁrst; the postﬁx form evaluates to the old value of the variable.</p>
+<h2 id="134-relational-and-boolean-operators">1.3.4. Relational and <code>boolean</code> Operators</h2>
+<ul>
+<li>The <code>&amp;&amp;</code> and <code>||</code> operators are evaluated in <strong>short circuit</strong> fashion: The second argument is not evaluated if the ﬁrst argument already determines the value.</li>
+<li>This behavior can be exploited to avoid errors.</li>
+</ul>
+<h2 id="135-the-conditional-operator">1.3.5. The Conditional Operator</h2>
+<pre><code class="language-java">condition ? expression1 : expression2
+</code></pre>
+<h2 id="136-switch-expressions">1.3.6. Switch Expressions</h2>
+<ul>
+<li>If you need to choose among more than two values, then you can use a <code>switch</code> expression (as of <code>Java 14</code>).</li>
+<li>The case labels can also be strings or constants of an enumerated type.</li>
+</ul>
+<pre><code class="language-java">String seasonName = switch (seasonCode)
+{
+    case 0 -&gt; &quot;Spring&quot;;
+    case 1 -&gt; &quot;Summer&quot;;
+    case 2 -&gt; &quot;Fall&quot;;
+    case 3 -&gt; &quot;Winter&quot;;
+    default -&gt; &quot;???&quot;;
+};
+</code></pre>
+<ul>
+<li>As of Java 14, there are <strong>four</strong> (!) forms of <code>switch</code>.</li>
+</ul>
+<h2 id="137-bitwise-operators">1.3.7. Bitwise Operators</h2>
+<pre><code class="language-java">&amp; (“and”)
+| (“or”)
+^ (“xor”)
+~ (“not”)
+</code></pre>
+<ul>
+<li>There are also <code>&gt;&gt;</code> and <code>&lt;&lt;</code> operators which shift a bit pattern right or left.</li>
+<li>
+<p>The right-hand argument of the shift operators is reduced modulo 32 (unless the left-hand argument is a long, in which case the right-hand argument is reduced modulo 64).</p>
+</li>
+<li>
+<p>Representing a binary number is as follows: <code>0b1000</code> or <code>0B100</code></p>
+</li>
+</ul>
+<h1 id="14-strings">1.4. Strings</h1>
+<hr />
+<p>NOTE: We should include <code>Integer</code>, <code>Double</code>, and <code>String</code> classes. I had some notes for them at some interview prep place (maybe for AWS?).</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

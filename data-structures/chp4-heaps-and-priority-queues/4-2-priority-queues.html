@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Priority Queues - cs-docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Priority Queues";
+        var mkdocs_page_input_path = "data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.md";
+        var mkdocs_page_url = "/data-structures/chp4-heaps-and-priority-queues/4-2-priority-queues.html";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> cs-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data Structures</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Lists and The Collection Framework</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-1-arrays.html">Arrays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-2-list-interface.html">List Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-3-arraylist.html">ArrayLists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-4-single-linked-lists.html">Single-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-5-linked-list-class.html">LinkedList Class</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-6-iterator-listiterator-and-iterable-interfaces.html">The Iterator, ListIterator, and Iterable Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-7-double-linked-lists.html">Double-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-8-circular-linked-lists.html">Circular-Linked Lists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp1-lists-and-the-collections-framework/1-9-the-collections-framework-design.html">The Collections Framework Design</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Stacks and Queues</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-1-stacks.html">Stacks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-2-queues.html">Queues</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp2-stacks-and-queues/2-3-deques.html">Deques</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Trees</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp3-trees/chp3-trees.html">Trees</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Heaps and Priority Queues</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="4-1-heaps.html">Heaps</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Priority Queues</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-javautilpriorityqueuee">Class java.util.PriorityQueue&lt;E&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-priorityqueuee">Class PriorityQueue&lt;E&gt;</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-3-interface-comparable-and-comparator.html">Interface Comparable and Comparator</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sets and Maps</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-1-sets.html">Sets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-2-maps.html">Maps</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-3-hash-tables.html">Hash Tables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chp5-sets-and-maps/5-4-considerations.html">Implementation Considerations</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp6-graphs/6-1-graphs.html">Graphs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chp7-advanced-trees/7-1-advanced-trees.html">Advanced Trees</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Algorithms</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../algorithms/sorting/sorting.html">Sorting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cs-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Data Structures</li>
+          <li class="breadcrumb-item">Heaps and Priority Queues</li>
+      <li class="breadcrumb-item active">Priority Queues</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="2-priority-queues">2. Priority Queues</h1>
+<h3 id="overview">Overview</h3>
+<ul>
+<li>A priority queue is a data structure in which only the highest priority item is accessible.<ul>
+<li>In computer science, a heap is used as the basis of a very efficient algorithm for sorting arrays, called heapsort (we'll cover later).</li>
+<li>The heap is also used to implement a special kind of queue called a priority queue. However, the heap is not very useful as an abstract data type (ADT) on its own. Consequently, we will not create a Heap interface or code a class that implements it.</li>
+<li>Instead we will incorporate its algorithms when we implement a priority queue class and heapsort.</li>
+</ul>
+</li>
+</ul>
+<h3 id="class-javautilpriorityqueuee">Class <code>java.util.PriorityQueue&lt;E&gt;</code></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Constructor</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PriorityQueue()</code></td>
+<td>Creates a PriorityQueue with the default initial capacity (11) that orders its elements according to their natural ordering.</td>
+</tr>
+<tr>
+<td><code>PriorityQueue(Comparator&lt;? super E&gt; comparator)</code></td>
+<td>Creates a PriorityQueue with the default initial capacity and whose elements are ordered according to the specified comparator.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Modifier and Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code></td>
+<td>Inserts the specified element into this priority queue.</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>clear()</code></td>
+<td>Removes all of the elements from this priority queue.</td>
+</tr>
+<tr>
+<td><code>Comparator&lt;? super E&gt;</code></td>
+<td><code>comparator()</code></td>
+<td>Returns the comparator used to order the elements in this queue, or null if this queue is sorted according to the natural ordering of its elements.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>contains(Object o)</code></td>
+<td>Returns true if this queue contains the specified element.</td>
+</tr>
+<tr>
+<td><code>Iterator&lt;E&gt;</code></td>
+<td><code>iterator()</code></td>
+<td>Returns an iterator over the elements in this queue.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>offer(E e)</code></td>
+<td>Inserts the specified element into this priority queue.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>peek()</code></td>
+<td>Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>poll()</code></td>
+<td>Retrieves and removes the head of this queue, or returns null if this queue is empty.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>remove(Object o)</code></td>
+<td>Removes a single instance of the specified element from this queue, if it is present.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>size()</code></td>
+<td>Returns the number of elements in this collection.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The class <code>java.util.PriorityQueue</code> uses an array of type <code>Object[]</code> for heap storage.</li>
+</ul>
+<h3 id="class-priorityqueuee">Class <code>PriorityQueue&lt;E&gt;</code></h3>
+<ul>
+<li>In our case, as an example, we use <code>ArrayList</code> for implementing a PriorityQueue class.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Data Field/Attribute</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ArrayList&lt;E&gt; theData</code></td>
+<td>An ArrayList to hold the data</td>
+</tr>
+<tr>
+<td><code>Comparator&lt;E&gt; comparator</code></td>
+<td>An optional object that implements the <code>Comparator&lt;E&gt;</code> interface by providing a <code>compare</code> method</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Constructor</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KWPriorityQueue()</code></td>
+<td>Constructs a heap-based priority queue that uses the elements' natural ordering</td>
+</tr>
+<tr>
+<td><code>KWPriorityQueue(Comparator&lt;E&gt; comp)</code></td>
+<td>Constructs a heap-based priority queue that uses the <code>compare</code> method of <code>Comparator comp</code> to determine the ordering of the elements</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Private Method</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private int compare(E left, E right)</code></td>
+<td>Compares two objects and returns a negative number if object <code>left</code> is less than object <code>right</code>, zero if they are equal, and a positive number if object <code>left</code> is greater than object <code>right</code></td>
+</tr>
+<tr>
+<td><code>private void swap(int i, int j)</code></td>
+<td>Exchanges the object references in <code>theData</code> at indexes <code>i</code> and <code>j</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">package datastructures.heap;
+
+import java.util.*;
+
+/** The PriorityQueue implements the Queue interface
+ by building a heap in an ArrayList. The heap is structured
+ so that the “smallest” item is at the top.
+ */
+
+public class PriorityQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements Queue&lt;E&gt; {
+// Data Fields
+    /**
+     * The ArrayList to hold the data.
+     */
+    private ArrayList&lt;E&gt; data;
+    /**
+     * An optional reference to a Comparator object.
+     */
+    Comparator&lt;E&gt; comparator = null;
+
+    // Methods
+// Constructor
+    public PriorityQueue() {
+        data = new ArrayList&lt;&gt;();
+    }
+
+    /** Creates a heap‐based priority queue with the specified initial
+     capacity that orders its elements according to the specified
+     comparator.
+     @param capacity The initial capacity for this priority queue
+     @param comp The comparator used to order this priority queue
+     @throws IllegalArgumentException if capacity is less than 1
+     */
+    public PriorityQueue(int capacity, Comparator&lt;E&gt; comp) {
+        if (capacity &lt; 1)
+            throw new IllegalArgumentException();
+        data = new ArrayList&lt;&gt;();
+        comparator = comp;
+    }
+
+    /**
+     * Insert an item into the priority queue.
+     * pre: The ArrayList theData is in heap order.
+     * post: The item is in the priority queue and
+     * theData is in heap order.
+     *
+     * @param item The item to be inserted
+     * @throws NullPointerException if the item to be inserted is null.
+     */
+    @Override
+    public boolean offer(E item) {
+        // Add the item to the heap.
+        data.add(item);
+        // child is newly inserted item.
+        int child = data.size()-1;
+        int parent = (child - 1) /2; // Find child's parent.
+        // Reheap
+        while (parent &gt;= 0 &amp;&amp; compare(data.get(parent),
+                data.get(child)) &gt; 0) {
+            swap(parent, child);
+            child = parent;
+            parent = (child - 1) /2;
+        }
+        return true;
+    }
+
+    /**
+     * Remove an item from the priority queue
+     * pre: The ArrayList theData is in heap order.
+     * post: Removed smallest item, theData is in heap order.
+     *
+     * @return The item with the smallest priority value or null if empty.
+     */
+    @Override
+    public E poll() {
+        if (isEmpty()) {
+            return null;
+        }
+        // Save the top of the heap.
+        E result = data.get(0);
+        // If only one item then remove it.
+        if (data.size() == 1) {
+            data.remove(0);
+            return result;
+        }
+        /* Remove the last item from the ArrayList and place it into the first position. */
+        data.set(0, data.remove(data.size() - 1));
+        // The parent starts at the top.
+        int parent = 0;
+        while (true) {
+            int leftChild = 2 * parent + 1;
+            if (leftChild &gt;= data.size()) {
+                break; // Out of heap.
+            }
+            int rightChild = leftChild + 1;
+            int minChild = leftChild; // Assume leftChild is smaller.
+            // See whether rightChild is smaller.
+            if (rightChild &lt; data.size()
+                    &amp;&amp; compare(data.get(leftChild),
+                    data.get(rightChild)) &gt; 0) {
+                minChild = rightChild;
+            }
+            // assert: minChild is the index of the smaller child.
+            // Move smaller child up heap if necessary.
+            if (compare(data.get(parent),
+                    data.get(minChild)) &gt; 0) {
+                swap(parent, minChild);
+                parent = minChild;
+            } else { // Heap property is restored.
+                break;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public E peek() {
+        return data.get(0);
+    }
+
+    /** Compare two items using either a Comparator object's compare method
+     or their natural ordering using method compareTo.
+     @pre: If comparator is null, left and right implement Comparable&lt;E&gt;.
+     @param left One item
+     @param right The other item
+     @return Negative int if left less than right,
+     0 if left equals right,
+     positive int if left &gt; right
+     @throws ClassCastException if items are not Comparable
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private int compare(E left, E right) {
+        if (comparator != null) {
+            // A Comparator is defined.
+            return comparator.compare(left, right);
+        } else {
+            // Use left's compareTo method.
+            return ((Comparable&lt;E&gt;) left).compareTo(right);
+        }
+    }
+
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return data.size();
+    }
+
+    private void swap(int index1, int index2) {
+        E temp = data.get(index1);
+        data.set(index1, data.get(index2));
+        data.set(index2, temp);
+    }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="4-1-heaps.html" class="btn btn-neutral float-left" title="Heaps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="4-3-interface-comparable-and-comparator.html" class="btn btn-neutral float-right" title="Interface Comparable and Comparator">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="4-1-heaps.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="4-3-interface-comparable-and-comparator.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
